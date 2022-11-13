@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <meta name="keywords" content="Chen Change Loy, Ziwei Liu, Bo Dai, Yixin Cao, Super-resolution, Deep Learning, Computer Vision, Convolutional Neural Network, Enhancement, Inpainting, Knowledge Distillation, Restoration, GAN, Generative Adversarial Networks, Generation, Manipulation, Editing, Object Detection, Segmentation, Recognition, Continual Learning, Domain Generalization, Self-Supervised Learning, Singapore, NTU, Nanyang Technological University, SCSE" />
+        
+        <!-- Page Title -->
+        <title>ORL | MMLab@NTU</title>
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+        <link rel="manifest" href="../../assets/img/favicons/site.webmanifest">
+        <link rel="mask-icon" href="../../assets/img/favicons/safari-pinned-tab.svg" color="#f23838">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+
+        <!-- Vendor Stylesheets -->
+        <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700%7CRoboto:300,400,700" rel="stylesheet">
+        <link href="../../assets/vendor/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
+        <link href="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
+        <link href="../../assets/vendor/aos/dist/aos.css" rel="stylesheet">
+        <link href="../../assets/vendor/twentytwenty/css/foundation.css" rel="stylesheet">
+
+        <!-- Theme Stylesheets -->
+        <link href="../../assets/css/theme.css" rel="stylesheet">
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22940424-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-22940424-1');
+        </script>
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div class="preloader">
+            <div class="spinner">
+                <div class="circles"></div>
+            </div>
+        </div>
+        <!-- End of Preloader -->
+
+
+        <!-- Header -->
+        <header class="spyre-navbar navbar navbar-expand-lg bg-secondary navbar-dark fixed-top align-items-center" data-transparent data-text-color="#ffffff">
+            <div class="container">
+                <a class="navbar-brand mr-lg-5 mr-xl-7" href="../../index.html">
+                    <img src="../../assets/img/logo.png" class="d-none d-lg-block" alt="MMLab" width="183" />
+                    <img src="../../assets/img/logo.png" class="d-block d-lg-none" alt="MMLab" width="150" />
+                </a>
+
+                <!-— Desktop Menu -->
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="pl-2 nav-item navbar-text"><a href="../../index.html" class="nav-link text-400">Home</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../team.html" class="nav-link text-400">Team</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../research.html" class="nav-link text-400">Research</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../publication_topic.html" class="nav-link text-400">Publications</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../downloads.html" class="nav-link text-400">Code | Datasets</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../careers.html" class="nav-link text-400">Join Us</a></li>
+                    </ul>
+                </div>
+                <!-— End of Desktop Menu -->
+
+                <div class="menu-toggle d-block d-lg-none">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="cross">
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spyrenav Overlay -->
+            <div class="spyre-navbar-overlay overlay-slide">
+                <div class="container">
+                    <div class="row">
+                        <div class="spyre-navbar-nav-container col-md-6 col-lg-5 col-xl-4 bg-white ext-l">
+                            <nav class="spyre-navbar-nav">
+                                <ul class="spyre-nav">
+                                    <li class="spyre-nav-item"><a href="../../index.html" class="spyre-nav-link">Home</a></li>
+                                    <li class="spyre-nav-item"><a href="../../research.html" class="spyre-nav-link">Our Research</a></li>
+                                    <li class="spyre-nav-item"><a href="../../team.html" class="spyre-nav-link">Team</a></li>
+                                    <li class="spyre-nav-item dropdown">
+                                        <a href="#" class="spyre-nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publications</a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li class="dropdown-menu-item"><a href="../../publication_topic.html" class="dropdown-menu-link">By Topic</a></li>
+                                            <li class="dropdown-menu-item"><a href="../../publication_year.html" class="dropdown-menu-link">By Year</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="spyre-nav-item"><a href="../../downloads.html" class="spyre-nav-link">Code and Datasets</a></li>
+                                    <li class="spyre-nav-item"><a href="../../careers.html" class="spyre-nav-link">Join Us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+        
+                        <div class="col-lg-7 col-xl-8 d-none d-md-block">
+                            <div class="d-flex flex-column h-100">
+                                <div class="d-flex h-100">
+                                    <div class="align-self-center">
+                                        <div class="text-uppercase"
+                                            data-background-text="computer vision"
+                                            data-color="#7079a2"
+                                            data-opacity="0.02"
+                                            data-font-size="85px"
+                                            data-font-weight="500"
+                                            data-offset-x="-5%"
+                                            data-letter-spacing="5px"
+                                        ></div>
+                                        <div class="text-uppercase"
+                                            data-background-text="mmlab"
+                                            data-color="#7079a2"
+                                            data-opacity="0.04"
+                                            data-font-size="175px"
+                                            data-font-weight="500"
+                                            data-offset-x="29%"
+                                            data-padding="7vh 0 2vh 0"
+                                            data-letter-spacing="5px"
+                                        ></div>
+                                        <div class="text-uppercase"
+                                            data-background-text="deep learning"
+                                            data-color="#7079a2"
+                                            data-opacity="0.03"
+                                            data-font-size="140px"
+                                            data-font-weight="500"
+                                            data-offset-x="15%"
+                                            data-letter-spacing="5px"
+                                        ></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-auto">
+                                    <ul class="nav flex-nowrap float-right">
+                                        <li class="nav-item">
+                                            <a class="nav-link px-2" href="https://twitter.com/MMLabNTU" target="_blank">
+                                                <i class="zmdi zmdi-twitter text-white"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Spyrenav Overlay -->
+        </header>
+        <!-- End of Header -->
+
+
+        <!-- Main Content -->
+        <main class="main minh-100vh">
+            <!-- Section -->
+            <section class="py-0 overflow-hidden text-center">
+                <div class="bg-container overlay parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/backgrounds/bg-13.jpeg)"></div>
+                <div class="container">
+                    <div class="row h-100vh align-items-center">
+                        <div class="col">
+                            <h1 class="text-white text-uppercase fs-4 fs-lg-5">ORL: Unsupervised Object-Level Representation Learning from Scene Images</h1>
+                            <p class="mb-5 fs-lg-1 text-white">Preprint<br />
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+            <!-- Section Abstract -->
+            <section>
+                <div class="container">
+                    <div class="row no-gutters justify-content-between">
+                        <div class="col-lg-5">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
+                            <p class="text-justify">
+                                Contrastive self-supervised learning has largely narrowed the gap to supervised pre-training on ImageNet. However, its success highly relies on the object-centric priors of ImageNet, i.e., different augmented views of the same image correspond to the same object. Such a heavily curated constraint becomes immediately infeasible when pre-trained on more complex scene images with many objects. To overcome this limitation, we introduce <strong>O</strong>bject-level <strong>R</strong>epresentation <strong>L</strong>earning (ORL), a new self-supervised learning framework towards scene images. Our key insight is to leverage image-level self-supervised pre-training as the prior to discover object-level semantic correspondence, thus realizing object-level representation learning from scene images. Extensive experiments on COCO show that ORL significantly improves the performance of self-supervised learning on scene images, even surpassing supervised ImageNet pre-training on several downstream tasks. Furthermore, ORL improves the downstream performance when more unlabeled scene images are available, demonstrating its great potential of harnessing unlabeled data in the wild. We hope our approach can motivate future research on more general-purpose unsupervised representation learning from scene data.
+                            </p>
+                        </div>                        
+                        <div class="col-lg-6">
+                            <div class="order-lg-2 pb-0 pb-lg-0 pt-lg-3">
+                                <img src="./img/teaser.jpg" class="mt-8 img-fluid" alt="" />
+                            </div>                                                      
+                        
+                            <div class="card d-block border-0">
+                                <div class="card-body">
+                                    <p class="card-text fs--1 text-justify">(a) Current image-level contrastive learning methods heavily rely on the object-centric bias of ImageNet, i.e., different crops correspond to the same object. Prior works use either the different views of the same image (i.e., intra-image) or similar images (i.e., inter-image) to form positive pairs. (b) Directly adopting image-level contrastive learning methods on scene images can cause inconsistent learning signals since different crops may correspond to different objects. (c) Object-level contrastive learning can overcome the limitation in (b) by enforcing object-level consistency. (d) We find that image-level contrastive learning encodes priors for region correspondence discovery across images, and high-response regions are usually objects or object parts, which is useful for object-level representation learning.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section --> 
+
+            <!-- Section Downloads -->
+            <section class="pt-0">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-10">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-6 pr-lg-5 text-center">
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-pdf"></i></span><a href="https://arxiv.org/pdf/2106.11952.pdf" class="text-muted">Paper</a></h2>
+                                    <!-- <p class="fs--1">If you have description you can put it here.</p> -->
+                                </div>
+                                <div class="col-md-6 col-lg-6 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-github-box"></i></span><a href="" class="text-muted">Code (Coming soon)</a></h2>
+                                    <!-- <p class="fs--1">If you have description you can put it here.</p> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+            <!-- Section Methodology -->
+            <section class="pb-0 bg-blue-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 order-lg-1">
+                            <div class="pb-6 pt-6 py-lg-3">
+                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Multi-Stage</h3>
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">ORL Framework</h2>
+                                <p class="text-justify">
+                                    ORL extends the existing image-level self-supervised learning framework to object level. We leverage image-level contrastive pre-training (e.g., BYOL) as the prior for object-level semantic correspodence discovery, and use the obtaind correspondece to construct positive object-instance pairs for object-level representation learning.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3"> 
+                            <div class="mb-8">
+                                <img src="./img/framework.png" class="mt-4 img-fluid" alt="" />
+                            </div>                                                         
+                        </div>
+                        
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->  
+
+            <!-- Section Main Results-->
+            <section class="pb-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Representation</h3>
+                            <h2 class="mb-4 fw-medium text-secondary text-uppercase text-center text-lg-left">Learning</h2>
+                        </div>
+                    </div>
+                    <div>
+                        <table class="mb-5 table table-responsive-sm">
+                            <p class="text-600 text-center">Table 1: Image classification with linear models</p>
+                            <thead class="bg-secondary text-white">
+                            <tr>
+                                <th rowspan="2" class="text-left">Method</th><th rowspan="2">Pre-train data</th><th>VOC07</th><th>ImageNet</th><th>Places205</th><th>iNat.</th>
+                            </tr>
+                            <tr>
+                                <th>mAP</th><th>Top-1</th><th>Top-1</th><th>Top-1</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-left">Random</td>
+                                <td>-</td>
+                                <td>9.6</td>
+                                <td>13.7</td>
+                                <td>16.6</td>
+                                <td>4.8</td>
+                            </tr>
+                            <tr style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">Supervised</td>
+                                <td>ImageNet</td>
+                                <td>87.5</td>
+                                <td>75.9</td>
+                                <td>51.5</td>
+                                <td>45.4</td>
+                            </tr>                            
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2002.05709" style="color: black;">SimCLR</a></td>
+                                <td>COCO</td>
+                                <td>78.1</td>
+                                <td>50.9</td>
+                                <td>48.0</td>
+                                <td>22.7</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2003.04297" style="color: black;">MoCo v2</a></td>
+                                <td>COCO</td>
+                                <td>82.2</td>
+                                <td>55.1</td>
+                                <td>48.8</td>
+                                <td>27.8</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO</td>
+                                <td>84.5</td>
+                                <td>57.8</td>
+                                <td>50.5</td>
+                                <td>29.5</td>
+                            </tr>
+                            <tr class="bg-blue-light" style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO</td>
+                                <td><strong>86.7</strong></td>
+                                <td><strong>59.0</strong></td>
+                                <td><strong>52.7</strong></td>
+                                <td><strong>31.8</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO+</td>
+                                <td>87.0</td>
+                                <td>59.6</td>
+                                <td>52.7</td>
+                                <td>30.9</td>
+                            </tr>
+                            <tr class="bg-blue-light">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO+</td>
+                                <td><strong>88.6</strong></td>
+                                <td><strong>60.7</strong></td>
+                                <td><strong>54.1</strong></td>
+                                <td><strong>32.0</strong></td>
+                            </tr>                       
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div>
+                        <table class="mb-5 table table-responsive-sm">
+                            <p class="text-600 text-center">Table 2: Low-shot image classification on VOC07</p>
+                            <thead class="bg-secondary text-white">
+                            <tr>
+                                <th rowspan="2" class="text-left">Method</th><th rowspan="2">Pre-train data</th><th colspan="8">VOC07 low-shot (mAP)</th>
+                            </tr>
+                            <tr>
+                                <th>1</th><th>2</th><th>4</th><th>8</th><th>16</th><th>32</th><th>64</th><th>96</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-left">Random</td>
+                                <td>-</td>
+                                <td>9.2</td>
+                                <td>9.4</td>
+                                <td>11.1</td>
+                                <td>12.3</td>
+                                <td>14.3</td>
+                                <td>17.4</td>
+                                <td>21.3</td>
+                                <td>23.8</td>
+                            </tr>
+                            <tr style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">Supervised</td>
+                                <td>ImageNet</td>
+                                <td>53.0</td>
+                                <td>63.6</td>
+                                <td>73.7</td>
+                                <td>78.8</td>
+                                <td>81.8</td>
+                                <td>83.8</td>
+                                <td>85.2</td>
+                                <td>86.0</td>
+                            </tr>                            
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2002.05709" style="color: black;">SimCLR</a></td>
+                                <td>COCO</td>
+                                <td>33.3</td>
+                                <td>43.5</td>
+                                <td>52.5</td>
+                                <td>61.1</td>
+                                <td>66.7</td>
+                                <td>70.5</td>
+                                <td>73.7</td>
+                                <td>75.0</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2003.04297" style="color: black;">MoCo v2</a></td>
+                                <td>COCO</td>
+                                <td>39.5</td>
+                                <td>49.3</td>
+                                <td>60.4</td>
+                                <td>69.3</td>
+                                <td>74.1</td>
+                                <td>76.8</td>
+                                <td>79.1</td>
+                                <td>80.1</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO</td>
+                                <td>39.4</td>
+                                <td>50.9</td>
+                                <td>62.2</td>
+                                <td>71.7</td>
+                                <td>76.6</td>
+                                <td>79.2</td>
+                                <td>81.3</td>
+                                <td>82.2</td>
+                            </tr>
+                            <tr class="bg-blue-light" style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO</td>
+                                <td><strong>39.6</strong></td>
+                                <td><strong>51.2</strong></td>
+                                <td><strong>63.4</strong></td>
+                                <td><strong>72.6</strong></td>
+                                <td><strong>78.2</strong></td>
+                                <td><strong>81.3</strong></td>
+                                <td><strong>83.6</strong></td>
+                                <td><strong>84.7</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO+</td>
+                                <td>41.1</td>
+                                <td>54.3</td>
+                                <td>66.6</td>
+                                <td>75.2</td>
+                                <td>80.1</td>
+                                <td>82.6</td>
+                                <td>84.6</td>
+                                <td>85.4</td>
+                            </tr>
+                            <tr class="bg-blue-light">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO+</td>
+                                <td><strong>42.1</strong></td>
+                                <td><strong>54.9</strong></td>
+                                <td><strong>67.4</strong></td>
+                                <td><strong>75.7</strong></td>
+                                <td><strong>81.3</strong></td>
+                                <td><strong>83.7</strong></td>
+                                <td><strong>85.8</strong></td>
+                                <td><strong>86.7</strong></td>
+                            </tr>                       
+                            </tbody>
+                        </table>
+                        <!-- <hr/> -->
+                    </div>
+
+                    <div>
+                        <table class="mb-5 table table-responsive-sm">
+                            <p class="text-600 text-center">Table 3: Semi-supervised learning on ImageNet</p>
+                            <thead class="bg-secondary text-white">
+                            <tr>
+                                <th rowspan="2" class="text-left">Method</th><th rowspan="2">Pre-train data</th><th colspan="2">1% labels</th><th colspan="2">10% labels</th>
+                            </tr>
+                            <tr>
+                                <th>Top-1</th><th>Top-5</th><th>Top-1</th><th>Top-5</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-left">Random</td>
+                                <td>-</td>
+                                <td>1.6</td>
+                                <td>5.0</td>
+                                <td>21.8</td>
+                                <td>44.2</td>
+                            </tr>
+                            <tr style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">Supervised</td>
+                                <td>ImageNet</td>
+                                <td>25.4</td>
+                                <td>48.4</td>
+                                <td>56.4</td>
+                                <td>80.4</td>
+                            </tr>                            
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2002.05709" style="color: black;">SimCLR</a></td>
+                                <td>COCO</td>
+                                <td>23.4</td>
+                                <td>46.4</td>
+                                <td>52.2</td>
+                                <td>77.4</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2003.04297" style="color: black;">MoCo v2</a></td>
+                                <td>COCO</td>
+                                <td>28.2</td>
+                                <td>54.7</td>
+                                <td>57.1</td>
+                                <td>81.7</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO</td>
+                                <td>28.4</td>
+                                <td>55.9</td>
+                                <td>58.4</td>
+                                <td>82.7</td>
+                            </tr>
+                            <tr class="bg-blue-light" style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO</td>
+                                <td><strong>31.0</strong></td>
+                                <td><strong>58.9</strong></td>
+                                <td><strong>60.5</strong></td>
+                                <td><strong>84.2</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO+</td>
+                                <td>28.3</td>
+                                <td>56.0</td>
+                                <td>59.4</td>
+                                <td>83.6</td>
+                            </tr>
+                            <tr class="bg-blue-light">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO+</td>
+                                <td><strong>31.8</strong></td>
+                                <td><strong>60.1</strong></td>
+                                <td><strong>60.9</strong></td>
+                                <td><strong>84.4</strong></td>
+                            </tr>                       
+                            </tbody>
+                        </table>
+                        <!-- <hr/> -->
+                    </div>
+
+                    <div>
+                        <table class="mb-5 table table-responsive-sm">
+                            <p class="text-600 text-center">Table 4: COCO object detection and instance segmentation</p>
+                            <thead class="bg-secondary text-white">
+                            <tr>
+                                <th rowspan="2" class="text-left">Method</th><th rowspan="2">Pre-train data</th><th colspan="3">COCO detection</th><th colspan="3">COCO instance seg.</th>
+                            </tr>
+                            <tr>
+                                <th>AP<sup>bb</sup></th><th>AP<sup>bb</sup><sub style="margin-left:-1.2em">50</sub></th><th>AP<sup>bb</sup><sub style="margin-left:-1.2em">75</sub></th>
+                                <th>AP<sup>mk</sup></th><th>AP<sup>mk</sup><sub style="margin-left:-1.45em">50</sub></th><th>AP<sup>mk</sup><sub style="margin-left:-1.45em">75</sub></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="text-left">Random</td>
+                                <td>-</td>
+                                <td>32.8</td>
+                                <td>50.9</td>
+                                <td>35.3</td>
+                                <td>29.9</td>
+                                <td>47.9</td>
+                                <td>32.0</td>
+                            </tr>
+                            <tr style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">Supervised</td>
+                                <td>ImageNet</td>
+                                <td>39.7</td>
+                                <td>59.5</td>
+                                <td>43.3</td>
+                                <td>35.9</td>
+                                <td>56.6</td>
+                                <td>38.6</td>
+                            </tr>                            
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2002.05709" style="color: black;">SimCLR</a></td>
+                                <td>COCO</td>
+                                <td>37.0</td>
+                                <td>56.8</td>
+                                <td>40.3</td>
+                                <td>33.7</td>
+                                <td>53.8</td>
+                                <td>36.1</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2003.04297" style="color: black;">MoCo v2</a></td>
+                                <td>COCO</td>
+                                <td>38.5</td>
+                                <td>58.1</td>
+                                <td>42.1</td>
+                                <td>34.8</td>
+                                <td>55.3</td>
+                                <td>37.3</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2011.13677" style="color: black;">Self-EMD</a></td>
+                                <td>COCO</td>
+                                <td>39.3</td>
+                                <td>60.1</td>
+                                <td>42.8</td>
+                                <td>-</td>
+                                <td>-</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2011.09157" style="color: black;">DenseCL</a></td>
+                                <td>COCO</td>
+                                <td>39.6</td>
+                                <td>59.3</td>
+                                <td>43.3</td>
+                                <td>35.7</td>
+                                <td>56.5</td>
+                                <td>38.4</td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO</td>
+                                <td>39.5</td>
+                                <td>59.3</td>
+                                <td>43.2</td>
+                                <td>35.6</td>
+                                <td>56.5</td>
+                                <td>38.2</td>
+                            </tr>
+                            <tr class="bg-blue-light" style="border-bottom: 2px solid #b2b6c1;">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO</td>
+                                <td><strong>40.3</strong></td>
+                                <td><strong>60.2</strong></td>
+                                <td><strong>44.4</strong></td>
+                                <td><strong>36.3</strong></td>
+                                <td><strong>57.3</strong></td>
+                                <td><strong>38.9</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="text-left"><a href="https://arxiv.org/abs/2006.07733" style="color: black;">BYOL</a></td>
+                                <td>COCO+</td>
+                                <td>40.0</td>
+                                <td>60.1</td>
+                                <td>44.0</td>
+                                <td>36.2</td>
+                                <td>57.1</td>
+                                <td>39.0</td>
+                            </tr>
+                            <tr class="bg-blue-light">
+                                <td class="text-left">ORL (ours)</td>
+                                <td>COCO+</td>
+                                <td><strong>40.6</strong></td>
+                                <td><strong>60.8</strong></td>
+                                <td><strong>44.5</strong></td>
+                                <td><strong>36.7</strong></td>
+                                <td><strong>57.9</strong></td>
+                                <td><strong>39.3</strong></td>
+                            </tr>                       
+                            </tbody>
+                        </table>
+                        <hr/>
+                        <p class="figure-caption">
+                            Note: All unsupervised methods are based on 800-epoch pre-training on COCO(+) with ResNet-50.
+                        </p>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->            
+            
+            <!-- Section Results -->
+            <section class="pb-0 bg-blue-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Correspondence</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Pairs</h2>
+                            <p class="text-justify">
+                                In contrast to typical contrastive learning methods that perform aggressive intra-image augmentations to simulate intra-class variances, our discovered inter-RoI pairs can substantially provide more natural and diverse intra-class variances at the object-instance level.
+                            </p>
+                        </div>
+
+                        <div class="col-lg-12 pb-lg-0 pt-lg-3"> 
+                            <div class="mb-8">
+                                <img src="./img/correspondence.png" class="mt-4 img-fluid w-100" alt="" />
+                                <p class="card-text fs--1 text-center">Top-ranked region correspodence discovered in Stage 2 of ORL on COCO. The high-response region pairs are usually objects or object parts.</p>
+                            </div>                                                     
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+            <!-- Section Results -->
+            <section class="pb-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Attention</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Maps</h2>
+                            <p class="text-justify">
+                                Both BYOL and ORL can produce relatively high-quality attention maps focusing on the foreground objects in scene images. Nevertheless, ORL can 1) activate more object regions, and 2) produce more accurate object boundary in the heatmap than BYOL due to introducing object-level similarity learning.
+                            </p>
+                        </div>
+
+                        <div class="col-lg-12 pb-lg-0 pt-lg-3"> 
+                            <div class="mb-8">
+                                <img src="./img/attention.jpg" class="mt-4 img-fluid w-100" alt="" />
+                                <p class="card-text fs--1 text-center">Attention maps generated by BYOL and ORL on COCO. ORL can activate more object regions and produce more accurate object boundary than BYOL.</p>
+                            </div>                                                     
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+            <!-- Section Citation -->
+            <section class="pb-7 bg-blue-light">
+                <div class="container">                       
+                    <div class="col-lg-12 order-lg-2 pb-lg-0 pt-lg-3"> 
+                        <div class="mb-3">
+                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
+                                <p class="text-700 fw-medium">
+                                    @article{xie2021unsupervised,<br />
+                                        &emsp;author = {Xie, Jiahao and Zhan, Xiaohang and Liu, Ziwei and Ong, Yew Soon and Loy, Chen Change},<br />
+                                        &emsp;title = {Unsupervised Object-Level Representation Learning from Scene Images},<br />
+                                        &emsp;journal = {arXiv preprint},<br />
+                                        &emsp;year = {2021}<br />
+                                    }
+                                </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+            <!-- Section Related Projects -->
+            <section class="pb-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="col text-center text-lg-left">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase">Related</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase">Projects</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <div class="row">
+                                <ul>
+                                    <li>
+                                       <span class="text-primary">Delving into Inter-Image Invariance for Unsupervised Visual Representations </span> 
+                                       <br />
+                                       <span class="text-500">
+                                       J. Xie, X. Zhan, Z. Liu, Y. S. Ong, C. C. Loy <br /> 
+                                       Technical report, arXiv:2008.11702, 2020 <br />    
+                                       </span>
+                                       [<a href="https://arxiv.org/abs/2008.11702" target="_blank"><span class="text-muted">arXiv</span></a>]
+                                       [<a href="https://github.com/open-mmlab/OpenSelfSup" target="_blank"><span class="text-muted">Project Page</span></a>]
+                                    </li>                                    
+                                    <li>
+                                        <span class="text-primary">Online Deep Clustering for Unsupervised Representation Learning </span> 
+                                        <br />
+                                        <span class="text-500">
+                                        X. Zhan*, J. Xie*, Z. Liu, Y. S. Ong, C. C. Loy  <br /> 
+                                        in Proceedings of IEEE Conference on Computer Vision and Pattern Recognition, 2020 <strong>(CVPR)</strong> <br />    
+                                        </span>
+                                        [<a href="https://openaccess.thecvf.com/content_CVPR_2020/papers/Zhan_Online_Deep_Clustering_for_Unsupervised_Representation_Learning_CVPR_2020_paper.pdf"><span class="text-muted">PDF</span></a>]
+                                        [<a href="https://arxiv.org/abs/2006.10645" target="_blank"><span class="text-muted">arXiv</span></a>]
+                                        [<a href="https://github.com/open-mmlab/OpenSelfSup" target="_blank"><span class="text-muted">Project Page</span></a>]
+                                     </li>                                 
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->
+
+
+            <!-- Section Contact -->
+            <section class="pt-7 pb-0 bg-blue-light">
+                <div class="container">
+                    <div class="pb-6 px-lg-8 px-xl-12">
+                        <div class="row justify-content-center">
+                            <div class="col-6 col-lg-3">
+                                <img src="../../assets/img/profiles/jiahao_xie.jpeg" alt="" class="img-fluid w-100 rounded-circle" />
+                            </div>
+                            <div class="col-lg-9 text-center text-lg-left">
+                                    <p class="h5 text-secondary fw-medium mt-3">Contact</p>
+                                    <br /><a href="https://scholar.google.com/citations?user=yA9qseUAAAAJ&hl=en" target="_blank">Jiahao Xie</a> 
+                                    <br />Email: jiahao003 at e.ntu.edu.sg
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- End of Section -->  
+
+        </main>
+        <!-- End of Main Content -->
+
+
+        <!-- Footer -->
+        <footer class="footer text-white" style="background-image: url(../../assets/img/footer-bg.jpg)">
+            <div class="container d-flex h-100">
+                <div class="row flex-grow-1">
+                    <div class="col-lg-3 pt-3 ext-l bg-secondary text-center text-lg-left">
+                        <div class="d-flex flex-column h-100">
+                            <div class="pt-5 pt-lg-8 pb-4">
+                                <img src="../../assets/img/logo-small.png" alt="" width="108" class="mb-4" />
+                                <p class="mb-4 mt-3 fs--1"><br />
+                                Academic Block North <br />
+                                Nanyang Technological University<br />
+                                61 Nanyang Dr, Singapore 637335</p>
+        
+                                <p class="fs--1">
+                                <span class="text-white"><i class="zmdi zmdi-email zmdi-hc-fw mr-1"></i>mmlab-contact at e.ntu.edu.sg</span><br />
+                                <span class="text-white"><i class="zmdi zmdi-twitter zmdi-hc-fw mr-1"></i><a href="https://twitter.com/MMLabNTU" target="_blank" class="text-white">@MMLabNTU</a></span></p>
+                            </div>
+    
+                            <!-- <ul class="mt-4 mt-lg-auto mb-5 mb-lg-0 list-unstyled list-inline">
+                                <li class="mr-3 list-inline-item">
+                                    <a href="https://twitter.com/MMLabNTU" target="_blank">
+                                        <i class="zmdi zmdi-twitter text-white"></i>
+                                    </a>
+                                </li>
+                            </ul> -->
+                        </div>
+                    </div>
+
+                    <div class="col d-flex flex-column mb-2 mt-3 pl-lg-7">
+                        <div class="row pt-5 pt-lg-8 pb-4 pb-lg-6">
+                            <div class="col-6 col-lg-3">
+                                <h6 class="mb-1 mb-lg-4 text-uppercase">Publications</h6>
+                                <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                    <li class="my-1"><a href="../../publication_topic.html" class="text-white">By Topic</a></li>
+                                    <li class="my-1"><a href="../../publication_year.html" class="text-white">By Year</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <h6 class="mb-1 mb-lg-4 text-uppercase">About</h6>
+                                <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                    <li class="my-1"><a href="../../research.html" class="text-white">Our Research</a></li>
+                                    <li class="my-1"><a href="../../team.html" class="text-white">Team</a></li>
+                                    <li class="my-1"><a href="../../careers.html" class="text-white">Join Us</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <h6 class="mb-1 mb-lg-4 text-uppercase">Open Source</h6>
+                                <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                    <li class="my-1"><a href="https://openmmlab.com/" target="_blank" class="text-white">OpenMMLab</a></li>
+                                    <li class="my-1"><a href="../../downloads.html" class="text-white">Code and Datasets</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="mt-auto d-flex justify-content-between">
+                            <span class="fs--3 fs-lg--2">&copy; MMLab@NTU, 2021</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- End of Footer -->
+
+
+        <!-- Core Javascripts -->
+        <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+        <script src="../../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+        <!-- Vendor Javascripts -->
+        <script src="../../assets/vendor/rellax/rellax.min.js"></script>
+        <script src="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+        <script src="../../assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
+        <script src="../../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+        <script src="../../assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
+        <script src="../../assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
+        <script src="../../assets/vendor/aos/dist/aos.js"></script>
+
+        <!-- Theme Javascripts -->
+        <script src="../../assets/js/theme.js"></script>
+
+    </body>
+</html>
