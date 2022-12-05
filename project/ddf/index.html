@@ -169,7 +169,7 @@
                 <div class="container">
                     <div class="row h-100vh align-items-center">
                         <div class="col">
-                            <h1 class="text-white text-uppercase fs-4 fs-lg-6">GLEAN: Generative Latent Bank for Large-Factor Image Super-Resolution</h1>
+                            <h1 class="text-white text-uppercase fs-4 fs-lg-6">DDF: Generative Latent Bank for Large-Factor Image Super-Resolution</h1>
                             <p class="mb-5 fs-lg-1 text-white">Arxiv<br />
                         </div>
                     </div>
@@ -185,15 +185,25 @@
                             <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
                             <p class="text-justify">
-                                We show that pre-trained Generative Adversarial Networks (GANs), e.g., StyleGAN, can be used as a latent bank to improve the restoration quality of large-factor image super-resolution (SR). While most existing SR approaches attempt to generate realistic textures through learning with adversarial loss, our method, Generative LatEnt bANk (GLEAN), goes beyond existing practices by directly leveraging rich and diverse priors encapsulated in a pre-trained GAN. But unlike prevalent GAN inversion methods that require expensive image-specific optimization at runtime, our approach only needs a single forward pass to generate the upscaled image. GLEAN can be easily incorporated in a simple encoder-bank-decoder architecture with multi-resolution skip connections. Switching the bank allows the method to deal with images from diverse categories, e.g., cat, building, human face, and car. Images upscaled by GLEAN show clear improvements in terms of fidelity and texture faithfulness in comparison to existing methods. 
+                                The neural radiance field (NeRF) has shown promising results in preserving the fine details of objects and scenes. However, unlike mesh-based representations, it remains an open problem to build dense correspondences across different NeRFs of the same category, 
+                                which is essential in many downstream tasks.
+                                The main difficulties of this problem lie in the implicit nature of NeRF and the lack of ground-truth correspondence annotations.
+                                In this paper, we show it is possible to bypass these challenges by leveraging the rich semantics and structural priors encapsulated in a pre-trained NeRF-based GAN.
+                                Specifically, we exploit such priors from three aspects,
+                                namely 1) a dual deformation field that takes latent codes as global structural indicators,
+                                2) a learning objective that regards generator features as geometric-aware local descriptors,
+                                and 3) a source of infinite object-specific NeRF samples.
+                                Our experiments demonstrate that such priors lead to 3D dense correspondence that is accurate, smooth, and robust.
+                                We also show that established dense correspondence across NeRFs can effectively enable many NeRF-based downstream applications such as texture transfer.
                             </p>
                         </div>                        
+
                         <div class="col-lg-6">
+
                             <div class="row">                                
-                                <div class="small-12 columns">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_01.jpeg" />
-                                        <img src="./img/sr_01.jpeg" />
+                                <div class="small-12 columns>
+                                    <div id="images">
+                                        <img src="./img/teaser.png"  />
                                     </div>
                                 </div>
                             </div>                                                        
@@ -203,6 +213,7 @@
                                     <p class="card-text fs--1">We present a new way to exploit pre-trained GANs for the task of large-scale super-resolution, up to 64× upscaling factor.</p>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -224,7 +235,7 @@
                                     <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                                 </div>
                                 <div class="col-md-6 col-lg-4 pl-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-cloud-download"></i></span><a href="https://github.com/ckkelvinchan/GLEAN" class="text-muted">Dataset</a></h2>
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-cloud-download"></i></span><a href="https://github.com/ckkelvinchan/DDF" class="text-muted">Dataset</a></h2>
                                     <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                                 </div>
                             </div>
@@ -241,9 +252,9 @@
                         <div class="col-lg-5 order-lg-1">
                             <div class="pb-6 pt-6 py-lg-3">
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">The</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">GLEAN Framework</h2>
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">DDF Framework</h2>
                                 <p class="text-justify">
-                                    In contrast to existing works that optimize only the latent vectors of the generator (i.e. StyleGAN), GLEAN proposes to use the generator as a dictionary and condition it on the convolutional features provided by the encoder. In this way, the generator receives additional guidance on the local structures, producing results with high fidelity and quality.
+                                    In contrast to existing works that optimize only the latent vectors of the generator (i.e. StyleGAN), DDF proposes to use the generator as a dictionary and condition it on the convolutional features provided by the encoder. In this way, the generator receives additional guidance on the local structures, producing results with high fidelity and quality.
                                 </p>
                             </div>
                         </div>
@@ -268,7 +279,7 @@
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Large Factor</h3>
                                 <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Super-Resolution</h2>
                                 <p class="text-justify">
-                                    GLEAN generates perceptually convincing images resembling the ground-truth for up to 64× upscaling. GLEAN can be applied to various categories by switching between StyleGANs trained on different categories.  
+                                    DDF generates perceptually convincing images resembling the ground-truth for up to 64× upscaling. DDF can be applied to various categories by switching between StyleGANs trained on different categories.  
                                 </p>
                             </div>
                         </div>
@@ -293,7 +304,7 @@
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Image</h3>
                                 <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Retouching</h2>
                                 <p class="text-justify">
-                                    In interactive image retouching, a perfect output typically requires tedious and precise editing steps. As a result, artifacts are common in the outputs, especially those from amateur retouching. Thanks to the capability of GLEAN in producing high quality and fidelity images, we can downsample an edit and upsample it using GLEAN to eliminate the blurry region and generate a coherent output with natural textures.
+                                    In interactive image retouching, a perfect output typically requires tedious and precise editing steps. As a result, artifacts are common in the outputs, especially those from amateur retouching. Thanks to the capability of DDF in producing high quality and fidelity images, we can downsample an edit and upsample it using DDF to eliminate the blurry region and generate a coherent output with natural textures.
                                 </p>
                             </div>
                         </div>
@@ -385,9 +396,9 @@
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
                                 <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
                                 <p class="text-700 fw-medium">
-                                    @InProceedings{chan2021glean,<br />
+                                    @InProceedings{chan2021DDF,<br />
                                         &emsp;author = {Chan, Kelvin CK and Wang, Xintao and Xu, Xiangyu and Gu, Jinwei and Loy, Chen Change},<br />
-                                        &emsp;title = {GLEAN: Generative Latent Bank for Large-Factor Image Super-Resolution},<br />
+                                        &emsp;title = {DDF: Generative Latent Bank for Large-Factor Image Super-Resolution},<br />
                                         &emsp;booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},<br />
                                         &emsp;year = {2021} <br />
                                     }
