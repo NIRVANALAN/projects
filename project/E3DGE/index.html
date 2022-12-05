@@ -7,7 +7,7 @@
         <meta name="keywords" content="Chen Change Loy, Ziwei Liu, Bo Dai, Yixin Cao, Super-resolution, Deep Learning, Computer Vision, Convolutional Neural Network, Enhancement, Inpainting, Knowledge Distillation, Restoration, GAN, Generative Adversarial Networks, Generation, Manipulation, Editing, Object Detection, Segmentation, Recognition, Continual Learning, Domain Generalization, Self-Supervised Learning, Singapore, NTU, Nanyang Technological University, SCSE" />
         
         <!-- Page Title -->
-        <title>DDF | MMLab@NTU</title>
+        <title>E3DGE | MMLab@NTU</title>
 
         <!-- Favicons -->
         <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
@@ -176,10 +176,10 @@
                         <div class="col">
                             <h1 class="text-white text-uppercase fs-4 fs-lg-6">
                                 E3DGE: Self-Supervised Geometry-Aware Encoder for Style-Based 3D GAN Inversion
-                                TODO: replace this background with a gallary, and add the author information back to here.
-                                Add TL;DR
+                                <!-- TODO: replace this background with a gallary, and add the author information back to here.
+                                Add TL;DR -->
                             </h1>
-                            <p class="mb-5 fs-lg-1 text-white">Arxiv<br />
+                            <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br />
                         </div>
                     </div>
                 </div>
@@ -190,8 +190,11 @@
             <section>
                 <div class="container">
                     <div class="row no-gutters justify-content-between">
-                        <div class="col-lg-5">
+
+                        <!-- <div class="col-lg-5"> -->
+                        <div class="col-lg-12">
                             <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
+                            <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2> -->
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
                             <p class="text-justify">
                                 StyleGAN has achieved great progress in 2D face reconstruction and semantic editing via image inversion and latent editing. While studies over extending 2D StyleGAN to 3D faces have emerged, a corresponding generic 3D GAN inversion framework is still missing, limiting the applications of 3D face reconstruction and semantic editing.
@@ -208,6 +211,8 @@
                                 Code and data will be released.
                             </p>
                         </div>                        
+                        <!--
+
                         <div class="col-lg-6">
                             <div class="row">                                
                                 <div class="small-12 columns">
@@ -221,12 +226,12 @@
                             <div class="card d-block border-0">
                                 <div class="card-body">
                                     <p class="card-text fs--1">
-                                        <!-- We present a new way to exploit pre-trained GANs for the task of large-scale super-resolution, up to 64× upscaling factor. -->
                                         TODO, placeholder. show an 1080 reconstruction here.
                                     </p>
                                 </div>
                             </div>
                         </div>
+                        -->
                     </div>
                 </div>
             </section>
@@ -569,18 +574,31 @@
 
             <!-- Section Methodology -->
             <section class="pb-0 bg-blue-light">
-                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Method Overview</h2>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-5 order-lg-1">
                             <div class="pb-6 pt-6 py-lg-3">
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Method Overview</h2>
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Self-supervised Inversion Learning</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2>
+                                <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2> -->
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for plausible shape inversion.</h2>
                                 <p class="text-justify">
-                                    Different compositions of shape and texture could lead to identical 2D rendered images. 3D supervision is needed to alleviate such
-                                    shape-texture ambiguity. In the lack of large-scale high-quality 2D-3D paired samples, we formulate GAN Inversion as a <em>self-training</em> task, where samples synthesized from
+                                    <!-- <em> -->
+                                        <b> 
+                                            
+                                            Different compositions of shape and texture could lead to identical 2D rendered images.
+                                        </b>
+                                    <!-- </em> -->
+
+                                    To alleviate such shape-texture ambiguity, we argue that 3D supervision is indispensible.
+                                    In the lack of large-scale high-quality 2D-3D paired samples, we formulate GAN Inversion as a <em>self-training</em> task, where samples synthesized from
                                     itself are leveraged to boost the reconstruction fidelity in
                                     both 2D and 3D domains.
+                                    <br>
+                                    <br>
+                                    As shown in the figure, we retrofit the generator of a 3D GAN model to provide us with diverse pseudo training samples.
+                                            Given a sampled latent code \(\mathcal{W}\) and a camera pose \( \mathbf{\xi}\), 
+                                            we sample object SDF to depict the shape and the corresponding face image \( \mathbf{I} \).
                                 </p>
                             </div>
                         </div>
@@ -591,12 +609,9 @@
                                 <!-- <img src="./img/overview/stage1.png" class="mt-4 img-fluid w-100" alt="" /> -->
                                 <figure>
                                     <img src="./img/overview/data-generation.png" class="mt-4 img-fluid w-100" alt="" />
-                                    <figcaption>Figure 1.
+                                    <!-- <figcaption>Figure 1. -->
                                         <!-- Given a sampled latent code w and a camera pose ξ, StyleSDF generates object SDF d to depict the shape and the corresponding face image I. -->
-                                        <p>
-                                            We retrofit the generator of a 3D GAN model to provide us with diverse pseudo training samples.
-                                            Given a sampled latent code \(\mathcal{W}\) and a camera pose \( \mathbf{\xi}\), 
-                                            we sample object SDF to depict the shape and the corresponding face image \( \mathbf{I} \).
+                                        <p class="text-justify">
                                         </p>
                                     </figcaption>
                                 </figure>
@@ -617,7 +632,11 @@
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">pixel-aligned Features</h3>
                                 <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for High-Fidelity Inversion</h2>
                                 <p class="text-justify">
-                                    A global latent code fails to capture details for high-fidelity inversion.
+                                    <!-- <em> -->
+                                        <b> 
+                                        A global latent code fails to capture details for high-fidelity inversion.
+                                        </b>
+                                    <!-- </em> -->
                                     To address this problem,
                                     our novelty here is to leverage <em>local features (pixel-aligned features)</em> to enhance the
                                     representation capacity, beyond just the global latent code
@@ -646,16 +665,21 @@
                     <div class="row">
                         <div class="col-lg-5 order-lg-1">
                             <div class="pb-6 pt-6 py-lg-3">
-                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">High Fidelity</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Texture Inversion</h2>
+                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Hybrid Alignment</h3>
+                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for High-quality editing</h2>
                                 <p class="text-justify">
+                                    <b>
                                     The third component addresses the problem of novel view synthesis,
-                                    a problem unique to 3D shape editing. Specifically, though
-                                    we achieve high-fidelity reconstruction through aforementioned designs, the local residual features may not fully
-                                    align with the scene when being semantically edited. Moreover, the occlusion issue further degrades the fusion performance when rendering from novel views with large pose
-                                    variations. To this end, we propose a 2D-3D hybrid alignment module for high-quality editing. Specifically, a 2D
-                                    alignment module and a 3D projection scheme are introduced to jointly align the local features with edited images
-                                    and inpaint occluded local features in novel view synthesis.
+                                    a problem unique to 3D shape editing. 
+                                    </b>
+                                    Specifically, though we achieve high-fidelity reconstruction through aforementioned designs, 
+                                    the local residual features may not fully align with the scene when being semantically edited. 
+                                    Moreover, the occlusion issue further degrades the fusion performance when rendering from novel views with large pose
+                                    variations. 
+                                    To address this issue,
+                                    (a) we propose a 2D-3D hybrid alignment module for high-quality editing. 
+                                    A 2D alignment module and a 3D projection scheme are introduced to jointly align the local features with edited images.
+                                    (b) The aligned local features are fused with FiLM layer and inpaint occluded local features in novel view synthesis.
                                     <!-- GLEAN generates perceptually convincing images resembling the ground-truth for up to 64× upscaling. GLEAN can be applied to various categories by switching between StyleGANs trained on different categories.   -->
                                 </p>
                             </div>
@@ -672,8 +696,10 @@
             </section>
             <!-- End of Section -->
 
+            <!-- ! todo, update demo video here -->
+
             <!-- Section Video Demo -->
-            <section class="py-8 py-md-11 overflow-hidden">
+            <!-- <section class="py-8 py-md-11 overflow-hidden">
                 <div class="bg-container parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/custom_backgrounds/bg-04.jpg);"></div>
                 <div class="container-fluid">
                     <div class="row align-items-center">
@@ -682,7 +708,7 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
             <!-- End of Section -->
 
 
@@ -708,7 +734,8 @@
             <!-- End of Section -->
 
             <!-- Section Related Projects -->
-            <section class="pb-6 bg-blue-light">
+            <!--
+                        <section class="pb-6 bg-blue-light">
                 <div class="container">
                     <div class="row">
                         <div class="col text-center text-lg-left">
@@ -720,28 +747,6 @@
                         <div class="col-lg-10">
                             <div class="row">
                                 <ul>
-                                    <!-- <li>
-                                       <span class="text-primary">BasicVSR++: Improving Video Super-Resolution with Enhanced Propagation and Alignment </span> 
-                                       <br />
-                                       <span class="text-500">
-                                       K. C. K. Chan, S. Zhou, X. Xu, C. C. Loy <br /> 
-                                       Technical report, arXiv:2104.13371, 2021 <br />    
-                                       </span>
-                                       [<a href="https://arxiv.org/abs/2104.13371" target="_blank"><span class="text-muted">arXiv</span></a>]
-                                       [<a href="https://ckkelvinchan.github.io/projects/BasicVSR++/" target="_blank"><span class="text-muted">Project Page</span></a>]
-                                    </li>                                     -->
-                                    <!-- <li>
-                                       <span class="text-primary">BasicVSR: The Search for Essential Components in Video Super-Resolution and Beyond </span> 
-                                       <br />
-                                       <span class="text-500">
-                                       K. C. K. Chan, X. Wang, K. Yu, C. Dong, C. C. Loy <br /> 
-                                       in Proceedings of IEEE Conference on Computer Vision and Pattern Recognition, 2021 <strong>(CVPR)</strong><br />    
-                                       </span>
-                                       [<a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Chan_BasicVSR_The_Search_for_Essential_Components_in_Video_Super-Resolution_and_CVPR_2021_paper.pdf" target="_blank"><span class="text-muted">PDF</span></a>]
-                                       [<a href="https://openaccess.thecvf.com/content/CVPR2021/supplemental/Chan_BasicVSR_The_Search_CVPR_2021_supplemental.pdf" target="_blank"><span class="text-muted">Supplementary Material</span></a>]
-                                       [<a href="https://arxiv.org/abs/2012.02181" target="_blank"><span class="text-muted">arXiv</span></a>]
-                                       [<a href="https://ckkelvinchan.github.io/projects/BasicVSR" target="_blank"><span class="text-muted">Project Page</span></a>]
-                                    </li>                                     -->
                                     <li>
                                        <span class="text-primary">Understanding Deformable Alignment in Video Super-Resolution </span> 
                                        <br />
@@ -762,19 +767,22 @@
 
 
             <!-- Section Contact -->
-            <section class="pt-7 pb-0">
+            <!-- <section class="pt-7 pb-0"> -->
+            <section class="pb-0 bg-blue-light">
                 <div class="container">
-                    <div class="pb-6 px-lg-8 px-xl-12">
-                        <div class="row justify-content-center">
-                            <div class="col-6 col-lg-3">
+                    <!-- <div class="pb-6 px-lg-8 px-xl-12"> -->
+                    <div class="pb-6">
+                        <!-- <div class="row justify-content-center"> -->
+                            <!-- <div class="col-6 col-lg-3">
                                 <img src="./img/kelvin_chan.jpg" alt="" class="img-fluid w-100 rounded-circle" />
-                            </div>
-                            <div class="col-lg-9 text-center text-lg-left">
+                            </div> -->
+                            <!-- <div class="col-lg-9 text-center text-lg-left"> -->
+                            <div class="col-lg-auto text-center text-lg-left">
                                     <p class="h5 text-secondary fw-medium mt-3">Contact</p>
-                                    <br /><a href="https://ckkelvinchan.github.io/">Yushi Lan</a> 
+                                    <br /><a href="https://github.com/NIRVANALAN">Yushi Lan</a> 
                                     <br />Email: yushi001 at e.ntu.edu.sg
                             </div>
-                        </div>
+                        <!-- </div> -->
                     </div>
                 </div>
             </section>
@@ -839,7 +847,7 @@
                         </div>
 
                         <div class="mt-auto d-flex justify-content-between">
-                            <span class="fs--3 fs-lg--2">&copy; MMLab@NTU, 2021</span>
+                            <span class="fs--3 fs-lg--2">&copy; MMLab@NTU, 2022</span>
                         </div>
                     </div>
                 </div>
