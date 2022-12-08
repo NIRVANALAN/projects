@@ -185,16 +185,28 @@
         <main class="main minh-100vh">
             <!-- Section -->
             <section class="py-0 overflow-hidden text-center">
-                <div class="bg-container overlay parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/backgrounds/bg-04.jpg)"></div>
+                <!-- <div class="bg-container overlay parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/backgrounds/bg-04.jpg)"></div> -->
+
+                <div class="vimeo_player_wrapper" style="position: absolute; z-index: 0; width: 100%; height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0.5;" data-vimeo-initialized="true">
+                    <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 800px;"></video>
+                    <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: 1920; height: 800px;"></video> -->
+                    <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 774px;"></video> -->
+                </div>
+
                 <div class="container">
                     <div class="row h-100vh align-items-center">
                         <div class="col">
-                            <h1 class="text-white text-uppercase fs-4 fs-lg-6">
-                                E3DGE: Self-Supervised Geometry-Aware Encoder for Style-Based 3D GAN Inversion
+
+                            <h1 class="text-white text-uppercase fs-4 fs-lg-6" style="text-shadow: 0 4px 9px #000, 0 4px 9px #000, 0px -2px 1px #000;">E3DGE: Self-Supervised Geometry-Aware Encoder for Style-Based 3D GAN Inversion</h1>
+
+                            <!-- <h1 class="text-white text-uppercase fs-4 fs-lg-6">
+                                
                                 <!-- TODO: replace this background with a gallary, and add the author information back to here.
                                 Add TL;DR -->
-                            </h1>
-                            <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br />
+                            <!-- </h1> --> 
+                            <!-- <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br /> -->
+                            <!-- <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">ACM TOG (SIGGRAPH Asia), 2022<br></p> -->
+                            <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">arXiv, 2022<br></p>
                         </div>
                     </div>
                 </div>
@@ -259,15 +271,15 @@
                         <div class="col-lg-10">
                             <div class="row">
                                 <div class="col-md-6 col-lg-4 pr-lg-5 text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-pdf"></i></span><a href="https://arxiv.org/abs/2012.00739" class="text-muted">Paper</a></h2>
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-pdf"></i></span><a href="" class="text-muted">arXiv</a></h2>
                                     <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                                 </div>
                                 <div class="col-md-6 col-lg-4 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-github-box"></i></span><a href="https://github.com/open-mmlab/mmediting" class="text-muted">Codes</a></h2>
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-github-box"></i></span><a href="https://github.com/NIRVANALAN/E3DGE" class="text-muted">Codes will be released here soon</a></h2>
                                     <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                                 </div>
                                 <div class="col-md-6 col-lg-4 pl-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-cloud-download"></i></span><a href="https://github.com/ckkelvinchan/GLEAN" class="text-muted">Dataset</a></h2>
+                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-video"></i></span><a href="" class="text-muted">Demo Video</a></h2>
                                     <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                                 </div>
                             </div>
@@ -462,46 +474,234 @@
                                 squeeze the size
                             </p>
                             <div class="row">                                
-                                <div class="col-sm small-4 columns pb-3">
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./img/editing/322_Smiling/322.jpg"/>
+                                    </div>
+                                    <figcaption class="text-center">
+                                        + Smile 
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_02.jpg" />
-                                        <img src="./img/sr_02.jpg" />
+                                        <img src="./img/editing/322_Smiling/geo_0.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_0.gif" />
                                     </div>
                                 </div>
-                                <div class="col-sm small-4 columns pb-3">
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_03.jpg" />
-                                        <img src="./img/sr_03.jpg" />
+                                        <img src="./img/editing/322_Smiling/geo_0.2.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_0.2.gif" />
+                                    </div>
+                                    <!-- <figcaption class="text-center">
+                                        scale=0 
+                                    </figcaption> -->
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/322_Smiling/geo_0.4.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_0.4.gif" />
                                     </div>
                                 </div>
-                                <div class="col-sm small-4 columns pb-3">
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_04.jpg" />
-                                        <img src="./img/sr_04.jpg" />
+                                        <img src="./img/editing/322_Smiling/geo_0.6.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_0.6.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/322_Smiling/geo_0.8.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_0.8.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/322_Smiling/geo_1.0.gif" />
+                                        <img src="./img/editing/322_Smiling/tex_1.0.gif" />
                                     </div>
                                 </div>
                             </div>
-                            <p></p>
+                            <!-- <p></p> -->
                             <div class="row">                                
-                                <div class="col-sm small-4 columns pb-3">
+
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./img/editing/320_No_Beard/320.jpg"/>
+                                    </div>
+                                    <figcaption class="text-center">
+                                        + Beard 
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_05.jpg" />
-                                        <img src="./img/sr_05.jpg" />
+                                        <img src="./img/editing/320_No_Beard/geo_0.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_0.gif" />
                                     </div>
                                 </div>
-                                <div class="col-sm small-4 columns pb-3">
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_06.jpg" />
-                                        <img src="./img/sr_06.jpg" />
+                                        <img src="./img/editing/320_No_Beard/geo_0.2.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_0.2.gif" />
                                     </div>
                                 </div>
-                                <div class="col-sm small-4 columns pb-3">
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
                                     <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_07.jpg" />
-                                        <img src="./img/sr_07.jpg" />
+                                        <img src="./img/editing/320_No_Beard/geo_0.4.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_0.4.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/320_No_Beard/geo_0.6.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_0.6.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/320_No_Beard/geo_0.8.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_0.8.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/320_No_Beard/geo_1.0.gif" />
+                                        <img src="./img/editing/320_No_Beard/tex_1.0.gif" />
                                     </div>
                                 </div>
                             </div>
+                            <!-- <p></p> -->
+
+                            <div class="row">                                
+
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./img/editing/443_Young/443.jpg"/>
+                                    </div>
+                                    <figcaption class="text-center">
+                                        + Age 
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_0.gif" />
+                                        <img src="./img/editing/443_Young/tex_0.gif" />
+                                    </div>
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_0.2.gif" />
+                                        <img src="./img/editing/443_Young/tex_0.2.gif" />
+                                    </div>
+                                </div>
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_0.4.gif" />
+                                        <img src="./img/editing/443_Young/tex_0.4.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_0.6.gif" />
+                                        <img src="./img/editing/443_Young/tex_0.6.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_0.8.gif" />
+                                        <img src="./img/editing/443_Young/tex_0.8.gif" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/443_Young/geo_1.0.gif" />
+                                        <img src="./img/editing/443_Young/tex_1.0.gif" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">                                
+
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0" >
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./img/editing/481_Bangs/481.jpg"/>
+                                    </div>
+                                    <figcaption class="text-center">
+                                        + Bangs 
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_0.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=0 
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_0.2.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.2.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=0.2
+                                    </figcaption>
+                                </div>
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_0.4.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.4.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=0.4
+                                    </figcaption>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_0.6.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.6.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=0.6
+                                    </figcaption>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_0.8.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.8.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=0.8
+                                    </figcaption>
+                                </div>
+
+                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                    <div class="twentytwenty-container" id="images">
+                                        <img src="./img/editing/481_Bangs/geo_1.0.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_1.0.gif" />
+                                    </div>
+                                    <figcaption class="text-center">
+                                        scale=1.0 
+                                    </figcaption>
+                                </div>
+
+                            </div>
+                            <!-- <p></p> -->
                         </div>                        
                     </div>
                 </div>
@@ -534,15 +734,10 @@
                                         <img src="./toonify/texture/0_id322.gif" />
                                     </div>
                                 </div>
-
-
                                 <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
                                     <div class="twentytwenty-container" id="images">
-                                        <!-- <img src="./toonify/geometry/4_id591.gif" />
-                                        <img src="./toonify/texture/4_id591.gif" /> -->
-
-                                        <img src="./toonify/geometry/1_id540.gif" />
-                                        <img src="./toonify/texture/1_id540.gif" />
+                                        <img src="./img/editing/481_Bangs/geo_0.4.gif" />
+                                        <img src="./img/editing/481_Bangs/tex_0.4.gif" />
                                     </div>
                                 </div>
 
@@ -558,8 +753,6 @@
                                         <img src="./toonify/texture/0_id544.gif" />
                                     </div>
                                 </div>
-
-
                                 <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
                                     <div class="twentytwenty-container" id="images">
                                         <img src="./toonify/geometry/9_id532.gif" />
@@ -769,12 +962,18 @@
                                 <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
                                 <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
                                 <p class="text-700 fw-medium">
-                                    @InProceedings{chan2021glean,<br />
+                                    <!-- @InProceedings{chan2021glean,<br />
                                         &emsp;author = {Chan, Kelvin CK and Wang, Xintao and Xu, Xiangyu and Gu, Jinwei and Loy, Chen Change},<br />
                                         &emsp;title = {GLEAN: Generative Latent Bank for Large-Factor Image Super-Resolution},<br />
                                         &emsp;booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},<br />
                                         &emsp;year = {2021} <br />
-                                    }
+                                    } -->
+                                    @article{lan2022e3dge, <br />
+                                        &emsp;title={E3DGE: Self-supervised Geometry-Aware Encoder for Style-based 3d GAN Inversion}, <br />
+                                        &emsp;author={Lan, Yushi and Meng, Xuyi and Yang, Shuai and Loy, Chen Change and Dai, Bo}, <br />
+                                        &emsp;journal={arXiv preprint arXiv:???}, <br />
+                                        &emsp;year={2022} <br />
+                                      }
                                 </p>
                         </div>
                     </div>
