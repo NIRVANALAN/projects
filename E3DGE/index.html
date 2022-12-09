@@ -34,6 +34,13 @@
     <link href="../assets/css/theme.css" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script>
+        function codeReleaseAlert() {
+            alert("Code will be released soon, stay tuned!");
+        }
+    </script>
+    <link href="../../assets/vendor/jquery.mb.vimeo_player/dist/css/jquery.mb.vimeo_player.min.css" rel="stylesheet">
+    <script src="../../assets/vendor/jquery.mb.vimeo_player/dist/jquery.mb.vimeo_player.min.js"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
     </script>
@@ -189,11 +196,8 @@
             <div class="vimeo_player_wrapper"
                 style="position: absolute; z-index: 0; width: 100%; height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0.5;"
                 data-vimeo-initialized="true">
-                <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" -->
-                <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallery_lite.mp4"
-                    style="width: auto; height: 800px;"></video>
-                <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: 1920; height: 800px;"></video> -->
-                <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 774px;"></video> -->
+                <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4"
+                    style="width: auto; height: 801px;"></video>
             </div>
 
             <div class="container">
@@ -255,26 +259,7 @@
                             Code and data will be released.
                         </p>
                     </div>
-                    <!--
 
-                        <div class="col-lg-6">
-                            <div class="row">                                
-                                <div class="small-12 columns">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/lr_01.jpeg" />
-                                        <img src="./img/sr_01.jpeg" />
-                                    </div>
-                                </div>
-                            </div>                                                        
-                        
-                            <div class="card d-block border-0">
-                                <div class="card-body">
-                                    <p class="card-text fs--1">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        -->
                 </div>
             </div>
         </section>
@@ -293,13 +278,16 @@
                                         class="text-muted">arXiv</a></h2>
                                 <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                             </div>
+                            <!-- href="https://github.com/NIRVANALAN/E3DGE"  -->
                             <div
                                 class="col-md-6 col-lg-4 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
-                                        class="fs-2 pr-2 text-primary position-relative top-2"><i
-                                            class="zmdi zmdi-github-box"></i></span><a
-                                        href="https://github.com/NIRVANALAN/E3DGE" class="text-muted">Codes will be
-                                        released here soon</a></h2>
+                                <h2 class="mb-4 fs-1 fw-medium text-uppercase">
+                                    <span class="fs-2 pr-2 text-primary position-relative top-2"><i
+                                            class="zmdi zmdi-github-box"></i></span>
+                                    <a type="button" , onclick="codeReleaseAlert()" , class="text-muted">
+                                        Code
+                                    </a>
+                                </h2>
                                 <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                             </div>
                             <div
@@ -330,8 +318,53 @@
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">
                             Texture/Geometry Inversion Results</h2>
                         <p class="text-justify">
+                            Shown texture and shape inversion of given real world identity.
                             Drag the separator to see the aligned texture and geometry.
                         </p>
+
+                        <div class="row">
+                            <!-- <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1"> -->
+                            <div>
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/245_id220.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/245_id220.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <div id="images" class="row-cols-6"> -->
+                                <div id="images" class="row-cols-1">
+                                    <!-- <img src="./img/gt/191_id463.jpg"  /> -->
+                                    <img src="./img/gt/191_id463.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/23_id568.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/78_id706.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/78_id706.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/244_id366.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/244_id366.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/96_id184.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/96_id184.jpg" />
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <!-- female id:  245 244 191 208.66 149 98 96 125 78 73-->
@@ -373,49 +406,43 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <!-- <div id="images" class="row-cols-6"> -->
-                                <div id="images" class="row-cols-1">
-                                    <!-- <img src="./img/gt/245_id220.jpg"  /> -->
-                                    <img src="./img/gt/245_id220.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <!-- <div id="images" class="row-cols-6"> -->
-                                <div id="images" class="row-cols-1">
-                                    <!-- <img src="./img/gt/191_id463.jpg"  /> -->
-                                    <img src="./img/gt/191_id463.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/23_id568.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <!-- <img src="./img/gt/78_id706.jpg"  /> -->
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/78_id706.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <!-- <img src="./img/gt/244_id366.jpg"  /> -->
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/244_id366.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <!-- <img src="./img/gt/96_id184.jpg"  /> -->
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/96_id184.jpg" />
-                                </div>
-                            </div>
-                        </div>
 
                         <p></p>
 
                         <!-- male id: 162 158 157 146 120 106 67 14 8 0 -->
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/0_id529.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/162_id838.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/8_id647.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/158_id485.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/157_id726.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/14_id800.jpg" />
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="row">
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
                                 <div class="twentytwenty-container" id="images">
@@ -456,39 +483,6 @@
                         </div>
 
 
-                        <div class="row">
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/0_id529.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/162_id838.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/8_id647.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/158_id485.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/157_id726.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./img/gt/14_id800.jpg" />
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
             </div>
@@ -504,7 +498,7 @@
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Attribute
                             Editing</h2>
                         <p class="text-justify">
-                            Shown texture and shape inversion of given real world identity.
+                            Shown editing performance on 4 attributes at different scales.
                             Drag the separator to see the aligned texture and geometry.
                         </p>
                         <div class="row">
@@ -752,9 +746,49 @@
                             Geometry-Aware</h3>
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Toonify</h2>
                         <p class="text-justify">
-                            Shown editing performance on 4 attributes at different scales.
-                            Drag the separator to see the aligned texture and geometry.
+                            Drag the separator to see the aligned texture and geometry of toonified results.
                         </p>
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./toonify/gt/2_id445.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./toonify/gt/0_id322.jpg" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/540.jpg" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/1_id360.jpg" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/544.jpg" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/9_id532.jpg" />
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row">
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
@@ -797,47 +831,6 @@
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images">
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/2_id445.jpg" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images">
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/0_id322.jpg" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./toonify/gt/540.jpg" />
-                                </div>
-                            </div>
-
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./toonify/gt/1_id360.jpg" />
-                                </div>
-                            </div>
-
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./toonify/gt/544.jpg" />
-                                </div>
-                            </div>
-
-
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div id="images" class="row-cols-1">
-                                    <img src="./toonify/gt/9_id532.jpg" />
-                                </div>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -1216,9 +1209,18 @@
     </script>
     <script>
         $(function () {
-            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.49, before_label: 'Low-Resolution', after_label: 'Super-Resolution' });
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.49, before_label: 'Shape', after_label: 'Texture' });
         });
     </script>
+    <script>
+        window.addEventListener("resize", function () {
+            vidContainer = document.getElementById('bgvideocontainer');
+            vidContent = document.getElementById('bgvideo');
+            var newHeight = (vidContainer.offsetWidth / vidContent.videoWidth) * vidContent.videoHeight;
+            vidContent.style.height = parseInt(Math.max(newHeight, vidContainer.offsetHeight)) + "px";
+        });
+    </script>
+
 
 </body>
 
