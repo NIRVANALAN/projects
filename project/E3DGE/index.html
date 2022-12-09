@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        
-        <meta name="keywords" content="Chen Change Loy, Ziwei Liu, Bo Dai, Yixin Cao, Super-resolution, Deep Learning, Computer Vision, Convolutional Neural Network, Enhancement, Inpainting, Knowledge Distillation, Restoration, GAN, Generative Adversarial Networks, Generation, Manipulation, Editing, Object Detection, Segmentation, Recognition, Continual Learning, Domain Generalization, Self-Supervised Learning, Singapore, NTU, Nanyang Technological University, SCSE" />
-        
-        <!-- Page Title -->
-        <title>E3DGE | MMLab@NTU</title>
 
-        <!-- Favicons -->
-        <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
-        <link rel="manifest" href="../../assets/img/favicons/site.webmanifest">
-        <link rel="mask-icon" href="../../assets/img/favicons/safari-pinned-tab.svg" color="#f23838">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <!-- Vendor Stylesheets -->
-        <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700%7CRoboto:300,400,700" rel="stylesheet">
-        <link href="../../assets/vendor/material-design-iconic-font/dist/css/material-design-iconic-font.min.css" rel="stylesheet">
-        <link href="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
-        <link href="../../assets/vendor/aos/dist/aos.css" rel="stylesheet">
-        <link href="../../assets/vendor/twentytwenty/css/twentytwenty.css" rel="stylesheet">
-        <link href="../../assets/vendor/twentytwenty/css/twentytwenty-raw.css" rel="stylesheet">
-        <link href="../../assets/vendor/twentytwenty/css/foundation.css" rel="stylesheet">
+    <meta name="keywords"
+        content="Chen Change Loy, Ziwei Liu, Bo Dai, Yixin Cao, Super-resolution, Deep Learning, Computer Vision, Convolutional Neural Network, Enhancement, Inpainting, Knowledge Distillation, Restoration, GAN, Generative Adversarial Networks, Generation, Manipulation, Editing, Object Detection, Segmentation, Recognition, Continual Learning, Domain Generalization, Self-Supervised Learning, Singapore, NTU, Nanyang Technological University, SCSE" />
 
-        <!-- Theme Stylesheets -->
-        <link href="../../assets/css/theme.css" rel="stylesheet">
+    <!-- Page Title -->
+    <title>E3DGE | MMLab@NTU</title>
 
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-        <script id="MathJax-script" async
-                src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-        </script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22940424-1"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="../../assets/img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="../../assets/img/favicons/safari-pinned-tab.svg" color="#f23838">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
 
-            gtag('config', 'UA-22940424-1');
-        </script>
-    
-        <!-- <style>
+    <!-- Vendor Stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,700%7CRoboto:300,400,700" rel="stylesheet">
+    <link href="../../assets/vendor/material-design-iconic-font/dist/css/material-design-iconic-font.min.css"
+        rel="stylesheet">
+    <link href="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.css" rel="stylesheet">
+    <link href="../../assets/vendor/aos/dist/aos.css" rel="stylesheet">
+    <link href="../../assets/vendor/twentytwenty/css/twentytwenty.css" rel="stylesheet">
+    <link href="../../assets/vendor/twentytwenty/css/twentytwenty-raw.css" rel="stylesheet">
+    <link href="../../assets/vendor/twentytwenty/css/foundation.css" rel="stylesheet">
+
+    <!-- Theme Stylesheets -->
+    <link href="../../assets/css/theme.css" rel="stylesheet">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22940424-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-22940424-1');
+    </script>
+
+    <!-- <style>
             * {
               box-sizing: border-box;
             }
@@ -58,187 +60,202 @@
         </style> -->
 
 
-    </head>
+</head>
 
-    <body>
-        <!-- Preloader -->
-        <div class="preloader">
-            <div class="spinner">
-                <div class="circles"></div>
-            </div>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="spinner">
+            <div class="circles"></div>
         </div>
-        <!-- End of Preloader -->
+    </div>
+    <!-- End of Preloader -->
 
 
-        <!-- Header -->
-        <header class="spyre-navbar navbar navbar-expand-lg bg-secondary navbar-dark fixed-top align-items-center" data-transparent data-text-color="#ffffff">
-            <div class="container">
-                <a class="navbar-brand mr-lg-5 mr-xl-7" href="../../index.html">
-                    <img src="../../assets/img/logo.png" class="d-none d-lg-block" alt="MMLab" width="183" />
-                    <img src="../../assets/img/logo.png" class="d-block d-lg-none" alt="MMLab" width="150" />
-                </a>
+    <!-- Header -->
+    <header class="spyre-navbar navbar navbar-expand-lg bg-secondary navbar-dark fixed-top align-items-center"
+        data-transparent data-text-color="#ffffff">
+        <div class="container">
+            <a class="navbar-brand mr-lg-5 mr-xl-7" href="../../index.html">
+                <img src="../../assets/img/logo.png" class="d-none d-lg-block" alt="MMLab" width="183" />
+                <img src="../../assets/img/logo.png" class="d-block d-lg-none" alt="MMLab" width="150" />
+            </a>
 
-                <!-— Desktop Menu -->
+            <!-— Desktop Menu -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
-                        <li class="pl-2 nav-item navbar-text"><a href="../../index.html" class="nav-link text-400">Home</a></li>
-                        <li class="pl-5 nav-item navbar-text"><a href="../../team.html" class="nav-link text-400">Team</a></li>
-                        <li class="pl-5 nav-item navbar-text"><a href="../../research.html" class="nav-link text-400">Research</a></li>
-                        <li class="pl-5 nav-item navbar-text"><a href="../../publication_topic.html" class="nav-link text-400">Publications</a></li>
-                        <li class="pl-5 nav-item navbar-text"><a href="../../downloads.html" class="nav-link text-400">Code | Datasets</a></li>
-                        <li class="pl-5 nav-item navbar-text"><a href="../../careers.html" class="nav-link text-400">Join Us</a></li>
+                        <li class="pl-2 nav-item navbar-text"><a href="../../index.html"
+                                class="nav-link text-400">Home</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../team.html"
+                                class="nav-link text-400">Team</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../research.html"
+                                class="nav-link text-400">Research</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../publication_topic.html"
+                                class="nav-link text-400">Publications</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../downloads.html"
+                                class="nav-link text-400">Code | Datasets</a></li>
+                        <li class="pl-5 nav-item navbar-text"><a href="../../careers.html"
+                                class="nav-link text-400">Join Us</a></li>
                     </ul>
                 </div>
                 <!-— End of Desktop Menu -->
 
-                <div class="menu-toggle d-block d-lg-none">
-                    <div class="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <div class="cross">
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Spyrenav Overlay -->
-            <div class="spyre-navbar-overlay overlay-slide">
-                <div class="container">
-                    <div class="row">
-                        <div class="spyre-navbar-nav-container col-md-6 col-lg-5 col-xl-4 bg-white ext-l">
-                            <nav class="spyre-navbar-nav">
-                                <ul class="spyre-nav">
-                                    <li class="spyre-nav-item"><a href="../../index.html" class="spyre-nav-link">Home</a></li>
-                                    <li class="spyre-nav-item"><a href="../../research.html" class="spyre-nav-link">Our Research</a></li>
-                                    <li class="spyre-nav-item"><a href="../../team.html" class="spyre-nav-link">Team</a></li>
-                                    <li class="spyre-nav-item dropdown">
-                                        <a href="#" class="spyre-nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Publications</a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li class="dropdown-menu-item"><a href="../../publication_topic.html" class="dropdown-menu-link">By Topic</a></li>
-                                            <li class="dropdown-menu-item"><a href="../../publication_year.html" class="dropdown-menu-link">By Year</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="spyre-nav-item"><a href="../../downloads.html" class="spyre-nav-link">Code and Datasets</a></li>
-                                    <li class="spyre-nav-item"><a href="../../careers.html" class="spyre-nav-link">Join Us</a></li>
-                                </ul>
-                            </nav>
+                    <div class="menu-toggle d-block d-lg-none">
+                        <div class="hamburger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
-        
-                        <div class="col-lg-7 col-xl-8 d-none d-md-block">
-                            <div class="d-flex flex-column h-100">
-                                <div class="d-flex h-100">
-                                    <div class="align-self-center">
-                                        <div class="text-uppercase"
-                                            data-background-text="computer vision"
-                                            data-color="#7079a2"
-                                            data-opacity="0.02"
-                                            data-font-size="85px"
-                                            data-font-weight="500"
-                                            data-offset-x="-5%"
-                                            data-letter-spacing="5px"
-                                        ></div>
-                                        <div class="text-uppercase"
-                                            data-background-text="mmlab"
-                                            data-color="#7079a2"
-                                            data-opacity="0.04"
-                                            data-font-size="175px"
-                                            data-font-weight="500"
-                                            data-offset-x="29%"
-                                            data-padding="7vh 0 2vh 0"
-                                            data-letter-spacing="5px"
-                                        ></div>
-                                        <div class="text-uppercase"
-                                            data-background-text="deep learning"
-                                            data-color="#7079a2"
-                                            data-opacity="0.03"
-                                            data-font-size="140px"
-                                            data-font-weight="500"
-                                            data-offset-x="15%"
-                                            data-letter-spacing="5px"
-                                        ></div>
-                                    </div>
-                                </div>
-                                
-                                <div class="mt-auto">
-                                    <ul class="nav flex-nowrap float-right">
-                                        <li class="nav-item">
-                                            <a class="nav-link px-2" href="https://twitter.com/MMLabNTU" target="_blank">
-                                                <i class="zmdi zmdi-twitter text-white"></i>
-                                            </a>
-                                        </li>
+                        <div class="cross">
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+        </div>
+
+        <!-- Spyrenav Overlay -->
+        <div class="spyre-navbar-overlay overlay-slide">
+            <div class="container">
+                <div class="row">
+                    <div class="spyre-navbar-nav-container col-md-6 col-lg-5 col-xl-4 bg-white ext-l">
+                        <nav class="spyre-navbar-nav">
+                            <ul class="spyre-nav">
+                                <li class="spyre-nav-item"><a href="../../index.html" class="spyre-nav-link">Home</a>
+                                </li>
+                                <li class="spyre-nav-item"><a href="../../research.html" class="spyre-nav-link">Our
+                                        Research</a></li>
+                                <li class="spyre-nav-item"><a href="../../team.html" class="spyre-nav-link">Team</a>
+                                </li>
+                                <li class="spyre-nav-item dropdown">
+                                    <a href="#" class="spyre-nav-link dropdown-toggle" id="navbarDropdown" role="button"
+                                        data-toggle="dropdown" aria-haspopup="true"
+                                        aria-expanded="false">Publications</a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li class="dropdown-menu-item"><a href="../../publication_topic.html"
+                                                class="dropdown-menu-link">By Topic</a></li>
+                                        <li class="dropdown-menu-item"><a href="../../publication_year.html"
+                                                class="dropdown-menu-link">By Year</a></li>
                                     </ul>
+                                </li>
+                                <li class="spyre-nav-item"><a href="../../downloads.html" class="spyre-nav-link">Code
+                                        and Datasets</a></li>
+                                <li class="spyre-nav-item"><a href="../../careers.html" class="spyre-nav-link">Join
+                                        Us</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-lg-7 col-xl-8 d-none d-md-block">
+                        <div class="d-flex flex-column h-100">
+                            <div class="d-flex h-100">
+                                <div class="align-self-center">
+                                    <div class="text-uppercase" data-background-text="computer vision"
+                                        data-color="#7079a2" data-opacity="0.02" data-font-size="85px"
+                                        data-font-weight="500" data-offset-x="-5%" data-letter-spacing="5px"></div>
+                                    <div class="text-uppercase" data-background-text="mmlab" data-color="#7079a2"
+                                        data-opacity="0.04" data-font-size="175px" data-font-weight="500"
+                                        data-offset-x="29%" data-padding="7vh 0 2vh 0" data-letter-spacing="5px"></div>
+                                    <div class="text-uppercase" data-background-text="deep learning"
+                                        data-color="#7079a2" data-opacity="0.03" data-font-size="140px"
+                                        data-font-weight="500" data-offset-x="15%" data-letter-spacing="5px"></div>
                                 </div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <ul class="nav flex-nowrap float-right">
+                                    <li class="nav-item">
+                                        <a class="nav-link px-2" href="https://twitter.com/MMLabNTU" target="_blank">
+                                            <i class="zmdi zmdi-twitter text-white"></i>
+                                        </a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- End of Spyrenav Overlay -->
-        </header>
-        <!-- End of Header -->
+        </div>
+        <!-- End of Spyrenav Overlay -->
+    </header>
+    <!-- End of Header -->
 
 
-        <!-- Main Content -->
-        <main class="main minh-100vh">
-            <!-- Section -->
-            <section class="py-0 overflow-hidden text-center">
-                <!-- <div class="bg-container overlay parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/backgrounds/bg-04.jpg)"></div> -->
+    <!-- Main Content -->
+    <main class="main minh-100vh">
+        <!-- Section -->
+        <section class="py-0 overflow-hidden text-center">
+            <!-- <div class="bg-container overlay parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/backgrounds/bg-04.jpg)"></div> -->
 
-                <div class="vimeo_player_wrapper" style="position: absolute; z-index: 0; width: 100%; height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0.5;" data-vimeo-initialized="true">
-                    <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 800px;"></video>
-                    <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: 1920; height: 800px;"></video> -->
-                    <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 774px;"></video> -->
-                </div>
+            <div class="vimeo_player_wrapper"
+                style="position: absolute; z-index: 0; width: 100%; height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0.5;"
+                data-vimeo-initialized="true">
+                <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4"
+                    style="width: auto; height: 800px;"></video>
+                <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: 1920; height: 800px;"></video> -->
+                <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4" style="width: auto; height: 774px;"></video> -->
+            </div>
 
-                <div class="container">
-                    <div class="row h-100vh align-items-center">
-                        <div class="col">
+            <div class="container">
+                <div class="row h-100vh align-items-center">
+                    <div class="col">
 
-                            <h1 class="text-white text-uppercase fs-4 fs-lg-6" style="text-shadow: 0 4px 9px #000, 0 4px 9px #000, 0px -2px 1px #000;">E3DGE: Self-Supervised Geometry-Aware Encoder for Style-Based 3D GAN Inversion</h1>
+                        <h1 class="text-white text-uppercase fs-4 fs-lg-6"
+                            style="text-shadow: 0 4px 9px #000, 0 4px 9px #000, 0px -2px 1px #000;">E3DGE:
+                            Self-Supervised Geometry-Aware Encoder for Style-Based 3D GAN Inversion</h1>
 
-                            <!-- <h1 class="text-white text-uppercase fs-4 fs-lg-6">
+                        <!-- <h1 class="text-white text-uppercase fs-4 fs-lg-6">
                                 
                                 <!-- TODO: replace this background with a gallary, and add the author information back to here.
                                 Add TL;DR -->
-                            <!-- </h1> --> 
-                            <!-- <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br /> -->
-                            <!-- <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">ACM TOG (SIGGRAPH Asia), 2022<br></p> -->
-                            <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">arXiv, 2022<br></p>
-                        </div>
+                        <!-- </h1> -->
+                        <!-- <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br /> -->
+                        <!-- <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">ACM TOG (SIGGRAPH Asia), 2022<br></p> -->
+                        <p class="mb-5 fs-lg-1 text-white" style="text-shadow: 0 4px 9px #000, 0px -2px 1px #000;">
+                            arXiv, 2022<br></p>
                     </div>
                 </div>
-            </section>
-            <!-- End of Section -->
+            </div>
+        </section>
+        <!-- End of Section -->
 
-            <!-- Section Abstract -->
-            <section>
-                <div class="container">
-                    <div class="row no-gutters justify-content-between">
+        <!-- Section Abstract -->
+        <section>
+            <div class="container">
+                <div class="row no-gutters justify-content-between">
 
-                        <!-- <div class="col-lg-5"> -->
-                        <div class="col-lg-12">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
-                            <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2> -->
-                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
-                            <p class="text-justify">
-                                StyleGAN has achieved great progress in 2D face reconstruction and semantic editing via image inversion and latent editing. While studies over extending 2D StyleGAN to 3D faces have emerged, a corresponding generic 3D GAN inversion framework is still missing, limiting the applications of 3D face reconstruction and semantic editing.
-                                In this paper, we study the challenging problem of 3D GAN inversion where a latent code is predicted given a single face image to faithfully recover its 3D shapes and detailed textures.
-                                The problem is ill-posed: innumerable compositions of shape and texture could be rendered to the current image. 
-                                Furthermore, with the limited capacity of a global latent code,
-                                2D inversion methods cannot preserve faithful shape and texture at the same time when applied to 3D models.
-                                To solve this problem,  we devise an effective self-training scheme to constrain the learning of inversion. The learning is done efficiently without any real-world 2D-3D training pairs but proxy samples generated from a 3D GAN. 
-                                In addition, apart from a global latent code that captures the coarse shape and texture information,
-                                we augment the generation network with a local branch, where pixel-aligned features are added to faithfully reconstruct face details.
-                                We further consider a new pipeline to perform 3D view-consistent editing.
-                                Extensive experiments show that our method outperforms state-of-the-art inversion methods in both 
-                                shape and texture reconstruction quality.
-                                Code and data will be released.
-                            </p>
-                        </div>                        
-                        <!--
+                    <!-- <div class="col-lg-5"> -->
+                    <div class="col-lg-12">
+                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
+                        <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2> -->
+                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
+                        <p class="text-justify">
+                            StyleGAN has achieved great progress in 2D face reconstruction and semantic editing via
+                            image inversion and latent editing. While studies over extending 2D StyleGAN to 3D faces
+                            have emerged, a corresponding generic 3D GAN inversion framework is still missing, limiting
+                            the applications of 3D face reconstruction and semantic editing.
+                            In this paper, we study the challenging problem of 3D GAN inversion where a latent code is
+                            predicted given a single face image to faithfully recover its 3D shapes and detailed
+                            textures.
+                            The problem is ill-posed: innumerable compositions of shape and texture could be rendered to
+                            the current image.
+                            Furthermore, with the limited capacity of a global latent code,
+                            2D inversion methods cannot preserve faithful shape and texture at the same time when
+                            applied to 3D models.
+                            To solve this problem, we devise an effective self-training scheme to constrain the learning
+                            of inversion. The learning is done efficiently without any real-world 2D-3D training pairs
+                            but proxy samples generated from a 3D GAN.
+                            In addition, apart from a global latent code that captures the coarse shape and texture
+                            information,
+                            we augment the generation network with a local branch, where pixel-aligned features are
+                            added to faithfully reconstruct face details.
+                            We further consider a new pipeline to perform 3D view-consistent editing.
+                            Extensive experiments show that our method outperforms state-of-the-art inversion methods in
+                            both
+                            shape and texture reconstruction quality.
+                            Code and data will be released.
+                        </p>
+                    </div>
+                    <!--
 
                         <div class="col-lg-6">
                             <div class="row">                                
@@ -259,689 +276,737 @@
                             </div>
                         </div>
                         -->
-                    </div>
                 </div>
-            </section>
-            <!-- End of Section --> 
+            </div>
+        </section>
+        <!-- End of Section -->
 
-            <!-- Section Downloads -->
-            <section class="pt-0">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-10">
-                            <div class="row">
-                                <div class="col-md-6 col-lg-4 pr-lg-5 text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-pdf"></i></span><a href="" class="text-muted">arXiv</a></h2>
-                                    <!-- <p class="fs--1">If you have description you can put it here.</p> -->
-                                </div>
-                                <div class="col-md-6 col-lg-4 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-github-box"></i></span><a href="https://github.com/NIRVANALAN/E3DGE" class="text-muted">Codes will be released here soon</a></h2>
-                                    <!-- <p class="fs--1">If you have description you can put it here.</p> -->
-                                </div>
-                                <div class="col-md-6 col-lg-4 pl-lg-5 border-left-centered-40 border-left-centered-faded text-center">
-                                    <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span class="fs-2 pr-2 text-primary position-relative top-2"><i class="zmdi zmdi-collection-video"></i></span><a href="" class="text-muted">Demo Video</a></h2>
-                                    <!-- <p class="fs--1">If you have description you can put it here.</p> -->
-                                </div>
+        <!-- Section Downloads -->
+        <section class="pt-0">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-4 pr-lg-5 text-center">
+                                <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
+                                        class="fs-2 pr-2 text-primary position-relative top-2"><i
+                                            class="zmdi zmdi-collection-pdf"></i></span><a href=""
+                                        class="text-muted">arXiv</a></h2>
+                                <!-- <p class="fs--1">If you have description you can put it here.</p> -->
+                            </div>
+                            <div
+                                class="col-md-6 col-lg-4 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
+                                <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
+                                        class="fs-2 pr-2 text-primary position-relative top-2"><i
+                                            class="zmdi zmdi-github-box"></i></span><a
+                                        href="https://github.com/NIRVANALAN/E3DGE" class="text-muted">Codes will be
+                                        released here soon</a></h2>
+                                <!-- <p class="fs--1">If you have description you can put it here.</p> -->
+                            </div>
+                            <div
+                                class="col-md-6 col-lg-4 pl-lg-5 border-left-centered-40 border-left-centered-faded text-center">
+                                <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
+                                        class="fs-2 pr-2 text-primary position-relative top-2"><i
+                                            class="zmdi zmdi-collection-video"></i></span><a href=""
+                                        class="text-muted">Demo Video</a></h2>
+                                <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                             </div>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- End of Section -->
+            </div>
+        </section>
+        <!-- End of Section -->
 
-            <!-- Section tex-geo gallary -->
-            <section class="pb-6 bg-blue-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 order-lg-1">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Real-World</h3>
-                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Texture/Geometry Inversion Results</h2>
-                            <p class="text-justify">
-                                Drag the separator to see the aligned texture and geometry. 
-                            </p>
-                            
-                            <div class="row">                                
+        <!-- Section tex-geo gallary -->
+        <section class="pb-6 bg-blue-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Real-World
+                        </h3>
+                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">
+                            Texture/Geometry Inversion Results</h2>
+                        <p class="text-justify">
+                            Drag the separator to see the aligned texture and geometry.
+                        </p>
+
+                        <div class="row">
                             <!-- female id:  245 244 191 208.66 149 98 96 125 78 73-->
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/245_id220.gif" />
-                                        <img src="./img/gif/texture/245_id220.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/191_id463.gif" />
-                                        <img src="./img/gif/texture/191_id463.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/23_id568.gif" />
-                                        <img src="./img/gif/texture/23_id568.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/78_id706.gif" />
-                                        <img src="./img/gif/texture/78_id706.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/244_id366.gif" />
-                                        <img src="./img/gif/texture/244_id366.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/96_id184.gif" />
-                                        <img src="./img/gif/texture/96_id184.gif" />
-                                    </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/245_id220.gif" />
+                                    <img src="./img/gif/texture/245_id220.gif" />
                                 </div>
                             </div>
-
-                            <div class="row">                                
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <!-- <div id="images" class="row-cols-6"> -->
-                                    <div id="images" class="row-cols-1">
-                                        <!-- <img src="./img/gt/245_id220.jpg"  /> -->
-                                        <img src="./img/gt/245_id220.jpg"/>
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <!-- <div id="images" class="row-cols-6"> -->
-                                    <div id="images" class="row-cols-1">
-                                        <!-- <img src="./img/gt/191_id463.jpg"  /> -->
-                                        <img src="./img/gt/191_id463.jpg" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/23_id568.jpg" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                        <!-- <img src="./img/gt/78_id706.jpg"  /> -->
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/78_id706.jpg"  />
-                                        </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                        <!-- <img src="./img/gt/244_id366.jpg"  /> -->
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/244_id366.jpg"  />
-                                        </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                        <!-- <img src="./img/gt/96_id184.jpg"  /> -->
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/96_id184.jpg"  />
-                                        </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/191_id463.gif" />
+                                    <img src="./img/gif/texture/191_id463.gif" />
                                 </div>
                             </div>
-
-                            <p></p>
-
-                            <!-- male id: 162 158 157 146 120 106 67 14 8 0 -->
-                            <div class="row">                                
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/0_id529.gif" />
-                                        <img src="./img/gif/texture/0_id529.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/162_id838.gif" />
-                                        <img src="./img/gif/texture/162_id838.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/8_id647.gif" />
-                                        <img src="./img/gif/texture/8_id647.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/158_id485.gif" />
-                                        <img src="./img/gif/texture/158_id485.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/157_id726.gif" />
-                                        <img src="./img/gif/texture/157_id726.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/gif/geometry/14_id800.gif" />
-                                        <img src="./img/gif/texture/14_id800.gif" />
-                                    </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/23_id568.gif" />
+                                    <img src="./img/gif/texture/23_id568.gif" />
                                 </div>
                             </div>
-
-
-                            <div class="row">                                
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/0_id529.jpg"  />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/162_id838.jpg"  />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/8_id647.jpg"  />
-                                    </div>  
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/158_id485.jpg"  />
-                                    </div>  
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/157_id726.jpg"  />
-                                    </div>  
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/gt/14_id800.jpg"  />
-                                    </div>  
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/78_id706.gif" />
+                                    <img src="./img/gif/texture/78_id706.gif" />
                                 </div>
                             </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/244_id366.gif" />
+                                    <img src="./img/gif/texture/244_id366.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/96_id184.gif" />
+                                    <img src="./img/gif/texture/96_id184.gif" />
+                                </div>
+                            </div>
+                        </div>
 
-                        </div>                        
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <div id="images" class="row-cols-6"> -->
+                                <div id="images" class="row-cols-1">
+                                    <!-- <img src="./img/gt/245_id220.jpg"  /> -->
+                                    <img src="./img/gt/245_id220.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <div id="images" class="row-cols-6"> -->
+                                <div id="images" class="row-cols-1">
+                                    <!-- <img src="./img/gt/191_id463.jpg"  /> -->
+                                    <img src="./img/gt/191_id463.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/23_id568.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/78_id706.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/78_id706.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/244_id366.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/244_id366.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <!-- <img src="./img/gt/96_id184.jpg"  /> -->
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/96_id184.jpg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <p></p>
+
+                        <!-- male id: 162 158 157 146 120 106 67 14 8 0 -->
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/0_id529.gif" />
+                                    <img src="./img/gif/texture/0_id529.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/162_id838.gif" />
+                                    <img src="./img/gif/texture/162_id838.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/8_id647.gif" />
+                                    <img src="./img/gif/texture/8_id647.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/158_id485.gif" />
+                                    <img src="./img/gif/texture/158_id485.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/157_id726.gif" />
+                                    <img src="./img/gif/texture/157_id726.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/gif/geometry/14_id800.gif" />
+                                    <img src="./img/gif/texture/14_id800.gif" />
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/0_id529.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/162_id838.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/8_id647.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/158_id485.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/157_id726.jpg" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/gt/14_id800.jpg" />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </section>
-            <!-- End of Section --> 
+            </div>
+        </section>
+        <!-- End of Section -->
 
-            <section class="pb-6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 order-lg-1">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Geometry-aware</h3>
-                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Attribute Editing</h2>
-                            <p class="text-justify">
-                                Drag the separator to see the aligned texture and geometry. 
-                                todo: replace with 4*7 gif.
-                                squeeze the size
-                            </p>
-                            <div class="row">                                
+        <section class="pb-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                            Geometry-aware</h3>
+                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Attribute
+                            Editing</h2>
+                        <p class="text-justify">
+                            Drag the separator to see the aligned texture and geometry.
+                            todo: replace with 4*7 gif.
+                            squeeze the size
+                        </p>
+                        <div class="row">
 
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/editing/322_Smiling/322.jpg"/>
-                                    </div>
-                                    <figcaption class="text-center">
-                                        + Smile 
-                                    </figcaption>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/editing/322_Smiling/322.jpg" />
                                 </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_0.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_0.gif" />
-                                    </div>
+                                <figcaption class="text-center">
+                                    + Smile
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_0.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_0.gif" />
                                 </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_0.2.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_0.2.gif" />
-                                    </div>
-                                    <!-- <figcaption class="text-center">
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_0.2.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_0.2.gif" />
+                                </div>
+                                <!-- <figcaption class="text-center">
                                         scale=0 
                                     </figcaption> -->
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_0.4.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_0.4.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_0.6.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_0.6.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_0.8.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_0.8.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/322_Smiling/geo_1.0.gif" />
-                                        <img src="./img/editing/322_Smiling/tex_1.0.gif" />
-                                    </div>
-                                </div>
                             </div>
-                            <!-- <p></p> -->
-                            <div class="row">                                
-
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/editing/320_No_Beard/320.jpg"/>
-                                    </div>
-                                    <figcaption class="text-center">
-                                        + Beard 
-                                    </figcaption>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_0.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_0.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_0.2.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_0.2.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_0.4.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_0.4.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_0.6.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_0.6.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_0.8.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_0.8.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/320_No_Beard/geo_1.0.gif" />
-                                        <img src="./img/editing/320_No_Beard/tex_1.0.gif" />
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <p></p> -->
-
-                            <div class="row">                                
-
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/editing/443_Young/443.jpg"/>
-                                    </div>
-                                    <figcaption class="text-center">
-                                        + Age 
-                                    </figcaption>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_0.gif" />
-                                        <img src="./img/editing/443_Young/tex_0.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_0.2.gif" />
-                                        <img src="./img/editing/443_Young/tex_0.2.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_0.4.gif" />
-                                        <img src="./img/editing/443_Young/tex_0.4.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_0.6.gif" />
-                                        <img src="./img/editing/443_Young/tex_0.6.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_0.8.gif" />
-                                        <img src="./img/editing/443_Young/tex_0.8.gif" />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/443_Young/geo_1.0.gif" />
-                                        <img src="./img/editing/443_Young/tex_1.0.gif" />
-                                    </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_0.4.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_0.4.gif" />
                                 </div>
                             </div>
 
-                            <div class="row">                                
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./img/editing/481_Bangs/481.jpg"/>
-                                    </div>
-                                    <figcaption class="text-center">
-                                        + Bangs 
-                                    </figcaption>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_0.6.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_0.6.gif" />
                                 </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=0 
-                                    </figcaption>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.2.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.2.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=0.2
-                                    </figcaption>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.4.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.4.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=0.4
-                                    </figcaption>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.6.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.6.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=0.6
-                                    </figcaption>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.8.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.8.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=0.8
-                                    </figcaption>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_1.0.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_1.0.gif" />
-                                    </div>
-                                    <figcaption class="text-center">
-                                        scale=1.0 
-                                    </figcaption>
-                                </div>
-
                             </div>
-                            <!-- <p></p> -->
-                        </div>                        
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_0.8.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_0.8.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/322_Smiling/geo_1.0.gif" />
+                                    <img src="./img/editing/322_Smiling/tex_1.0.gif" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p></p> -->
+                        <div class="row">
+
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/editing/320_No_Beard/320.jpg" />
+                                </div>
+                                <figcaption class="text-center">
+                                    + Beard
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_0.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_0.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_0.2.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_0.2.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_0.4.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_0.4.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_0.6.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_0.6.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_0.8.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_0.8.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/320_No_Beard/geo_1.0.gif" />
+                                    <img src="./img/editing/320_No_Beard/tex_1.0.gif" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <p></p> -->
+
+                        <div class="row">
+
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/editing/443_Young/443.jpg" />
+                                </div>
+                                <figcaption class="text-center">
+                                    + Age
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_0.gif" />
+                                    <img src="./img/editing/443_Young/tex_0.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_0.2.gif" />
+                                    <img src="./img/editing/443_Young/tex_0.2.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_0.4.gif" />
+                                    <img src="./img/editing/443_Young/tex_0.4.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_0.6.gif" />
+                                    <img src="./img/editing/443_Young/tex_0.6.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_0.8.gif" />
+                                    <img src="./img/editing/443_Young/tex_0.8.gif" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-0 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/443_Young/geo_1.0.gif" />
+                                    <img src="./img/editing/443_Young/tex_1.0.gif" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./img/editing/481_Bangs/481.jpg" />
+                                </div>
+                                <figcaption class="text-center">
+                                    + Bangs
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=0
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.2.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.2.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=0.2
+                                </figcaption>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.4.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.4.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=0.4
+                                </figcaption>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.6.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.6.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=0.6
+                                </figcaption>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.8.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.8.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=0.8
+                                </figcaption>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_1.0.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_1.0.gif" />
+                                </div>
+                                <figcaption class="text-center">
+                                    scale=1.0
+                                </figcaption>
+                            </div>
+
+                        </div>
+                        <!-- <p></p> -->
                     </div>
                 </div>
-            </section>
-            <!-- End of Section --> 
+            </div>
+        </section>
+        <!-- End of Section -->
 
 
-            <section class="pb-6">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 order-lg-1">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Geometry-Aware</h3>
-                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Toonify</h2>
-                            <p class="text-justify">
-                                Drag the separator to see the aligned texture and geometry. 
-                                todo: replace with 4*7 gif.
-                            </p>
+        <section class="pb-6">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                            Geometry-Aware</h3>
+                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Toonify</h2>
+                        <p class="text-justify">
+                            Drag the separator to see the aligned texture and geometry.
+                            todo: replace with 4*7 gif.
+                        </p>
 
-                            <div class="row">                                
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./toonify/geometry/2_id445.gif" />
-                                        <img src="./toonify/texture/2_id445.gif" />
-                                    </div>
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./toonify/geometry/2_id445.gif" />
+                                    <img src="./toonify/texture/2_id445.gif" />
                                 </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
 
-                                        <img src="./toonify/geometry/0_id322.gif" />
-                                        <img src="./toonify/texture/0_id322.gif" />
-                                    </div>
+                                    <img src="./toonify/geometry/0_id322.gif" />
+                                    <img src="./toonify/texture/0_id322.gif" />
                                 </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./img/editing/481_Bangs/geo_0.4.gif" />
-                                        <img src="./img/editing/481_Bangs/tex_0.4.gif" />
-                                    </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./img/editing/481_Bangs/geo_0.4.gif" />
+                                    <img src="./img/editing/481_Bangs/tex_0.4.gif" />
                                 </div>
+                            </div>
 
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./toonify/geometry/1_id360.gif" />
-                                        <img src="./toonify/texture/1_id360.gif" />
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./toonify/geometry/1_id360.gif" />
+                                    <img src="./toonify/texture/1_id360.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./toonify/geometry/0_id544.gif" />
+                                    <img src="./toonify/texture/0_id544.gif" />
+                                </div>
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div class="twentytwenty-container" id="images">
+                                    <img src="./toonify/geometry/9_id532.gif" />
+                                    <img src="./toonify/texture/9_id532.gif" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./toonify/gt/2_id445.jpg" />
                                     </div>
                                 </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./toonify/geometry/0_id544.gif" />
-                                        <img src="./toonify/texture/0_id544.gif" />
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div class="twentytwenty-container" id="images">
-                                        <img src="./toonify/geometry/9_id532.gif" />
-                                        <img src="./toonify/texture/9_id532.gif" />
+                            </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1">
+                                        <img src="./toonify/gt/0_id322.jpg" />
                                     </div>
                                 </div>
                             </div>
 
-                            <div class="row">                                
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                    <div id="images">
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/2_id445.jpg"  />
-                                        </div>  
-                                    </div>
-                                </div>
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images">
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/0_id322.jpg"  />
-                                        </div>  
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/540.jpg"  />
-                                        </div>  
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/1_id360.jpg"  />
-                                    </div>
-                                </div>
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/544.jpg"  />
-                                        </div>  
-                                </div>
-
-
-                                <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1" >
-                                    <div id="images" class="row-cols-1">
-                                        <img src="./toonify/gt/9_id532.jpg"  />
-                                    </div>
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/540.jpg" />
                                 </div>
                             </div>
 
-                        </div>                        
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/1_id360.jpg" />
+                                </div>
+                            </div>
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/544.jpg" />
+                                </div>
+                            </div>
+
+
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images" class="row-cols-1">
+                                    <img src="./toonify/gt/9_id532.jpg" />
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
-            </section>
-            <!-- End of Section --> 
+            </div>
+        </section>
+        <!-- End of Section -->
 
 
+        <!-- Section Methodology -->
+        <section class="pb-0 bg-blue-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="pb-6 pt-6 py-lg-3">
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Method
+                                Overview</h2>
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                Self-supervised Inversion Learning</h3>
+                            <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2> -->
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
+                                plausible shape inversion.</h2>
+                            <div class="row">
 
-
-
-
-            <!-- Section Methodology -->
-            <section class="pb-0 bg-blue-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 order-lg-1">
-                            <div class="pb-6 pt-6 py-lg-3">
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Method Overview</h2>
-                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Self-supervised Inversion Learning</h3>
-                                <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2> -->
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for plausible shape inversion.</h2>
-                                <p class="text-justify">
-                                    <!-- <em> -->
-                                        <b> 
-                                            
-                                            Different compositions of shape and texture could lead to identical 2D rendered images.
+                                <div class="col-lg-6 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            Different compositions of shape and texture could lead to identical 2D
+                                            rendered images.
                                         </b>
-                                    <!-- </em> -->
+                                        To alleviate such shape-texture ambiguity, we argue that 3D supervision is
+                                        indispensible.
+                                        In the lack of large-scale high-quality 2D-3D paired samples, we formulate GAN
+                                        Inversion as a <em>self-training</em> task, where samples synthesized from
+                                        itself are leveraged to boost the reconstruction fidelity in
+                                        both 2D and 3D domains.
+                                        <br>
+                                        <br>
+                                        As shown in the figure, we retrofit the generator of a 3D GAN model to provide
+                                        us with diverse pseudo training samples.
+                                        Given a sampled latent code \(\mathcal{W}\) and a camera pose \( \mathbf{\xi}\),
+                                        we sample object SDF to depict the shape and the corresponding face image \(
+                                        \mathbf{I} \).
+                                    </p>
+                                </div>
+                                <!-- <div class="col-lg-5 order-lg-2 pb-lg-0 pt-lg-3">  -->
+                                <div class="col-lg-5 order-lg-2 pb-lg-0 pt-lg-0">
+                                    <div class="mb-0">
+                                        <figure>
+                                            <img src="./img/overview/data-generation.png" class="mt-0 img-fluid w-100"
+                                                alt="" />
+                                        </figure>
+                                    </div>
+                                </div>
 
-                                    To alleviate such shape-texture ambiguity, we argue that 3D supervision is indispensible.
-                                    In the lack of large-scale high-quality 2D-3D paired samples, we formulate GAN Inversion as a <em>self-training</em> task, where samples synthesized from
-                                    itself are leveraged to boost the reconstruction fidelity in
-                                    both 2D and 3D domains.
-                                    <br>
-                                    <br>
-                                    As shown in the figure, we retrofit the generator of a 3D GAN model to provide us with diverse pseudo training samples.
-                                            Given a sampled latent code \(\mathcal{W}\) and a camera pose \( \mathbf{\xi}\), 
-                                            we sample object SDF to depict the shape and the corresponding face image \( \mathbf{I} \).
-                                </p>
                             </div>
                         </div>
-
-                        <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3"> 
-                            <div class="mb-8">
-                                <!-- <img src="./img/overview.png" class="mt-4 img-fluid w-100" alt="" /> -->
-                                <!-- <img src="./img/overview/stage1.png" class="mt-4 img-fluid w-100" alt="" /> -->
-                                <figure>
-                                    <img src="./img/overview/data-generation.png" class="mt-4 img-fluid w-100" alt="" />
-                                    <!-- <figcaption>Figure 1. -->
-                                        <!-- Given a sampled latent code w and a camera pose ξ, StyleSDF generates object SDF d to depict the shape and the corresponding face image I. -->
-                                        <p class="text-justify">
-                                        </p>
-                                    </figcaption>
-                                </figure>
-                            </div>                                                         
-                        </div>
-                        
                     </div>
-                </div>
-            </section>
-            <!-- End of Section -->  
 
-            <!-- Section Results -->
-            <section class="pb-0 bg-blue-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 order-lg-1">
-                            <div class="pb-6 pt-6 py-lg-3">
-                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">pixel-aligned Features</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for High-Fidelity Inversion</h2>
-                                <p class="text-justify">
-                                    <!-- <em> -->
-                                        <b> 
-                                        A global latent code fails to capture details for high-fidelity inversion.
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+        </section>
+        <!-- End of Section -->
+
+        <!-- Section Results -->
+        <section class="pb-0 bg-blue-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="pb-6 pt-6 py-lg-3">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                pixel-aligned Features</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
+                                High-Fidelity Inversion</h2>
+
+                            <div class="row">
+
+                                <div class="col-lg-6 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            A global latent code fails to capture details for high-fidelity inversion.
                                         </b>
-                                    <!-- </em> -->
-                                    To address this problem,
-                                    our novelty here is to leverage <em>local features (pixel-aligned features)</em> to enhance the
-                                    representation capacity, beyond just the global latent code
-                                    generated by the inversion encoder. Specifically, in addition to inferring an editable global latent code to represent
-                                    the overall shape of the face, we further devise an hour-glass
-                                    model to extract local features over the residuals details that
-                                    the global latent code fails to capture.
-                                </p>
+                                        To address this problem,
+                                        our novelty here is to leverage <em>local features (pixel-aligned features)</em>
+                                        to enhance the
+                                        representation capacity, beyond just the global latent code
+                                        generated by the inversion encoder. Specifically, in addition to inferring an
+                                        editable global latent code to represent
+                                        the overall shape of the face, we further devise an hour-glass
+                                        model to extract local features over the residuals details that
+                                        the global latent code fails to capture.
+                                    </p>
+                                </div>
+
+                                <div class="col-lg-6 order-lg-2">
+                                    <div class="mb-0">
+                                        <img src="./img/overview/stage2.png" class="mt-0 img-fluid w-100" alt="" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3"> 
-                            <div class="mb-8">
-                                <img src="./img/overview/stage2.png" class="mt-4 img-fluid w-100" alt="" />
-                            </div>                                                     
-                        </div>
-                        
+
                     </div>
                 </div>
-            </section>
+        </section>
 
-            <!-- Section Results -->
-            <!-- <section class="pb-0"> -->
-            <section class="pb-0 bg-blue-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-5 order-lg-1">
-                            <div class="pb-6 pt-6 py-lg-3">
-                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Hybrid Alignment</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for High-quality editing</h2>
-                                <p class="text-justify">
-                                    <b>
-                                    The third component addresses the problem of novel view synthesis,
-                                    a problem unique to 3D shape editing. 
-                                    </b>
-                                    Specifically, though we achieve high-fidelity reconstruction through aforementioned designs, 
-                                    the local residual features may not fully align with the scene when being semantically edited. 
-                                    Moreover, the occlusion issue further degrades the fusion performance when rendering from novel views with large pose
-                                    variations. 
-                                    To address this issue,
-                                    (a) we propose a 2D-3D hybrid alignment module for high-quality editing. 
-                                    A 2D alignment module and a 3D projection scheme are introduced to jointly align the local features with edited images.
-                                    (b) The aligned local features are fused with FiLM layer and inpaint occluded local features in novel view synthesis.
-                                    <!-- GLEAN generates perceptually convincing images resembling the ground-truth for up to 64× upscaling. GLEAN can be applied to various categories by switching between StyleGANs trained on different categories.   -->
-                                </p>
+        <!-- Section Results -->
+        <!-- <section class="pb-0"> -->
+        <section class="pb-0 bg-blue-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+
+                        <div class="pb-6 pt-6 py-lg-3">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Hybrid
+                                Alignment</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
+                                High-quality editing</h2>
+
+                            <div class="row">
+                                <div class="col-lg-6 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            The third component addresses the problem of novel view synthesis,
+                                            a problem unique to 3D shape editing.
+                                        </b>
+                                        Specifically, though we achieve high-fidelity reconstruction through
+                                        aforementioned designs,
+                                        the local residual features may not fully align with the scene when being
+                                        semantically edited.
+                                        Moreover, the occlusion issue further degrades the fusion performance when
+                                        rendering from novel views with large pose
+                                        variations.
+                                        To address this issue,
+                                        (a) we propose a 2D-3D hybrid alignment module for high-quality editing.
+                                        A 2D alignment module and a 3D projection scheme are introduced to jointly align
+                                        the local features with edited images.
+                                        (b) The aligned local features are fused with FiLM layer and inpaint occluded
+                                        local features in novel view synthesis.
+                                        <!-- GLEAN generates perceptually convincing images resembling the ground-truth for up to 64× upscaling. GLEAN can be applied to various categories by switching between StyleGANs trained on different categories.   -->
+                                    </p>
+                                </div>
+
+
+                                <div class="col-lg-6 order-lg-2 pb-lg-0 pt-lg-0">
+                                    <div class="mb-0">
+                                        <img src="./img/overview/stage3.png" class="mt-0 img-fluid w-100" alt="" />
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
 
-                        <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3"> 
-                            <div class="mb-8">
-                                <img src="./img/overview/stage3.png" class="mt-4 img-fluid w-100" alt="" />
-                            </div>                                                   
-                        </div>
-                        
                     </div>
                 </div>
-            </section>
-            <!-- End of Section -->
+        </section>
+        <!-- End of Section -->
 
-            <!-- ! todo, update demo video here -->
+        <!-- ! todo, update demo video here -->
 
-            <!-- Section Video Demo -->
-            <!-- <section class="py-8 py-md-11 overflow-hidden">
+        <!-- Section Video Demo -->
+        <!-- <section class="py-8 py-md-11 overflow-hidden">
                 <div class="bg-container parallax" data-rellax-percentage="0.5" style="background-image: url(../../assets/img/custom_backgrounds/bg-04.jpg);"></div>
                 <div class="container-fluid">
                     <div class="row align-items-center">
@@ -951,38 +1016,40 @@
                     </div>
                 </div>
             </section> -->
-            <!-- End of Section -->
+        <!-- End of Section -->
 
 
-            <!-- Section Citation -->
-            <section class="pb-7">
-                <div class="container">                       
-                    <div class="col-lg-12 order-lg-2 pb-lg-0 pt-lg-3"> 
-                        <div class="mb-3">
-                                <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
-                                <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
-                                <p class="text-700 fw-medium">
-                                    <!-- @InProceedings{chan2021glean,<br />
+        <!-- Section Citation -->
+        <section class="pb-7">
+            <div class="container">
+                <div class="col-lg-12 order-lg-2 pb-lg-0 pt-lg-3">
+                    <div class="mb-3">
+                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
+                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
+                        <p class="text-700 fw-medium">
+                            <!-- @InProceedings{chan2021glean,<br />
                                         &emsp;author = {Chan, Kelvin CK and Wang, Xintao and Xu, Xiangyu and Gu, Jinwei and Loy, Chen Change},<br />
                                         &emsp;title = {GLEAN: Generative Latent Bank for Large-Factor Image Super-Resolution},<br />
                                         &emsp;booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},<br />
                                         &emsp;year = {2021} <br />
                                     } -->
-                                    @article{lan2022e3dge, <br />
-                                        &emsp;title={E3DGE: Self-supervised Geometry-Aware Encoder for Style-based 3d GAN Inversion}, <br />
-                                        &emsp;author={Lan, Yushi and Meng, Xuyi and Yang, Shuai and Loy, Chen Change and Dai, Bo}, <br />
-                                        &emsp;journal={arXiv preprint arXiv:???}, <br />
-                                        &emsp;year={2022} <br />
-                                      }
-                                </p>
-                        </div>
+                            @article{lan2022e3dge, <br />
+                            &emsp;title={E3DGE: Self-supervised Geometry-Aware Encoder for Style-based 3d GAN
+                            Inversion}, <br />
+                            &emsp;author={Lan, Yushi and Meng, Xuyi and Yang, Shuai and Loy, Chen Change and Dai, Bo},
+                            <br />
+                            &emsp;journal={arXiv preprint arXiv:???}, <br />
+                            &emsp;year={2022} <br />
+                            }
+                        </p>
                     </div>
                 </div>
-            </section>
-            <!-- End of Section -->
+            </div>
+        </section>
+        <!-- End of Section -->
 
-            <!-- Section Related Projects -->
-            <!--
+        <!-- Section Related Projects -->
+        <!--
                         <section class="pb-6 bg-blue-light">
                 <div class="container">
                     <div class="row">
@@ -1014,126 +1081,135 @@
             <!-- End of Section -->
 
 
-            <!-- Section Contact -->
-            <!-- <section class="pt-7 pb-0"> -->
-            <section class="pb-0 bg-blue-light">
-                <div class="container">
-                    <!-- <div class="pb-6 px-lg-8 px-xl-12"> -->
-                    <div class="pb-6">
-                        <!-- <div class="row justify-content-center"> -->
-                            <!-- <div class="col-6 col-lg-3">
+        <!-- Section Contact -->
+        <!-- <section class="pt-7 pb-0"> -->
+        <section class="pb-0 bg-blue-light">
+            <div class="container">
+                <!-- <div class="pb-6 px-lg-8 px-xl-12"> -->
+                <div class="pb-6">
+                    <!-- <div class="row justify-content-center"> -->
+                    <!-- <div class="col-6 col-lg-3">
                                 <img src="./img/kelvin_chan.jpg" alt="" class="img-fluid w-100 rounded-circle" />
                             </div> -->
-                            <!-- <div class="col-lg-9 text-center text-lg-left"> -->
-                            <div class="col-lg-auto text-center text-lg-left">
-                                    <p class="h5 text-secondary fw-medium mt-3">Contact</p>
-                                    <br /><a href="https://github.com/NIRVANALAN">Yushi Lan</a> 
-                                    <br />Email: yushi001 at e.ntu.edu.sg
-                            </div>
-                        <!-- </div> -->
+                    <!-- <div class="col-lg-9 text-center text-lg-left"> -->
+                    <div class="col-lg-auto text-center text-lg-left">
+                        <p class="h5 text-secondary fw-medium mt-3">Contact</p>
+                        <br /><a href="https://github.com/NIRVANALAN">Yushi Lan</a>
+                        <br />Email: yushi001 at e.ntu.edu.sg
                     </div>
+                    <!-- </div> -->
                 </div>
-            </section>
-            <!-- End of Section -->  
+            </div>
+        </section>
+        <!-- End of Section -->
 
-        </main>
-        <!-- End of Main Content -->
+    </main>
+    <!-- End of Main Content -->
 
 
-        <!-- Footer -->
-        <footer class="footer text-white" style="background-image: url(../../assets/img/footer-bg.jpg)">
-            <div class="container d-flex h-100">
-                <div class="row flex-grow-1">
-                    <div class="col-lg-3 pt-3 ext-l bg-secondary text-center text-lg-left">
-                        <div class="d-flex flex-column h-100">
-                            <div class="pt-5 pt-lg-8 pb-4">
-                                <img src="../../assets/img/logo-small.png" alt="" width="108" class="mb-4" />
-                                <p class="mb-4 mt-3 fs--1"><br />
+    <!-- Footer -->
+    <footer class="footer text-white" style="background-image: url(../../assets/img/footer-bg.jpg)">
+        <div class="container d-flex h-100">
+            <div class="row flex-grow-1">
+                <div class="col-lg-3 pt-3 ext-l bg-secondary text-center text-lg-left">
+                    <div class="d-flex flex-column h-100">
+                        <div class="pt-5 pt-lg-8 pb-4">
+                            <img src="../../assets/img/logo-small.png" alt="" width="108" class="mb-4" />
+                            <p class="mb-4 mt-3 fs--1"><br />
                                 Academic Block North <br />
                                 Nanyang Technological University<br />
                                 61 Nanyang Dr, Singapore 637335</p>
-        
-                                <p class="fs--1">
-                                <span class="text-white"><i class="zmdi zmdi-email zmdi-hc-fw mr-1"></i>mmlab-contact at e.ntu.edu.sg</span><br />
-                                <span class="text-white"><i class="zmdi zmdi-twitter zmdi-hc-fw mr-1"></i><a href="https://twitter.com/MMLabNTU" target="_blank" class="text-white">@MMLabNTU</a></span></p>
-                            </div>
-    
-                            <!-- <ul class="mt-4 mt-lg-auto mb-5 mb-lg-0 list-unstyled list-inline">
+
+                            <p class="fs--1">
+                                <span class="text-white"><i class="zmdi zmdi-email zmdi-hc-fw mr-1"></i>mmlab-contact at
+                                    e.ntu.edu.sg</span><br />
+                                <span class="text-white"><i class="zmdi zmdi-twitter zmdi-hc-fw mr-1"></i><a
+                                        href="https://twitter.com/MMLabNTU" target="_blank"
+                                        class="text-white">@MMLabNTU</a></span>
+                            </p>
+                        </div>
+
+                        <!-- <ul class="mt-4 mt-lg-auto mb-5 mb-lg-0 list-unstyled list-inline">
                                 <li class="mr-3 list-inline-item">
                                     <a href="https://twitter.com/MMLabNTU" target="_blank">
                                         <i class="zmdi zmdi-twitter text-white"></i>
                                     </a>
                                 </li>
                             </ul> -->
+                    </div>
+                </div>
+
+                <div class="col d-flex flex-column mb-2 mt-3 pl-lg-7">
+                    <div class="row pt-5 pt-lg-8 pb-4 pb-lg-6">
+                        <div class="col-6 col-lg-3">
+                            <h6 class="mb-1 mb-lg-4 text-uppercase">Publications</h6>
+                            <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                <li class="my-1"><a href="../../publication_topic.html" class="text-white">By Topic</a>
+                                </li>
+                                <li class="my-1"><a href="../../publication_year.html" class="text-white">By Year</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <h6 class="mb-1 mb-lg-4 text-uppercase">About</h6>
+                            <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                <li class="my-1"><a href="../../research.html" class="text-white">Our Research</a></li>
+                                <li class="my-1"><a href="../../team.html" class="text-white">Team</a></li>
+                                <li class="my-1"><a href="../../careers.html" class="text-white">Join Us</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            <h6 class="mb-1 mb-lg-4 text-uppercase">Open Source</h6>
+                            <ul class="pt-2 mb-5 fw-light list-unstyled">
+                                <li class="my-1"><a href="https://openmmlab.com/" target="_blank"
+                                        class="text-white">OpenMMLab</a></li>
+                                <li class="my-1"><a href="../../downloads.html" class="text-white">Code and Datasets</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
 
-                    <div class="col d-flex flex-column mb-2 mt-3 pl-lg-7">
-                        <div class="row pt-5 pt-lg-8 pb-4 pb-lg-6">
-                            <div class="col-6 col-lg-3">
-                                <h6 class="mb-1 mb-lg-4 text-uppercase">Publications</h6>
-                                <ul class="pt-2 mb-5 fw-light list-unstyled">
-                                    <li class="my-1"><a href="../../publication_topic.html" class="text-white">By Topic</a></li>
-                                    <li class="my-1"><a href="../../publication_year.html" class="text-white">By Year</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <h6 class="mb-1 mb-lg-4 text-uppercase">About</h6>
-                                <ul class="pt-2 mb-5 fw-light list-unstyled">
-                                    <li class="my-1"><a href="../../research.html" class="text-white">Our Research</a></li>
-                                    <li class="my-1"><a href="../../team.html" class="text-white">Team</a></li>
-                                    <li class="my-1"><a href="../../careers.html" class="text-white">Join Us</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-6 col-lg-3">
-                                <h6 class="mb-1 mb-lg-4 text-uppercase">Open Source</h6>
-                                <ul class="pt-2 mb-5 fw-light list-unstyled">
-                                    <li class="my-1"><a href="https://openmmlab.com/" target="_blank" class="text-white">OpenMMLab</a></li>
-                                    <li class="my-1"><a href="../../downloads.html" class="text-white">Code and Datasets</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="mt-auto d-flex justify-content-between">
-                            <span class="fs--3 fs-lg--2">&copy; MMLab@NTU, 2022</span>
-                        </div>
+                    <div class="mt-auto d-flex justify-content-between">
+                        <span class="fs--3 fs-lg--2">&copy; MMLab@NTU, 2022</span>
                     </div>
                 </div>
             </div>
-        </footer>
-        <!-- End of Footer -->
+        </div>
+    </footer>
+    <!-- End of Footer -->
 
 
-        <!-- Core Javascripts -->
-        <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
-        <script src="../../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-        <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Core Javascripts -->
+    <script src="../../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-        <!-- Vendor Javascripts -->
-        <script src="../../assets/vendor/rellax/rellax.min.js"></script>
-        <script src="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-        <script src="../../assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
-        <script src="../../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-        <script src="../../assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
-        <script src="../../assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
-        <script src="../../assets/vendor/aos/dist/aos.js"></script>
+    <!-- Vendor Javascripts -->
+    <script src="../../assets/vendor/rellax/rellax.min.js"></script>
+    <script src="../../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../../assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
+    <script src="../../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../../assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="../../assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
+    <script src="../../assets/vendor/aos/dist/aos.js"></script>
 
-        <!-- Theme Javascripts -->
-        <script src="../../assets/js/theme.js"></script>
+    <!-- Theme Javascripts -->
+    <script src="../../assets/js/theme.js"></script>
 
-        <!-- Image Slider Javascripts -->
-        <script src="../../assets/vendor/twentytwenty/js/jquery.event.move.js"></script>
-        <script src="../../assets/vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
-        <script>
-            $(window).on('load',function() {
-              $("#images").twentytwenty();
-            });
-        </script>
-        <script>
-            $(function(){
-              $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({default_offset_pct: 0.49, before_label: 'Low-Resolution', after_label: 'Super-Resolution'});
-            });
-        </script>
+    <!-- Image Slider Javascripts -->
+    <script src="../../assets/vendor/twentytwenty/js/jquery.event.move.js"></script>
+    <script src="../../assets/vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+    <script>
+        $(window).on('load', function () {
+            $("#images").twentytwenty();
+        });
+    </script>
+    <script>
+        $(function () {
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.49, before_label: 'Low-Resolution', after_label: 'Super-Resolution' });
+        });
+    </script>
 
-    </body>
+</body>
+
 </html>
