@@ -40,70 +40,6 @@
         }
     </script>
 
-    <!-- Core Javascripts -->
-    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
-
-    <!-- Vendor Javascripts -->
-    <script src="../assets/vendor/rellax/rellax.min.js"></script>
-    <script src="../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
-    <script src="../assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
-    <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-    <script src="../assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
-    <script src="../assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
-    <script src="../assets/vendor/aos/dist/aos.js"></script>
-
-    <!-- Theme Javascripts -->
-    <script src="../assets/js/theme.js"></script>
-
-    <!-- Image Slider Javascripts -->
-    <script src="../assets/vendor/twentytwenty/js/jquery.event.move.js"></script>
-    <script src="../assets/vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
-    <script>
-        window.onload = function () {
-            vidContainer = document.getElementById('bgvideocontainer');
-            vidContent = document.getElementById('bgvideo');
-            var newHeight = (vidContainer.offsetWidth / vidContent.videoWidth) * vidContent.videoHeight;
-            vidContent.style.height = parseInt(Math.max(newHeight, vidContainer.offsetHeight)) + "px";
-        }	
-    </script>
-    <script>
-        $(window).on('load', function () {
-            $("#images").twentytwenty();
-        });
-    </script>
-    <script>
-        $(function () {
-            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.49, before_label: 'Shape', after_label: 'Texture' });
-        });
-    </script>
-    <script>
-        window.addEventListener("resize", function () {
-            vidContainer = document.getElementById('bgvideocontainer');
-            vidContent = document.getElementById('bgvideo');
-            var newHeight = (vidContainer.offsetWidth / vidContent.videoWidth) * vidContent.videoHeight;
-            vidContent.style.height = parseInt(Math.max(newHeight, vidContainer.offsetHeight)) + "px";
-        });
-    </script>
-
-
-
-    <!-- vimeo_player-->
-    <link href="../assets/vendor/jquery.mb.vimeo_player/dist/css/jquery.mb.vimeo_player.min.css" rel="stylesheet">
-    <script src="../assets/vendor/jquery.mb.vimeo_player/dist/jquery.mb.vimeo_player.min.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22940424-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'UA-22940424-1');
-    </script>
-
 
 </head>
 
@@ -242,7 +178,7 @@
                 <div class="vimeo_player_wrapper"
                     style="position: absolute; z-index: 0; width: 100%; height: 100%; left: 0px; top: 0px; overflow: hidden; opacity: 0.5;"
                     data-vimeo-initialized="true">
-                    <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallary_real_margin.mp4"
+                    <video id="bgvideo" muted="" autoplay="autoplay" loop="loop" src="./img/gallery_lite.mp4"
                         style="width: auto; height: auto;"></video>
                 </div>
             </div>
@@ -420,6 +356,10 @@
                                 <div class="twentytwenty-container" id="images">
                                     <img alt="" src="./img/gif/geometry/245_id220.gif" />
                                     <img alt="" src="./img/gif/texture/245_id220.gif" />
+                                    <!-- <video id="bgvideo" muted="" autoplay="autoplay" loop="loop"
+                                        src="./img/gallery_lite.mp4"></video>
+                                    <video id="bgvideo" muted="" autoplay="autoplay" loop="loop"
+                                        src="./img/gallery_lite.mp4"></video> -->
                                 </div>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
@@ -1237,6 +1177,69 @@
     </footer>
     <!-- End of Footer -->
 
+    <!-- Core Javascripts -->
+    <script src="../assets/vendor/jquery/dist/jquery.min.js"></script>
+    <script src="../assets/vendor/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../assets/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+
+    <!-- Vendor Javascripts -->
+    <script src="../assets/vendor/rellax/rellax.min.js"></script>
+    <script src="../assets/vendor/@fancyapps/fancybox/dist/jquery.fancybox.min.js"></script>
+    <script src="../assets/vendor/sticky-kit/dist/sticky-kit.min.js"></script>
+    <script src="../assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="../assets/vendor/isotope-layout/dist/isotope.pkgd.min.js"></script>
+    <script src="../assets/vendor/isotope-packery/packery-mode.pkgd.min.js"></script>
+    <script src="../assets/vendor/aos/dist/aos.js"></script>
+
+
+    <!-- Theme Javascripts -->
+    <script src="../assets/js/theme.js"></script>
+
+    <!-- Image Slider Javascripts -->
+    <script src="../assets/vendor/twentytwenty/js/jquery.event.move.js"></script>
+    <script src="../assets/vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
+    <script>
+        window.onload = function () {
+            vidContainer = document.getElementById('bgvideocontainer');
+            vidContent = document.getElementById('bgvideo');
+            var newHeight = (vidContainer.offsetWidth / vidContent.videoWidth) * vidContent.videoHeight;
+            vidContent.style.height = parseInt(Math.max(newHeight, vidContainer.offsetHeight)) + "px";
+        }	
+    </script>
+    <script>
+        $(window).on('load', function () {
+            $("#images").twentytwenty();
+        });
+    </script>
+    <script>
+        $(function () {
+            $(".twentytwenty-container[data-orientation!='vertical']").twentytwenty({ default_offset_pct: 0.49, before_label: 'Shape', after_label: 'Texture' });
+        });
+    </script>
+    <script>
+        window.addEventListener("resize", function () {
+            vidContainer = document.getElementById('bgvideocontainer');
+            vidContent = document.getElementById('bgvideo');
+            var newHeight = (vidContainer.offsetWidth / vidContent.videoWidth) * vidContent.videoHeight;
+            vidContent.style.height = parseInt(Math.max(newHeight, vidContainer.offsetHeight)) + "px";
+        });
+    </script>
+
+
+    <!-- vimeo_player-->
+    <link href="../assets/vendor/jquery.mb.vimeo_player/dist/css/jquery.mb.vimeo_player.min.css" rel="stylesheet">
+    <script src="../assets/vendor/jquery.mb.vimeo_player/dist/jquery.mb.vimeo_player.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> -->
+    <!-- <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-22940424-1"></script> -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-22940424-1');
+    </script>
 
 
 </body>
