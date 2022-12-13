@@ -1,0 +1,7 @@
+/* https://stackoverflow.com/questions/36247140/why-dont-flex-items-shrink-past-content-size */
+.fix-flex-shrink-overflow > *
+{
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+}

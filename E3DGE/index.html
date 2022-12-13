@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- responsive -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
 
     <meta name="keywords"
         content="Chen Change Loy, Ziwei Liu, Bo Dai, Yixin Cao, Super-resolution, Deep Learning, Computer Vision, Convolutional Neural Network, Enhancement, Inpainting, Knowledge Distillation, Restoration, GAN, Generative Adversarial Networks, Generation, Manipulation, Editing, Object Detection, Segmentation, Recognition, Continual Learning, Domain Generalization, Self-Supervised Learning, Singapore, NTU, Nanyang Technological University, SCSE" />
@@ -32,6 +33,7 @@
 
     <!-- Theme Stylesheets -->
     <link href="../assets/css/theme.css" rel="stylesheet">
+    <link href="img.css" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script>
@@ -240,7 +242,7 @@
                             Extensive experiments show that our method outperforms state-of-the-art inversion methods in
                             both
                             shape and texture reconstruction quality.
-                            Code and data will be released.
+                            <!-- Code and data will be released. -->
                         </p>
                     </div>
 
@@ -279,7 +281,8 @@
                                 <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
                                         class="fs-2 pr-2 text-primary position-relative top-2"><i
                                             class="zmdi zmdi-collection-video"></i></span><a
-                                        href="https://www.youtube.com/embed/BGfE1EWGJ8I" class="text-muted">Demo
+                                        href="https://drive.google.com/file/d/1yDkJfJOLeVlON7ZdRSnR34Ra_ikTVI0A/preview"
+                                        class="text-muted">Demo
                                         Video</a></h2>
                                 <!-- <p class="fs--1">If you have description you can put it here.</p> -->
 
@@ -293,7 +296,7 @@
         <!-- End of Section -->
 
         <!-- Section tex-geo gallary -->
-        <section class="pb-6 bg-blue-light">
+        <section class="pb-5 pt-5  bg-blue-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
@@ -307,7 +310,6 @@
                         </p>
 
                         <div class="row">
-                            <!-- <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1"> -->
                             <div>
                                 <div id="images" class="row-cols-1">
                                     <img alt="" src="./img/gt/245_id220.jpg" />
@@ -473,7 +475,7 @@
         </section>
         <!-- End of Section -->
 
-        <section class="pb-6">
+        <section class="pb-5 pt-5 ">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
@@ -482,7 +484,8 @@
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Attribute
                             Editing</h2>
                         <p class="text-justify">
-                            Shown editing performance on 4 attributes at different scales.
+                            Shown editing performance on 4 attributes at different scales,
+                            where \(\alpha \) defines the editing scale of vector arithmetics.
                             Drag the separator to see the aligned texture and geometry.
                         </p>
                         <div class="row">
@@ -660,7 +663,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_0_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=-1
+                                     \( \alpha \)=-1
                                 </figcaption>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
@@ -669,7 +672,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_0.2_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=-0.6
+                                     \( \alpha \)=-0.6
                                 </figcaption>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-0">
@@ -678,7 +681,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_0.4_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=-0.2
+                                     \( \alpha \)=-0.2
                                 </figcaption>
                             </div>
 
@@ -688,7 +691,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_0.6_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=0.2
+                                     \( \alpha \)=0.2
                                 </figcaption>
                             </div>
 
@@ -698,7 +701,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_0.8_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=0.6
+                                     \( \alpha \)=0.6
                                 </figcaption>
                             </div>
 
@@ -708,7 +711,7 @@
                                     <img alt="" src="./img/editing/481_Bangs/tex_1.0_opt.gif" />
                                 </div>
                                 <figcaption class="text-center">
-                                    scale=1.0
+                                     \( \alpha \)=1
                                 </figcaption>
                             </div>
 
@@ -721,8 +724,8 @@
         <!-- End of Section -->
 
 
-        <!-- <section class="pb-6"> -->
-        <section class="pb-0 bg-blue-light">
+        <!-- <section class="pb-5 pt-5 "> -->
+        <section class="pb-5 pt-5  bg-blue-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
@@ -732,7 +735,7 @@
                         <p class="text-justify">
                             Drag the separator to see the aligned texture and geometry of toonified results.
                         </p>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
                                 <div id="images">
                                     <div id="images" class="row-cols-1">
@@ -772,42 +775,72 @@
                                     <img alt="" src="./toonify/gt/9_id532.jpg" />
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="row">
-                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
-                                <div class="twentytwenty-container" id="images">
+                            <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1 flex-sm-column">
+                                <!-- <div id="images" class="row-cols-1 pb-1 flex-shrink-1 flex-sm-column img-max-width"> -->
+                                <!-- <div id="images" class="row-cols-1 pb-1 img-max-width"> -->
+                                <div id="images" class="row-cols-1 pb-1 fix-flex-shrink-overflow flex-sm-row">
+                                    <img alt="" src="./toonify/gt/2_id445.jpg" />
+                                </div>
+
+                                <div class="twentytwenty-container flex-shrink-1" id="images">
                                     <img alt="" src="./toonify/geometry/2_id445_opt.gif" />
                                     <img alt="" src="./toonify/texture/2_id445_opt.gif" />
                                 </div>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1 pb-1">
+                                        <img alt="" src="./toonify/gt/0_id322.jpg" />
+                                    </div>
+                                </div>
                                 <div class="twentytwenty-container" id="images">
-
                                     <img alt="" src="./toonify/geometry/0_id322_opt.gif" />
                                     <img alt="" src="./toonify/texture/0_id322_opt.gif" />
                                 </div>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1 pb-1">
+                                        <img alt="" src="./toonify/gt/540.jpg" />
+                                    </div>
+                                </div>
                                 <div class="twentytwenty-container" id="images">
-                                    <img alt="" src="./toonify/geometry/1_id540_opt.gif"/>
-                                    <img alt="" src="./toonify/texture/1_id540_opt.gif"/>
+                                    <img alt="" src="./toonify/geometry/1_id540_opt.gif" />
+                                    <img alt="" src="./toonify/texture/1_id540_opt.gif" />
                                 </div>
                             </div>
 
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1 pb-1">
+                                        <img alt="" src="./toonify/gt/1_id360.jpg" />
+                                    </div>
+                                </div>
                                 <div class="twentytwenty-container" id="images">
                                     <img alt="" src="./toonify/geometry/1_id360_opt.gif" />
                                     <img alt="" src="./toonify/texture/1_id360_opt.gif" />
                                 </div>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1 pb-1">
+                                        <img alt="" src="./toonify/gt/540.jpg" />
+                                    </div>
+                                </div>
                                 <div class="twentytwenty-container" id="images">
                                     <img alt="" src="./toonify/geometry/0_id544_opt.gif" />
                                     <img alt="" src="./toonify/texture/0_id544_opt.gif" />
                                 </div>
                             </div>
                             <div class="col-sm small-2 columns pb-1 pl-1 pr-1 pt-1">
+                                <div id="images">
+                                    <div id="images" class="row-cols-1 pb-1">
+                                        <img alt="" src="./toonify/gt/9_id532.jpg" />
+                                    </div>
+                                </div>
                                 <div class="twentytwenty-container" id="images">
                                     <img alt="" src="./toonify/geometry/9_id532_opt.gif" />
                                     <img alt="" src="./toonify/texture/9_id532_opt.gif" />
@@ -825,18 +858,18 @@
 
         <!-- Section Methodology -->
         <!-- <section class="pb-0 bg-blue-light"> -->
-        <section class="pb-6">
+        <section class="pb-5 pt-5 ">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
-                        <div class="pb-6 pt-6 py-lg-3">
+                        <div class="pb-5 pt-5  pt-1 py-lg-3">
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Method
                                 Overview</h2>
                             <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
                                 Self-supervised Inversion Learning</h3>
                             <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2> -->
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
-                                plausible shape inversion.</h2>
+                                plausible shape inversion</h2>
                             <div class="row">
 
                                 <div class="col-lg-6 order-lg-1">
@@ -890,11 +923,11 @@
 
         <!-- Section Results -->
         <!-- <section class="pb-0 bg-blue-light"> -->
-        <section class="pb-6">
+        <section class="pb-5 pt-5 ">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
-                        <div class="pb-6 pt-6 py-lg-3">
+                        <div class="pb-5 pt-5  pt-1 py-lg-3">
                             <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
                                 pixel-aligned Features</h3>
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
@@ -934,13 +967,13 @@
         </section>
 
         <!-- Section Results -->
-        <section class="pb-0">
+        <section class="pb-5 pt-5">
             <!-- <section class="pb-0 bg-blue-light"> -->
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
 
-                        <div class="pb-6 pt-6 py-lg-3">
+                        <div class="pb-5 pt-5  pt-1 py-lg-3">
                             <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Hybrid
                                 Alignment</h3>
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
@@ -990,32 +1023,37 @@
 
         <!-- Section Results -->
         <!-- <section class="pb-0"> -->
+        <!-- <section class="py-8 py-md-11 overflow-hidden">
+            <div class="bg-container parallax" data-rellax-percentage="0.5" style="background-image: url(./img/gt/245_id220.jpg);"></div>
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <a data-fancybox href="https://drive.google.com/file/d/1yDkJfJOLeVlON7ZdRSnR34Ra_ikTVI0A/preview" class="icon mx-auto align-items-center text"><i class="zmdi zmdi-play zmdi-hc-4x"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section> -->
 
-        <section class="pb-0 bg-blue-light">
+        <section class="pb-5 pt-5 bg-blue-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 order-lg-1">
-
                         <div class="pb-0 pt-0 py-lg-0">
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Demo Video
                             </h2>
                         </div>
                         <div style="text-align:center;">
-                            <iframe width="1020" height="630" src="https://www.youtube.com/embed/BGfE1EWGJ8I"
-                                title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                            <iframe src="https://drive.google.com/file/d/1yDkJfJOLeVlON7ZdRSnR34Ra_ikTVI0A/preview"
+                                width="1020" height="630" allow="autoplay"></iframe>
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
         </section>
 
 
-
         <!-- Section Citation -->
-        <section class="pb-7">
+        <section class="pb-5 pt-5 ">
             <div class="container">
                 <div class="col-lg-12 order-lg-2 pb-lg-0 pt-lg-3">
                     <div class="mb-3">
@@ -1039,7 +1077,7 @@
 
         <!-- Section Related Projects -->
         <!--
-                        <section class="pb-6 bg-blue-light">
+                        <section class="pb-5 pt-5  bg-blue-light">
                 <div class="container">
                     <div class="row">
                         <div class="col text-center text-lg-left">
@@ -1071,11 +1109,10 @@
 
 
         <!-- Section Contact -->
-        <!-- <section class="pt-7 pb-0"> -->
-        <section class="pb-0 bg-blue-light">
+        <section class="pb-5 pt-5 bg-blue-light">
             <div class="container">
-                <!-- <div class="pb-6 px-lg-8 px-xl-12"> -->
-                <div class="pb-6">
+                <!-- <div class="pb-5 pt-5  px-lg-8 px-xl-12"> -->
+                <div class="pb-5 pt-5 ">
                     <!-- <div class="row justify-content-center"> -->
                     <!-- <div class="col-6 col-lg-3">
                                 <img alt="" src="./img/kelvin_chan.jpg" alt="" class="img-fluid w-100 rounded-circle" />
