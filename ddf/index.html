@@ -41,6 +41,13 @@
 
         gtag('config', 'UA-22940424-1');
     </script>
+
+    <script>
+        function codeReleaseAlert() {
+            alert("Code will be released soon, stay tuned!");
+        }
+    </script>
+
 </head>
 
 <body>
@@ -165,13 +172,16 @@
     <main class="main minh-100vh">
         <!-- Section -->
         <section class="py-0 overflow-hidden text-center">
+            <!-- <div class="bg-container overlay parallax" data-rellax-percentage="0.5"
+                style="background-image: url(../assets/img/backgrounds/bg-04.jpg)"></div> -->
             <div class="bg-container overlay parallax" data-rellax-percentage="0.5"
-                style="background-image: url(../assets/img/backgrounds/bg-04.jpg)"></div>
+                style="background-image: url(./img/deformation.png)"></div>
             <div class="container">
                 <div class="row h-100vh align-items-center">
                     <div class="col">
-                        <h1 class="text-white text-uppercase fs-4 fs-lg-6">DDF: Generative Latent Bank for Large-Factor
-                            Image Super-Resolution</h1>
+                        <h1 class="text-white text-uppercase fs-4 fs-lg-6">\(\ECCVMETHODNAME\): Correspondence
+                            Distillation from <br>
+                            NeRF-based GAN</h1>
                         <p class="mb-5 fs-lg-1 text-white">arXiv, 2022<br />
                     </div>
                 </div>
@@ -179,53 +189,54 @@
         </section>
         <!-- End of Section -->
 
-        <!-- Section Abstract -->
         <section>
+            <!-- Section Abstract -->
             <div class="container">
                 <div class="row no-gutters justify-content-between">
-                    <div class="col-lg-5">
+                    <!-- <div class="col-lg-12 order-lg-1 columns"> -->
+                    <div class="col-lg-5 ">
                         <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Abstract</h2>
+
                         <p class="text-justify">
-                            The neural radiance field (NeRF) has shown promising results in preserving the fine details
-                            of objects and scenes. However, unlike mesh-based representations, it remains an open
+                            The neural radiance field (NeRF) has shown promising results in preserving the fine
+                            details
+                            of objects and scenes. However, unlike mesh-based representations, it remains an
+                            open
                             problem to build dense correspondences across different NeRFs of the same category,
                             which is essential in many downstream tasks.
-                            The main difficulties of this problem lie in the implicit nature of NeRF and the lack of
+                            The main difficulties of this problem lie in the implicit nature of NeRF and the
+                            lack of
                             ground-truth correspondence annotations.
-                            In this paper, we show it is possible to bypass these challenges by leveraging the rich
+                            In this paper, we show it is possible to bypass these challenges by leveraging the
+                            rich
                             semantics and structural priors encapsulated in a pre-trained NeRF-based GAN.
                             Specifically, we exploit such priors from three aspects,
-                            namely 1) a dual deformation field that takes latent codes as global structural indicators,
+                            namely 1) a dual deformation field that takes latent codes as global structural
+                            indicators,
                             2) a learning objective that regards generator features as geometric-aware local
                             descriptors,
                             and 3) a source of infinite object-specific NeRF samples.
                             Our experiments demonstrate that such priors lead to 3D dense correspondence that is
                             accurate, smooth, and robust.
-                            We also show that established dense correspondence across NeRFs can effectively enable many
+                            We also show that established dense correspondence across NeRFs can effectively
+                            enable
+                            many
                             NeRF-based downstream applications such as texture transfer.
                         </p>
                     </div>
 
-                    <div class="col-lg-6">
-
-                        <div class="row">
-                            <div class="small-12 columns>
-                                    <div id=" images">
-                                <img src="./img/teaser.png" />
-                            </div>
+                    <div class="col-lg-5">
+                        <div class="small-12 columns" id=" images">
+                            <img src="./img/teaser.png" class="mt-0 img-fluid w-100" alt="" />
+                            <figcaption>
+                                We present a novel way to distill dense NeRF correspondence from
+                                pre-trained NeRF GAN unsupervisedly.
+                            </figcaption>
                         </div>
                     </div>
-
-                    <div class="card d-block border-0">
-                        <div class="card-body">
-                            <p class="card-text fs--1">We present a new way to exploit pre-trained GANs for the task of
-                                large-scale super-resolution, up to 64× upscaling factor.</p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
+
             </div>
         </section>
         <!-- End of Section -->
@@ -236,29 +247,33 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <div class="row">
-                            <div class="col-md-6 col-lg-4 pr-lg-5 text-center">
+                            <div class="col-md-6 col-lg-6 pr-lg-5 text-center">
                                 <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
                                         class="fs-2 pr-2 text-primary position-relative top-2"><i
                                             class="zmdi zmdi-collection-pdf"></i></span><a
-                                        href="https://arxiv.org/abs/2012.00739" class="text-muted">Paper</a></h2>
+                                        href="https://arxiv.org/abs/2212.09735" class="text-muted">Paper</a>
+                                </h2>
                                 <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                             </div>
                             <div
-                                class="col-md-6 col-lg-4 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
+                                class="col-md-6 col-lg-6 px-lg-5 border-left-centered-40 border-left-centered-faded text-center">
                                 <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
                                         class="fs-2 pr-2 text-primary position-relative top-2"><i
-                                            class="zmdi zmdi-github-box"></i></span><a
-                                        href="https://github.com/open-mmlab/mmediting" class="text-muted">Codes</a></h2>
+                                            class="zmdi zmdi-github-box"></i></span>
+                                    <!-- <a href="https://github.com/open-mmlab/mmediting" class="text-muted">Codes</a> -->
+                                    <a type="button" , onclick="codeReleaseAlert()" , class="text-muted">Code</a>
+
+
+                                </h2>
                                 <!-- <p class="fs--1">If you have description you can put it here.</p> -->
                             </div>
-                            <div
+                            <!-- <div
                                 class="col-md-6 col-lg-4 pl-lg-5 border-left-centered-40 border-left-centered-faded text-center">
                                 <h2 class="mb-4 fs-1 fw-medium text-uppercase"><span
                                         class="fs-2 pr-2 text-primary position-relative top-2"><i
                                             class="zmdi zmdi-cloud-download"></i></span><a
                                         href="https://github.com/ckkelvinchan/DDF" class="text-muted">Dataset</a></h2>
-                                <!-- <p class="fs--1">If you have description you can put it here.</p> -->
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -267,7 +282,7 @@
         <!-- End of Section -->
 
         <!-- Section Methodology -->
-        <section class="pb-0 bg-blue-light">
+        <!-- <section class="pb-0 bg-blue-light">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 order-lg-1">
@@ -294,6 +309,163 @@
 
                 </div>
             </div>
+        </section> -->
+
+        <!-- End of Section -->
+
+
+        <!-- Section Methodology -->
+        <!-- <section class="pb-0 bg-blue-light"> -->
+        <section class="pb-5 pt-5 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 order-lg-1">
+                        <div class="pb-5 pt-5 pt-1 py-lg-3">
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">
+                                Method
+                                Overview</h2>
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                Self-supervised Inversion Learning</h3>
+                            <!-- <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Distill 3D GANs as 3D Supervisions. </h2> -->
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">
+                                for
+                                plausible shape inversion</h2>
+                            <div class="row">
+
+                                <div class="col-lg-12 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            The triple role of a NeRF-based GAN:
+                                        </b>
+                                        We retrofit a pretrained NeRF-based GAN into triple roles:
+                                        (1) the latent codes \(z_{i=1}^{N}\) serve as holistic structure descriptors;
+                                        (2) the extracted generator features serve as geometry-aware local descriptors;
+                                        and (3) the sampling space of pretrained \(G\) could serve as an infinite
+                                        object-specific dataset.
+                                    </p>
+                                </div>
+                                <!-- <div class="col-lg-5 order-lg-2 pb-lg-0 pt-lg-3">  -->
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 order-lg-2 pb-lg-0 pt-lg-6">
+                        <div class="mb-0">
+                            <figure>
+                                <img alt="" src="./img/triple_role.png" class="mt-0 img-fluid w-100" alt="" />
+                            </figure>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            </div>
+            </div>
+        </section>
+        <!-- End of Section -->
+
+        <!-- Section Results -->
+        <!-- <section class="pb-0 bg-blue-light"> -->
+        <section class="pb-5 pt-5 ">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 order-lg-1">
+                        <div class="pb-5 pt-5  pt-1 py-lg-3">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                Training</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Pipeline
+                            </h2>
+
+                            <div class="row">
+
+                                <div class="col-lg-6 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            Overview of the proposed Dual Deformation Field \(\ECCVMETHODNAME\).
+                                        </b>
+                                        (a) \(\ECCVMETHODNAME\) consists of two coordinate-based deformation fields,
+                                        namely the backward \(B\) and the forward \(F\).
+                                        To get the correspondence point given a point \(\spoint\) sampled from the
+                                        source
+                                        NeRF \(\nerf_s\),
+                                        the \(B\) model conditions on the \(\code_s\) and learns to deform the input
+                                        point
+                                        \(\spoint\) to the correspondence point in the template NeRF \(\nerf_0\).
+                                        Similarly,
+                                        the \(F\) model conditions on the target latent code \(\code_t\)
+                                        and learns to deform points from the template NeRF \(\point_0\) to the target
+                                        NeRF
+                                        \(\nerf_t\).
+                                        (b): Feature similarity losses \(\mathcal{L}^B_{sim}\) and
+                                        \(\mathcal{L}^F_{sim}\)
+                                        between features extracted from the generator of the pre-trained \(\pi\)-GAN,
+                                        \(G\),
+                                        is adopted as the main loss.
+                                    </p>
+                                </div>
+
+                                <div class="col-lg-6 order-lg-2">
+                                    <div class="mb-0">
+                                        <img alt="" src="./img/overview.png" class="mt-0 img-fluid w-100" alt="" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+        </section>
+
+        <!-- Section Results -->
+        <section class="pb-5 pt-5">
+            <!-- <section class="pb-0 bg-blue-light"> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 order-lg-1">
+
+                        <div class="pb-5 pt-5  pt-1 py-lg-3">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Hybrid
+                                Alignment</h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">for
+                                High-quality editing</h2>
+
+                            <div class="row">
+                                <div class="col-lg-12 order-lg-1">
+                                    <p class="text-justify">
+                                        <b>
+                                            Illustration of loss functions used in \(\ECCVMETHODNAME{}\).
+                                        </b>
+                                        (a) Backward cycle-consistency loss: \(F(B(\spoint, \code_s), \code_s) \approx
+                                        \spoint\),
+                                        (b) forward cycle-consistency loss: \((F(\tpoint, \code_t), \code_t) \approx
+                                        \tpoint\)
+                                        and (c) second-order feature similarity loss: \(G(\spoint, \code_s) \approx
+                                        G(F(B(\spoint, \code_s),\code_t),\code_t)\).
+                                    </p>
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-6 order-lg-2 pb-lg-0 pt-lg-5">
+                        <div class="mb-0">
+                            <img alt="" src="./img/loss_detail.png" class="mt-0 img-fluid w-100" alt="" />
+                        </div>
+                    </div>
+                </div>
         </section>
         <!-- End of Section -->
 
@@ -301,23 +473,28 @@
         <section class="pb-0">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5 order-lg-1">
+                    <div class="col-lg-4 order-lg-1">
                         <div class="pb-6 pt-6 py-lg-3">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Large
-                                Factor</h3>
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Texture
+                            </h3>
                             <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">
-                                Super-Resolution</h2>
+                                Transfer</h2>
                             <p class="text-justify">
-                                DDF generates perceptually convincing images resembling the ground-truth for up to 64×
-                                upscaling. DDF can be applied to various categories by switching between StyleGANs
-                                trained on different categories.
+                                Through dense 3D correspondence established via \(\ECCVMETHODNAME\), our method could
+                                conduct texture transfer over real worl identities.
+                                Visually inspected, our method produces semantic plausible dense correspondences with
+                                high-fidelity texture transfer results.
+                                We show our results in multiple views to demonstrate that our method has learned
+                                both 3D consistent dense correspondences.
+                                Note that good texture transfer results could not be achieved without accurate
+                                correspondence matching in 3D space.
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3">
+                    <div class="col-lg-8 order-lg-2 pb-lg-0 pt-lg-3">
                         <div class="mb-8">
-                            <img src="./img/sr.jpg" class="mt-4 img-fluid w-100" alt="" />
+                            <img src="./img/applications/texture_transfer.png" class="mt-4 img-fluid w-100" alt="" />
                         </div>
                     </div>
 
@@ -330,25 +507,25 @@
         <section class="pb-0 bg-blue-light">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-5 order-lg-1">
+                    <div class="col-lg-4 order-lg-1">
                         <div class="pb-6 pt-6 py-lg-3">
-                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Image
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                Segmentation
                             </h3>
-                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Retouching
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Transfer
                             </h2>
                             <p class="text-justify">
-                                In interactive image retouching, a perfect output typically requires tedious and precise
-                                editing steps. As a result, artifacts are common in the outputs, especially those from
-                                amateur retouching. Thanks to the capability of DDF in producing high quality and
-                                fidelity images, we can downsample an edit and upsample it using DDF to eliminate the
-                                blurry region and generate a coherent output with natural textures.
+                                Given a single canonical segmentation map, \(\ECCVMETHODNAME\) could
+                                conduct 1-shot segmentation transfer with high quality.
+                                As can be seen,
+                                the segmentation results are both accurate and also view-consistent.
                             </p>
                         </div>
                     </div>
 
-                    <div class="col-lg-7 order-lg-2 pb-lg-0 pt-lg-3">
+                    <div class="col-lg-8 order-lg-2 pb-lg-0 pt-lg-3">
                         <div class="mb-8">
-                            <img src="./img/retouch.jpg" class="mt-4 img-fluid w-100" alt="" />
+                            <img src="./img/applications/seg_transfer.png" class="mt-4 img-fluid w-100" alt="" />
                         </div>
                     </div>
 
@@ -357,8 +534,40 @@
         </section>
         <!-- End of Section -->
 
+        <!-- Section Results -->
+        <section class="pb-0 bg-blue-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 order-lg-1">
+                        <div class="pb-6 pt-6 py-lg-3">
+                            <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">
+                                Segmentation
+                            </h3>
+                            <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Transfer
+                            </h2>
+                            <p class="text-justify">
+                                We design a hybrid inversion framework to allow for \(\ECCVMETHODNAME\) to establish 3D
+                                correspondence over real identities and facilitate
+                                downstream tasks like view synthesis, segmentation transfer and shape editings.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8 order-lg-2 pb-lg-0 pt-lg-3">
+                        <div class="mb-8">
+                            <img src="./img/applications/real_world.png" class="mt-4 img-fluid w-100" alt="" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- End of Section -->
+
+
+
         <!-- Section Video Demo -->
-        <section class="py-8 py-md-11 overflow-hidden">
+        <!-- <section class="py-8 py-md-11 overflow-hidden">
             <div class="bg-container parallax" data-rellax-percentage="0.5"
                 style="background-image: url(../assets/img/custom_backgrounds/bg-04.jpg);"></div>
             <div class="container-fluid">
@@ -369,80 +578,23 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End of Section -->
-
-        <!-- Section Results -->
-        <section class="pb-6 bg-blue-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 order-lg-1">
-                        <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Real-World
-                        </h3>
-                        <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Examples</h2>
-                        <div class="row">
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_02.jpg" />
-                                    <img src="./img/sr_02.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_03.jpg" />
-                                    <img src="./img/sr_03.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_04.jpg" />
-                                    <img src="./img/sr_04.jpg" />
-                                </div>
-                            </div>
-                        </div>
-                        <p></p>
-                        <div class="row">
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_05.jpg" />
-                                    <img src="./img/sr_05.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_06.jpg" />
-                                    <img src="./img/sr_06.jpg" />
-                                </div>
-                            </div>
-                            <div class="col-sm small-4 columns pb-3">
-                                <div class="twentytwenty-container" id="images">
-                                    <img src="./img/lr_07.jpg" />
-                                    <img src="./img/sr_07.jpg" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </section> -->
         <!-- End of Section -->
 
 
         <!-- Section Citation -->
-        <section class="pb-7">
+        <section class="pb-5 pt-5 ">
             <div class="container">
                 <div class="col-lg-12 order-lg-2 pb-lg-0 pt-lg-3">
                     <div class="mb-3">
                         <h3 class="my-0 fs-1 fw-medium text-primary text-uppercase text-center text-lg-left">Paper</h3>
                         <h2 class="mb-5 fw-medium text-secondary text-uppercase text-center text-lg-left">Citation</h2>
                         <p class="text-700 fw-medium">
-                            @InProceedings{chan2021DDF,<br />
-                            &emsp;author = {Chan, Kelvin CK and Wang, Xintao and Xu, Xiangyu and Gu, Jinwei and Loy,
-                            Chen Change},<br />
-                            &emsp;title = {DDF: Generative Latent Bank for Large-Factor Image Super-Resolution},<br />
-                            &emsp;booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern
-                            Recognition},<br />
-                            &emsp;year = {2021} <br />
+                            @article{lan2022ddf, <br />
+                            &emsp;title={DDF: Correspondence Distillation from NeRF-based GAN}, <br />
+                            &emsp;author={Lan, Yushi and Loy, Chen Change and Dai, Bo}, <br />
+                            &emsp;journal={arXiv preprint arXiv:2212.09735}, <br />
+                            &emsp;year={2022} <br />
                             }
                         </p>
                     </div>
@@ -450,6 +602,8 @@
             </div>
         </section>
         <!-- End of Section -->
+
+
 
         <!-- Section Related Projects -->
         <section class="pb-6 bg-blue-light">
@@ -464,41 +618,19 @@
                     <div class="col-lg-10">
                         <div class="row">
                             <ul>
-                                <!-- <li>
-                                       <span class="text-primary">BasicVSR++: Improving Video Super-Resolution with Enhanced Propagation and Alignment </span> 
-                                       <br />
-                                       <span class="text-500">
-                                       K. C. K. Chan, S. Zhou, X. Xu, C. C. Loy <br /> 
-                                       Technical report, arXiv:2104.13371, 2021 <br />    
-                                       </span>
-                                       [<a href="https://arxiv.org/abs/2104.13371" target="_blank"><span class="text-muted">arXiv</span></a>]
-                                       [<a href="https://ckkelvinchan.github.io/projects/BasicVSR++/" target="_blank"><span class="text-muted">Project Page</span></a>]
-                                    </li>                                     -->
-                                <!-- <li>
-                                       <span class="text-primary">BasicVSR: The Search for Essential Components in Video Super-Resolution and Beyond </span> 
-                                       <br />
-                                       <span class="text-500">
-                                       K. C. K. Chan, X. Wang, K. Yu, C. Dong, C. C. Loy <br /> 
-                                       in Proceedings of IEEE Conference on Computer Vision and Pattern Recognition, 2021 <strong>(CVPR)</strong><br />    
-                                       </span>
-                                       [<a href="https://openaccess.thecvf.com/content/CVPR2021/papers/Chan_BasicVSR_The_Search_for_Essential_Components_in_Video_Super-Resolution_and_CVPR_2021_paper.pdf" target="_blank"><span class="text-muted">PDF</span></a>]
-                                       [<a href="https://openaccess.thecvf.com/content/CVPR2021/supplemental/Chan_BasicVSR_The_Search_CVPR_2021_supplemental.pdf" target="_blank"><span class="text-muted">Supplementary Material</span></a>]
-                                       [<a href="https://arxiv.org/abs/2012.02181" target="_blank"><span class="text-muted">arXiv</span></a>]
-                                       [<a href="https://ckkelvinchan.github.io/projects/BasicVSR" target="_blank"><span class="text-muted">Project Page</span></a>]
-                                    </li>                                     -->
                                 <li>
-                                    <span class="text-primary">Understanding Deformable Alignment in Video
-                                        Super-Resolution </span>
+                                    <span class="text-primary">E3DGE: Self-supervised Geometry-Aware Encoder for
+                                        Style-based 3D GAN</span>
                                     <br />
                                     <span class="text-500">
-                                        K. C. K. Chan, X. Wang, K. Yu, C. Dong, C. C. Loy <br />
-                                        in Proceedings of AAAI Conference on Artificial Intelligence, 2021
-                                        <strong>(AAAI)</strong><br />
+                                        Y. Lan, C. C. Loy, B. Dai <br />
+                                        arXiv preprint
+                                        <!-- <strong>(AAAI)</strong><br /> -->
                                     </span>
-                                    [<a href="https://arxiv.org/abs/2009.07265" target="_blank"><span
+                                    [<a href="https://arxiv.org/abs/2212.07409" target="_blank"><span
                                             class="text-muted">arXiv</span></a>]
-                                    [<a href="https://ckkelvinchan.github.io/projects/DCN/" target="_blank"><span
-                                            class="text-muted">Project Page</span></a>]
+                                    [<a href="https://nirvanalan.github.io/projects/E3DGE/index.html"
+                                        target="_blank"><span class="text-muted">Project Page</span></a>]
                                 </li>
                             </ul>
                         </div>
@@ -510,16 +642,17 @@
 
 
         <!-- Section Contact -->
-        <section class="pt-7 pb-0">
+        <!-- <section class="pt-7 pb-0"> -->
+        <section class="pb-0 bg-blue-light">
             <div class="container">
                 <div class="pb-6 px-lg-8 px-xl-12">
                     <div class="row justify-content-center">
                         <div class="col-6 col-lg-3">
-                            <img src="./img/kelvin_chan.jpg" alt="" class="img-fluid w-100 rounded-circle" />
+                            <img src="./img/portrait-yslan.JPG" alt="" class="img-fluid w-100 rounded-circle" />
                         </div>
                         <div class="col-lg-9 text-center text-lg-left">
                             <p class="h5 text-secondary fw-medium mt-3">Contact</p>
-                            <br /><a href="https://ckkelvinchan.github.io/">Yushi Lan</a>
+                            <br /><a href="https://github.com/NIRVANALAN">Yushi Lan</a>
                             <br />Email: yushi001 at e.ntu.edu.sg
                         </div>
                     </div>
@@ -622,6 +755,29 @@
     <script src="../assets/js/theme.js"></script>
 
     <!-- Image Slider Javascripts -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+
+    <script>
+        window.MathJax = {
+            tex: {
+                macros: {
+                    RR: "{\\bf R}",
+                    vec: ["{\\boldsymbol #1}", 1],
+                    ECCVMETHODNAME: "{\\textit{DDF}}",
+                    NeRF: "{\\mathcal{N}}",
+                    code: "{\\vec{z}}",
+                    point: "{\\vec{x}}",
+                    tpoint: "{\\vec{x}_{ t }}",
+                    spoint: "{\\vec{x}_{ s }}",
+                    nerf: "{\\mathcal{N}}"
+                }
+            }
+        };
+
+    </script>
+
     <script src="../assets/vendor/twentytwenty/js/jquery.event.move.js"></script>
     <script src="../assets/vendor/twentytwenty/js/jquery.twentytwenty.js"></script>
     <script>
