@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link href="css/index.css" rel="stylesheet">
+  <base target="_blank">
+</head>
+
+<title>LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation</title>
+
+<style>
+  /* CSS rule to create horizontal distribution */
+  .horizontal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .flexible-div {
+    flex: 1;
+    /* border: 1px solid black; */
+    /* padding: 50px; */
+    padding: 0px;
+    border: 10px;
+    text-align: center;
+    width: 1000px;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <!-- <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#supp", target="_self">Supplementary PDF</a>
+                </li> -->
+      <!-- <li class="nav-item">
+                  <a class="nav-link" href="#Relighting", target="_self">Relighting</a>
+                </li_self> -->
+      </ul>
+    </div>
+  </nav>
+  <br />
+
+  <!-- Paper -->
+  <div class='container' id='supp'>
+    <br>
+    <br>
+    <br>
+    <center>
+      <h2 id="Paper" style="padding-top: 80px; margin-top: -80px">Supplementary material</h2>
+    </center>
+    <br>
+    <center>
+      <p style="font-size: 20px">Click <a href="501-supp.pdf">here</a> to view the supplementary
+        material PDF.</p>
+    </center>
+  </div>
+  <hr>
+
+  <div class='container' id='Teaser'>
+
+    <center>
+      <h2 id='Relighting_GT' style="padding-top: 80px; margin-top: 20px">Text-to-3D on ShapeNet</h2>
+
+      <h3 style="padding-top: 10px; margin-top: 10px">(Fig. 4 in the main paper)
+      </h3>
+
+      <br>
+      <br>
+      <div class="horizontal-container">
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-car-t23d-0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-car-t23d-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 10px;">A green/grey Porsche 911.</div>
+        <div style="width: 500px; margin-right: 10px;">A SUV trunk.</div>
+      </div>
+
+      <!-- chair -->
+      <div class="horizontal-container">
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-chair-t23d-0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-chair-t23d-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 10px;">A brown wooden chair.</div>
+        <div style="width: 500px; margin-right: 10px;">A sofa chair with soft pad.</div>
+      </div>
+
+
+
+      <!-- plane -->
+      <div class="horizontal-container">
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-plane-t23d-0.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="500" controls loop autoplay muted>
+            <source src="webpage/vid-ShapeNet/merged-plane-t23d-1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 10px;">A star war Tie Fighter.</div>
+        <div style="width: 500px; margin-right: 10px;">A Boeing 747.</div>
+      </div>
+
+      <!-- <h5 style="padding-top: 10px; margin-top: 10px; text-align: left; text-indent: 1em;">
+        We showcase the .
+      </h5> -->
+    </center>
+  </div>
+
+
+  <div class='container' id='Teaser'>
+
+    <center>
+      <h2 id='Relighting_GT' style="padding-top: 80px; margin-top: 20px">Text-to-3D on Objaverse</h2>
+
+      <h3 style="padding-top: 10px; margin-top: 10px">(Fig. 5 in the main paper and Fig. 3 in the supplementary.)
+      </h3>
+
+      <br>
+      <br>
+      <div class="horizontal-container">
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_cat/new_triplane_940024.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_cat/new_triplane_940033.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- </div> -->
+
+        <!-- chair -->
+        <!-- <div class="horizontal-container"> -->
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_voxelized_dog/new_triplane_940145.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_voxelized_dog/new_triplane_940249.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 10px;">A cute toy cat.</div>
+        <div style="width: 500px; margin-right: 10px;">A voxelized dog.</div>
+      </div>
+
+
+      <!-- plane -->
+      <div class="horizontal-container">
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_running_hund/new_triplane_940011.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal/a_running_hund/new_triplane_940005.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <!-- plane -->
+        <!-- <div class="horizontal-container"> -->
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/bluechair/new_triplane_1080010.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/bluechair/new_triplane_1080013.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 10px;">A standing hund.</div>
+        <div style="width: 500px; margin-right: 10px;">A blue plastic chair.</div>
+      </div>
+
+      <!-- plane -->
+      <div class="horizontal-container">
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/a_wooden_table/new_triplane_890001.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/a_wooden_table/new_triplane_890024.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- </div> -->
+
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/a_wooden_case/new_triplane_890024.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furniture-t23d/a_wooden_case/new_triplane_890003.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 0px;">A wooden worktable.</div>
+        <div style="width: 500px; margin-right: 10px;">A wooden cloths cage.</div>
+      </div>
+
+
+      <!-- plane -->
+      <div class="horizontal-container">
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/a_ufo_spaceaircraft/new_triplane_920002.mp4"
+              type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/a_ufo_spaceaircraft/new_triplane_920037.mp4"
+              type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <!-- </div> -->
+
+
+        <!-- plane -->
+        <!-- <div class="horizontal-container"> -->
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/canno/new_triplane_920038.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/canno/new_triplane_920493.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 0px;">An UFO space aircraft.</div>
+        <div style="width: 500px; margin-right: 10px;">An 18th century cannon.</div>
+      </div>
+
+
+
+
+      <!-- plane -->
+      <div class="horizontal-container">
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/wooden_ship_with_mast/new_triplane_920016.mp4"
+              type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/wooden_ship_with_mast/new_triplane_920022.mp4"
+              type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/a_tank/new_triplane_920001.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 10px;">
+          <video width="250" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-t23d/a_tank/new_triplane_920004.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+      </div>
+
+      <div class="horizontal-container">
+        <div style="width: 500px; margin-right: 0px;">A sailboat with mast.</div>
+        <div style="width: 500px; margin-right: 10px;">A four wheeled armored vehicle.</div>
+      </div>
+
+
+    </center>
+  </div>
+
+
+
+  <div class='container' id='Teaser'>
+
+    <center>
+      <h2 id='Relighting_GT' style="padding-top: 80px; margin-top: 20px">Monocular 3D Reconstruction on Objaverse
+      </h2>
+
+      <h3 style="padding-top: 10px; margin-top: 10px">(Fig. 5 in the supplementary)
+      </h3>
+
+      <br>
+      <br>
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_34.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_38.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_35.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_37.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_41.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_animal-rec/new_video_novelview_600000_42.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_34.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_36.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_38.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_37.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_30.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_transport-rec/new_video_novelview_600000_35.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_34.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_35.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_37.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+      <div class="horizontal-container">
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_41.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 5px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_36.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div style="margin-right: 0px;">
+          <video width="330" controls loop autoplay muted>
+            <source src="webpage/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_39.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    </center>
+  </div>
+
+
+
+
+
+
+  <br />
+  <hr>
+
+  <!-- Bootstrap core JavaScript -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+    integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+    integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
