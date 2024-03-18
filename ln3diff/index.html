@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="description" content="Gaussian3Diff: 3D Gaussian Diffusion for 3D Full Head Synthesis and Editing.">
-  <meta name="keywords" content="Gaussian3Diff,NeRF,3D Gaussian,Neural Render">
+  <meta name="description" content="LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation">
+  <meta name="keywords" content="LN3Diff,NeRF,3D AIGC, 3D Generative Model, Diffusion Model, Neural Render">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Gaussian3Diff: 3D Gaussian Diffusion for 3D Full Head Synthesis and Editing.</title>
+  <title>LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation.</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script> -->
@@ -29,14 +29,14 @@
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="stylesheet" href="./static/css/index.css"> -->
   <link rel="icon" href="./static/images/favicon.svg">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <!-- <script src="./static/js/index.js"></script> -->
 </head>
 
 <body>
@@ -87,67 +87,40 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title"><b>LN3Diff</b>: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation</h1>
+            <h1 class="title is-1 publication-title">
+              <span class="dnerf">LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation</span>
+            </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="https://nirvanalan.github.io/">Yushi Lan</a><sup>1,2</sup>,</span>
+                <a href="https://nirvanalan.github.io/">Yushi Lan</a><sup>1</sup>,</span>
               <!--  -->
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?hl=en&user=qsrpuKIAAAAJ">Feitong
-                  Tan</a><sup>1</sup>,</span>
-              <!-- <span class="author-block">Qiu Di<sup>1</sup>,</span> -->
-              <span class="author-block">
-                <a href="https://sylqiu.github.io/">Di Qiu</a><sup>1</sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://xharlie.github.io/">Qiangeng Xu</a>
-                <sup>1</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.kylegenova.com/">Kyle Genova</a>
-                <sup>1</sup>,</span>
+                <a href="https://hongfz16.github.io">Fangzhou Hong</a><sup>1</sup>,</span>
 
               <span class="author-block">
-                <a href="https://zeng.science/">Zeng Huang</a><sup>1</sup>,
-              </span>
+                <a href="https://williamyang1991.github.io/">Shuai Yang</a><sup>1</sup>,</span>
+
               <span class="author-block">
-                <a href="https://www.seanfanello.it/">Sean Fanello</a><sup>1</sup>,
-              </span>
+                <a href="https://shangchenzhou.com/">Shangchen Zhou</a><sup>1</sup>,</span>
+
               <span class="author-block">
-                <a href="https://scholar.google.com/citations?user=lJ3VfV8AAAAJ&hl=en">Rohit Pandey</a><sup>1</sup>,
-              </span>
+                <a href="https://sg.linkedin.com/in/xuyi-meng-673779208">Xuyi Meng</a><sup>1</sup>,</span>
+              <br>
+
               <span class="author-block">
-                <a href="https://www.cs.princeton.edu/~funk/">Thomas Funkhouser</a><sup>1</sup>,</span>
+                <a href="https://daibo.info/">Bo Dai</a><sup>2</sup>,</span>
+
+              <span class="author-block"><a href="https://xingangpan.github.io/">Xingang Pan</a><sup>1</sup>,</span>
+
               <span class="author-block"><a href="https://www.mmlab-ntu.com/person/ccloy/">Chen Change
-                  Loy</a><sup>2</sup>,</span>
-              <span class="author-block">
-                <a href="https://www.zhangyinda.com/">Yinda Zhang</a><sup>1</sup>
-              </span>
+                  Loy</a><sup>1</sup>,</span>
 
-              <!-- <span class="author-block">
-              <a href="https://github.com/NIRVANALAN">Yushi Lan</a><sup>1,2</sup>,</span> -->
-              <!-- <span class="author-block">
-              <a href="https://utkarshsinha.com">Utkarsh Sinha</a><sup>2</sup>,</span>
-            <span class="author-block">
-              <a href="https://jonbarron.info">Jonathan T. Barron</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://sofienbouaziz.com">Sofien Bouaziz</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://www.danbgoldman.com">Dan B Goldman</a><sup>2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="https://homes.cs.washington.edu/~seitz/">Steven M. Seitz</a><sup>1,2</sup>,
-            </span>
-            <span class="author-block">
-              <a href="http://www.ricardomartinbrualla.com">Ricardo Martin-Brualla</a><sup>2</sup>
-            </span> -->
             </div>
 
             <br>
             <div class="is-size-5 publication-authors">
-              <span class="author-block"><sup>1</sup>Google</span>
-              <span class="author-block"><sup>2</sup>S-Lab, Nanyang Technological University, Singapore</span>
+              <span class="author-block"><sup>1</sup>S-Lab, Nanyang Technological University, Singapore</span>
+              <span class="author-block"><sup>2</sup>Shanghai AI Laboratory</span>
             </div>
 
             <div class="column has-text-centered">
@@ -155,14 +128,15 @@
                 <!-- PDF Link. -->
                 <span class="link-block">
                   <!-- <a href="./static/Gaussian3diff.pdf" class="external-link button is-normal is-rounded is-dark"> -->
-                  <a href="https://arxiv.org/pdf/2312.03763.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <!-- <a href="https://arxiv.org/pdf/2312.03763.pdf" -->
+                  <a href="TODO" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
                     </span>
                     <span>Paper</span>
                   </a>
                 </span>
-<!-- 
+                <!-- 
                 <span class="link-block">
                   <a href="./static/Gaussian3diff_supp.pdf" class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -210,6 +184,15 @@
                 <!-- </a> -->
               </div>
 
+
+
+              <hr style="width:100%;height:0.7px;background-color:rgba(0, 0, 0, 0.665);margin-top:1em">
+              <font size="5">
+                <b>LN3Diff</b> creates high-quality 3D object mesh from text within <strong>8 V100-SECONDS</strong>.
+              </font>
+
+              <!-- <br>All testing images shown below are never seen by the model in training. -->
+
             </div>
           </div>
         </div>
@@ -241,17 +224,11 @@
           <div id="carousel" class="results-carousel">
             <!-- <div class="item" align="center"> -->
             <!-- <img src="static/images/teaser.png" width="100%" alt="overview_image"> -->
-            <img src="static/images/teaser2.png" width="100%" alt="overview_image">
+            <img src="static/images/teaser.png" width="100%" alt="overview_image">
             <div class="content has-text-justified">
               <p>
-                <!-- We propose to represent the scene with a set of local neural radiance fields, named nerflets, which are
-                trained with only 2D supervision. Our representation is not only useful for 2D tasks such as novel view
-                synthesis and panoptic segmentation, but also capable of solving 3D-oriented tasks such as 3D
-                segmentation
-                and scene editing. The key idea is our learned structured decomposition (top right). -->
-                Gaussian3Diff adopts 3D Gaussians defined in UV space as the underlying 3D representation, which
-                intrinsically support high-quality novel view synthesis, 3DMM-based animation and 3D diffusion for
-                unconditional generation.
+                <b>LN3Diff</b> performs efficient 3D diffusion learning over a compact latent space. The resulting model
+                enables both high-quality monocular 3D reconstruction and text-to-3D synthesis.
               </p>
               <!-- </div> -->
             </div>
@@ -261,129 +238,84 @@
     </div>
   </section>
 
-
-  <section class="section">
-    <div class="container is-max-desktop">
-      <!-- Abstract. -->
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              We present a novel framework for generating photorealistic 3D human head and subsequently manipulating and
-              reposing them with remarkable flexibility. The proposed approach leverages an implicit function
-              representation of 3D human heads, employing 3D Gaussians anchored on a parametric face model. To enhance
-              representational capabilities and encode spatial information, we embed a lightweight tri-plane payload
-              within each Gaussian rather than directly storing color and opacity. Additionally, we parameterize the
-              Gaussians in a 2D UV space via a 3DMM, enabling effective utilization of the diffusion model for 3D head
-              avatar generation. Our method facilitates the creation of diverse and realistic 3D human heads with
-              fine-grained editing over facial features and expressions. Extensive experiments demonstrate the
-              effectiveness of our method.
-            </p>
-          </div>
-          <div align="center" style="margin-top:25px;" style="margin-bottom:120px;">
-            <img style='height: auto; width: 80%; object-fit: contain' src="static/images/render-overview.png"
-              alt="overview_image">
-          </div>
-          <div class="content has-text-justified">
-            <p>
-              We propose to anchor 3D Gaussians on the 3DMM UV space with tri-plane payloads, which allows us to
-              decouple the
-              underlying geometry from the complex volumetric appearance.
-              Additionally, this representation is efficient in rendering and natually support diffusion training.
-            </p>
-          </div>
-        </div>
-      </div>
-      <!--/ Abstract. -->
-
-      <!-- Paper video. -->
-      <!-- <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Video</h2>
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0" frameborder="0"
-              allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div> -->
-      <!--/ Paper video. -->
-    </div>
-  </section>
-
-
   <section class="section">
 
     <div class="container is-max-desktop">
-
-      <div class="columns is-centered">
-        <!-- overview. -->
-        <div class="column is-full-width">
-          <h2 class="title is-3">Full Demonstration</h2>
-          <div class="columns is-centered">
-            <div class="column content">
-              <p>
-                Gaussian3Diff adopts 3D Gaussians defined in UV space as the underlying 3D representation, which
-                intrinsically support high-quality novel view synthesis, 3DMM-based animation and 3D diffusion for
-                unconditional generation.
-              </p>
-
-              <!-- <div style="display: flex; margin: 0 auto;"> -->
-              <div style="margin-right: 0px;width: 100%;">
-                <video width="100%" controls loop autoplay muted>
-                  <source src="./static/videos/gallary_video/64.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-              <div style="margin-right: 0px;width: 100%;">
-                <video width="100%" controls loop autoplay muted>
-                  <!-- <source src="./static/videos/gallary_video/79.mp4" type="video/mp4"> -->
-                  <source src="./static/videos/gallary_video/2.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div style="margin-right: 0px;width: 100%;">
-                <video width="100%" controls loop autoplay muted>
-                  <source src="./static/videos/gallary_video/120.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <div style="margin-right: 0px;width: 100%;">
-                <video width="100%" controls loop autoplay muted>
-                  <source src="./static/videos/gallary_video/83.mp4" type="video/mp4">
-                  Your browser does not support the video tag.
-                </video>
-              </div>
-
-              <!-- </div> -->
-
-              <div style="display: flex; margin: 0 auto;" align="center">
-                <div style="width: 20%; margin-right: 10px;">Multi-view Input</div>
-                <div style="width: 20%; margin-right: 10px;">View Synthesis</div>
-                <div style="width: 20%; margin-right: 10px;">View Synthesis Depth</div>
-                <div style="width: 20%; margin-right: 10px;">Novel Expression</div>
-                <div style="width: 20%; margin-right: 10px;">Novel Expression Depth</div>
-              </div>
-
-            </div>
-
-          </div>
-        </div>
-      </div>
-
-
 
       <div class="container is-max-desktop">
+
+        <section class="section">
+          <div class="container is-max-desktop">
+            <!-- Abstract. -->
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                  <p>
+                    The field of neural rendering has witnessed significant progress with advancements in generative
+                    models
+                    and differentiable rendering techniques. Though 2D diffusion has achieved success, a unified 3D
+                    diffusion
+                    pipeline remains unsettled.
+                    This paper introduces a novel framework called LN3Diff to address this gap and enable fast,
+                    high-quality,
+                    and generic conditional 3D generation.
+                    Our approach harnesses a 3D-aware architecture and variational autoencoder (VAE) to encode the input
+                    image
+                    into a structured, compact, and 3D latent space.
+                    The latent is decoded by a transformer-based decoder into a high-capacity 3D neural field.
+                    Through training a diffusion model on this 3D-aware latent space, our method achieves
+                    state-of-the-art
+                    performance on ShapeNet for 3D generation and demonstrates superior performance in monocular 3D
+                    reconstruction and conditional 3D generation across various datasets.
+                    Moreover, it surpasses existing 3D diffusion methods in terms of inference speed, requiring no
+                    per-instance optimization. Our proposed LN3Diff presents a significant advancement in 3D generative
+                    modeling and holds promise for various applications in 3D vision and graphics tasks.
+                  </p>
+                </div>
+
+                <!-- <div align="center" style="margin-top:10px;" style="margin-bottom:40px;">
+                  <img style='height: auto; width: 100%; object-fit: contain' src="static/images/overview.png">
+                </div>
+                <div class="content has-text-justified">
+                  <p>
+                    We propose to first learn a 3D latent space, where a monocular image is encoded into the
+                    KL-regularized
+                    latent space.
+                    The encoded 3D latent is decoded by a 3D-aware DiT transformer, and up-sampled towards a high-res
+                    tri-plane for rendering supervisions.
+                    In the second stage, we perform efficient conditional diffusion learning over the compact latent
+                    space.
+                  </p>
+                </div> -->
+
+              </div>
+            </div>
+
+            <img style='height: auto; width: 100%; object-fit: contain' src="static/images/overview.png">
+            <p>
+              <strong>The overall architecture of LN3Diff.</strong>
+              We propose to first learn a 3D latent space, where a monocular image is encoded into the
+              KL-regularized
+              latent space.
+              The encoded 3D latent is decoded by a 3D-aware DiT transformer, and up-sampled towards a high-res
+              tri-plane for rendering supervisions.
+              In the second stage, we perform efficient conditional diffusion learning over the compact latent
+              space.
+            </p>
+
+      </div>
+  </section>
+
+
 
         <div class="columns is-centered">
           <!-- Matting. -->
           <div class="column is-full-width">
-            <h2 class="title is-3">Reenactment</h2>
+            <h2 class="title is-3">Text-to-3D on Objaverse</h2>
             <div class="columns is-centered">
               <div class="column content">
-                <p>
+                <!-- <p>
                   We showcase the reenactment comparison of our method against IDE-3D.
                   Given IDE-3D's segmentation-based nature, utilizing a reference identity with a different
                   shape unavoidably
@@ -392,33 +324,203 @@
                   facilitated by the
                   underlying 3DMM, ensuring the preservation of the input identity through the reeactment
                   process.
+                </p> -->
+                <p>
+                  Efficient conditional diffusion training on the 3D latent space.
                 </p>
 
                 <div style="display: flex; margin: 0 auto;">
-                  <div style="margin-right: 10px;">
+
+                  <div>
                     <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/reeactment/obama_gt.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div style="margin-right: 10px;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos//reeactment/Obama_reenactment.mp4" type="video/mp4">
+                      <source src="static/videos/vid-Objav/vid_transport-t23d/canno/new_triplane_920038.mp4"
+                        type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   </div>
                   <div>
                     <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos//reeactment/ide3d.mp4" type="video/mp4">
+                      <source src="static/videos/vid-Objav/vid_transport-t23d/canno/new_triplane_920493.mp4"
+                        type="video/mp4">
                       Your browser does not support the video tag.
                     </video>
                   </div>
+
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_voxelized_dog/new_triplane_940145.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_voxelized_dog/new_triplane_940249.mp4"
+                        type="video/mp4">
+                      type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
                 </div>
 
                 <div style="display: flex; margin: 0 auto;" align="center">
-                  <div style="width: 20%; margin-right: 10px;">Source Video</div>
-                  <div style="width: 40%; margin-right: 10px;">Ours</div>
-                  <div style="width: 40%; margin-right: 10px;">IDE-3D</div>
+                  <div style="width: 50%; margin-right: 10px;">An 18th century cannon.</div>
+                  <div style="width: 50%; margin-right: 10px;">A voxelized dog.</div>
+                </div>
+
+
+                <div style="display: flex; margin: 0 auto;">
+                  <div style="margin-right: 0px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source
+                        src="static/videos/vid-Objav/vid_transport-t23d/a_ufo_spaceaircraft/new_triplane_920002.mp4"
+                        Your browser does not support the video tag. </video>
+                  </div>
+                  <div style="margin-right: 10px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source
+                        src="static/videos/vid-Objav/vid_transport-t23d/a_ufo_spaceaircraft/new_triplane_920037.mp4"
+                        Your browser does not support the video tag. </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/bluechair/new_triplane_1080010.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/bluechair/new_triplane_1080013.mp4"
+                        type="video/mp4">
+                      type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                </div>
+
+                <div style="display: flex; margin: 0 auto;" align="center">
+                  <div style="width: 50%; margin-right: 10px;">An UFO space aircraft.</div>
+                  <div style="width: 50%; margin-right: 10px;">A blue plastic chair.</div>
+                </div>
+
+                <div style="display: flex; margin: 0 auto;">
+                  <div style="margin-right: 0px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/a_wooden_table/new_triplane_890001.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div style="margin-right: 10px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/a_wooden_table/new_triplane_890024.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_transport-t23d/a_tank/new_triplane_920001.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_transport-t23d/a_tank/new_triplane_920004.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                </div>
+
+                <div style="display: flex; margin: 0 auto;" align="center">
+                  <div style="width: 50%; margin-right: 10px;">A wooden worktable.</div>
+                  <div style="width: 50%; margin-right: 10px;">A four wheeled armored vehicle.</div>
+                </div>
+
+                <div style="display: flex; margin: 0 auto;">
+                  <div style="margin-right: 0px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_running_hund/new_triplane_940011.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div style="margin-right: 10px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_running_hund/new_triplane_940005.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                  <div style="margin-right: 0px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_cat/new_triplane_940024.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div style="margin-right: 10px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_animal/a_cat/new_triplane_940033.mp4" type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+                </div>
+
+                <div style="display: flex; margin: 0 auto;" align="center">
+                  <div style="width: 50%; margin-right: 10px;">A standing hund.</div>
+                  <div style="width: 50%; margin-right: 10px;">A cute toy cat.</div>
+                </div>
+
+                <div style="display: flex; margin: 0 auto;">
+                  <div style="margin-right: 0px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source
+                        src="static/videos/vid-Objav/vid_transport-t23d/wooden_ship_with_mast/new_triplane_920016.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div style="margin-right: 10px;">
+                    <video width="100%" controls loop autoplay muted>
+                      <source
+                        src="static/videos/vid-Objav/vid_transport-t23d/wooden_ship_with_mast/new_triplane_920022.mp4"
+                        type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/a_wooden_case/new_triplane_890024.mp4"
+                        type="video/mp4">
+                      type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                  <div>
+                    <video width="100%" controls loop autoplay muted>
+                      <source src="static/videos/vid-Objav/vid_furniture-t23d/a_wooden_case/new_triplane_890003.mp4"
+                        type="video/mp4">
+                      type="video/mp4">
+                      type="video/mp4">
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+
+
+                </div>
+
+                <div style="display: flex; margin: 0 auto;" align="center">
+                  <div style="width: 50%; margin-right: 10px;">A sailboat with mast.</div>
+                  <div style="width: 50%; margin-right: 10px;">A wooden cloths case.</div>
                 </div>
 
               </div>
@@ -429,231 +531,295 @@
         <br>
         <!--/ Matting. -->
 
+  <div class="columns is-centered">
+    <!-- Matting. -->
+    <div class="column is-full-width">
+      <h2 class="title is-3">Monocular 3D Reconstruction on Objaverse</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <p>
+            High-fidelity 3D reconstruction with the proposed 3D-aware VAE.
+          </p>
 
-        <div class="columns is-centered">
-          <!-- diffusion inpainting. -->
-          <div class="column is-full-width">
-            <h2 class="title is-3">3D Inpainting using Diffusion Model</h2>
-            <div class="columns is-centered">
-              <div class="column content">
-                <p>
-                  For diffusion-based inpainting, we provide either the geometry part or the texture part (on the UV
-                  space) of the upper face
-                  as hints, and let
-                  the diffusion model in-paints the remaining.
-                  As can be seen, the diffusion-inpainted results with texture masks
-                  showcase an identical upper-face texture, encompassing features such as hair and forehead
-                  color, while varying
-                  in shape.
-                  Conversely, the geometry-masked inpainting results exhibit an identical upper-face shape,
-                  including the layout
-                  of the
-                  eyes and forehead, but with different textures.
-                </p>
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_34.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_38.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_35.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
 
-                <div style="display: flex; margin: 0 auto;">
-                  <!-- <div style="margin-right: 10px;">
-                  <video width="100%" controls loop autoplay muted>
-                    <source src="./static/videos/reeactment/obama_gt.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div> -->
-                  <div style="margin-right: 5px; width: 20%;">
-                    <img src="./static/images/inpainting-gt.png">
-                  </div>
-                  <div style="margin-right: 5px;width: 40%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/inpainting/inpaint_tex.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div style="width: 40%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/inpainting/inpaint_geo.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-
-                <div style="display: flex; margin: 0 auto;" align="center">
-                  <div style="width: 20%; margin-right: 10px;">Inpainting Input</div>
-                  <div style="width: 40%; margin-right: 10px;">Texture-masked (upper half face) Inpainting</div>
-                  <div style="width: 40%; margin-right: 10px;">Geometry-masked (upper half face) Inpainting</div>
-                </div>
-
-              </div>
+          </div>
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_34.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_36.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_38.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
           </div>
-        </div>
-        <br>
-        <!--/ diffusion inpainting. -->
 
-
-        <div class="columns is-centered">
-          <!-- diffusion inpainting. -->
-          <div class="column is-full-width">
-            <h2 class="title is-3">Interpolation of Texture and Geometry Individually</h2>
-            <div class="columns is-centered">
-              <div class="column content">
-                <p>
-                  We present the interpolation from source to the target separately for both texture and
-                  geometry.
-                  Leveraging the inherent disentanglement between texture and geometry, Gaussian3Diff
-                  inherently supports
-                  individual modifications to each component.
-                  Furthermore, the intermediate results exhibit a high degree of plausibility.
-                </p>
-
-                <div style="display: flex; margin: 0 auto;" align="center">
-                  <div style="margin-right: 5px; width: 50%;">
-                    <img src="./static/images/interp_gt_1.png">
-                  </div>
-                  <div style="margin-right: 5px; width: 50%;">
-                    <img src="./static/images/interp_gt_2.png">
-                  </div>
-                </div>
-                <div style="display: flex; margin: 0 auto;" align="center">
-                  <div style="width: 50%; margin-right: 10px;">Interp Source (Texture)</div>
-                  <div style="width: 50%; margin-right: 10px;">Interp Source (Geometry)</div>
-                </div>
-                <br>
-
-                <div style="display: flex; margin: 0 auto;">
-                  <!-- <div style="margin-right: 5px; width: 20%;">
-                  <img src="./static/images/inpainting-gt.png">
-                </div> -->
-                  <div style="margin-right: 5px;width: 50%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/interpolation/interp_tex.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div style="width: 50%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/interpolation/interp_geo.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-
-                <div style="display: flex; margin: 0 auto;" align="center">
-                  <!-- <div style="width: 20%; margin-right: 10px;">Inpainting Input</div> -->
-                  <div style="width: 50%; margin-right: 10px;">Texture Interpolation</div>
-                  <div style="width: 50%; margin-right: 10px;">Geometry Interpolation</div>
-                </div>
-
-              </div>
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_41.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
-          </div>
-        </div>
-        <br>
-        <!--/ diffusion inpainting. -->
-
-
-
-        <div class="columns is-centered">
-
-          <!-- 3dmm editing. -->
-          <div class="column is-full-width">
-            <h2 class="title is-3">3DMM-based Editing</h2>
-            <div class="columns is-centered">
-              <div class="column content">
-                <p>
-                  Here, we reenact 2 random sampled source inputs onto the targets by driving the target
-                  Gaussians through the
-                  adjustment of the inner 3DMM mesh using the shape and expression codes from the source.
-                  The reenactment results preserve their original texture while adapting to the shape and
-                  expression of the source
-                  inputs.
-                </p>
-
-                <div style="display: flex; margin: 0 auto;">
-                  <!-- <div style="margin-right: 10px;">
-                  <video width="100%" controls loop autoplay muted>
-                    <source src="./static/videos/reeactment/obama_gt.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                  </video>
-                </div> -->
-                  <div style="margin-right: 5px; width: 20%;">
-                    <img src="./static/images/3dmm_gt.png">
-                  </div>
-                  <div style="margin-right: 5px;width: 40%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/3dmm_editing/3dmm_02.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                  <div style="width: 40%;">
-                    <video width="100%" controls loop autoplay muted>
-                      <source src="./static/videos/3dmm_editing/3dmm_01.mp4" type="video/mp4">
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                </div>
-
-                <div style="display: flex; margin: 0 auto;" align="center">
-                  <div style="width: 20%; margin-right: 10px;">3DMM source</div>
-                  <div style="width: 40%; margin-right: 10px;">Apply female 3DMM source to the target</div>
-                  <div style="width: 40%; margin-right: 10px;">Apply male 3DMM source to the target</div>
-                </div>
-
-              </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_36.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
-          </div>
-        </div>
-        <br>
-        <!-- 3dmm editing. -->
-
-
-
-
-        <!-- Concurrent Work. -->
-        <div class="columns is-centered">
-          <div class="column is-full-width">
-            <h2 class="title is-3">Related Links</h2>
-
-            <div class="content has-text-justified">
-              <p>
-                Our work is inspired by the following work:
-              </p>
-              <p>
-                <a href="https://ldif.cs.princeton.edu/">LDIF</a>, <a
-                  href="https://jetd1.github.io/nerflets-web/">Nerflets</a>
-                and
-                <a href="https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/">3D Gaussian Splatting</a>
-                introduce an idea to represent 3D scenes with local Gaussians.
-              </p>
-              <p>
-                <a href="https://github.com/SizheAn/PanoHead">Panohead</a> can synthesize full 3D head and serve as our
-                data source.
-              </p>
-              <p>
-                <a href="https://www.mmlab-ntu.com/project/ddf/index.html">DDF</a> propose the region-based
-                texture-geometry transfer across NeRF and inspired our applications.
-              </p>
-              <!-- <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p> -->
-              <!-- <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p> -->
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_39.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
             </div>
+
           </div>
+
+
+
+
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_37.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_41.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_animal-rec/new_video_novelview_600000_42.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_37.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_30.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_transport-rec/new_video_novelview_600000_35.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_34.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_37.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div>
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-Objav/vid_furnitures-rec/new_video_novelview_600000_35.mp4"
+                  type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+
         </div>
-        <!--/ Concurrent Work. -->
 
       </div>
-  </section>
+    </div>
+  </div>
 
+
+  <br>
+  <!--/ diffusion inpainting. -->
+
+  <div class="columns is-centered">
+    <!-- Matting. -->
+    <div class="column is-full-width">
+      <h2 class="title is-3">Text-to-3D on ShapeNet</h2>
+      <div class="columns is-centered">
+        <div class="column content">
+          <p>
+            State-of-the-art performance on the common ShapeNet benchmark.
+          </p>
+
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-car-t23d-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 0px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-car-t23d-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+          <div style="display: flex; margin: 0 auto;" align="center">
+            <div style="width: 50%; margin-right: 10px;">A green/grey Porsche 911.</div>
+            <div style="width: 50%; margin-right: 10px;">A SUV trunk.</div>
+          </div>
+
+
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-chair-t23d-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 0px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-chair-t23d-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+          <div style="display: flex; margin: 0 auto;" align="center">
+            <div style="width: 50%; margin-right: 10px;">A brown wooden chair.</div>
+            <div style="width: 50%; margin-right: 10px;">A sofa chair with soft pad.</div>
+          </div>
+
+          <div style="display: flex; margin: 0 auto;">
+            <div style="margin-right: 10px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-plane-t23d-0.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div style="margin-right: 0px;">
+              <video width="100%" controls loop autoplay muted>
+                <source src="static/videos/vid-ShapeNet/merged-plane-t23d-1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+
+          <div style="display: flex; margin: 0 auto;" align="center">
+            <div style="width: 50%; margin-right: 10px;">A star war Tie Fighter.</div>
+            <div style="width: 50%; margin-right: 10px;">A Boeing 747.</div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+  <!--/ diffusion inpainting. -->
+
+
+  <!-- <br> -->
+  <!-- 3dmm editing. -->
+
+
+
+
+  <!-- Concurrent Work. -->
+  <div class="columns is-centered">
+    <div class="column is-full-width">
+      <h2 class="title is-3">Related Links</h2>
+
+      <div class="content has-text-justified">
+        <p>
+          Our work is inspired by the following work:
+        </p>
+        <p>
+          <a href="https://github.com/CompVis/stable-diffusion">Stable Diffusion</a> introduce a general diffusion
+          framework on the VAE latent space.
+        </p>
+        <p>
+          <a href="https://yiconghong.me/LRM/">LRM</a> introduces a large-scale monocular 3D reconstruction model.
+        </p>
+      </div>
+    </div>
+  </div>
+  <!--/ Concurrent Work. -->
+
+  </div>
+  </section>
 
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>@article{lan2023gaussian3diff,
-  author    = {Lan, Yushi and Tan, Feitong and Qiu, Di and Xu, Qiangeng and Genova, Kyle and Huang, Zeng and Fanello, Sean and Pandey, Rohit and Funkhouser, Thomas and Loy, Chen Change and Zhang, Yinda},
-  title     = {Gaussian3Diff: 3D Gaussian Diffusion for 3D Full Head Synthesis and Editing},
+      <pre><code>@article{lan2024ln3diff,
+  author    = {Lan, Yushi and Hong, Fangzhou and Yang, Shuai and Zhou, Shangchen and Meng, Xuyi and Dai, Bo and Pan, Xingang and Loy, Chen Change},
+  title     = {LN3Diff: Scalable Latent Neural Fields Diffusion for Speedy 3D Generation},
   journal   = {arXiv},
-  year      = {2023},
+  year      = {2024},
 }</code></pre>
     </div>
   </section>
