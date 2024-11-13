@@ -1,6 +1,8 @@
 @article{lan2024ga,
-  title={GaussianAnything: Interactive Point Cloud Latent Diffusion for 3D Generation},
-  author={Yushi Lan and Shangchen Zhou and Zhaoyang Lyu and Fangzhou Hong and Shuai Yang and Bo Dai and Xingang Pan and Chen Change Loy},
-  booktitle={arXiv preprint arxiv},
-  year={2024}
+    title={GaussianAnything: Interactive Point Cloud Latent Diffusion for 3D Generation}, 
+    author={Yushi Lan and Shangchen Zhou and Zhaoyang Lyu and Fangzhou Hong and Shuai Yang and Bo Dai and Xingang Pan and Chen Change Loy},
+    eprint={2411.08033},
+    archivePrefix={arXiv},
+    primaryClass={cs.CV},
+    year={2024},
 }
