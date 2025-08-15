@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="STream3R reformulates dense 3D reconstruction into a sequential registration task with causal attention.">
+  <meta name="keywords" content="STream3R, 3D reconstruction, Causal">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer</title>
+
+  <meta property="og:title" content="STream3R" />
+  <meta property="og:description"
+    content="STream3R reformulates dense 3D reconstruction into a sequential registration task with causal attention." />
+  <meta property="twitter:card" content="summary" />
+  <meta property="twitter:title" content="STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer" />
+  <meta property="twitter:description"
+    content="STream3R reformulates dense 3D reconstruction into a sequential registration task with causal attention." />
+
+  <!-- MathJax library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="stylesheet" href="./static/css/dreambooth-style.css">
+</head>
+
+<body>
+  <div class="content">
+    <h1><strong>STream3R: Scalable Sequential 3D Reconstruction <br>with Causal Transformer</strong></h1>
+
+    <p id="authors">
+      <span>
+          <a href="https://nirvanalan.github.io/">Yushi Lan<sup>1*</sup></a></span>
+      <span>
+        <a href="https://scholar.google.com/citations?user=fZxK2B0AAAAJ&hl">Yihang Luo<sup>1*</sup></a></span>
+      <span>
+        <a href="https://hongfz16.github.io">Fangzhou Hong<sup>1</sup></a></span>
+      <span>
+          <a href="https://shangchenzhou.com/">Shangchen Zhou<sup>1</sup></a></span>
+      <span>
+        <a href="https://chenhonghua.github.io/clay.github.io/">Honghua Chen<sup>1</sup></a></span>
+      <br>
+      <span>
+          <a href="https://zhaoyanglyu.github.io/">Zhaoyang Lyu<sup>2</sup></a></span>
+      <span>
+          <a href="https://williamyang1991.github.io/">Shuai Yang<sup>3</sup></a></span>
+      <span>
+          <a href="https://daibo.info/">Bo Dai<sup>4</sup></a></span>
+
+      <span>
+        <a href="https://xingangpan.github.io/">Xingang Pan<sup>1</sup></a></span>
+      <span>
+        <a href="https://www.mmlab-ntu.com/person/ccloy/">Chen Change
+              Loy<sup>1</sup></a></span>
+
+      <br>
+      <span class="institution"><sup>1 </sup> S-Lab, NTU Singapore&nbsp;&nbsp;&nbsp;
+              <sup>2 </sup>Shanghai AI Lab&nbsp;&nbsp;&nbsp;
+              <sup>3 </sup>WICT, Peking University&nbsp;&nbsp;&nbsp;
+              <sup>4 </sup>The University of Hong Kong</span>
+    </p>
+
+    <div style="text-align: center;">
+      <img src="static/assets/teaser_dynamic.gif" width="95%" alt="teaser">
+    </div>
+
+    <p style="text-align:center">
+        <font size="+1">
+          <b>TL;DR:</b> STream3R reformulates dense 3D reconstruction into a sequential registration task with causal attention.
+        </font>
+    </p>
+    
+    <font size="+2">
+      <p style="text-align: center;">
+        <a href="https://arxiv.org/abs/2508.10893" target="_blank">[Paper]</a> &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="https://github.com/NIRVANALAN/STream3R" target="_blank">[Code]</a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="static/bibtex.txt" target="_blank">[BibTeX]</a>
+      </p>
+    </font>
+
+  </div>
+
+  <div class="content">
+    <h2 style="text-align:center;">Interactive Visualization</h2>
+    <p>
+      STream3R reconstruction on in-the-wild videos. Click any thumbnail below to explore its 3D reconstruction.
+    </p>
+
+    <!-- Main Display Area with Navigation Arrows -->
+    <div style="position: relative; ">
+      <!-- Left Arrow -->
+      <button id="prev-btn" class="nav-arrow nav-arrow-left" onclick="navigateExamples(-1)" style="position: absolute; left: -30px; top: 50%; transform: translateY(-50%); background: #fff; border: 2px solid #ddd; border-radius: 50%; width: 80px; height: 80px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #666; transition: all 0.3s ease;">
+        ‹
+      </button>
+      
+      <!-- Right Arrow -->
+      <button id="next-btn" class="nav-arrow nav-arrow-right" onclick="navigateExamples(1)" style="position: absolute; right: -30px; top: 50%; transform: translateY(-50%); background: #fff; border: 2px solid #ddd; border-radius: 50%; width: 80px; height: 80px; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 24px; color: #666; transition: all 0.3s ease;">
+        ›
+      </button>
+  
+      <div class="model-viewer-container" style="min-height: 600px; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: center; overflow-x: hidden; white-space: normal;">
+        <model-viewer id="QualitativeResult"
+                      src="static/assets/glb/ntu_hive.glb"
+                      alt="3D Model"
+                      loading="eager"
+                      touch-action="pan-y" environment-image="legacy"
+                      camera-orbit="180deg 70deg auto" 
+                      zoom-sensitivity="0.2" camera-controls disable-tap min-camera-orbit="auto auto 1m"
+                      max-camera-orbit="auto auto 10m" interaction-prompt="none" shadow-intensity="0" ar
+                      disable-shadow ar-modes="webxr scene-viewer quick-look"
+                      style="width: 90%; height: 90%; background: #ffffff; margin: 0 auto;">
+        </model-viewer>
+      </div>
+    </div>
+    
+    <div class="thumbnail-container" id="thumbnail-qualitative" style="display: flex; gap: 1.5rem; max-width: 900px; margin: 0 auto; position: relative; align-items: center; justify-content: center;">
+        <div class="thumbnail-item" data-index="7" style="cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(0.8); opacity: 0.7;">
+          <img src="static/assets/thumbnail/dynamic_skiing.jpg" data-glb="static/assets/glb/dynamic_skiing.glb" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 1rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>Dynamic Skiing</em></p>
+          <p class="thumbnail-number" style="margin: 0rem 0 0 0; font-size: 0.6rem; color: #666; font-weight: 400;">8 / 10</p>
+        </div>
+        <div class="thumbnail-item" data-index="6" style="cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(0.9); opacity: 0.8;">
+          <img src="static/assets/thumbnail/dynamic_jumping.jpg" data-glb="static/assets/glb/dynamic_jumping.glb" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 1rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>Dynamic Jumping</em></p>
+          <p class="thumbnail-number" style="margin: 0rem 0 0 0; font-size: 0.6rem; color: #666; font-weight: 400;">7 / 10</p>
+        </div>
+        <div class="thumbnail-item" data-index="0" style="cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(1.0); opacity: 1.0;">
+          <img src="static/assets/thumbnail/genie3_temple.jpg" data-glb="static/assets/glb/genie3_temple.glb" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 1rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>Genie3 Temple</em></p>
+          <p class="thumbnail-number" style="margin: 0rem 0 0 0; font-size: 0.6rem; color: #666; font-weight: 400;">1 / 10</p>
+        </div>
+        <div class="thumbnail-item" data-index="1" style="cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(0.9); opacity: 0.8;">
+          <img src="static/assets/thumbnail/genie3_baker.jpg" data-glb="static/assets/glb/genie3_baker.glb" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 1rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>Genie3 Street</em></p>
+          <p class="thumbnail-number" style="margin: 0rem 0 0 0; font-size: 0.6rem; color: #666; font-weight: 400;">2 / 10</p>
+        </div>
+        <div class="thumbnail-item" data-index="2" style="cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(0.8); opacity: 0.7;">
+          <img src="static/assets/thumbnail/genie3_mixer.jpg" data-glb="static/assets/glb/mixer.glb" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 1rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>Genie3 Indoor</em></p>
+          <p class="thumbnail-number" style="margin: 0rem 0 0 0; font-size: 0.6rem; color: #666; font-weight: 400;">3 / 10</p>
+        </div>
+      </div>
+      
+  </div>
+
+
+  <div class="content">
+    <h2 style="text-align:center;">Abstract</h2>
+    <p>
+      We present <b>STream3R</b>, a novel approach to 3D reconstruction that reformulates pointmap prediction as a decoder-only Transformer problem. Existing state-of-the-art methods for multi-view reconstruction either depend on expensive global optimization or rely on simplistic memory mechanisms that scale poorly with sequence length. In contrast, <b>STream3R</b> introduces an streaming framework that processes image sequences efficiently using causal attention, inspired by advances in modern language modeling. By learning geometric priors from large-scale 3D datasets, <b></b>STream3R</b> generalizes well to diverse and challenging scenarios, including dynamic scenes where traditional methods often fail. Extensive experiments show that our method consistently outperforms prior work across both static and dynamic scene benchmarks. Moreover, <b>STream3R</b> is inherently compatible with LLM-style training infrastructure, enabling efficient large-scale pretraining and fine-tuning for various downstream 3D tasks. Our results underscore the potential of causal Transformer models for online 3D perception, paving the way for real-time 3D understanding in streaming environments.
+    </p>
+    <img class="summary-img" src="static/assets/teaser.png" style="width:90%;">
+  </div>
+
+  <div class="content">
+    <h2 style="text-align:center;">Method</h2>
+    <p>
+      Built on a causal transformer, STREAM3R processes streaming images
+      sequentially for 3D reconstruction. Each input image is first tokenized using a shared-weight ViT
+      encoder, and the resulting tokens are passed to our causal decoder. Each decoder layer begins with
+      frame-wise self-attention. For subsequent views, the model applies causal attention to the memory 
+      tokens cached from previous observations. The outputs include point maps along with confidence maps in both world and camera
+      coordinate systems, as long as the camera pose as shown on the right.
+    </p>
+    <br>
+    <img class="summary-img" src="static/assets/pipeline.png" style="width:90%;">
+    <h4>
+      <center>Method Overview of STream3R.</center>
+    </h4>
+  </div>
+
+  <div class="content">
+    <h2>BibTex</h2>
+    <code> @inproceedings{stream3r2025,<br>
+  &nbsp;&nbsp;title={STream3R: Scalable Sequential 3D Reconstruction with Causal Transformer},<br>
+  &nbsp;&nbsp;author={Lan, Yushi and Luo, Yihang and Hong, Fangzhou and Zhou, Shangchen and Chen, Honghua and Lyu, Zhaoyang and Yang, Shuai and Dai, Bo and Loy, Chen Change and Pan, Xingang},<br>
+  &nbsp;&nbsp;booktitle={arXiv preprint arXiv:2508.10893},<br>
+  &nbsp;&nbsp;year={2025}<br>
+  } </code>
+  </div>
+
+  <div class="content" id="acknowledgements">
+    <p><strong>Related Links</strong>: We recognize several concurrent works on streaming methods. We encourage you to check them out: <a href="https://github.com/wzzheng/StreamVGGT" target="_blank" rel="noopener">StreamVGGT</a>, <a href="https://github.com/CUT3R/CUT3R" target="_blank" rel="noopener">CUT3R</a>, <a href="https://github.com/PKU-VCL-3DV/SLAM3R" target="_blank" rel="noopener">SLAM3R</a> and <a href="https://github.com/HengyiWang/spann3r" target="_blank" rel="noopener">Spann3R</a>.
+
+    <p><strong>Acknowledgements</strong>:
+      This page draws inspiration from <a href="https://dreambooth.github.io/">DreamBooth</a> and <a href="https://vgg-t.github.io/">VGG-T</a>.
+    </p>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // All available examples data
+      window.allExamples = [
+        {
+          thumbnail: "static/assets/thumbnail/genie3_temple.jpg",
+          glb: "static/assets/glb/genie3_temple.glb",
+          caption: "Genie3 Temple"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/genie3_baker.jpg",
+          glb: "static/assets/glb/genie3_baker.glb",
+          caption: "Genie3 Street"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/genie3_mixer.jpg",
+          glb: "static/assets/glb/mixer.glb",
+          caption: "Genie3 Indoor"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/genie3_gaming.jpg",
+          glb: "static/assets/glb/genie3_gaming.glb",
+          caption: "Genie3 Gaming"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/ntu_hive.jpg",
+          glb: "static/assets/glb/ntu_hive.glb",
+          caption: "NTU Hive"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/room.png",
+          glb: "static/assets/glb/room.glb",
+          caption: "Room"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/dynamic_jumping.jpg",
+          glb: "static/assets/glb/dynamic_jumping.glb",
+          caption: "Dynamic Jump"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/dynamic_skiing.jpg",
+          glb: "static/assets/glb/dynamic_skiing.glb",
+          caption: "Dynamic Skiing"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/dynamic_car.jpg",
+          glb: "static/assets/glb/dynamic_car.glb",
+          caption: "Dynamic Car"
+        },
+        {
+          thumbnail: "static/assets/thumbnail/robotics.jpg",
+          glb: "static/assets/glb/robotics.glb",
+          caption: "Robotics"
+        }
+      ];
+      
+      window.currentStartIndex = 8; // Start from index 8 so that index 0 (Genie3 Temple) appears in the center
+      
+      // Initialize with first 5 examples
+      updateThumbnailDisplay();
+      
+      // Select the middle element (index 0, which is Genie3 Temple) by default
+      const middleThumbnail = document.querySelector('#thumbnail-qualitative .thumbnail-item[data-index="0"] img');
+      if (middleThumbnail) {
+        middleThumbnail.classList.add('thumbnail-selected');
+        // Load the corresponding 3D model
+        const glbSrc = middleThumbnail.getAttribute('data-glb');
+        const modelViewer = document.getElementById('QualitativeResult');
+        modelViewer.setAttribute('src', glbSrc);
+        modelViewer.cameraOrbit = "180deg 70deg auto";
+        modelViewer.resetTurntableRotation(0);
+        modelViewer.jumpCameraToGoal();
+      }
+      
+      // Update navigation buttons state
+      updateNavigationButtons();
+    });
+    
+    // Navigation function
+    function navigateExamples(direction) {
+      const totalExamples = window.allExamples.length;
+      const examplesPerView = 5;
+      
+      if (direction === 1) {
+        // Next
+        window.currentStartIndex = (window.currentStartIndex + 1) % totalExamples;
+      } else {
+        // Previous
+        window.currentStartIndex = (window.currentStartIndex - 1 + totalExamples) % totalExamples;
+      }
+      
+      updateThumbnailDisplay();
+      updateNavigationButtons();
+    }
+    
+    // Function to scroll clicked example to center
+    function scrollToCenter(clickedIndex) {
+      const totalExamples = window.allExamples.length;
+      const examplesPerView = 5;
+      
+      // Calculate the target start index so that clicked example becomes center
+      let targetStartIndex;
+      
+      // Always center the clicked example by positioning it at the middle (position 2)
+      targetStartIndex = (clickedIndex - 2 + totalExamples) % totalExamples;
+      
+      window.currentStartIndex = targetStartIndex;
+      updateThumbnailDisplay();
+      updateNavigationButtons();
+    }
+    
+    // Update thumbnail display
+    function updateThumbnailDisplay() {
+      const container = document.getElementById('thumbnail-qualitative');
+      const totalExamples = window.allExamples.length;
+      const examplesPerView = 5;
+      
+      // Clear current thumbnails
+      container.innerHTML = '';
+      
+      // Add 5 thumbnails starting from currentStartIndex
+      for (let i = 0; i < examplesPerView; i++) {
+        const index = (window.currentStartIndex + i) % totalExamples;
+        const example = window.allExamples[index];
+        
+        // Calculate scale and opacity based on position (middle is largest)
+        let scale, opacity;
+        if (i === 0 || i === 4) { // Leftmost and rightmost
+          scale = 0.8;
+          opacity = 0.7;
+        } else if (i === 1 || i === 3) { // Second from left/right
+          scale = 0.9;
+          opacity = 0.8;
+        } else { // Middle
+          scale = 1.0;
+          opacity = 1.0;
+        }
+        
+        const thumbnailItem = document.createElement('div');
+        thumbnailItem.className = 'thumbnail-item';
+        thumbnailItem.setAttribute('data-index', index);
+        thumbnailItem.style.cssText = `cursor: pointer; text-align: center; padding: 0.5rem; border: 2px solid #ddd; border-radius: 8px; transition: all 0.3s ease; background: white; transform: scale(${scale}); opacity: ${opacity};`;
+        
+        thumbnailItem.innerHTML = `
+          <img src="${example.thumbnail}" data-glb="${example.glb}" style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;">
+          <p class="thumbnail-caption" style="margin: 0.8rem 0 0 0; font-size: 0.9rem; font-weight: 500; line-height: 1.2;"><em>${example.caption}</em></p>
+          <p class="thumbnail-number" style="margin: 0.3rem 0 0 0; font-size: 0.8rem; color: #666; font-weight: 400;">${index + 1} / ${totalExamples}</p>
+        `;
+        
+        // Add click event listener
+        const img = thumbnailItem.querySelector('img');
+        img.addEventListener('click', () => {
+          const glbSrc = img.getAttribute('data-glb');
+          const modelViewer = document.getElementById('QualitativeResult');
+          modelViewer.setAttribute('src', glbSrc);
+          modelViewer.cameraOrbit = "180deg 70deg auto";
+          modelViewer.resetTurntableRotation(0);
+          modelViewer.jumpCameraToGoal();
+
+          // Remove selection class from all elements
+          document.querySelectorAll('#thumbnail-qualitative img').forEach(element => {
+              element.classList.remove('thumbnail-selected');
+          });
+          
+          // Add selection class to clicked element
+          img.classList.add('thumbnail-selected');
+          
+          // Scroll clicked example to center
+          scrollToCenter(index);
+        });
+        
+        container.appendChild(thumbnailItem);
+      }
+      
+      // Select middle thumbnail by default and load its 3D model
+      const middleThumbnail = container.querySelector('.thumbnail-item:nth-child(3) img');
+      if (middleThumbnail) {
+        middleThumbnail.classList.add('thumbnail-selected');
+        // Load the corresponding 3D model
+        const glbSrc = middleThumbnail.getAttribute('data-glb');
+        const modelViewer = document.getElementById('QualitativeResult');
+        modelViewer.setAttribute('src', glbSrc);
+        modelViewer.cameraOrbit = "180deg 70deg auto";
+        modelViewer.resetTurntableRotation(0);
+        modelViewer.jumpCameraToGoal();
+      }
+    }
+    
+    // Update navigation buttons state
+    function updateNavigationButtons() {
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      
+      // Always enable both buttons since we have circular navigation
+      prevBtn.style.opacity = '1';
+      nextBtn.style.opacity = '1';
+      prevBtn.style.cursor = 'pointer';
+      nextBtn.style.cursor = 'pointer';
+    }
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set initial camera positions for all model viewers
+      const initialModelViewers = [
+        document.getElementById('QualitativeResult'),
+        document.getElementById('modelViewerComparison1'),
+        document.getElementById('modelViewerComparison2'),
+        document.getElementById('modelViewerComparison3')
+      ];
+      
+      // Apply consistent initial camera settings to all model viewers
+      initialModelViewers.forEach(viewer => {
+        if (viewer) {
+          viewer.addEventListener('load', () => {
+            viewer.cameraOrbit = "180deg 70deg auto";
+            if (viewer.resetTurntableRotation) {
+              viewer.resetTurntableRotation(0);
+            }
+            viewer.jumpCameraToGoal();
+          });
+        }
+      });
+      
+      // Handle comparison thumbnails
+      const firstComparisonThumbnail = document.querySelector('#thumbnail-comparison video, #thumbnail-comparison img');
+      if (firstComparisonThumbnail) {
+        firstComparisonThumbnail.classList.add('thumbnail-selected');
+        // If it's a video, play it
+        if (firstComparisonThumbnail.tagName.toLowerCase() === 'video') {
+          firstComparisonThumbnail.play();
+        }
+      }
+      
+      document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(el => {
+        el.addEventListener('click', () => {
+          const name = el.getAttribute('name');
+          
+          // Update model viewers with the corresponding GLB files
+          const modelViewer1 = document.getElementById('modelViewerComparison1');
+          const modelViewer2 = document.getElementById('modelViewerComparison2');
+          const modelViewer3 = document.getElementById('modelViewerComparison3');
+          
+          modelViewer1.setAttribute('src', `resources/comparison/ours/${name}.glb`);
+          modelViewer2.setAttribute('src', `resources/comparison/dust3r/${name}.glb`);
+          
+          // For the third viewer, check the dropdown selection
+          const baseline = document.getElementById('comparisonBaselineSelection').value;
+          modelViewer3.setAttribute('src', `resources/comparison/${baseline}/${name}.glb`);
+          
+          // Reset camera positions
+          [modelViewer1, modelViewer2, modelViewer3].forEach(viewer => {
+            viewer.cameraOrbit = "180deg 70deg auto";
+            if (viewer.resetTurntableRotation) {
+              viewer.resetTurntableRotation(0);
+            }
+            viewer.jumpCameraToGoal();
+          });
+
+          // Remove selection class from all elements
+          document.querySelectorAll('#thumbnail-comparison img, #thumbnail-comparison video').forEach(element => {
+            element.classList.remove('thumbnail-selected');
+          });
+          
+          // Add selection class to clicked element
+          el.classList.add('thumbnail-selected');
+          
+          // Play video if it's a video element
+          if (el.tagName.toLowerCase() === 'video') {
+            el.play();
+          }
+          
+          // Pause all other videos
+          document.querySelectorAll('#thumbnail-comparison video').forEach(video => {
+            if (video !== el) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          });
+        });
+      });
+      
+      // Handle dropdown change for the third comparison model
+      document.getElementById('comparisonBaselineSelection').addEventListener('change', function() {
+        const selectedName = document.querySelector('#thumbnail-comparison .thumbnail-selected').getAttribute('name');
+        const baseline = this.value;
+        document.getElementById('modelViewerComparison3').setAttribute('src', `resources/comparison/${baseline}/${selectedName}.glb`);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+
