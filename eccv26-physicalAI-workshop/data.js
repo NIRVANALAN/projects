@@ -8,9 +8,9 @@ window.PHYSAI_SPEAKERS = [
   { name: "Jiajun Wu",         aff: "Stanford University",            photo: "assets/speakers/jiajun_wu.jpg",         url: "https://jiajunwu.com/" },
   { name: "Jitendra Malik",    aff: "UC Berkeley",                    photo: "assets/speakers/jitendra_malik.jpg",    url: "https://people.eecs.berkeley.edu/~malik/" },
   { name: "Jon Barron",        aff: "Google DeepMind",                photo: "assets/speakers/jon_barron.jpg",        url: "https://jonbarron.info/" },
-  { name: "Marc Pollefeys",    aff: "ETH Zurich / Microsoft",         photo: "assets/speakers/marc_pollefeys.jpg",    url: "https://people.inf.ethz.ch/marc.pollefeys/" },
+  { name: "Marc Pollefeys",    aff: "ETH Zurich / Microsoft",         photo: "https://www.microsoft.com/en-us/research/wp-content/uploads/2016/10/Marc-952x1024.jpg", url: "https://people.inf.ethz.ch/marc.pollefeys/" },
   { name: "Matthias Nießner",  aff: "TU Munich",                      photo: "assets/speakers/matthias_niessner.jpg", url: "https://www.niessnerlab.org/" },
-  { name: "Ming-Yu Liu",       aff: "NVIDIA",                         photo: "assets/speakers/mingyu_liu.jpg",        url: "https://mingyuliu.net/" },
+  { name: "Ming-Yu Liu",       aff: "NVIDIA Cosmos Lab",              photo: "assets/speakers/mingyu_liu.jpg",        url: "https://mingyuliu.net/" },
   { name: "Noah Snavely",      aff: "Cornell Tech / Google DeepMind", photo: "assets/speakers/noah_snavely.jpg",      url: "https://www.cs.cornell.edu/~snavely/" },
   { name: "Vincent Sitzmann",  aff: "MIT",                            photo: "assets/speakers/vincent_sitzmann.jpg",  url: "https://www.vincentsitzmann.com/" },
   // Angjoo Kanazawa cannot attend due to a schedule conflict.
