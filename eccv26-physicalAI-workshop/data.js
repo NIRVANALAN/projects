@@ -4,7 +4,7 @@
 window.PHYSAI_SPEAKERS = [
   { name: "Andreas Geiger",    aff: "Univ. Tübingen",                 photo: "assets/speakers/andreas_geiger.jpg",    url: "https://www.cvlibs.net/" },
   { name: "David Novotny",     aff: "Spatial AI",                     photo: "assets/speakers/david_novotny.jpg",     url: "https://d-novotny.github.io/" },
-  { name: "Haiwen (Haven) Feng", aff: "UC Berkeley",                   photo: "",                                      url: "https://havenfeng.github.io/" },
+  { name: "Haiwen (Haven) Feng", aff: "UC Berkeley",                   photo: "assets/speakers/haiwen_feng.jpg",      url: "https://havenfeng.github.io/" },
   { name: "Jiajun Wu",         aff: "Stanford University",            photo: "assets/speakers/jiajun_wu.jpg",         url: "https://jiajunwu.com/" },
   { name: "Jitendra Malik",    aff: "UC Berkeley",                    photo: "assets/speakers/jitendra_malik.jpg",    url: "https://people.eecs.berkeley.edu/~malik/" },
   { name: "Jon Barron",        aff: "Google DeepMind",                photo: "assets/speakers/jon_barron.jpg",        url: "https://jonbarron.info/" },
