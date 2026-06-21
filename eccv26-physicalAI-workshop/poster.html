@@ -44,7 +44,7 @@
   /* signature: a sampled projectile arc — discrete points along a trajectory = 4D (3D + time),
      the workshop's flagship theme. Ambient, sits behind the hero text. */
   .traj{ position:absolute; top:15mm; right:5mm; width:94mm; height:70mm; opacity:.5; pointer-events:none; }
-  .inner{ position:relative; padding:16mm 15mm 12mm; display:flex; flex-direction:column; height:100%; }
+  .inner{ position:relative; padding:16mm 15mm 14mm; display:flex; flex-direction:column; justify-content:space-between; height:100%; }
 
   /* header */
   .top{ display:flex; justify-content:space-between; align-items:flex-start; }
@@ -105,10 +105,12 @@
 
   /* speakers */
   .spk-block{ margin-top:18px; }
-  .spk{ display:grid; grid-template-columns:repeat(3,1fr); gap:7px 16px; }
-  .sp{ font-size:12px; line-height:1.25; }
-  .sp b{ font-weight:700; }
-  .sp i{ font-style:normal; color:var(--ink-muted); font-size:10.5px; display:block; }
+  .spk{ display:flex; flex-wrap:wrap; justify-content:center; gap:11px 7px; }
+  .sp{ width:27mm; text-align:center; }
+  .sp img{ width:14mm; height:14mm; border-radius:50%; object-fit:cover; display:block;
+    margin:0 auto 5px; border:1px solid var(--line); background:var(--bg-alt); }
+  .sp b{ display:block; font-size:10px; font-weight:700; line-height:1.18; }
+  .sp i{ font-style:normal; color:var(--ink-muted); font-size:8.5px; display:block; line-height:1.2; margin-top:1px; }
 
   /* organizers strip */
   .org{ margin-top:16px; padding:13px 15px; background:var(--bg-alt); border:1px solid var(--line); border-radius:12px; }
@@ -116,7 +118,7 @@
   .org .affs b{ color:var(--ink); }
 
   /* footer / CTA */
-  .foot{ margin-top:auto; padding-top:14px; border-top:1px solid var(--line);
+  .foot{ padding-top:14px; border-top:1px solid var(--line);
     display:flex; justify-content:space-between; align-items:flex-end; gap:16px; }
   .cta strong{ font-size:13px; }
   .cta .row{ font-size:12px; color:var(--ink-soft); margin-top:4px; }
@@ -184,12 +186,12 @@
       <div>
         <div class="eyebrow">Topics of interest</div>
         <div class="topics">
-          <div class="topic"><b>Physical scene understanding</b> — materials, mass, friction, affordances.</div>
-          <div class="topic"><b>Physics-aware 3D/4D reconstruction</b> from sparse inputs.</div>
-          <div class="topic"><b>Generative world models &amp; world simulators</b> — a key recent goal for the physical world.</div>
-          <div class="topic"><b>Spatial &amp; physical reasoning</b> from video &amp; multimodal data.</div>
-          <div class="topic"><b>Embodied AI &amp; robot learning</b> in digital twins.</div>
-          <div class="topic"><b>Benchmarks &amp; datasets</b> for physical understanding.</div>
+          <div class="topic"><b>Physical scene understanding</b></div>
+          <div class="topic"><b>Physics-aware 3D/4D reconstruction</b></div>
+          <div class="topic"><b>Generative world models &amp; world simulators</b></div>
+          <div class="topic"><b>Spatial &amp; physical reasoning</b></div>
+          <div class="topic"><b>Embodied AI &amp; robot learning</b></div>
+          <div class="topic"><b>Benchmarks &amp; datasets</b></div>
         </div>
       </div>
       <div>
@@ -208,17 +210,17 @@
     <div class="spk-block">
       <div class="eyebrow">Invited speakers (tentative · alphabetical)</div>
       <div class="spk">
-        <div class="sp"><b>Andreas Geiger</b><i>Univ. Tübingen</i></div>
-        <div class="sp"><b>David Novotny</b><i>Spatial AI</i></div>
-        <div class="sp"><b>Haiwen Feng</b><i>UC Berkeley</i></div>
-        <div class="sp"><b>Jiajun Wu</b><i>Stanford University</i></div>
-        <div class="sp"><b>Jitendra Malik</b><i>UC Berkeley</i></div>
-        <div class="sp"><b>Jon Barron</b><i>Google DeepMind</i></div>
-        <div class="sp"><b>Marc Pollefeys</b><i>ETH Zurich / Microsoft</i></div>
-        <div class="sp"><b>Matthias Nießner</b><i>TU Munich</i></div>
-        <div class="sp"><b>Ming-Yu Liu</b><i>NVIDIA Cosmos Lab</i></div>
-        <div class="sp"><b>Noah Snavely</b><i>Cornell Tech / Google DeepMind</i></div>
-        <div class="sp"><b>Vincent Sitzmann</b><i>MIT</i></div>
+        <div class="sp"><img src="assets/speakers/andreas_geiger.jpg" alt="Andreas Geiger"/><b>Andreas Geiger</b><i>Tübingen</i></div>
+        <div class="sp"><img src="assets/speakers/david_novotny.jpg" alt="David Novotny"/><b>David Novotny</b><i>Spatial AI</i></div>
+        <div class="sp"><img src="assets/speakers/haiwen_feng.jpg" alt="Haiwen Feng"/><b>Haiwen Feng</b><i>UC Berkeley</i></div>
+        <div class="sp"><img src="assets/speakers/jiajun_wu.jpg" alt="Jiajun Wu"/><b>Jiajun Wu</b><i>Stanford</i></div>
+        <div class="sp"><img src="assets/speakers/jitendra_malik.jpg" alt="Jitendra Malik"/><b>Jitendra Malik</b><i>UC Berkeley</i></div>
+        <div class="sp"><img src="assets/speakers/jon_barron.jpg" alt="Jon Barron"/><b>Jon Barron</b><i>Google DeepMind</i></div>
+        <div class="sp"><img src="assets/speakers/marc_pollefeys.jpg" alt="Marc Pollefeys"/><b>Marc Pollefeys</b><i>ETH Zurich</i></div>
+        <div class="sp"><img src="assets/speakers/matthias_niessner.jpg" alt="Matthias Nießner"/><b>Matthias Nießner</b><i>TU Munich</i></div>
+        <div class="sp"><img src="assets/speakers/mingyu_liu.jpg" alt="Ming-Yu Liu"/><b>Ming-Yu Liu</b><i>NVIDIA</i></div>
+        <div class="sp"><img src="assets/speakers/noah_snavely.jpg" alt="Noah Snavely"/><b>Noah Snavely</b><i>Cornell / GDM</i></div>
+        <div class="sp"><img src="assets/speakers/vincent_sitzmann.jpg" alt="Vincent Sitzmann"/><b>Vincent Sitzmann</b><i>MIT</i></div>
       </div>
     </div>
 
