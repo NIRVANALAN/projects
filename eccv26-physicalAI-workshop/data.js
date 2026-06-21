@@ -23,7 +23,7 @@ window.PHYSAI_ORGANIZERS = [
   { name: "Yushi Lan",           aff: "University of Oxford (VGG)",        role: "Postdoc",                      photo: "assets/organizers/yushi_lan.jpg",           url: "https://nirvanalan.github.io/" },
   { name: "Zeren Jiang",         aff: "University of Oxford (VGG)",        role: "DPhil",                        photo: "assets/organizers/zeren_jiang.jpg",         url: "https://jzr99.github.io/" },
   { name: "Ruining Li",          aff: "University of Oxford (VGG)",        role: "DPhil",                        photo: "assets/organizers/ruining_li.jpg",          url: "https://ruiningli.com/" },
-  { name: "Chuhan Zhang",        aff: "Google DeepMind",                   role: "Senior Research Scientist",    photo: "assets/organizers/chuhan_zhang.jpg",        url: "https://scholar.google.com/citations?user=ep_nM5sAAAAJ" },
+  { name: "Chuhan Zhang",        aff: "Google DeepMind",                   role: "Senior Research Scientist",    photo: "assets/organizers/chuhan_zhang.jpg",        url: "https://chuhanxx.github.io/" },
   { name: "Yitong Xia",          aff: "NTU (Physical Vision Group)",       role: "PhD",                          photo: "assets/organizers/yitong_xia.jpg",          url: "https://physicalvision.github.io/" },
   { name: "Yiming Chen",         aff: "University of Oxford (VGG)",        role: "DPhil",                        photo: "assets/organizers/yiming_chen.jpg",         url: "https://yimingc9.github.io/" },
   { name: "Iro Laina",           aff: "University of Oxford (VGG)",        role: "Lecturer",                     photo: "assets/organizers/iro_laina.jpg",           url: "https://eng.ox.ac.uk/people/iro-laina" },
