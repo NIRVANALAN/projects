@@ -117,8 +117,17 @@ img { max-width: 100%; display: block; }
   mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
+.hero-cloud {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 64%, transparent 100%);
+}
 .hero-inner {
   position: relative;
+  z-index: 1;
   max-width: var(--max);
   margin: 0 auto;
 }
