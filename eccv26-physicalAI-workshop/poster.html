@@ -107,8 +107,11 @@
   .spk-block{ margin-top:18px; }
   .spk{ display:flex; flex-wrap:wrap; justify-content:center; gap:11px 7px; }
   .sp{ width:28mm; text-align:center; }
-  .sp img{ width:19mm; height:19mm; border-radius:50%; object-fit:cover; display:block;
-    margin:0 auto 6px; border:1px solid var(--line); background:var(--bg-alt); }
+  .ava{ width:19mm; height:19mm; border-radius:50%; margin:0 auto 6px; overflow:hidden; position:relative;
+    border:1px solid var(--line); background:var(--bg-alt);
+    display:flex; align-items:center; justify-content:center; font-weight:800; font-size:13px; color:var(--ink-muted); }
+  .ava::before{ content:attr(data-i); }
+  .ava img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
   .sp b{ display:block; font-size:10.5px; font-weight:700; line-height:1.18; }
   .sp i{ font-style:normal; color:var(--ink-muted); font-size:8.5px; display:block; line-height:1.2; margin-top:1px; }
 
@@ -210,17 +213,18 @@
     <div class="spk-block">
       <div class="eyebrow">Invited speakers (tentative · alphabetical)</div>
       <div class="spk">
-        <div class="sp"><img src="assets/speakers/andreas_geiger.jpg" alt="Andreas Geiger"/><b>Andreas Geiger</b><i>Tübingen</i></div>
-        <div class="sp"><img src="assets/speakers/david_novotny.jpg" alt="David Novotny"/><b>David Novotny</b><i>Spatial AI</i></div>
-        <div class="sp"><img src="assets/speakers/haiwen_feng.jpg" alt="Haiwen Feng"/><b>Haiwen Feng</b><i>UC Berkeley</i></div>
-        <div class="sp"><img src="assets/speakers/jiajun_wu.jpg" alt="Jiajun Wu"/><b>Jiajun Wu</b><i>Stanford</i></div>
-        <div class="sp"><img src="assets/speakers/jitendra_malik.jpg" alt="Jitendra Malik"/><b>Jitendra Malik</b><i>UC Berkeley</i></div>
-        <div class="sp"><img src="assets/speakers/jon_barron.jpg" alt="Jon Barron"/><b>Jon Barron</b><i>Google DeepMind</i></div>
-        <div class="sp"><img src="assets/speakers/marc_pollefeys.jpg" alt="Marc Pollefeys"/><b>Marc Pollefeys</b><i>ETH Zurich</i></div>
-        <div class="sp"><img src="assets/speakers/matthias_niessner.jpg" alt="Matthias Nießner"/><b>Matthias Nießner</b><i>TU Munich</i></div>
-        <div class="sp"><img src="assets/speakers/mingyu_liu.jpg" alt="Ming-Yu Liu"/><b>Ming-Yu Liu</b><i>NVIDIA</i></div>
-        <div class="sp"><img src="assets/speakers/noah_snavely.jpg" alt="Noah Snavely"/><b>Noah Snavely</b><i>Cornell / GDM</i></div>
-        <div class="sp"><img src="assets/speakers/vincent_sitzmann.jpg" alt="Vincent Sitzmann"/><b>Vincent Sitzmann</b><i>MIT</i></div>
+        <div class="sp"><span class="ava" data-i="AG"><img src="assets/speakers/andreas_geiger.jpg" alt="Andreas Geiger" onerror="this.remove()"/></span><b>Andreas Geiger</b><i>Tübingen</i></div>
+        <div class="sp"><span class="ava" data-i="DN"><img src="assets/speakers/david_novotny.jpg" alt="David Novotny" onerror="this.remove()"/></span><b>David Novotny</b><i>Spatial AI</i></div>
+        <div class="sp"><span class="ava" data-i="HF"><img src="assets/speakers/haiwen_feng.jpg" alt="Haiwen Feng" onerror="this.remove()"/></span><b>Haiwen Feng</b><i>UC Berkeley</i></div>
+        <div class="sp"><span class="ava" data-i="JW"><img src="assets/speakers/jiajun_wu.jpg" alt="Jiajun Wu" onerror="this.remove()"/></span><b>Jiajun Wu</b><i>Stanford</i></div>
+        <div class="sp"><span class="ava" data-i="JM"><img src="assets/speakers/jitendra_malik.jpg" alt="Jitendra Malik" onerror="this.remove()"/></span><b>Jitendra Malik</b><i>UC Berkeley</i></div>
+        <div class="sp"><span class="ava" data-i="JB"><img src="assets/speakers/jon_barron.jpg" alt="Jon Barron" onerror="this.remove()"/></span><b>Jon Barron</b><i>Google DeepMind</i></div>
+        <div class="sp"><span class="ava" data-i="KG"><img src="assets/speakers/kristen_grauman.jpg" alt="Kristen Grauman" onerror="this.remove()"/></span><b>Kristen Grauman</b><i>UT Austin</i></div>
+        <div class="sp"><span class="ava" data-i="MP"><img src="assets/speakers/marc_pollefeys.jpg" alt="Marc Pollefeys" onerror="this.remove()"/></span><b>Marc Pollefeys</b><i>ETH Zurich</i></div>
+        <div class="sp"><span class="ava" data-i="MN"><img src="assets/speakers/matthias_niessner.jpg" alt="Matthias Nießner" onerror="this.remove()"/></span><b>Matthias Nießner</b><i>TU Munich</i></div>
+        <div class="sp"><span class="ava" data-i="ML"><img src="assets/speakers/mingyu_liu.jpg" alt="Ming-Yu Liu" onerror="this.remove()"/></span><b>Ming-Yu Liu</b><i>NVIDIA</i></div>
+        <div class="sp"><span class="ava" data-i="NS"><img src="assets/speakers/noah_snavely.jpg" alt="Noah Snavely" onerror="this.remove()"/></span><b>Noah Snavely</b><i>Cornell / GDM</i></div>
+        <div class="sp"><span class="ava" data-i="VS"><img src="assets/speakers/vincent_sitzmann.jpg" alt="Vincent Sitzmann" onerror="this.remove()"/></span><b>Vincent Sitzmann</b><i>MIT</i></div>
       </div>
     </div>
 
