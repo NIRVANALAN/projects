@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Holo4D: Holistic 4D Reconstruction as Geometric Control for Video Diffusion</title>
+  <meta name="description" content="Holo4D uses holistic source-video 4D reconstruction as geometric control for camera-accurate novel-view video diffusion.">
+  <meta name="keywords" content="Holo4D, 4D reconstruction, video diffusion, novel-view synthesis, camera control">
+  <meta name="author" content="Yushi Lan, Zeren Jiang, Koichi Namekata, Xingang Pan, Chuanxia Zheng, Andrea Vedaldi">
+  <meta name="theme-color" content="#ffffff">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Holo4D: Holistic 4D Reconstruction as Geometric Control for Video Diffusion">
+  <meta property="og:description" content="A geometry-aware video-to-video framework for camera-controlled novel-view synthesis of dynamic scenes.">
+  <meta property="og:url" content="https://nirvanalan.github.io/projects/holo4d/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Holo4D">
+  <meta name="twitter:description" content="Holistic 4D reconstruction as geometric control for video diffusion.">
+
+  <meta name="citation_title" content="Holo4D: Holistic 4D Reconstruction as Geometric Control for Video Diffusion">
+  <meta name="citation_author" content="Lan, Yushi">
+  <meta name="citation_author" content="Jiang, Zeren">
+  <meta name="citation_author" content="Namekata, Koichi">
+  <meta name="citation_author" content="Pan, Xingang">
+  <meta name="citation_author" content="Zheng, Chuanxia">
+  <meta name="citation_author" content="Vedaldi, Andrea">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_pdf_url" content="static/pdfs/holo4d-paper.pdf">
+
+  <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
+  <link rel="stylesheet" href="static/css/index.css?v=20260810-2">
+</head>
+
+<body id="top">
+  <aside class="contents-sidebar" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <nav>
+      <ul>
+        <li><a href="#top">Top</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#method">Framework</a></li>
+        <li><a href="#results">Results</a></li>
+        <li><a href="#citation">BibTeX</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <nav class="topbar" aria-label="Page sections">
+    <div class="page-width nav-inner">
+      <a class="wordmark" href="#top">Holo4D</a>
+      <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Framework</a>
+        <a href="#results">Results</a>
+        <a href="#citation">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="paper-header page-width">
+      <h1><span>Holo4D:</span> Holistic 4D Reconstruction as<br class="wide-only"> Geometric Control for Video Diffusion</h1>
+
+      <div class="authors">
+        <span><a href="https://nirvanalan.github.io/" target="_blank" rel="noopener">Yushi Lan</a><sup>1,*</sup></span>
+        <span><a href="https://jzr99.github.io/" target="_blank" rel="noopener">Zeren Jiang</a><sup>1,*</sup></span>
+        <span><a href="https://kmcode1.github.io/" target="_blank" rel="noopener">Koichi Namekata</a><sup>1</sup></span>
+        <br class="author-break">
+        <span><a href="https://xingangpan.github.io/" target="_blank" rel="noopener">Xingang Pan</a><sup>2</sup></span>
+        <span><a href="https://chuanxiaz.com/" target="_blank" rel="noopener">Chuanxia Zheng</a><sup>2</sup></span>
+        <span><a href="https://www.robots.ox.ac.uk/~vedaldi/" target="_blank" rel="noopener">Andrea Vedaldi</a><sup>1</sup></span>
+      </div>
+
+      <div class="affiliations">
+        <span><sup>1</sup>Visual Geometry Group, University of Oxford</span>
+        <span><sup>2</sup>Nanyang Technological University</span>
+      </div>
+      <div class="equal-contribution"><sup>*</sup> Equal contribution</div>
+      <p class="venue">Preprint, 2026</p>
+
+      <div class="paper-links">
+        <a href="static/pdfs/holo4d-paper.pdf" target="_blank" rel="noopener">Paper</a>
+        <a href="#results">Videos</a>
+        <span title="Code will be released later">Code (soon)</span>
+      </div>
+    </header>
+
+    <section class="teaser page-width" aria-labelledby="teaser-title">
+      <h2 id="teaser-title" class="visually-hidden">Holo4D teaser</h2>
+      <div class="teaser-pair" data-sync-pair>
+        <figure>
+          <div class="video-label">Source video</div>
+          <video muted loop playsinline autoplay preload="metadata">
+            <source src="static/videos/50step/basketball-four/right-left/source.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <div class="teaser-arrow" aria-hidden="true">→</div>
+        <figure class="condition-panel">
+          <div class="video-label">Condition (placeholder)</div>
+          <video muted loop playsinline autoplay preload="metadata">
+            <source src="static/videos/50step/basketball-four/right-left/condition-placeholder.mp4" type="video/mp4">
+          </video>
+        </figure>
+        <div class="teaser-arrow" aria-hidden="true">→</div>
+        <figure>
+          <div class="video-label">Holo4D output</div>
+          <video muted loop playsinline autoplay preload="metadata">
+            <source src="static/videos/50step/basketball-four/right-left/output.mp4" type="video/mp4">
+          </video>
+        </figure>
+      </div>
+      <p class="teaser-caption">
+        <strong>TL;DR:</strong> Holo4D turns source-view 4D reconstruction into geometric control for video diffusion, generating the same dynamic scene from a user-specified camera trajectory.
+      </p>
+      <p class="condition-disclosure">
+        <strong>Condition visualization:</strong> the middle panel temporarily uses the matched <code>gt_rgb.mp4</code> as a layout placeholder. The actual model condition is hybrid RGB-D with validity, target-camera rays, and dense 3D tracks; Holo4D does not receive target ground-truth RGB.
+      </p>
+    </section>
+
+    <section id="overview" class="section alt-section">
+      <div class="text-width">
+        <h2>Overview</h2>
+        <p>
+          Reconstructing a dynamic 4D scene along a novel camera trajectory requires both accurate geometry from the source video and generative completion of disoccluded target-view regions. Feed-forward 4D reconstructors recover increasingly comprehensive input-view geometry, but remain tied to the observed camera stream. Camera-controlled video diffusion models provide strong generative priors, yet their camera control is typically not precise enough for metric novel-view reconstruction.
+        </p>
+        <p>
+          <strong>Holo4D</strong> connects these capabilities with a hybrid 4D geometric cache built from the source video. Static content is fused from camera-covering source views, dynamic regions remain time-synchronized, and dense 3D tracks provide persistent motion cues. Together with target-camera rays and explicit validity masks, these signals guide a pretrained video diffusion model to synthesize target-view RGB video.
+        </p>
+      </div>
+    </section>
+
+    <section id="method" class="section">
+      <div class="page-width">
+        <h2>Framework</h2>
+        <p class="section-intro">
+          The source video is reconstructed once. Holo4D reprojects its static geometry and dynamic motion into the target camera, then uses the resulting scaffold to control video diffusion.
+        </p>
+
+        <div class="framework" role="img" aria-label="Source video to 4D reconstruction, hybrid geometric control, video diffusion, and target video">
+          <div class="framework-item">
+            <span>1</span>
+            <strong>Source video</strong>
+            <small>Monocular RGB</small>
+          </div>
+          <b aria-hidden="true">→</b>
+          <div class="framework-item">
+            <span>2</span>
+            <strong>4D reconstruction</strong>
+            <small>Depth, cameras, 3D tracks</small>
+          </div>
+          <b aria-hidden="true">→</b>
+          <div class="framework-item">
+            <span>3</span>
+            <strong>Hybrid control</strong>
+            <small>RGB-D, validity, target rays</small>
+          </div>
+          <b aria-hidden="true">→</b>
+          <div class="framework-item">
+            <span>4</span>
+            <strong>Video diffusion</strong>
+            <small>Generative completion</small>
+          </div>
+          <b aria-hidden="true">→</b>
+          <div class="framework-item emphasis">
+            <span>5</span>
+            <strong>Target video</strong>
+            <small>Novel camera trajectory</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="results" class="section alt-section">
+      <div class="gallery-width">
+        <h2>Video reshooting</h2>
+        <p class="section-intro">
+          Each slide shows the source video, a temporary condition placeholder, and the Holo4D output. Use the arrows, keyboard, or swipe to browse the examples.
+        </p>
+
+        <div class="diagnostic-note">
+          Current corrected-camera 50-step outputs: 20 complete pairs available at page build time. The middle panel uses matched target RGB only as a temporary visualization placeholder; it is not an input to the model.
+        </div>
+
+        <div class="carousel" data-carousel tabindex="0" aria-label="Holo4D video results carousel">
+          <button class="carousel-button previous" type="button" data-carousel-previous aria-label="Previous video example">‹</button>
+          <div class="carousel-viewport">
+            <div class="carousel-track" data-carousel-track></div>
+          </div>
+          <button class="carousel-button next" type="button" data-carousel-next aria-label="Next video example">›</button>
+        </div>
+
+        <div class="carousel-footer">
+          <button class="text-button" type="button" data-carousel-previous>← Previous</button>
+          <div class="carousel-status" aria-live="polite">
+            <span data-carousel-current>01</span>
+            <span class="status-rule"><i data-carousel-progress></i></span>
+            <span data-carousel-total>20</span>
+          </div>
+          <button class="text-button" type="button" data-carousel-next>Next →</button>
+        </div>
+
+        <noscript><p>This gallery requires JavaScript to switch between examples.</p></noscript>
+      </div>
+    </section>
+
+    <section id="citation" class="section">
+      <div class="text-width">
+        <h2>BibTeX</h2>
+        <div class="bibtex">
+          <button type="button" data-copy-bibtex>Copy</button>
+          <pre id="bibtex"><code>@article{lan2026holo4d,
+  title  = {{Holo4D}: Holistic 4D Reconstruction as Geometric
+            Control for Video Diffusion},
+  author = {Lan, Yushi and Jiang, Zeren and Namekata, Koichi and
+            Pan, Xingang and Zheng, Chuanxia and Vedaldi, Andrea},
+  year   = {2026},
+  note   = {Preprint}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="concurrent-works" class="section alt-section">
+      <div class="text-width">
+        <h2>Concurrent Works</h2>
+        <ul class="concurrent-list">
+          <li>
+            <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener"><strong>Vista4D</strong></a>
+            explores video reshooting from a monocular source video using rendered 4D point clouds as geometric guidance for video diffusion.
+          </li>
+          <li>
+            <a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener"><strong>Lyra</strong></a>
+            distills a video diffusion model into an explicit, feed-forward 3D Gaussian representation and extends it to dynamic video-to-4D reconstruction.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="acknowledgements" class="section">
+      <div class="text-width">
+        <h2>Acknowledgements</h2>
+        <div class="acknowledgements-copy">
+          <p>
+            This work received support from ERC 101001212-UNION, EPSRC EP/Z001811/1 SYN3D, and a Sony Research Award.
+          </p>
+          <p>
+            We are grateful to Runjia Li, Yiming Chen, Zhouxia Wang, and Minghao Chen for valuable feedback and discussions.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="text-width">
+      <p>
+        This page uses the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener">Academic Project Page Template</a> and is inspired by the <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC</a> project page.
+      </p>
+    </div>
+  </footer>
+
+  <script defer src="static/js/site.js"></script>
+</body>
+</html>
