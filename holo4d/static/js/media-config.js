@@ -1,10 +1,11 @@
-/* Deployment settings only: this does not publish or upload any media.
- * Relative defaults work in the self-contained release. After publication,
- * videoBase and posterBase can point at separate approved HTTPS directories.
+/* Local previews use the cache/portable release; the public GitHub page uses
+ * the audited compact HF media (never an absolute Civo filesystem mount).
  */
+const holo4dLocalPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location.hostname);
+const holo4dPublicMedia = 'https://huggingface.co/yslan/Holo4D-2026/resolve/d961d338edf61d0f3e2786e4ced60be69c02bcda/project_page/media_20261012/';
 window.HOLO4D_MEDIA_CONFIG = Object.freeze(window.HOLO4D_MEDIA_CONFIG || {
-  videoBase: 'static/videos/web/',
-  posterBase: 'static/videos/web/'
+  videoBase: holo4dLocalPreview ? 'static/videos/web/' : holo4dPublicMedia,
+  posterBase: holo4dLocalPreview ? 'static/videos/web/' : holo4dPublicMedia
 });
 
 function holo4dMediaBase(value) {

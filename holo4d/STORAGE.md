@@ -70,3 +70,18 @@ target-projected tracks are independently measured on generated RGB.
 New CoWTracker + VGGT-Omega + GMOS reruns are requested for the current 4RC
 examples. They are not yet substitutes for the existing media and must be
 visually reviewed and accompanied by actual backend/camera provenance first.
+
+## GitHub Pages repair and public media — 2026-10-12
+
+Run38232718545 failed while `upload-pages-artifact` dereferenced a tracked
+absolute PDF symlink: `holo4d/static/pdfs/holo4d-paper.pdf: File removed before
+we read it`. The link is replaced by the same actual5261903-byte PDF;
+the research original remains untouched. Do not commit absolute Civo symlinks.
+
+All406 current compact public media uploaded to the existing
+`yslan/Holo4D-2026` model repository, folder `project_page/media_20261012`,
+commit `d961d338edf61d0f3e2786e4ced60be69c02bcda`. Only MP4/JPG uploaded;
+no private JSON or historical cache. The public page pins this exact HTTPS
+revision; localhost previews still use relative files. Lazy loading and
+clean/tracks/interleave controls remain unchanged. Upload entrypoint:
+`tools/upload_public_media.sh` (compute-node CPU2/noGPU).
