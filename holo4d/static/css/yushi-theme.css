@@ -1,0 +1,37 @@
+/* Shared project-page identity, matched to nirvanalan.github.io/stylesheet.css.
+ * Copy this file into future project pages; keep layout CSS project-specific. */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
+:root {
+  --text: #222;
+  --muted: #666;
+  --link: #1772d0;
+  --accent: #1772d0;
+  --link-hover: #f09228;
+  --line: #e5e5e5;
+  --light: #fafafa;
+}
+body { background: #fff; color: var(--text); font-family: "Lato", Verdana, Helvetica, sans-serif; }
+a { color: var(--link); }
+a:hover, a:focus-visible { color: var(--link-hover); }
+.paper-header h1 span { color: var(--text); }
+.paper-kicker { display: block; margin: 12px 0 0; padding: 0; border: 0; color: #555; font-size: 1rem; letter-spacing: 0; text-transform: none; font-weight: 400; }
+.section h2 { font-family: inherit; font-weight: 700; letter-spacing: -.025em; }
+.topbar { background: #fffffff2; }
+.paper-links a, .paper-links a.secondary-link { background: #252525; color: #fff; }
+.paper-links a:hover, .paper-links a.secondary-link:hover { background: #444; color: #fff; }
+.paper-links > span { background: #f3f3f3; color: #666; }
+.contents-sidebar h2 { color: #888; }
+.contents-sidebar a.current { background: #f5f5f5; border-left-color: #555; color: #222; }
+.technical-details { border-color: #ddd; }
+.technical-details summary { color: #555; }
+.alt-section { background: #fafafa; border-color: #ececec; }
+.explore-links a, .view-controls button, .example-picker select, .carousel-viewport, .framework-item, .thumbnail-button { border-color: #e5e5e5; }
+.framework-item, .framework-item.emphasis { background: #fafafa; color: #222; }
+.framework-item span { background: #eee; color: #555; }
+.view-controls button[aria-pressed="true"] { background: #333; color: #fff; border-color: #333; }
+.thumbnail-button.is-active { border-color: #555; }
+.back-to-top { color: #555; border-color: #ddd; box-shadow: 0 3px 12px #0000000c; }
+.back-to-top:hover { background: #f5f5f5; }
+.gallery-subheading { margin: 40px 0 16px; font-size: 1.25rem; color: #333; }
+.card-playback { padding: 6px 12px; border: 1px solid #ddd; border-radius: 5px; background: #fff; color: #333; font: inherit; font-size: .8rem; white-space: nowrap; cursor: pointer; }
+.card-playback:hover { background: #f5f5f5; }
