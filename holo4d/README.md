@@ -41,7 +41,14 @@ which caches are excluded from deployment, and how to stage a compact review.
 The audited portable copy has415files including328.6MB of active media;573.8MB
 of old unreferenced exports are excluded, not deleted. Local media mounts and
 Python caches are ignored by Git. This backup contains website source only;
-media hosting/deployment is a separate explicit operation.
+media hosting/deployment is documented separately in the storage guide.
+The live page now uses pinned HTTPS media on Hugging Face, and the paper PDF
+is a portable real file. Pages deployment and the live desktop/mobile browser
+gate passed on 2026-10-12. To repeat the current gate in the browser-test environment:
+
+```bash
+python tools/test_home_style_showcase.py --url https://nirvanalan.github.io/projects/holo4d/ --output /absolute/path/browser-review
+```
 
 ## Editorial refresh — 2026-10-11
 
@@ -173,8 +180,8 @@ deployable asset strategy. Replace them with hosted media URLs or publishable
 assets before deploying the page anywhere that cannot access
 `/scratch/shared/engs2907/logs/`.
 
-The paper button serves `static/pdfs/holo4d-paper.pdf`, an absolute symbolic
-link to the current local submission PDF. Code, public paper/arXiv, canonical
+The paper button serves `static/pdfs/holo4d-paper.pdf`, a real copy of the
+submission PDF, not a machine-local symbolic link. Code, public paper/arXiv, canonical
 URL, social preview, and final benchmark media should be updated before
 publication.
 

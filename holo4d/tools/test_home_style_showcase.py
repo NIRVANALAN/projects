@@ -25,6 +25,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--page-root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--url', help='Validate the deployed page instead of the local server')
+    parser.add_argument('--media-base', help='Override media with the pinned public HTTPS export')
     parser.add_argument('--ui-only', action='store_true', help='Validate existing media while the DAVIS re-export is pending')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
@@ -35,8 +37,12 @@ def main():
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(headless=True, args=['--no-sandbox'])
         page = browser.new_page(viewport={'width':1440, 'height':1000}, reduced_motion='reduce')
+        page.set_default_timeout(90000)
+        if args.media_base:
+            page.add_init_script('window.HOLO4D_MEDIA_CONFIG = '+json.dumps({'videoBase':args.media_base,'posterBase':args.media_base})+';')
         page.on('pageerror', lambda error: errors.append(str(error)))
-        page.goto(f'http://127.0.0.1:{server.server_port}/', wait_until='networkidle')
+        url=args.url or f'http://127.0.0.1:{server.server_port}/'
+        page.goto(url, wait_until='networkidle')
         assert page.locator('[data-hero]').count() == 0
         assert page.locator('video[src]').count() == 0
         assert page.evaluate('getComputedStyle(document.body).backgroundColor') == 'rgb(255, 255, 255)'
@@ -115,8 +121,11 @@ def main():
         # Deliberately hold the RIGHT media response. The left must remain on
         # its first frame until the pair is buffered, rather than starting early.
         buffered = browser.new_page(viewport={'width':1440,'height':1000},reduced_motion='reduce')
+        buffered.set_default_timeout(90000)
+        if args.media_base:
+            buffered.add_init_script('window.HOLO4D_MEDIA_CONFIG = '+json.dumps({'videoBase':args.media_base,'posterBase':args.media_base})+';')
         buffered.on('pageerror',lambda error: errors.append(str(error)))
-        buffered.goto(f'http://127.0.0.1:{server.server_port}/',wait_until='networkidle')
+        buffered.goto(url,wait_until='networkidle')
         pair = buffered.locator(selectors[0])
         pair.scroll_into_view_if_needed()
         right_url = pair.locator('.result-slide[aria-hidden="false"] video').last.evaluate('(v)=>new URL(v.dataset.src,document.baseURI).href')
@@ -136,8 +145,11 @@ def main():
         buffered.screenshot(path=str(args.output/'buffered_scene_pair.png'))
         buffered.close()
         mobile = browser.new_page(viewport={'width':390,'height':844}, reduced_motion='reduce')
+        mobile.set_default_timeout(90000)
+        if args.media_base:
+            mobile.add_init_script('window.HOLO4D_MEDIA_CONFIG = '+json.dumps({'videoBase':args.media_base,'posterBase':args.media_base})+';')
         mobile.on('pageerror', lambda error: errors.append(str(error)))
-        mobile.goto(f'http://127.0.0.1:{server.server_port}/', wait_until='networkidle')
+        mobile.goto(url, wait_until='networkidle')
         assert mobile.locator('video[src]').count() == 0
         assert mobile.evaluate('document.documentElement.scrollWidth<=innerWidth')
         mobile.screenshot(path=str(args.output/'mobile_header.png'))

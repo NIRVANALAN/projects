@@ -37,7 +37,8 @@ It is at:
 
 Original caches remain at `project-page-media_20261009`. The private audit is
 `/scratch/shared/engs2907/open-source/holo4d/project-page-review_20261012/storage_audit.json`.
-This is local staging, not an upload or remote deployment.
+This compact directory is a local review snapshot. Its required media has
+since been uploaded as described below; the current website source is in Git.
 
 `tools/package_page.py` follows `web-examples.js` and copies only the files the
 current player references, plus actual HTML/CSS/JS/favicon/PDF dependencies.
@@ -73,15 +74,24 @@ visually reviewed and accompanied by actual backend/camera provenance first.
 
 ## GitHub Pages repair and public media — 2026-10-12
 
-Run38232718545 failed while `upload-pages-artifact` dereferenced a tracked
+Run 38232718545 failed while `upload-pages-artifact` dereferenced a tracked
 absolute PDF symlink: `holo4d/static/pdfs/holo4d-paper.pdf: File removed before
-we read it`. The link is replaced by the same actual5261903-byte PDF;
+we read it`. The link is replaced by the same actual 5,261,903-byte PDF;
 the research original remains untouched. Do not commit absolute Civo symlinks.
 
-All406 current compact public media uploaded to the existing
+All 406 current compact public media uploaded to the existing
 `yslan/Holo4D-2026` model repository, folder `project_page/media_20261012`,
 commit `d961d338edf61d0f3e2786e4ced60be69c02bcda`. Only MP4/JPG uploaded;
 no private JSON or historical cache. The public page pins this exact HTTPS
 revision; localhost previews still use relative files. Lazy loading and
 clean/tracks/interleave controls remain unchanged. Upload entrypoint:
 `tools/upload_public_media.sh` (compute-node CPU2/noGPU).
+
+[Pages run 38235155355](https://github.com/NIRVANALAN/projects/actions/runs/38235155355)
+built and deployed commit `b489f58` successfully. The live site is
+[Holo4D](https://nirvanalan.github.io/projects/holo4d/).
+The current desktop/mobile browser gate passed against this actual live URL:
+all nine long videos decoded, byte-range HTTP 206 worked, poster-first loading
+made no eager MP4 requests, and playback, seeking, paired buffering and
+clean/tracks/interleave controls passed. Evidence:
+`/scratch/shared/engs2907/open-source/holo4d/project-page-review_20261012/browser_live_pages/home_style_validation.json`.

@@ -15,7 +15,6 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--page-root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path, required=True)
-    parser.add_argument('--media-base', help='Test actual public HTTPS media from the local page')
     args = parser.parse_args()
     args.output.mkdir(parents=True, exist_ok=True)
     assert byte_range('bytes=0-63', 100) == (0, 63)
@@ -30,9 +29,6 @@ def main():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True, args=['--no-sandbox'])
         page = browser.new_page(viewport={'width': 1440, 'height': 1000})
-        if args.media_base:
-            page.add_init_script('window.HOLO4D_MEDIA_CONFIG = '+json.dumps(
-                {'videoBase':args.media_base,'posterBase':args.media_base})+';')
         page.on('pageerror', lambda error: errors.append(str(error)))
         page.on('request', lambda r: requests.append(r.url) if '.mp4' in r.url else None)
         page.goto(url, wait_until='networkidle')
