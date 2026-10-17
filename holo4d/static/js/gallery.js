@@ -268,6 +268,8 @@ class Gallery {
     this.requested=false;
     this.paused=reducedMotion.matches || mediaPolicy==='click'; this.mode=reducedMotion.matches ? 'clean' : 'auto';
     this.cards=entries.map(e => new Card(e));
+    // Side-by-side composites are already two videos wide: one per row keeps them the size of the other galleries.
+    this.wide=entries.every(e => e.kind==='comparison' || e.aspect>2);
     this.cards.forEach(c => {
       c.onReady = () => this.releasePlayback();
       c.onWaiting = () => this.holdPlayback();
@@ -277,6 +279,7 @@ class Gallery {
     root.innerHTML='<div class="carousel" tabindex="0"><button class="carousel-button previous" aria-label="Previous examples">‹</button><div class="carousel-viewport"><div class="carousel-track"></div></div><button class="carousel-button next" aria-label="Next examples">›</button></div><div class="gallery-tools"><div class="view-controls" role="group" aria-label="Display mode"><button data-mode="auto">Auto: clean ↔ tracks</button><button data-mode="clean">Clean</button><button data-mode="tracks">3D tracks</button><button data-playback>Pause</button><span data-counter></span></div></div><div class="thumbnail-nav" aria-label="Choose an example"></div>';
     if (entries.every(e => e.overlay_basis === 'post_generation_cow_2d')) root.querySelector('[data-mode="tracks"]').textContent='Post-generation tracks';
     if (hero) root.classList.add('hero-gallery');
+    if (this.wide) root.classList.add('wide-gallery');
     if (!hero) {
       const picker = el('label', 'example-picker');
       picker.append(el('span', '', 'Choose a scene'));
@@ -337,7 +340,7 @@ class Gallery {
     resize.observe(root);
     galleries.push(this); this.update();
   }
-  perView() { return this.hero ? 1 : (desktopQuery.matches ? 2 : 1); }
+  perView() { return this.hero || this.wide ? 1 : (desktopQuery.matches ? 2 : 1); }
   resizeViewport() {
     const height = Math.max(...this.cards.slice(this.index,this.index+this.perView()).map(c => c.node.getBoundingClientRect().height));
     if (height > 0) this.viewport.style.height = `${Math.ceil(height)+2}px`;
