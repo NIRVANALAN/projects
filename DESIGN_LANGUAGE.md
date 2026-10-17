@@ -13,8 +13,9 @@ without forcing identical content layouts.
 | Link hover | `#f09228` |
 | Buttons / selected controls | Charcoal and neutral grays |
 
-Reusable stylesheet: `holo4d/static/css/yushi-theme.css`.
-Copy it into the new project and load it after project-specific layout CSS.
+New pages: start from [`template/`](template/README.md) (`cp -R template my-project`).
+Older pages: `holo4d/static/css/yushi-theme.css` remains the drop-in theme layer;
+load it after project-specific layout CSS.
 It is intentionally small and buildless. Lato's remote font is optional; the
 fallback must remain readable offline. Do not introduce green/teal branded
 badges, tinted cards or broad colored backgrounds. Keep research track identity

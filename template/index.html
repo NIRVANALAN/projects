@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- TODO: title, description, og:* and citation_* tags -->
+  <title>Project Name: Paper Title</title>
+  <meta name="description" content="One-sentence summary of the paper.">
+  <meta property="og:title" content="Project Name: Paper Title">
+  <meta property="og:description" content="One-sentence summary of the paper.">
+  <meta name="citation_title" content="Project Name: Paper Title">
+  <meta name="citation_author" content="Lan, Yushi">
+  <meta name="citation_publication_date" content="2026">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap">
+  <link rel="stylesheet" href="static/project.css">
+</head>
+<body>
+  <main>
+    <header class="project-header page">
+      <h1>Project Name</h1>
+      <p class="subtitle">Paper Title Goes Here, on One or Two Lines</p>
+      <p class="authors">
+        <span><a href="https://nirvanalan.github.io/">Yushi Lan</a><sup>1</sup></span>
+        <span><a href="#">Co-author</a><sup>1</sup></span>
+        <span><a href="https://www.robots.ox.ac.uk/~vedaldi/">Andrea Vedaldi</a><sup>1</sup></span>
+      </p>
+      <p class="affiliations"><span><sup>1</sup>Visual Geometry Group, University of Oxford</span></p>
+      <p class="venue">Venue 2026</p>
+      <p class="links">
+        <a href="static/paper.pdf">Paper</a>
+        <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>
+        <span class="soon">Code (soon)</span>
+        <a href="#bibtex">BibTeX</a>
+      </p>
+    </header>
+
+    <!-- Teaser: one wide clip or figure. Remove if it would repeat a result below. -->
+    <figure class="teaser wide">
+      <div class="media" style="--aspect: 21 / 9">
+        <video data-src="static/videos/teaser.mp4" poster="static/images/teaser.jpg" aria-label="Teaser"></video>
+      </div>
+      <figcaption>One-sentence takeaway that a visitor should remember.</figcaption>
+    </figure>
+
+    <section class="section page" id="abstract">
+      <div class="section-header"><h2>Abstract</h2></div>
+      <div class="prose">
+        <p>Paste the abstract here. Keep it to the paper's abstract; details belong in the paper.</p>
+      </div>
+    </section>
+
+    <section class="section page" id="method">
+      <div class="section-header"><h2>Method</h2><p>One line on how it works.</p></div>
+      <figure>
+        <img src="static/images/pipeline.webp" alt="Pipeline overview" loading="lazy">
+        <figcaption class="caption">Figure caption, shortened from the paper.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Results: pairs share one source clip; two per row on desktop, one on mobile. -->
+    <section class="section page" id="results">
+      <div class="section-header"><h2>Results</h2><p>Same source video, two target camera paths.</p></div>
+      <div class="grid-2">
+        <figure class="clip">
+          <div class="media"><video data-src="static/videos/scene_a_path_1.mp4" poster="static/images/scene_a_path_1.jpg" aria-label="Scene A, path 1"></video></div>
+          <figcaption><strong>Scene A</strong> · camera path 1</figcaption>
+        </figure>
+        <figure class="clip">
+          <div class="media"><video data-src="static/videos/scene_a_path_2.mp4" poster="static/images/scene_a_path_2.jpg" aria-label="Scene A, path 2"></video></div>
+          <figcaption><strong>Scene A</strong> · camera path 2</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section page" id="comparison">
+      <div class="section-header"><h2>Comparison with baselines</h2><p>Same input and target camera for every method.</p></div>
+      <figure class="clip">
+        <div class="compare">
+          <div class="media"><span class="label">Ours</span><video data-src="static/videos/cmp_ours.mp4" poster="static/images/cmp_ours.jpg" aria-label="Ours"></video></div>
+          <div class="media"><span class="label">Baseline</span><video data-src="static/videos/cmp_baseline.mp4" poster="static/images/cmp_baseline.jpg" aria-label="Baseline"></video></div>
+        </div>
+        <figcaption><strong>Scene B</strong> · camera path</figcaption>
+      </figure>
+    </section>
+
+    <section class="section page" id="bibtex">
+      <div class="section-header"><h2>BibTeX</h2></div>
+      <div class="bibtex">
+        <button type="button" data-copy="bibtex-code">Copy</button>
+        <pre id="bibtex-code"><code>@inproceedings{lan2026project,
+  title     = {Paper Title},
+  author    = {Lan, Yushi and Vedaldi, Andrea},
+  booktitle = {Venue},
+  year      = {2026}
+}</code></pre>
+      </div>
+    </section>
+
+    <section class="section page" id="acknowledgements">
+      <div class="section-header"><h2>Acknowledgements</h2></div>
+      <p class="prose">Funding and thanks.</p>
+    </section>
+  </main>
+
+  <footer class="footer page">
+    <p>Template by <a href="https://nirvanalan.github.io/">Yushi Lan</a>.</p>
+  </footer>
+  <script defer src="static/project.js"></script>
+</body>
+</html>
