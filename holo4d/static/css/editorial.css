@@ -144,30 +144,21 @@ body { padding-left: 0; }
 /* Thumbnails already pick a scene on desktop; keep the select for phones. */
 @media (min-width: 761px) { .gallery-tools .example-picker { display: none; } }
 .carousel-button { z-index: 3; background: #ffffffe6; }
-/* Vista4D-style centred section openings; galleries stay full width. */
-.section-eyebrow, .section h2, .section-intro, .gallery-subheading { text-align: center; margin-left: auto; margin-right: auto; }
-.gallery-subheading { justify-content: center; font-size: 1.2rem; }
-.technical-details { margin-left: auto; margin-right: auto; text-align: center; }
-.technical-details[open] { text-align: left; }
-.text-width > * { margin-left: auto !important; margin-right: auto !important; }
-.closing-grid h2 { text-align: left; }
 .wide-gallery .result-slide { flex-basis: 100%; min-width: 100%; }
 @media (max-width: 760px) { .web-stage.comparison-stage { grid-template-columns: 1fr; aspect-ratio: auto; } }
-/* index.css pins .section-intro margins with !important; centre it anyway. */
-.section-intro { margin-left: auto !important; margin-right: auto !important; }
 @media (max-width: 760px) { .wide-gallery .carousel-button { top: 28%; } }
 /* Vista4D-style framed cards: white, hairline border, 14px radius, soft shadow. */
 .carousel { margin-inline: -10px; }
 .result-slide { padding: 8px 10px 16px; }
 .card-box { height: 100%; padding: 14px 16px 10px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; box-shadow: 0 4px 6px -1px #0000000f, 0 2px 4px -2px #0000000a; }
-.slide-heading { display: block; min-height: 0; padding: 0 0 10px; text-align: center; }
+.slide-heading { display: block; min-height: 0; padding: 0 0 10px; }
 .carousel-button.previous { left: -4px; }
 .carousel-button.next { right: -4px; }
 /* Thumbnail strip spans the full gallery width. */
 .thumbnail-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; overflow: visible; padding: 4px 0 6px; }
 .thumbnail-button { width: 100%; }
 .thumbnail-button img { height: 60px; object-position: center; }
-.thumbnail-button span { text-align: center; }
+.thumbnail-button span { text-align: left; }
 @media (max-width: 760px) {
   .thumbnail-nav { display: flex; overflow-x: auto; }
   .thumbnail-button { flex: 0 0 96px; }
@@ -181,3 +172,5 @@ body { padding-left: 0; }
   .web-stage[data-stack] .blend-layer { opacity: 0; }
   .web-stage[data-stack] .stack-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
 }
+/* One left edge for every heading, intro and card title (VideoMimic-style). */
+.gallery-subheading { font-size: 1.2rem; }
