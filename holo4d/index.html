@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="static/css/index.css?v=20261009-2">
   <link rel="stylesheet" href="static/css/polish.css?v=20261011-2">
   <link rel="stylesheet" href="static/css/yushi-theme.css?v=20261011-1">
-  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-4">
+  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-6">
 </head>
 
 <body id="top">
@@ -112,9 +112,9 @@
         <p class="section-eyebrow">01 / Robotics</p>
         <h2>Robotics from new viewpoints</h2>
         <p class="section-intro">One source scene, two camera paths. Watch the result, then reveal the tracks.</p>
-        <h3 class="gallery-subheading">Humanoid robots <span>Portrait</span></h3>
+        <h3 class="gallery-subheading">Humanoid robots</h3>
         <div data-gallery="robots" data-orientation="portrait" data-same-scene></div>
-        <h3 class="gallery-subheading">Robot manipulation <span>Landscape</span></h3>
+        <h3 class="gallery-subheading">Robot manipulation</h3>
         <div data-gallery="robots" data-orientation="landscape" data-same-scene></div>
         <details class="technical-details condition-details">
           <summary>About the tracks and video loading</summary>
@@ -154,9 +154,9 @@
         <h2>Beyond a single video chunk</h2>
         <p class="section-intro">Nine selected humanoid and manipulation demonstrations, continued beyond 49 frames. Source and generated videos play together; a quiet chunk label identifies each continuation.</p>
         <details class="technical-details"><summary>How are the continuations generated?</summary><p>A T2V seed is continued by the 14B I2V model, conditioned on the previous generated last frame. Overlaps are deduplicated and padded tails removed. These are full-duration qualitative demonstrations, not a quantitative long-horizon motion-preservation claim.</p></details>
-        <h3 class="gallery-subheading">Humanoid continuations · portrait</h3>
+        <h3 class="gallery-subheading">Humanoid continuations</h3>
         <div data-gallery="long" data-orientation="portrait"></div>
-        <h3 class="gallery-subheading">Manipulation continuations · landscape</h3>
+        <h3 class="gallery-subheading">Manipulation continuations</h3>
         <div data-gallery="long" data-orientation="landscape"></div>
       </div>
     </section>
@@ -265,6 +265,6 @@
   <script defer src="static/js/showcase-selection.js?v=20261017-order"></script>
   <script defer src="static/js/postgen-preview.js?v=20261012-postgen"></script>
   <a href="#top" class="back-to-top" aria-label="Back to top" hidden>↑</a>
-  <script defer src="static/js/gallery.js?v=20261017-5"></script>
+  <script defer src="static/js/gallery.js?v=20261017-8"></script>
 </body>
 </html>

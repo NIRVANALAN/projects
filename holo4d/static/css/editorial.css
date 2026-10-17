@@ -1,9 +1,9 @@
 /* Media-first research presentation. Shared homepage palette stays authoritative. */
-:root { --page-gutter: clamp(22px, 4vw, 60px); }
+:root { --page-gutter: clamp(12px, 2.4vw, 36px); }
 body { padding-left: 0; }
 .contents-sidebar { display: none; }
 .topbar { display: block; border-bottom-color: #eee; }
-.nav-inner { width: min(1200px, calc(100% - 48px)); min-height: 56px; justify-content: space-between; }
+.nav-inner { width: min(1600px, calc(100% - var(--page-gutter) * 2)); min-height: 56px; justify-content: space-between; }
 .wordmark { letter-spacing: -.04em; font-size: 1.2rem; }
 .nav-links { gap: 22px; }
 .nav-links a { font-size: .8rem; color: #666; }
@@ -22,9 +22,9 @@ body { padding-left: 0; }
 .teaser { padding-bottom: 12px; }
 .teaser-caption { margin: 0 auto; color: #666; text-align: center; font-size: 1rem; line-height: 1.6; }
 .teaser-caption br { display: none; }
-.gallery-width, .page-width { width: min(1200px, calc(100% - var(--page-gutter) * 2)); }
+.gallery-width, .page-width { width: min(1600px, calc(100% - var(--page-gutter) * 2)); }
 /* Prose shares the gallery's left edge; only the measure stays narrow. */
-.text-width { width: min(1200px, calc(100% - var(--page-gutter) * 2)); }
+.text-width { width: min(1600px, calc(100% - var(--page-gutter) * 2)); }
 .text-width > * { max-width: 820px; }
 .section { padding: 56px 0; }
 #robots { padding-top: 32px; }
@@ -82,9 +82,9 @@ body { padding-left: 0; }
 .thumbnail-button img { height: 53px; border-radius: 4px; }
 .thumbnail-button span { font-size: .62rem; margin-top: 5px; }
 .carousel-button { width: 34px; height: 34px; font-size: 1.6rem; border-color: #e5e5e5; box-shadow: 0 2px 8px #00000008; }
-.carousel-button.previous { left: -28px; }
-.carousel-button.next { right: -28px; }
-.comparison-panel { padding-top: 24px; background: #222; }
+.carousel-button.previous { left: 8px; }
+.carousel-button.next { right: 8px; }
+.comparison-panel { padding-top: 32px; background: #222; }
 .method-label { top: 3px; left: 10px; font-size: .73rem; }
 .web-state { font-size: .64rem; border-radius: 4px; padding: 4px 7px; }
 .pipeline-figure { margin: 28px 0 0; overflow: visible; border-radius: 0; background: none; }
@@ -113,8 +113,8 @@ body { padding-left: 0; }
   #robots { padding-top: 26px; }
   .gallery-subheading { margin-top: 26px; }
   .gallery-tools { gap: 8px; }
-  .carousel-button.previous { left: -3px; }
-  .carousel-button.next { right: -3px; }
+  .carousel-button.previous { left: 4px; }
+  .carousel-button.next { right: 4px; }
   .example-picker { flex-direction: row; align-items: center; }
   .example-picker > span { display: none; }
   .example-picker select { width: 100%; max-width: none; }
@@ -129,3 +129,18 @@ body { padding-left: 0; }
 .closing-grid ul { padding-left: 18px; }
 @media (max-width: 760px) { .closing-grid { grid-template-columns: 1fr; } }
 .site-footer .text-width > * { max-width: none; }
+/* Panel labels: large and plain like Vista4D's; ours stands out in the link blue. */
+.web-stage { container-type: inline-size; }
+.panel-label, .method-label { position: absolute; z-index: 2; padding: .25em .6em; border-radius: 4px; background: #111111e6; color: #fff; font-size: clamp(9px, 2.1cqi, 14px); font-weight: 700; line-height: 1.3; pointer-events: none; }
+.web-stage[data-layout="landscape"] .panel-label { min-width: 17%; }
+.web-stage[data-layout="landscape"] .panel-label.is-ours { min-width: 22%; }
+.panel-label.is-ours, .method-label.is-ours { background: #1772d0; }
+.panel-label.is-ours { font-size: clamp(10px, 2.5cqi, 16px); }
+.method-label { top: 5px; left: 6px; font-size: clamp(10px, 1.9cqi, 15px); }
+.web-stage:fullscreen .panel-label { display: none; }
+/* Card text: one clear title line, camera path as a quieter second line. */
+.slide-heading h3 { font-size: 1.12rem; }
+.slide-heading p { font-size: .86rem; color: #555; }
+/* Thumbnails already pick a scene on desktop; keep the select for phones. */
+@media (min-width: 761px) { .gallery-tools .example-picker { display: none; } }
+.carousel-button { z-index: 3; background: #ffffffe6; }

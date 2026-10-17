@@ -55,6 +55,7 @@ function video(entry, key) {
 class Card {
   constructor(entry) {
     this.entry = entry; this.active = false; this.loop = 0; this.last = 0; this.localPaused = false;
+    this.autoPlays = 0; this.autoLast = 0;
     this.node = el('article', 'result-slide');
     const header = el('header', 'slide-heading');
     header.append(el('h3', '', displayScene(entry)), el('p', '', 'Target camera: '+entry.camera));
@@ -67,12 +68,24 @@ class Card {
     if (entry.kind === 'comparison') {
       this.stage.classList.add('comparison-stage');
       this.videos.push(video(entry, 'baseline'));
-      ['Holo4D','Vista4D'].forEach((name, i) => {
+      ['Holo4D (ours)','Vista4D'].forEach((name, i) => {
         const panel = el('div', 'comparison-panel');
-        panel.append(el('span', 'method-label', name), this.videos[i]);
+        panel.append(el('span', i ? 'method-label' : 'method-label is-ours', name), this.videos[i]);
         this.stage.append(panel);
       });
     } else this.stage.append(...this.videos);
+    if (entry.kind === 'blend') {
+      // Readable Vista4D-style panel names, placed over the small labels baked into the MP4.
+      this.stage.dataset.layout = entry.portrait_horizontal ? 'portrait' : 'landscape';
+      const spots = entry.portrait_horizontal
+        ? [['0.6%','0.4%'], ['33.9%','0.4%'], ['67.1%','0.4%']]
+        : [['2.9%','3%'], ['51.6%','3%'], ['2.9%','35.2%']];
+      ['Source video', '3D track condition', 'Holo4D (ours)'].forEach((name, i) => {
+        const tag = el('span', i === 2 ? 'panel-label is-ours' : 'panel-label', name);
+        tag.style.left = spots[i][0]; tag.style.top = spots[i][1];
+        this.stage.append(tag);
+      });
+    }
     this.state = el('span', 'web-state', entry.kind === 'long' ? 'Source / generated' : 'Clean');
     if (entry.kind !== 'comparison') this.stage.append(this.state);
     this.error = el('span', 'media-error', 'Video unavailable — check the media host.');
@@ -90,8 +103,9 @@ class Card {
     this.stage.append(this.retry);
     this.stage.setAttribute('aria-busy', 'false');
     const figure = el('figure', 'blend-visual');
-    const caption = entry.kind === 'comparison' ? 'Same native target trajectory · different source geometry backends' : entry.kind === 'long' ? 'Source · Generated continuation · labelled chunk boundaries' : 'Source · Projected track condition · Holo4D';
-    figure.append(this.stage, el('figcaption', '', caption));
+    figure.append(this.stage);
+    // Blend cards are labelled on the panels themselves.
+    if (entry.kind !== 'blend') figure.append(el('figcaption', '', entry.kind === 'comparison' ? 'Same native target trajectory · different source geometry backends' : 'Source · Generated continuation · labelled chunk boundaries'));
     this.node.append(header, figure);
     const details = el('details', 'sample-details');
     details.append(el('summary', '', 'Sample details'), el('p', 'asset-note', entry.note));
@@ -310,6 +324,10 @@ class Gallery {
       pointer=null;
     });
     this.track.addEventListener('pointercancel',() => { pointer=null; });
+    // Auto-advance like Vista4D's carousel, until the visitor touches this gallery.
+    this.autoAdvance=!reducedMotion.matches;
+    ['pointerdown','keydown'].forEach(t => root.addEventListener(t,() => { this.autoAdvance=false; },true));
+    this.cards.forEach(c => c.videos[0].addEventListener('timeupdate',() => this.countPlay(c)));
     const observer=new IntersectionObserver(([e]) => { this.visible=e.isIntersecting; this.update(); },{threshold:.05});
     observer.observe(root.querySelector('.carousel'));
     let lastWidth=0;
@@ -342,7 +360,16 @@ class Gallery {
     // New media starts at zero naturally; buffering only gates play/pause.
     cards.forEach(c => { c.groupBlocked = false; c.setBusy(false); c.play(); });
   }
+  countPlay(card) {
+    const v=card.videos[0];
+    if (card!==this.cards[this.index] || !card.active) return;
+    if (v.currentTime+.5 < card.autoLast) card.autoPlays++;
+    card.autoLast=v.currentTime;
+    // Short clips play twice, long continuations once.
+    if (this.autoAdvance && !this.paused && card.autoPlays >= (v.duration>=8 ? 1 : 2)) this.move(this.index+this.perView());
+  }
   move(index) {
+    this.cards.forEach(c => { c.autoPlays=0; c.autoLast=0; });
     const count=this.cards.length;
     const requested=index<0 ? count-1 : index>=count ? 0 : index;
     // Overlap the final pair when the count is odd; never leave an empty slot.
