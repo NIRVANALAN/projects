@@ -128,11 +128,12 @@ class Card {
       });
       this.updateTimeline(); this.sync();
     });
-    const expand = el('button', 'expand-video', 'Expand video');
+    const expand = el('button', 'expand-video', '⤢');
     expand.type = 'button'; expand.dataset.expand = '';
+    expand.title = 'Expand video'; expand.setAttribute('aria-label', 'Expand video');
     expand.hidden = !this.stage.requestFullscreen;
     expand.addEventListener('click', () => this.stage.requestFullscreen?.().catch(() => {}));
-    this.node.append(expand);
+    timeline.append(expand);
     if (entry.metrics) {
       const m = entry.metrics;
       details.append(el('p','metric-note',`Pi3 RotErr ↓: ${m.ours_pi3_rotation_error_deg.toFixed(3)}° / ${m.vista4d_pi3_rotation_error_deg.toFixed(3)}° · VGGT RPE-R ↓: ${m.ours_rot_err.toFixed(3)}° / ${m.vista4d_rot_err.toFixed(3)}° (Holo4D / Vista4D)`));
@@ -437,6 +438,15 @@ document.addEventListener('DOMContentLoaded',() => {
   if (backTop && header) new IntersectionObserver(([entry]) => {
     backTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
   }).observe(header);
+  // Hero mosaic: clean Holo4D outputs that play only while on screen.
+  const heroObserver=new IntersectionObserver(entries => entries.forEach(e => {
+    if (e.isIntersecting && mediaPolicy==='viewport' && !reducedMotion.matches) e.target.play().catch(() => {});
+    else e.target.pause();
+  }),{threshold:.2});
+  document.querySelectorAll('[data-hero-path]').forEach(v => {
+    v.src=holo4dMediaURL({path:v.dataset.heroPath},'clean.mp4');
+    heroObserver.observe(v);
+  });
   const copy=document.querySelector('[data-copy-bibtex]');
   copy?.addEventListener('click',async () => {
     try { await navigator.clipboard.writeText(document.getElementById('bibtex').innerText); copy.textContent='Copied'; }
