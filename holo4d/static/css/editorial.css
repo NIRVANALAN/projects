@@ -126,3 +126,12 @@ body { padding-left: 0; }
   .example-picker select { width: 100%; max-width: none; }
   .view-controls [data-mode] { font-size: .65rem; padding: 6px 7px; }
 }
+/* Closing matter spans the gallery width: full-width citation, then two columns. */
+.closing { padding: 36px 0; }
+.closing > .page-width { border-top: 1px solid #e5e5e5; padding-top: 32px; }
+.closing h2 { font-size: 1.45rem; margin-bottom: 14px; }
+.closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; }
+.closing-grid p, .closing-grid li { color: var(--muted); font-size: .92rem; line-height: 1.7; }
+.closing-grid ul { padding-left: 18px; }
+@media (max-width: 760px) { .closing-grid { grid-template-columns: 1fr; } }
+.site-footer .text-width > * { max-width: none; }

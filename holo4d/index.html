@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="static/css/index.css?v=20261009-2">
   <link rel="stylesheet" href="static/css/polish.css?v=20261011-2">
   <link rel="stylesheet" href="static/css/yushi-theme.css?v=20261011-1">
-  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-2">
+  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-3">
 </head>
 
 <body id="top">
@@ -208,8 +208,8 @@
     </section>
 
 
-    <section id="citation" class="section">
-      <div class="text-width">
+    <section id="citation" class="section closing">
+      <div class="page-width">
         <h2>BibTeX</h2>
         <div class="bibtex">
           <button type="button" data-copy-bibtex>Copy</button>
@@ -225,37 +225,36 @@
       </div>
     </section>
 
-    <section id="concurrent-works" class="section alt-section">
-      <div class="text-width">
-        <h2>Concurrent Works</h2>
-        <ul class="concurrent-list">
-          <li>
-            <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener"><strong>Vista4D</strong></a>
-            explores video reshooting from a monocular source video using rendered 4D point clouds as geometric guidance for video diffusion.
-          </li>
-          <li>
-            <strong>Lyra-[<a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener">1</a>,<a href="https://nv-tlabs.github.io/Project-Lyra/" target="_blank" rel="noopener">2</a>]</strong>
-            distills a video diffusion model into an explicit, feed-forward 3D Gaussian representation for dynamic video-to-4D reconstruction; Lyra-2 extends this to long-horizon, camera-controlled walkthrough generation with per-frame geometry routing to curb spatial forgetting and temporal drift.
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section id="acknowledgements" class="section">
-      <div class="text-width">
-        <h2>Acknowledgments</h2>
-        <div class="acknowledgements-copy">
-          <p>
-            This research was supported by the Sony Research Award Programme 2024
-            and ERC CoG UNION (101001212). We thank Isambard-AI and Dawn AIRR supercomputers for
-            supporting this project.
-          </p>
-          <p>
-            We also acknowledge support from EPSRC EP/Z001811/1 SYN3D.
-          </p>
-          <p>
-            We are grateful to Runjia Li, Zeqi Xiao, Yiming Chen, Wenqi Ouyang, Zhouxia Wang, and Minghao Chen for valuable feedback and discussions.
-          </p>
+    <section class="section closing">
+      <div class="page-width closing-grid">
+        <div id="concurrent-works">
+          <h2>Concurrent Works</h2>
+          <ul class="concurrent-list">
+            <li>
+              <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener"><strong>Vista4D</strong></a>
+              explores video reshooting from a monocular source video using rendered 4D point clouds as geometric guidance for video diffusion.
+            </li>
+            <li>
+              <strong>Lyra-[<a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener">1</a>,<a href="https://nv-tlabs.github.io/Project-Lyra/" target="_blank" rel="noopener">2</a>]</strong>
+              distills a video diffusion model into an explicit, feed-forward 3D Gaussian representation for dynamic video-to-4D reconstruction; Lyra-2 extends this to long-horizon, camera-controlled walkthrough generation with per-frame geometry routing to curb spatial forgetting and temporal drift.
+            </li>
+          </ul>
+        </div>
+        <div id="acknowledgements">
+          <h2>Acknowledgments</h2>
+          <div class="acknowledgements-copy">
+            <p>
+              This research was supported by the Sony Research Award Programme 2024
+              and ERC CoG UNION (101001212). We thank Isambard-AI and Dawn AIRR supercomputers for
+              supporting this project.
+            </p>
+            <p>
+              We also acknowledge support from EPSRC EP/Z001811/1 SYN3D.
+            </p>
+            <p>
+              We are grateful to Runjia Li, Zeqi Xiao, Yiming Chen, Wenqi Ouyang, Zhouxia Wang, and Minghao Chen for valuable feedback and discussions.
+            </p>
+        </div>
         </div>
       </div>
     </section>
