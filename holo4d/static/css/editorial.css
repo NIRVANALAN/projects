@@ -20,10 +20,6 @@ body { padding-left: 0; }
 .paper-links { margin-top: 16px; gap: 8px; }
 .paper-links a, .paper-links > span { font-size: .82rem; padding: 8px 17px; }
 .teaser { padding-bottom: 12px; }
-.hero-mosaic { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 28px 0 14px; }
-.hero-mosaic figure { position: relative; margin: 0; aspect-ratio: 1.75; overflow: hidden; border-radius: 6px; background: #eee; }
-.hero-mosaic video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.hero-mosaic figcaption { position: absolute; left: 8px; bottom: 8px; padding: 3px 8px; border-radius: 4px; background: #000000a0; color: #fff; font-size: .68rem; }
 .teaser-caption { margin: 0 auto; color: #666; text-align: center; font-size: 1rem; line-height: 1.6; }
 .teaser-caption br { display: none; }
 .gallery-width, .page-width { width: min(1200px, calc(100% - var(--page-gutter) * 2)); }
@@ -110,8 +106,6 @@ body { padding-left: 0; }
   .paper-links a, .paper-links > span { font-size: .74rem; padding: 7px 12px; }
   .teaser-caption { font-size: .86rem; }
   .section { padding: 40px 0; }
-  .hero-mosaic { grid-template-columns: repeat(2, 1fr); gap: 4px; margin-top: 22px; }
-  .hero-mosaic figcaption { left: 5px; bottom: 5px; font-size: .6rem; }
   /* ponytail: figure text is unreadable at phone width, so let it scroll instead of shrinking */
   .pipeline-figure > div { overflow-x: auto; }
   .pipeline-figure img { width: 720px; max-width: none; }

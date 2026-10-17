@@ -438,15 +438,6 @@ document.addEventListener('DOMContentLoaded',() => {
   if (backTop && header) new IntersectionObserver(([entry]) => {
     backTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
   }).observe(header);
-  // Hero mosaic: clean Holo4D outputs that play only while on screen.
-  const heroObserver=new IntersectionObserver(entries => entries.forEach(e => {
-    if (e.isIntersecting && mediaPolicy==='viewport' && !reducedMotion.matches) e.target.play().catch(() => {});
-    else e.target.pause();
-  }),{threshold:.2});
-  document.querySelectorAll('[data-hero-path]').forEach(v => {
-    v.src=holo4dMediaURL({path:v.dataset.heroPath},'clean.mp4');
-    heroObserver.observe(v);
-  });
   const copy=document.querySelector('[data-copy-bibtex]');
   copy?.addEventListener('click',async () => {
     try { await navigator.clipboard.writeText(document.getElementById('bibtex').innerText); copy.textContent='Copied'; }
