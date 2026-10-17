@@ -189,3 +189,36 @@ body { padding-left: 0; }
   .teaser-tile.is-portrait { aspect-ratio: .5714; }
   .web-stage.comparison-stage[data-panels="3"] { grid-template-columns: 1fr; }
 }
+/* Teaser: Holo4D view with a small source inset, like CAT4D / Vista4D teasers. */
+.teaser-source { position: absolute; top: 8px; right: 8px; width: 34%; overflow: hidden; border: 2px solid #fff; border-radius: 6px; box-shadow: 0 2px 10px #0000004d; background: #222; }
+.teaser-tile.is-portrait .teaser-source { width: 44%; }
+.teaser-source video { width: 100%; height: auto; aspect-ratio: auto; cursor: default; }
+.teaser-source .teaser-chip { position: absolute; top: 4px; left: 4px; }
+.teaser-chip { display: inline-block; padding: 1px 7px; border-radius: 4px; background: #111111e0; color: #fff; font-size: .78rem; font-weight: 700; line-height: 1.5; }
+.teaser-chip.is-ours { background: #1772d0; }
+.teaser-tile figcaption { font-weight: 700; }
+/* Long-video strips are always stacked, so the merged gallery pairs them 2-up. */
+.web-stage[data-stack] { aspect-ratio: var(--stack-aspect); }
+.web-stage[data-stack] .blend-layer { opacity: 0; }
+.web-stage[data-stack] .stack-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+/* Navigation: clearer, like the references. */
+.topbar { border-bottom: 1px solid #e5e5e5; }
+.nav-inner { min-height: 62px; }
+.wordmark { font-size: 1.4rem; font-weight: 700; color: #222; }
+.nav-links { gap: 26px; }
+.nav-links a { position: relative; padding: 6px 0; color: #333; font-size: 1rem; font-weight: 700; }
+.nav-links a:hover { color: var(--link-hover); text-decoration: none; }
+.nav-links a.current { color: var(--accent); }
+.nav-links a.current::after { content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 2px; border-radius: 2px; background: var(--accent); }
+/* Comfortable reading size, closer to the references (17.6-20px). */
+.section-intro, #overview .text-width p { font-size: 1.125rem; line-height: 1.75; }
+.technical-details { font-size: .95rem; }
+@media (max-width: 760px) {
+  .nav-inner { min-height: 52px; }
+  .wordmark { font-size: 1.2rem; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: .92rem; }
+  .section-intro, #overview .text-width p { font-size: 1.04rem; }
+  .teaser-chip { font-size: .68rem; padding: 0 5px; }
+  .teaser-source { top: 5px; right: 5px; }
+}

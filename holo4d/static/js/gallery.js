@@ -187,14 +187,14 @@ class Card {
     this.videos[0].addEventListener('timeupdate', () => { this.sync(); this.updateTimeline(); });
   }
   stackOnPhones() {
-    // Wide source|generated strips: on phones, redraw the two halves stacked from the same single video.
+    // Wide source|generated strips: redraw the two halves stacked (source above generated) from the same single video.
     const v = this.videos[0], canvas = el('canvas', 'stack-canvas'), ctx = canvas.getContext('2d');
     this.stage.dataset.stack = '';
     this.stage.style.setProperty('--stack-aspect', this.entry.aspect / 4);
     this.stage.append(canvas);
     const draw = source => {
       const w = source.videoWidth || source.naturalWidth, h = source.videoHeight || source.naturalHeight;
-      if (!w || desktopQuery.matches) return;
+      if (!w) return;
       if (canvas.width !== w / 2) { canvas.width = w / 2; canvas.height = h * 2; }
       ctx.drawImage(source, 0, 0, w / 2, h, 0, 0, w / 2, h);
       ctx.drawImage(source, w / 2, 0, w / 2, h, 0, h, w / 2, h);
@@ -296,7 +296,7 @@ class Gallery {
     this.paused=reducedMotion.matches || mediaPolicy==='click'; this.mode=reducedMotion.matches ? 'clean' : 'auto';
     this.cards=entries.map(e => new Card(e));
     // Side-by-side composites are already two videos wide: one per row keeps them the size of the other galleries.
-    this.wide=entries.every(e => e.kind==='comparison' || e.aspect>2);
+    this.wide=entries.every(e => e.kind==='comparison');
     this.cards.forEach(c => {
       c.onReady = () => this.releasePlayback();
       c.onWaiting = () => this.holdPlayback();
@@ -518,7 +518,17 @@ document.addEventListener('DOMContentLoaded',() => {
       v.dataset.src=holo4dMediaURL(entry,'clean.mp4'); v.poster=holo4dMediaURL(entry,'poster.jpg',true);
       v.setAttribute('aria-label',`Holo4D output: ${entry.scene}, ${entry.camera}`);
       v.addEventListener('click',() => { if (!v.src) v.src=v.dataset.src; v.paused ? v.play().catch(() => {}) : v.pause(); });
-      tile.append(v,el('figcaption','',entry.scene));
+      // Picture-in-picture source clip (same ping-pong timing) so the input is always visible.
+      const name=entry.path.split('/').pop(), src=el('video');
+      src.muted=true; src.loop=true; src.playsInline=true; src.preload='none';
+      src.dataset.src=`static/videos/teaser-source/${name}.mp4`; src.poster=`static/videos/teaser-source/${name}.jpg`;
+      src.setAttribute('aria-label',`Source video: ${entry.scene}`);
+      const inset=el('div','teaser-source'); inset.append(src,el('span','teaser-chip','Source'));
+      v.addEventListener('play',() => { if (!src.src) src.src=src.dataset.src; src.play().catch(() => {}); });
+      v.addEventListener('pause',() => src.pause());
+      v.addEventListener('timeupdate',() => { if (src.readyState>=2 && Math.abs(src.currentTime-v.currentTime)>.1) src.currentTime=v.currentTime; });
+      const cap=el('figcaption'); cap.append(el('span','teaser-chip is-ours','Holo4D'),document.createTextNode(' '+entry.scene));
+      tile.append(v,inset,cap);
       teaserRoot.append(tile); onScreen.observe(v);
     });
   }

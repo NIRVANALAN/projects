@@ -37,6 +37,15 @@ window.HOLO4D_SHOWCASE = Object.freeze({
     ['davis/bear', 'pan_right', '4rc'],
     ['davis/bear', 'pan_left', '4rc']
   ],
+  // Long videos: humanoid pairs first, then manipulation; ids are exact export paths.
+  long: [
+    'long_robot/figure_1__window00__start00000/vista4d_avocado_slice__close_crane_above',
+    'long_robot/figure_1__window00__start00000/subject_orbit_zoom',
+    'long_robot/tesla_0__window02__start00048/bed_zoom_inout',
+    'long_robot/tesla_0__window02__start00048/subject_orbit_zoom',
+    'long_robot/GuptaLab__failure__2023-04-20__Thu_Apr_20_14-22-26_2023__static_1__22246076/static_left_front',
+    'long_robot/GuptaLab__failure__2023-04-20__Thu_Apr_20_14-22-26_2023__static_1__22246076/static_right_front'
+  ],
   comparisons: [
     'comparison/golf/dolly-out',
     'comparison/drive-desert/side-fly',
@@ -52,7 +61,7 @@ window.HOLO4D_SHOWCASE = Object.freeze({
 
 function holo4dSelectShowcase(entries, section) {
   const picks = window.HOLO4D_SHOWCASE[section];
-  if (!picks) return entries; // Keep all nine author-approved long videos.
+  if (!picks) return entries;
   return picks.map(pick => {
     const matches = entries.filter(entry => typeof pick === 'string'
       ? entry.id === pick
