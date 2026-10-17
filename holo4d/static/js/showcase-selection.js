@@ -10,18 +10,18 @@ window.HOLO4D_SHOWCASE = Object.freeze({
   robots: [
     ['robot/figure_0__window00__start00000', 'subject_orbit_zoom', 'vggt_omega_cowtracker'],
     ['robot/figure_0__window00__start00000', 'slow_crane_dolly_in', 'vggt_omega_cowtracker'],
-    ['robot/figure_1__window00__start00000', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
-    ['robot/figure_1__window00__start00000', 'subject_orbit_zoom', 'vggt_omega_cowtracker'],
     ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
     ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__left_front_zoom', 'vggt_omega_cowtracker'],
+    ['robot/figure_1__window00__start00000', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
+    ['robot/figure_1__window00__start00000', 'subject_orbit_zoom', 'vggt_omega_cowtracker'],
     [holo4dGupta, 'static_left_front', '4rc'],
     [holo4dGupta, 'static_right_front', '4rc'],
     [holo4dTriSep, 'vista4d_avocado_slice__close_crane_above', '4rc'],
     [holo4dTriSep, 'vista4d_avocado_slice__left_front_zoom', '4rc'],
-    [holo4dTriOct, 'safe_other_side_left_60_r80_fixedheight', '4rc'],
-    [holo4dTriOct, 'safe_high_center_65_r80_fixedheight', '4rc'],
     [holo4dRad, 'static_right', '4rc'],
-    [holo4dRad, 'vista4d_avocado_slice__close_crane_above', '4rc']
+    [holo4dRad, 'vista4d_avocado_slice__close_crane_above', '4rc'],
+    [holo4dTriOct, 'safe_other_side_left_60_r80_fixedheight', '4rc'],
+    [holo4dTriOct, 'safe_high_center_65_r80_fixedheight', '4rc']
   ],
   reshooting: [
     ['native110/camera-lens', 'crane-zoom', 'vggt_omega_cowtracker'],
