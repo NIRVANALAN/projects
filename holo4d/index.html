@@ -192,8 +192,8 @@
         </p>
 
         <figure class="pipeline-figure">
-          <div><img src="static/images/pipeline.webp" width="1668" height="552" loading="lazy" decoding="async" alt="Holo4D pipeline: a frozen 4D reconstructor turns the source video into a 4D reconstruction; with the target camera pose it is reprojected and fused into Plücker raymaps, projected depth, projected 3D tracks, and projected RGB with visibility, which condition a fine-tuned video diffusion model alongside the source latent to produce the target video."></div>
-          <figcaption>An off-the-shelf 4D reconstructor estimates source geometry and 3D tracks. Reprojected into the target camera and fused across frames, they condition a pretrained video diffusion model together with the source latent.</figcaption>
+          <div><img src="static/images/pipeline.webp?v=2" width="2928" height="942" loading="lazy" decoding="async" alt="Holo4D overview. Top: a frozen 4D reconstructor recovers persistent 3D trajectories from the source video; they are projected into the target cameras as a track condition and encoded by a trainable track encoder into features T. Bottom: source and noisy target latents are concatenated along width; each DiT block concatenates T along channels and adds camera features C from Plücker rays; the VAE decoder produces the output video. A track overlay on the output is for visualization only."></div>
+          <figcaption><strong>Top (4D scaffold):</strong> a 4D reconstructor recovers persistent 3D trajectories with sampled source colors, which are projected into the target cameras and encoded into track features <b>T</b>. <strong>Bottom (video diffusion):</strong> source and noisy target latents are concatenated along width; each DiT block concatenates <b>T</b> with its hidden features along channels and adds camera features <b>C</b> from Plücker rays. Flames and snowflakes mark trained and frozen modules; the top-right track overlay is for visualization only.</figcaption>
         </figure>
       </div>
     </section>
