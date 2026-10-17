@@ -175,3 +175,9 @@ body { padding-left: 0; }
   .carousel-button.previous { left: 0; }
   .carousel-button.next { right: 0; }
 }
+.stack-canvas { display: none; }
+@media (max-width: 760px) {
+  .web-stage[data-stack] { aspect-ratio: var(--stack-aspect); }
+  .web-stage[data-stack] .blend-layer { opacity: 0; }
+  .web-stage[data-stack] .stack-canvas { display: block; position: absolute; inset: 0; width: 100%; height: 100%; }
+}

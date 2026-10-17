@@ -87,6 +87,7 @@ class Card {
         this.stage.append(tag);
       });
     }
+    if (entry.kind === 'long' && entry.aspect > 2) this.stackOnPhones();
     this.state = el('span', 'web-state', entry.kind === 'long' ? 'Source / generated' : 'Clean');
     if (entry.kind !== 'comparison') this.stage.append(this.state);
     this.error = el('span', 'media-error', 'Video unavailable — check the media host.');
@@ -180,6 +181,27 @@ class Card {
       });
     });
     this.videos[0].addEventListener('timeupdate', () => { this.sync(); this.updateTimeline(); });
+  }
+  stackOnPhones() {
+    // Wide source|generated strips: on phones, redraw the two halves stacked from the same single video.
+    const v = this.videos[0], canvas = el('canvas', 'stack-canvas'), ctx = canvas.getContext('2d');
+    this.stage.dataset.stack = '';
+    this.stage.style.setProperty('--stack-aspect', this.entry.aspect / 4);
+    this.stage.append(canvas);
+    const draw = source => {
+      const w = source.videoWidth || source.naturalWidth, h = source.videoHeight || source.naturalHeight;
+      if (!w || desktopQuery.matches) return;
+      if (canvas.width !== w / 2) { canvas.width = w / 2; canvas.height = h * 2; }
+      ctx.drawImage(source, 0, 0, w / 2, h, 0, 0, w / 2, h);
+      ctx.drawImage(source, w / 2, 0, w / 2, h, 0, h, w / 2, h);
+    };
+    const poster = new Image();
+    poster.onload = () => { if (v.readyState < 2) draw(poster); };
+    poster.src = v.dataset.poster;
+    const frame = () => { draw(v); v.requestVideoFrameCallback(frame); };
+    if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(frame);
+    else v.addEventListener('timeupdate', () => draw(v));
+    v.addEventListener('loadeddata', () => draw(v));
   }
   updateTimeline() {
     const anchor = this.videos[0];
