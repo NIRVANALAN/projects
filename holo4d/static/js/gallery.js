@@ -317,13 +317,18 @@ class Gallery {
     }
     this.track=root.querySelector('.carousel-track'); this.nav=root.querySelector('.thumbnail-nav');
     this.viewport=root.querySelector('.carousel-viewport');
+    // Paired galleries: one thumbnail (and one step) per same-source pair.
+    this.span=this.paired ? 2 : 1;
     this.cards.forEach((c,i) => {
       this.track.append(c.node);
-      const b=el('button','thumbnail-button'); b.type='button';
-      b.setAttribute('aria-label',`Show ${displayScene(c.entry)}, ${c.entry.camera}`);
+      if (i%this.span) return;
+      const group=this.cards.slice(i,i+this.span);
+      const b=el('button','thumbnail-button'); b.type='button'; b.dataset.index=String(i);
+      const label=displayScene(c.entry)+' · '+group.map(g => g.entry.camera).join(' / ');
+      b.setAttribute('aria-label',`Show ${label}`);
       const img=el('img'); img.alt=''; img.loading='lazy'; img.decoding='async';
       img.dataset.src=holo4dMediaURL(c.entry,'poster.jpg',true);
-      b.append(img,el('span','',displayScene(c.entry)+' · '+c.entry.camera));
+      b.append(img,el('span','',label));
       b.addEventListener('click',() => this.move(i)); this.nav.append(b);
     });
     const thumbs=new IntersectionObserver(entries => {
@@ -403,7 +408,7 @@ class Gallery {
     this.selection = requested;
     if (mediaPolicy==='click' || reducedMotion.matches) { this.requested=false; this.paused=true; }
     this.update();
-    const thumb=this.nav.children[this.index];
+    const thumb=this.nav.children[Math.floor(this.index/this.span)];
     if (thumb) this.nav.scrollTo({left:Math.max(0,thumb.offsetLeft-this.nav.offsetLeft-this.nav.clientWidth/2+56),behavior:'smooth'});
   }
   update() {
@@ -423,15 +428,18 @@ class Gallery {
       if (active) c.groupBlocked = true;
       c.activate(active,this.paused,this.mode,allowLoad);
       if (!active) c.unload();
-      this.nav.children[i].setAttribute('aria-pressed',String(selected));
-      this.nav.children[i].classList.toggle('is-active',selected);
     });
     this.releasePlayback();
     const play=this.root.querySelector('[data-playback]');
     const needsClick=!this.requested && (mediaPolicy==='click' || reducedMotion.matches);
     play.textContent=needsClick?'Load & play':this.paused?'Play':'Pause'; play.setAttribute('aria-pressed',String(this.paused));
     this.root.querySelectorAll('[data-mode]').forEach(b => b.setAttribute('aria-pressed',String(b.dataset.mode===this.mode)));
-    this.root.querySelector('[data-counter]').textContent=`${this.index+1}–${Math.min(this.index+this.perView(),this.cards.length)} / ${this.cards.length}`;
+    [...this.nav.children].forEach(b => {
+      const i=Number(b.dataset.index), on=i<this.index+this.perView() && i+this.span>this.index;
+      b.setAttribute('aria-pressed',String(on)); b.classList.toggle('is-active',on);
+    });
+    const pages=Math.ceil(this.cards.length/this.span), page=Math.floor(this.index/this.span)+1;
+    this.root.querySelector('[data-counter]').textContent=this.span>1 ? `${page} / ${pages}` : `${this.index+1}–${Math.min(this.index+this.perView(),this.cards.length)} / ${this.cards.length}`;
     if (this.select) this.select.value = String(this.selection ?? this.index);
   }
 }
