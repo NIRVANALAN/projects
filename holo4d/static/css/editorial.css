@@ -175,3 +175,17 @@ body { padding-left: 0; }
 }
 /* One left edge for every heading, intro and card title (VideoMimic-style). */
 .gallery-subheading { font-size: 1.2rem; }
+/* Teaser: portrait humanoids as tall end tiles, four landscape clips 2x2 between them. */
+.teaser-mosaic { display: grid; grid-template-columns: .65fr 1fr 1fr .65fr; grid-template-areas: "t1 t3 t4 t2" "t1 t5 t6 t2"; gap: 6px; margin: 26px 0 12px; }
+.teaser-tile { position: relative; margin: 0; overflow: hidden; border-radius: 8px; background: #eee; aspect-ratio: 1.75; }
+.teaser-tile.is-portrait { aspect-ratio: auto; }
+.teaser-tile video { display: block; width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; background: #eee; cursor: pointer; }
+.teaser-tile figcaption { position: absolute; left: 8px; bottom: 8px; padding: 2px 8px; border-radius: 4px; background: #000000a0; color: #fff; font-size: .8rem; pointer-events: none; }
+.teaser-caption { margin-top: 4px; }
+/* Comparisons with a source panel: three equal columns. */
+.web-stage.comparison-stage[data-panels="3"] { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) {
+  .teaser-mosaic { grid-template-columns: 1fr 1fr; grid-template-areas: "t1 t2" "t3 t4" "t5 t6"; gap: 4px; }
+  .teaser-tile.is-portrait { aspect-ratio: .5714; }
+  .web-stage.comparison-stage[data-panels="3"] { grid-template-columns: 1fr; }
+}

@@ -48,8 +48,8 @@ function video(entry, key) {
   const v = el('video', 'blend-layer blend-' + key);
   v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
   v.dataset.src = holo4dMediaURL(entry, key + '.mp4');
-  v.dataset.poster = holo4dMediaURL(entry, key === 'baseline' ? 'baseline-poster.jpg' : 'poster.jpg', true);
-  v.setAttribute('aria-label', `${displayScene(entry)}: ${key === 'baseline' ? 'Vista4D' : 'Holo4D '+key}`);
+  v.dataset.poster = holo4dMediaURL(entry, key === 'baseline' || key === 'source' ? key+'-poster.jpg' : 'poster.jpg', true);
+  v.setAttribute('aria-label', `${displayScene(entry)}: ${key === 'baseline' ? 'Vista4D' : key === 'source' ? 'source video' : 'Holo4D '+key}`);
   return v;
 }
 class Card {
@@ -69,9 +69,13 @@ class Card {
     if (entry.kind === 'comparison') {
       this.stage.classList.add('comparison-stage');
       this.videos.push(video(entry, 'baseline'));
-      ['Holo4D (ours)','Vista4D'].forEach((name, i) => {
+      // videos[0] (Holo4D) stays the timeline anchor; panels show Source | Holo4D | Vista4D.
+      const panels = [[this.videos[0], 'Holo4D (ours)'], [this.videos[1], 'Vista4D']];
+      if (entry.has_source) { this.videos.push(video(entry, 'source')); panels.unshift([this.videos[2], 'Source video']); }
+      this.stage.dataset.panels = String(panels.length);
+      panels.forEach(([v, name]) => {
         const panel = el('div', 'comparison-panel');
-        panel.append(el('span', i ? 'method-label' : 'method-label is-ours', name), this.videos[i]);
+        panel.append(el('span', name === 'Holo4D (ours)' ? 'method-label is-ours' : 'method-label', name), v);
         this.stage.append(panel);
       });
     } else this.stage.append(...this.videos);
@@ -439,7 +443,7 @@ class Gallery {
       b.setAttribute('aria-pressed',String(on)); b.classList.toggle('is-active',on);
     });
     const pages=Math.ceil(this.cards.length/this.span), page=Math.floor(this.index/this.span)+1;
-    this.root.querySelector('[data-counter]').textContent=this.span>1 ? `${page} / ${pages}` : `${this.index+1}–${Math.min(this.index+this.perView(),this.cards.length)} / ${this.cards.length}`;
+    this.root.querySelector('[data-counter]').textContent=this.span>1 ? `${page} / ${pages}` : this.perView()===1 ? `${this.index+1} / ${this.cards.length}` : `${this.index+1}–${Math.min(this.index+this.perView(),this.cards.length)} / ${this.cards.length}`;
     if (this.select) this.select.value = String(this.selection ?? this.index);
   }
 }
@@ -499,6 +503,25 @@ document.addEventListener('DOMContentLoaded',() => {
   if (backTop && header) new IntersectionObserver(([entry]) => {
     backTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
   }).observe(header);
+  // Teaser mosaic: clean Holo4D outputs that play only while on screen.
+  const teaserRoot=document.querySelector('[data-teaser]');
+  if (teaserRoot && page.sections.teaser?.length) {
+    const onScreen=new IntersectionObserver(entries => entries.forEach(({target:v,isIntersecting}) => {
+      if (!isIntersecting || mediaPolicy!=='viewport' || reducedMotion.matches) return v.pause();
+      if (!v.src) v.src=v.dataset.src;
+      v.play().catch(() => {});
+    }),{threshold:.25});
+    page.sections.teaser.forEach((entry,i) => {
+      const tile=el('figure','teaser-tile'+(entry.aspect<1 ? ' is-portrait' : ''));
+      tile.style.gridArea='t'+(i+1);
+      const v=el('video'); v.muted=true; v.loop=true; v.playsInline=true; v.preload='none';
+      v.dataset.src=holo4dMediaURL(entry,'clean.mp4'); v.poster=holo4dMediaURL(entry,'poster.jpg',true);
+      v.setAttribute('aria-label',`Holo4D output: ${entry.scene}, ${entry.camera}`);
+      v.addEventListener('click',() => { if (!v.src) v.src=v.dataset.src; v.paused ? v.play().catch(() => {}) : v.pause(); });
+      tile.append(v,el('figcaption','',entry.scene));
+      teaserRoot.append(tile); onScreen.observe(v);
+    });
+  }
   const copy=document.querySelector('[data-copy-bibtex]');
   copy?.addEventListener('click',async () => {
     try { await navigator.clipboard.writeText(document.getElementById('bibtex').innerText); copy.textContent='Copied'; }
