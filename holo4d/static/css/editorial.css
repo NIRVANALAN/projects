@@ -156,3 +156,22 @@ body { padding-left: 0; }
 /* index.css pins .section-intro margins with !important; centre it anyway. */
 .section-intro { margin-left: auto !important; margin-right: auto !important; }
 @media (max-width: 760px) { .wide-gallery .carousel-button { top: 28%; } }
+/* Vista4D-style framed cards: white, hairline border, 14px radius, soft shadow. */
+.carousel { margin-inline: -10px; }
+.result-slide { padding: 8px 10px 16px; }
+.card-box { height: 100%; padding: 14px 16px 10px; border: 1px solid #e2e8f0; border-radius: 14px; background: #fff; box-shadow: 0 4px 6px -1px #0000000f, 0 2px 4px -2px #0000000a; }
+.slide-heading { display: block; min-height: 0; padding: 0 0 10px; text-align: center; }
+.carousel-button.previous { left: -4px; }
+.carousel-button.next { right: -4px; }
+/* Thumbnail strip spans the full gallery width. */
+.thumbnail-nav { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; overflow: visible; padding: 4px 0 6px; }
+.thumbnail-button { width: 100%; }
+.thumbnail-button img { height: 60px; object-position: center; }
+.thumbnail-button span { text-align: center; }
+@media (max-width: 760px) {
+  .thumbnail-nav { display: flex; overflow-x: auto; }
+  .thumbnail-button { flex: 0 0 96px; }
+  .card-box { padding: 10px 10px 8px; border-radius: 12px; }
+  .carousel-button.previous { left: 0; }
+  .carousel-button.next { right: 0; }
+}

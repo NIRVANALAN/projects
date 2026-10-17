@@ -57,6 +57,7 @@ class Card {
     this.entry = entry; this.active = false; this.loop = 0; this.last = 0; this.localPaused = false;
     this.autoPlays = 0; this.autoLast = 0;
     this.node = el('article', 'result-slide');
+    this.box = el('div', 'card-box'); this.node.append(this.box);
     const header = el('header', 'slide-heading');
     header.append(el('h3', '', displayScene(entry)), el('p', '', 'Target camera: '+entry.camera));
     this.node.dataset.sceneId = sceneKey(entry);
@@ -106,7 +107,7 @@ class Card {
     figure.append(this.stage);
     // Blend cards are labelled on the panels themselves.
     if (entry.kind !== 'blend') figure.append(el('figcaption', '', entry.kind === 'comparison' ? 'Same native target trajectory · different source geometry backends' : 'Source · Generated continuation · labelled chunk boundaries'));
-    this.node.append(header, figure);
+    this.box.append(header, figure);
     const details = el('details', 'sample-details');
     details.append(el('summary', '', 'Sample details'), el('p', 'asset-note', entry.note));
     const timeline = el('div', 'timeline');
@@ -130,7 +131,7 @@ class Card {
       }
       this.updateTimeline();
     });
-    timeline.append(this.playback, this.seek, this.clock); this.node.append(timeline);
+    timeline.append(this.playback, this.seek, this.clock); this.box.append(timeline);
     this.seek.addEventListener('input', () => {
       const anchor = this.videos[0];
       if (!Number.isFinite(anchor.duration) || anchor.duration <= 0) return;
@@ -156,7 +157,7 @@ class Card {
       entry.overlay_basis === 'post_generation_cow_2d'
         ? 'Full-length video with post-generation CoW tracks; original RGB unchanged.'
         : 'Clean full-length export; continuous track overlay not yet available.'));
-    this.node.append(details);
+    this.box.append(details);
     details.addEventListener('toggle', () => this.onLayout?.());
     this.videos.forEach(v => {
       v.addEventListener('error', () => {
