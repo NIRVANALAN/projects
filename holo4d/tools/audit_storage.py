@@ -19,6 +19,8 @@ def required_files(page):
                 files.add(folder/'interleaved.mp4')
             if entry['kind'] == 'comparison':
                 files.update([folder/'baseline.mp4',folder/'baseline-poster.jpg'])
+                if entry.get('has_source'):
+                    files.update([folder/'source.mp4',folder/'source-poster.jpg'])
     return files
 
 

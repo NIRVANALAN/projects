@@ -1628,7 +1628,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 1115461,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/fashion-walk/arc-left-right",
@@ -1651,7 +1652,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 1097067,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/mountain-hike/truck-crane-below",
@@ -1674,7 +1676,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 2395491,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/golf/dolly-out",
@@ -1697,7 +1700,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 1892677,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/drive-desert/side-fly",
@@ -1720,7 +1724,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 3528924,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/drive-desert/back-follow",
@@ -1743,7 +1748,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 2696034,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/woman-beach/crane-above",
@@ -1766,7 +1772,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 1381873,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/truck-pose/left-right",
@@ -1789,7 +1796,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 1162441,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       },
       {
         "id": "comparison/friends-restaurant/side-dolly",
@@ -1812,7 +1820,8 @@ window.HOLO4D_PAGE = {
         "fps": 16.0,
         "has_overlay": false,
         "bytes": 801130,
-        "interleaved": false
+        "interleaved": false,
+        "has_source": true
       }
     ],
     "long": [
@@ -2170,6 +2179,86 @@ window.HOLO4D_PAGE = {
         "has_overlay": true,
         "bytes": 3963575,
         "interleaved": true
+      }
+    ],
+    "teaser": [
+      {
+        "id": "teaser/01_figure-orbit",
+        "path": "teaser/01_figure-orbit",
+        "scene": "Figure humanoid",
+        "camera": "Subject orbit zoom",
+        "backend": "vggt_omega_cowtracker",
+        "kind": "teaser",
+        "aspect": 0.5714285714285714,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 304520
+      },
+      {
+        "id": "teaser/02_tesla-zoom",
+        "path": "teaser/02_tesla-zoom",
+        "scene": "Tesla humanoid",
+        "camera": "Vista4D-inspired: Left front zoom",
+        "backend": "vggt_omega_cowtracker",
+        "kind": "teaser",
+        "aspect": 0.5714285714285714,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 583178
+      },
+      {
+        "id": "teaser/03_droid-gupta",
+        "path": "teaser/03_droid-gupta",
+        "scene": "DROID \u00b7 GuptaLab",
+        "camera": "Static right front",
+        "backend": "4rc",
+        "kind": "teaser",
+        "aspect": 1.75,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 257179
+      },
+      {
+        "id": "teaser/04_droid-tri",
+        "path": "teaser/04_droid-tri",
+        "scene": "DROID \u00b7 TRI",
+        "camera": "Safe high center 65 r80 fixedheight",
+        "backend": "4rc",
+        "kind": "teaser",
+        "aspect": 1.75,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 694884
+      },
+      {
+        "id": "teaser/05_davis-bear",
+        "path": "teaser/05_davis-bear",
+        "scene": "Bear",
+        "camera": "Pan right",
+        "backend": "4rc",
+        "kind": "teaser",
+        "aspect": 1.75,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 724440
+      },
+      {
+        "id": "teaser/06_davis-dance",
+        "path": "teaser/06_davis-dance",
+        "scene": "Lindy hop",
+        "camera": "Zoom out",
+        "backend": "4rc",
+        "kind": "teaser",
+        "aspect": 1.75,
+        "frames": 96,
+        "fps": 16.0,
+        "duration": 6.0,
+        "bytes": 645411
       }
     ]
   }

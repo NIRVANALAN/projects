@@ -41,6 +41,13 @@ def main():
             result = check(urljoin(base, entry['path']+'/'+filename), filename.endswith('.mp4'))
             report['probes'].append(dict(section=name, path=entry['path']+'/'+filename, **result))
             print(name, filename, result, flush=True)
+    # New additions are all checked, not just the representative legacy clips.
+    additions=[(e,'source.mp4') for e in sections['comparisons'] if e.get('has_source')]
+    additions += [(e,'clean.mp4') for e in sections.get('teaser',[])]
+    for entry,filename in additions:
+        result=check(urljoin(base,entry['path']+'/'+filename),True)
+        report['probes'].append(dict(section='new_additions',path=entry['path']+'/'+filename,**result))
+        print('new_addition',entry['path'],result,flush=True)
     report['all_passed'] = all(p.get('status') == (206 if p['path'].endswith('.mp4') else 200) for p in report['probes'])
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(report,indent=2)+'\n')

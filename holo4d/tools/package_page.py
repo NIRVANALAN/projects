@@ -19,18 +19,20 @@ def main():
     raw = (source/'static/js/web-examples.js').read_text()
     manifest = json.loads(raw.split('window.HOLO4D_PAGE = ', 1)[1].rstrip(';\n'))
     files = ['index.html', 'static/css/index.css', 'static/css/polish.css', 'static/css/yushi-theme.css', 'static/css/editorial.css', 'static/js/media-config.js', 'static/js/gallery.js',
-             'static/js/web-examples.js', 'static/js/showcase-selection.js', 'static/images/favicon.svg', 'static/pdfs/holo4d-paper.pdf']
+             'static/js/web-examples.js', 'static/js/showcase-selection.js', 'static/images/favicon.svg', 'static/images/pipeline.webp', 'static/pdfs/holo4d-paper.pdf']
     for entry in [e for entries in manifest['sections'].values() for e in entries]:
         base = f'static/videos/web/{entry["path"]}/'
         files.extend([base+'clean.mp4', base+'poster.jpg'])
         files.append(f'static/posters/web/{entry["path"]}/poster.jpg')
-        if entry['has_overlay']:
+        if entry.get('has_overlay'):
             files.append(base+'overlay.mp4')
         if entry.get('interleaved'):
             files.append(base+'interleaved.mp4')
         if entry['kind'] == 'comparison':
             files.extend([base+'baseline.mp4', base+'baseline-poster.jpg'])
             files.append(f'static/posters/web/{entry["path"]}/baseline-poster.jpg')
+            if entry.get('has_source'):
+                files.extend([base+'source.mp4',base+'source-poster.jpg',f'static/posters/web/{entry["path"]}/source-poster.jpg'])
     for filename in sorted(set(files)):
         if not (source/filename).is_file():
             raise FileNotFoundError(source/filename)
