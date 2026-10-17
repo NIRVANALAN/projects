@@ -28,12 +28,15 @@
   <meta name="citation_conference_title" content="Advances in Neural Information Processing Systems">
   <meta name="citation_pdf_url" content="static/pdfs/holo4d-paper.pdf">
 
+  <link rel="preconnect" href="https://huggingface.co" crossorigin>
+  <link rel="dns-prefetch" href="//huggingface.co">
   <link rel="icon" type="image/svg+xml" href="static/images/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="static/css/index.css?v=20261009-2">
   <link rel="stylesheet" href="static/css/polish.css?v=20261011-2">
   <link rel="stylesheet" href="static/css/yushi-theme.css?v=20261011-1">
+  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-1">
 </head>
 
 <body id="top">
@@ -58,12 +61,12 @@
     <div class="page-width nav-inner">
       <a class="wordmark" href="#top">Holo4D</a>
       <div class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#method">Framework</a>
         <a href="#robots">Robotics</a>
         <a href="#results">Results</a>
         <a href="#long-videos">Long videos</a>
         <a href="#comparisons">Comparison</a>
+        <a href="#overview">Overview</a>
+        <a href="#method">Framework</a>
         <a href="#citation">BibTeX</a>
       </div>
     </div>
@@ -71,7 +74,7 @@
 
   <main id="main-content">
     <header class="paper-header page-width">
-      <h1><span>Holo4D:</span> Holistic 4D Reconstruction as<br class="wide-only"> Geometric Control for Video Diffusion</h1>
+      <h1><span class="project-name">Holo4D</span><span class="project-title">Holistic 4D Reconstruction as<br class="wide-only"> Geometric Control for Video Diffusion</span></h1>
 
       <div class="authors">
         <span><a href="https://nirvanalan.github.io/" target="_blank" rel="noopener">Yushi Lan</a><sup>1,*</sup></span>
@@ -93,7 +96,7 @@
 
       <div class="paper-links">
         <a href="static/pdfs/holo4d-paper.pdf" target="_blank" rel="noopener">Paper</a>
-        <a href="#results">Videos</a>
+        <a href="#robots">Explore videos <span aria-hidden="true">↗</span></a>
         <span title="Code will be released later">Code (soon)</span>
         <a class="secondary-link" href="#long-videos">Long-video demos <span aria-hidden="true">↗</span></a>
       </div>
@@ -101,31 +104,77 @@
 
     <section class="teaser page-width" aria-labelledby="teaser-title">
       <h2 id="teaser-title" class="visually-hidden">Holo4D teaser</h2>
-      <div class="media-toolbar" role="group" aria-label="Video download preference">
-        <label for="media-policy">Video loading</label>
-        <select id="media-policy" data-media-policy>
-          <option value="viewport">Auto · visible examples only</option>
-          <option value="click">Data saver · click to load</option>
-        </select>
-        <span>First-frame previews · offscreen videos unload</span>
+      <p class="teaser-caption">Reshoot a dynamic scene, guided by persistent 3D tracks.</p>
+    </section>
+
+    <section id="robots" class="section">
+      <div class="gallery-width">
+        <p class="section-eyebrow">01 / Robotics</p>
+        <h2>Robotics from new viewpoints</h2>
+        <p class="section-intro">One source scene, two camera paths. Watch the result, then reveal the tracks.</p>
+        <h3 class="gallery-subheading">Humanoid robots <span>Portrait</span></h3>
+        <div data-gallery="robots" data-orientation="portrait" data-same-scene></div>
+        <h3 class="gallery-subheading">Robot manipulation <span>Landscape</span></h3>
+        <div data-gallery="robots" data-orientation="landscape" data-same-scene></div>
+        <details class="technical-details condition-details">
+          <summary>About the tracks and video loading</summary>
+          <p>Holo4D receives source video, camera rays and dense persistent 3D-track features carrying position, visibility, source-query RGB and target-camera depth—not rendered target RGB-D. The source-condition panel visualizes the input; it is not target ground-truth RGB. Post-generation overlays, where labelled, are display tracks estimated on generated RGB, not the model input. Use the view controls to inspect clean video or tracks.</p>
+          <div class="media-toolbar" role="group" aria-label="Video download preference">
+            <label for="media-policy">Video loading</label>
+            <select id="media-policy" data-media-policy>
+              <option value="viewport">Auto · visible examples only</option>
+              <option value="click">Data saver · click to load</option>
+            </select>
+            <span>First-frame previews · offscreen videos unload</span>
+          </div>
+        </details>
       </div>
-      <p class="teaser-caption">
-        <strong>TL;DR:</strong> Holo4D turns source-view 4D reconstruction into geometric control for video diffusion, generating the same dynamic scene from a user-specified camera trajectory.
-      </p>
-      <details class="technical-details condition-details">
-        <summary>What do the colored tracks show?</summary>
-        <p>Colored trajectories reveal persistent 3D identities projected into the target camera. Holo4D receives source video, camera rays and dense 3D-track features carrying position, visibility, source-query RGB and target-camera depth—not rendered target RGB-D. The track panel visualizes the condition, not target ground-truth RGB. Use Clean / 3D tracks to inspect either view.</p>
-      </details>
-      <nav class="explore-links" aria-label="Explore demonstrations">
-        <a href="#robots"><strong>Robotics</strong><span>Humanoids & manipulation ↗</span></a>
-        <a href="#long-videos"><strong>Long videos</strong><span>Nine selected continuations ↗</span></a>
-        <a href="#comparisons"><strong>Method comparison</strong><span>Matched Vista4D trajectories ↗</span></a>
-      </nav>
+    </section>
+
+    <section id="results" class="section alt-section">
+      <div class="gallery-width">
+        <p class="section-eyebrow">02 / Video reshooting</p>
+        <h2>The same moment. A different perspective.</h2>
+        <p class="section-intro">
+          One source scene, two camera paths. Selected DAVIS and Vista4D examples share this gallery; each preview interleaves clean video and 3D-track overlays. Switch views or scrub through time to inspect the result.
+        </p>
+
+        <details class="technical-details"><summary>Geometry and visualization details</summary><p>All short examples use the step-19,500 model. Native-trajectory examples use VGGT-Omega + CoWTracker geometry; DAVIS entries retain their labelled 4RC input. Desktop pairs share the exact source clip and show two different camera paths. Presentation-only jitter rejection removes unreliable displayed identities; it does not change generated RGB or model conditions. Only visible examples load MP4s; the rest show lightweight first-frame posters. Playback waits for both visible videos to buffer. The short previews use a forward/reverse presentation loop, not a longer generated sequence.</p></details>
+
+        <div data-gallery="reshooting" data-same-scene></div>
+        <p id="media-refresh-note" class="diagnostic-note" hidden>Media refresh in progress: the players below still use the previous exports until the filtered single-video batch completes. Original inference videos are unchanged.</p>
+
+        <noscript><p>This gallery requires JavaScript to switch between examples.</p></noscript>
+      </div>
+    </section>
+
+    <section id="long-videos" class="section alt-section">
+      <div class="gallery-width">
+        <p class="section-eyebrow">03 / Long videos</p>
+        <h2>Beyond a single video chunk</h2>
+        <p class="section-intro">Nine selected humanoid and manipulation demonstrations, continued beyond 49 frames. Source and generated videos play together; a quiet chunk label identifies each continuation.</p>
+        <details class="technical-details"><summary>How are the continuations generated?</summary><p>A T2V seed is continued by the 14B I2V model, conditioned on the previous generated last frame. Overlaps are deduplicated and padded tails removed. These are full-duration qualitative demonstrations, not a quantitative long-horizon motion-preservation claim.</p></details>
+        <h3 class="gallery-subheading">Humanoid continuations · portrait</h3>
+        <div data-gallery="long" data-orientation="portrait"></div>
+        <h3 class="gallery-subheading">Manipulation continuations · landscape</h3>
+        <div data-gallery="long" data-orientation="landscape"></div>
+      </div>
+    </section>
+
+    <section id="comparisons" class="section">
+      <div class="gallery-width">
+        <p class="section-eyebrow">04 / Side by side</p>
+        <h2>Matched Vista4D comparisons</h2>
+        <p class="section-intro">Two methods, the same requested native camera trajectory. Browse representative cases—including baseline failures—and inspect synchronized outputs.</p>
+        <details class="technical-details"><summary>Comparison protocol and measured speed</summary><p>Holo4D uses VGGT-Omega + CoWTracker source geometry; Vista4D uses its official pipeline. Source geometry backends differ, and these examples do not imply an appearance win on every case. Camera diagnostics below are not appearance scores.</p><p>Separate matched H200 timing: Holo4D 7.39 s/denoising step versus Vista4D 9.89–9.90 s (about 25% less denoising time). Two native cases, 49 frames, 384×672, 50 steps. Excludes reconstruction/rendering and model loading; not an end-to-end or training speed claim.</p></details>
+        <div data-gallery="comparisons"></div>
+      </div>
     </section>
 
     <section id="overview" class="section alt-section">
       <div class="text-width">
-        <h2>Overview</h2>
+        <p class="section-eyebrow">The idea</p>
+        <h2>Geometry meets generation.</h2>
         <p>
           Reconstructing a dynamic 4D scene along a novel camera trajectory requires both accurate geometry from the source video and generative completion of disoccluded target-view regions. Feed-forward 4D reconstructors recover increasingly comprehensive input-view geometry, but remain tied to the observed camera stream. Camera-controlled video diffusion models provide strong generative priors, yet their camera control is typically not precise enough for metric novel-view reconstruction.
         </p>
@@ -137,7 +186,8 @@
 
     <section id="method" class="section">
       <div class="page-width">
-        <h2>Framework</h2>
+        <p class="section-eyebrow">How it works</p>
+        <h2>Persistent tracks, generative completion.</h2>
         <p class="section-intro">
           Source reconstruction supplies persistent 3D tracks. Their features are projected into the requested camera and injected into video diffusion, alongside source video and camera-ray features.
         </p>
@@ -173,54 +223,6 @@
             <small>Novel camera trajectory</small>
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="robots" class="section">
-      <div class="gallery-width">
-        <h2>Robotics from new viewpoints</h2>
-        <p class="section-intro">One robot scene, two virtual camera paths. Portrait videos preserve the complete robot; landscape previews place the generated view beneath the source and geometric condition.</p>
-        <h3 class="gallery-subheading">Humanoid robots · portrait</h3>
-        <div data-gallery="robots" data-orientation="portrait" data-same-scene></div>
-        <h3 class="gallery-subheading">Robot manipulation · landscape</h3>
-        <div data-gallery="robots" data-orientation="landscape" data-same-scene></div>
-      </div>
-    </section>
-
-    <section id="results" class="section alt-section">
-      <div class="gallery-width">
-        <h2>Video reshooting</h2>
-        <p class="section-intro">
-          One source scene, two camera paths. Browse DAVIS and Vista4D scenes together; each preview interleaves clean video and 3D-track overlays. Switch views or scrub through time to inspect the result.
-        </p>
-
-        <details class="technical-details"><summary>Geometry and visualization details</summary><p>All short examples use the step-19,500 model. Native-trajectory examples use VGGT-Omega + CoWTracker geometry; DAVIS entries retain their labelled 4RC input. Desktop pairs share the exact source clip and show two different camera paths. Presentation-only jitter rejection removes unreliable displayed identities; it does not change generated RGB or model conditions. Only visible examples load MP4s; the rest show lightweight first-frame posters. Playback waits for both visible videos to buffer. The short previews use a forward/reverse presentation loop, not a longer generated sequence.</p></details>
-
-        <div data-gallery="reshooting" data-same-scene></div>
-        <p id="media-refresh-note" class="diagnostic-note" hidden>Media refresh in progress: the players below still use the previous exports until the filtered single-video batch completes. Original inference videos are unchanged.</p>
-
-        <noscript><p>This gallery requires JavaScript to switch between examples.</p></noscript>
-      </div>
-    </section>
-
-    <section id="long-videos" class="section alt-section">
-      <div class="gallery-width">
-        <h2>Beyond a single video chunk</h2>
-        <p class="section-intro">Nine selected humanoid and manipulation demonstrations, continued beyond 49 frames. Source and generated videos play together; a quiet chunk label identifies each continuation.</p>
-        <details class="technical-details"><summary>How are the continuations generated?</summary><p>A T2V seed is continued by the 14B I2V model, conditioned on the previous generated last frame. Overlaps are deduplicated and padded tails removed. These are full-duration qualitative demonstrations, not a quantitative long-horizon motion-preservation claim.</p></details>
-        <h3 class="gallery-subheading">Humanoid continuations · portrait</h3>
-        <div data-gallery="long" data-orientation="portrait"></div>
-        <h3 class="gallery-subheading">Manipulation continuations · landscape</h3>
-        <div data-gallery="long" data-orientation="landscape"></div>
-      </div>
-    </section>
-
-    <section id="comparisons" class="section">
-      <div class="gallery-width">
-        <h2>Matched Vista4D comparisons</h2>
-        <p class="section-intro">Two methods, the same requested native camera trajectory. Browse representative cases—including baseline failures—and inspect synchronized outputs.</p>
-        <details class="technical-details"><summary>Comparison protocol and measured speed</summary><p>Holo4D uses VGGT-Omega + CoWTracker source geometry; Vista4D uses its official pipeline. Source geometry backends differ, and these examples do not imply an appearance win on every case. Camera diagnostics below are not appearance scores.</p><p>Separate matched H200 timing: Holo4D 7.39 s/denoising step versus Vista4D 9.89–9.90 s (about 25% less denoising time). Two native cases, 49 frames, 384×672, 50 steps. Excludes reconstruction/rendering and model loading; not an end-to-end or training speed claim.</p></details>
-        <div data-gallery="comparisons"></div>
       </div>
     </section>
 
@@ -285,9 +287,11 @@
     </div>
   </footer>
 
-  <script defer src="static/js/media-config.js?v=20261012-public-media"></script>
+  <script defer src="static/js/media-config.js?v=20261017-local-posters"></script>
   <script defer src="static/js/web-examples.js?v=20261011-scene-pairs"></script>
+  <script defer src="static/js/showcase-selection.js?v=20261012-curated"></script>
+  <script defer src="static/js/postgen-preview.js?v=20261012-postgen"></script>
   <a href="#top" class="back-to-top" aria-label="Back to top" hidden>↑</a>
-  <script defer src="static/js/gallery.js?v=20261011-6"></script>
+  <script defer src="static/js/gallery.js?v=20261017-editorial"></script>
 </body>
 </html>

@@ -41,7 +41,7 @@ def main():
         if args.media_base:
             page.add_init_script('window.HOLO4D_MEDIA_CONFIG = '+json.dumps({'videoBase':args.media_base,'posterBase':args.media_base})+';')
         page.on('pageerror', lambda error: errors.append(str(error)))
-        url=args.url or f'http://127.0.0.1:{server.server_port}/'
+        url=args.url or f'http://127.0.0.1:{server.server_port}/'+('' if args.media_base else '?local_media=1')
         page.goto(url, wait_until='networkidle')
         assert page.locator('[data-hero]').count() == 0
         assert page.locator('video[src]').count() == 0
@@ -52,6 +52,13 @@ def main():
         assert page.evaluate('document.querySelector(".paper-kicker").getBoundingClientRect().top > document.querySelector(".equal-contribution").getBoundingClientRect().top')
         assert page.evaluate('HOLO4D_PAGE.sections.robots.length') == 53
         assert page.evaluate('HOLO4D_PAGE.sections.results.length') == 27
+        assert page.evaluate('HOLO4D_SHOWCASE.robots.length === 14 && HOLO4D_SHOWCASE.reshooting.length === 12')
+        assert page.locator('[data-gallery="robots"][data-orientation="portrait"] .result-slide').count() == 6
+        assert page.locator('[data-gallery="robots"][data-orientation="landscape"] .result-slide').count() == 8
+        assert page.locator('[data-gallery="reshooting"] .result-slide').count() == 12
+        assert page.locator('[data-gallery="robots"] [data-trajectory="Slow dolly in"]').count() == 0
+        assert page.locator('[data-gallery="reshooting"] h3').filter(has_text='Breakdance').count() == 0
+        assert page.locator('[data-gallery="comparisons"] .result-slide').first.locator('h3').inner_text() == 'Golf'
         if not args.ui_only:
             assert page.evaluate('HOLO4D_PAGE.sections.davis.length') == 8
             assert page.evaluate('HOLO4D_PAGE.sections.davis.filter(e=>e.scene==="Classic car").every(e=>e.backend==="vggt_omega_cowtracker" && e.id.includes("davis_cow"))')
@@ -59,6 +66,18 @@ def main():
         assert page.locator('[data-gallery="davis"]').count() == 0
         assert page.locator('[data-gallery="reshooting"] h3').filter(has_text='Classic car').count() == 0
         assert page.evaluate('HOLO4D_PAGE.sections.long.length') == 9
+        selection = page.evaluate('''() => ({
+          robots: holo4dSelectShowcase(HOLO4D_PAGE.sections.robots, 'robots'),
+          reshooting: holo4dSelectShowcase([...HOLO4D_PAGE.sections.davis, ...HOLO4D_PAGE.sections.results], 'reshooting'),
+          comparisons: holo4dSelectShowcase(HOLO4D_PAGE.sections.comparisons, 'comparisons'),
+          long: HOLO4D_PAGE.sections.long
+        })''')
+        postgen = page.evaluate('holo4dUseLocalMedia ? (window.HOLO4D_POSTGEN_PREVIEW || []).length : 0')
+        if postgen:
+            assert postgen == 23
+            assert all(entry.get('postgen_preview') and
+                       entry.get('overlay_basis') == 'post_generation_cow_2d'
+                       for entry in selection['robots'] + selection['long'])
         page.screenshot(path=str(args.output/'desktop_header.png'))
         selectors = ['[data-gallery="robots"][data-orientation="portrait"]',
                      '[data-gallery="robots"][data-orientation="landscape"]',
@@ -83,6 +102,9 @@ def main():
             root.locator('.result-slide[aria-hidden="false"] .card-playback').first.click()
             count = 4 if 'comparisons' in selector else 2
             wait_videos(page, selector, count)
+            if postgen and ('robots' in selector or 'long' in selector):
+                assert root.locator('video[src]').evaluate_all(
+                    '(vs)=>vs.every(v=>new URL(v.src).pathname.includes("/static/videos/postgen_20261012/"))')
             page.wait_for_function('(s)=>[...document.querySelectorAll(s+" .result-slide[aria-hidden=false] video")].every(v=>!v.paused && v.currentTime>.15)',arg=selector)
             assert root.locator('video[src]').evaluate_all('(vs)=>Math.max(...vs.map(v=>v.currentTime))-Math.min(...vs.map(v=>v.currentTime))<.3')
             selected = root.locator('select').input_value()
@@ -167,8 +189,9 @@ def main():
         assert not errors, errors
         browser.close()
     server.shutdown()
-    (args.output/'home_style_validation.json').write_text(json.dumps(dict(status='passed', scope='existing-media UI only; DAVIS additions not yet verified' if args.ui_only else 'complete updated gallery', errors=errors,
-        checks=['homepage colors','no hero duplication','NeurIPS placement/case','53 robots grouped by actual source ID',
+    (args.output/'home_style_validation.json').write_text(json.dumps(dict(status='passed', scope='existing-media UI only; DAVIS additions not yet verified' if args.ui_only else 'complete updated gallery', errors=errors, selection=selection,
+        checks=['homepage colors','no hero duplication','NeurIPS placement/case','53-entry archive retained; 14 selected robots grouped by exact source ID',
+                '12 curated reshooting cases; no rejected classic-car, drift-turn or breakdance; unchanged backend contracts',
                 'robots first','same-scene distinct-camera desktop pairs','paired DAVIS additions pending' if args.ui_only else 'eight DAVIS assets; six paired demos; classic car CoW/GMOS25 review withheld','individual play/pause',
                 'buffered paired startup/playback including deliberately delayed right response',
                 'interleave/manual clean/tracks','nine long videos decoded','no empty final pair',

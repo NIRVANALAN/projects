@@ -1,5 +1,48 @@
 # Holo4D project page
 
+## Media-first editorial revision — 2026-10-17
+
+Current local revision moves the existing robot gallery directly below the
+paper masthead, puts gallery controls below videos, and folds repeated
+provenance into `Sample details`. All curated source/camera pairings and nine
+approved long videos are retained. White/Lato/blue homepage identity is
+unchanged; no duplicate hero. `static/css/editorial.css` owns this layout.
+
+Public first-frame covers are regular same-origin files under
+`static/posters/web/` (115 JPEGs, about3.66MB total); MP4s remain pinned HTTPS,
+viewport-only. `tools/prepare_page_posters.py` refreshes these derived covers
+atomically. Thumbnail loading now follows the browser viewport, not just the
+horizontal thumbnail strip. Source-tree media symlinks remain development
+mounts; `tools/package_page.py` produces a symlink-free portable release.
+
+Desktop/mobile/player evidence:
+`/scratch/shared/engs2907/open-source/holo4d/page_review_20261017/`.
+Portable local copy:
+`/scratch/shared/engs2907/open-source/holo4d/project-page-release_20261017_editorial_v2/`.
+Detailed handoff:
+`/vgg/yushi/Repo/track4d-360/doc/new_features/2026-10-17-media-first-project-page-polish.md`.
+This revision is prepared for remote publication; deployment success is
+separate from a successful Git push. See [STORAGE.md](STORAGE.md) for the
+small Git checkout versus the optional full offline media package.
+
+A fresh clone uses hosted MP4s and regular same-origin posters, even when
+served on localhost. Civo-only cache/post-generation preview requires
+`?local_media=1`; the ignored scratch mounts are never required by the public page.
+
+
+## Curated existing samples — 2026-10-12
+
+`static/js/showcase-selection.js` selects14robot shorts and12mixed
+DAVIS/native shorts from the unchanged media catalogue. Each short pair has
+the same exact source and two distinct camera paths. All nine author-approved
+robot long videos remain; the nine Vista4D comparisons now start with golf,
+drive-desert and friends-restaurant. Current DROID4RC and humanoid/nativeCoW
+backends are retained. Inconclusive new resolution gates are not substituted.
+Classic-car, breakdance and slow-dolly foreground diagnostics are not in this
+default shortlist; archive files remain intact. No new media upload is needed.
+Details and validation:
+`/vgg/yushi/Repo/track4d-360/doc/new_features/2026-10-12-curated-existing-project-page-showcase.md`.
+
 ## Homepage style — current revision, 2026-10-11
 
 Latest gallery correction: robots precede Video reshooting. Short desktop rows
@@ -95,7 +138,7 @@ screen; unloaded cards show first-frame posters,not black.
   requires consent per carousel page; no neighboring videos are prefetched.
   Loading status, error recovery with Retry, and aspect-safe Expand
   are available without changing the clean/tracking display.
-- `static/js/media-config.js`: separate video/poster roots, relative by default.
+- `static/js/media-config.js`: pinned HTTPS video and same-origin poster roots by default.
   Change these to approved HTTPS directories only after the media is published;
   configuring a URL does not upload or deploy anything. External HTTP is refused
   except a loopback-to-loopback development preview. Credentials/query tokens
@@ -113,7 +156,7 @@ bash tools/build_web_media.sh
 
 Web media:
 `/scratch/shared/engs2907/open-source/holo4d/project-page-media_20261009/`,
-linked locally as `static/videos/web`. The active manifest is
+linked locally as `static/videos/web` (explicit `?local_media=1` preview). The active manifest is
 `static/js/web-examples.js`; original V4/selected inference files are intact.
 `curation.json`,`export_validation.json` and per-case `provenance.json` record
 selection/compression. Private metadata is not copied into releases.
@@ -219,3 +262,13 @@ neighbor prefetch, this page does not speculatively fetch adjacent MP4s.
 - [x] Add scroll-spy active-link
   highlighting on the contents sidebar — Zero-WAM's `setupTableOfContents`
   pattern is a useful reference.
+
+## Local post-generation robot tracking preview (2026-10-12)
+
+The 14 selected robot shorts and nine full rollouts retain their original RGB.
+After validation, `static/js/postgen-preview.js` enables new CoW tracking only
+for localhost previews. The generated-video overlay is **post-generation
+tracking**, not the geometry condition fed to Holo4D. Original conditioning and
+metrics remain unchanged. Public HF media is not silently replaced; portable
+packaging uses an empty preview override until a separate media release.
+Export root: `/scratch/shared/engs2907/logs/track4d-360/project_page/postgen_robot_showcase_all_20261012/`.

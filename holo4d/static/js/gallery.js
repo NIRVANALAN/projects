@@ -41,6 +41,9 @@ function displayScene(entry) {
   if (/^Tesla humanoid/.test(entry.scene)) return 'Tesla humanoid';
   return entry.scene;
 }
+function displayTrackLabel(entry) {
+  return entry.overlay_basis === 'post_generation_cow_2d' ? 'Post-generation tracks' : '3D tracks';
+}
 function video(entry, key) {
   const v = el('video', 'blend-layer blend-' + key);
   v.muted = true; v.loop = true; v.playsInline = true; v.preload = 'none';
@@ -89,7 +92,9 @@ class Card {
     const figure = el('figure', 'blend-visual');
     const caption = entry.kind === 'comparison' ? 'Same native target trajectory · different source geometry backends' : entry.kind === 'long' ? 'Source · Generated continuation · labelled chunk boundaries' : 'Source · Projected track condition · Holo4D';
     figure.append(this.stage, el('figcaption', '', caption));
-    this.node.append(header, figure, el('p', 'asset-note', entry.note));
+    this.node.append(header, figure);
+    const details = el('details', 'sample-details');
+    details.append(el('summary', '', 'Sample details'), el('p', 'asset-note', entry.note));
     const timeline = el('div', 'timeline');
     this.seek = el('input'); this.seek.type = 'range';
     this.seek.min = '0'; this.seek.max = '1000'; this.seek.value = '0';
@@ -130,9 +135,14 @@ class Card {
     this.node.append(expand);
     if (entry.metrics) {
       const m = entry.metrics;
-      this.node.append(el('p','metric-note',`Pi3 RotErr ↓: ${m.ours_pi3_rotation_error_deg.toFixed(3)}° / ${m.vista4d_pi3_rotation_error_deg.toFixed(3)}° · VGGT RPE-R ↓: ${m.ours_rot_err.toFixed(3)}° / ${m.vista4d_rot_err.toFixed(3)}° (Holo4D / Vista4D)`));
+      details.append(el('p','metric-note',`Pi3 RotErr ↓: ${m.ours_pi3_rotation_error_deg.toFixed(3)}° / ${m.vista4d_pi3_rotation_error_deg.toFixed(3)}° · VGGT RPE-R ↓: ${m.ours_rot_err.toFixed(3)}° / ${m.vista4d_rot_err.toFixed(3)}° (Holo4D / Vista4D)`));
     }
-    if (entry.kind === 'long') this.node.append(el('p','asset-note','Clean full-length export; continuous track overlay not yet available.'));
+    if (entry.kind === 'long') details.append(el('p','asset-note',
+      entry.overlay_basis === 'post_generation_cow_2d'
+        ? 'Full-length video with post-generation CoW tracks; original RGB unchanged.'
+        : 'Clean full-length export; continuous track overlay not yet available.'));
+    this.node.append(details);
+    details.addEventListener('toggle', () => this.onLayout?.());
     this.videos.forEach(v => {
       v.addEventListener('error', () => {
         if (!v.hasAttribute('src')) return;
@@ -206,14 +216,14 @@ class Card {
     const a = this.videos[0];
     if (this.entry.interleaved) {
       const frame = a.currentTime*this.entry.fps;
-      this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : this.mode === 'clean' ? 'Clean' : this.mode === 'tracks' ? '3D tracks' : frame < this.entry.frames/2 || frame > this.entry.frames*1.5 ? 'Clean ↔ tracks' : '3D tracks ↔ clean';
+      this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : this.mode === 'clean' ? 'Clean' : this.mode === 'tracks' ? displayTrackLabel(this.entry) : frame < this.entry.frames/2 || frame > this.entry.frames*1.5 ? 'Clean ↔ tracks' : displayTrackLabel(this.entry)+' ↔ clean';
       return;
     }
     if (a.currentTime + 0.5 < this.last) this.loop++;
     this.last = a.currentTime;
     const tracks = this.entry.has_overlay && (this.mode === 'tracks' || (this.mode === 'auto' && this.loop%2 === 1));
     this.stage.classList.toggle('show-tracks', tracks);
-    if (this.entry.has_overlay) this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : tracks ? '3D tracks' : 'Clean';
+    if (this.entry.has_overlay) this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : tracks ? displayTrackLabel(this.entry) : 'Clean';
     if (this.active && a.readyState >= 2) this.videos.slice(1).forEach(v => {
       if (v.readyState >= 2 && Math.abs(v.currentTime-a.currentTime) > .08) v.currentTime = a.currentTime;
     });
@@ -246,9 +256,11 @@ class Gallery {
     this.cards.forEach(c => {
       c.onReady = () => this.releasePlayback();
       c.onWaiting = () => this.holdPlayback();
+      c.onLayout = () => this.resizeViewport();
     });
     this.cards.forEach(c => { c.onPlayRequest = () => { this.requested = true; this.paused = false; this.update(); }; });
-    root.innerHTML='<div class="view-controls" role="group" aria-label="Display mode"><button data-mode="auto">Auto: clean ↔ tracks</button><button data-mode="clean">Clean</button><button data-mode="tracks">3D tracks</button><button data-playback>Pause</button><span data-counter></span></div><div class="carousel" tabindex="0"><button class="carousel-button previous" aria-label="Previous examples">‹</button><div class="carousel-viewport"><div class="carousel-track"></div></div><button class="carousel-button next" aria-label="Next examples">›</button></div><div class="thumbnail-nav" aria-label="Choose an example"></div>';
+    root.innerHTML='<div class="carousel" tabindex="0"><button class="carousel-button previous" aria-label="Previous examples">‹</button><div class="carousel-viewport"><div class="carousel-track"></div></div><button class="carousel-button next" aria-label="Next examples">›</button></div><div class="gallery-tools"><div class="view-controls" role="group" aria-label="Display mode"><button data-mode="auto">Auto: clean ↔ tracks</button><button data-mode="clean">Clean</button><button data-mode="tracks">3D tracks</button><button data-playback>Pause</button><span data-counter></span></div></div><div class="thumbnail-nav" aria-label="Choose an example"></div>';
+    if (entries.every(e => e.overlay_basis === 'post_generation_cow_2d')) root.querySelector('[data-mode="tracks"]').textContent='Post-generation tracks';
     if (hero) root.classList.add('hero-gallery');
     if (!hero) {
       const picker = el('label', 'example-picker');
@@ -260,7 +272,7 @@ class Gallery {
         option.value = String(i); this.select.append(option);
       });
       this.select.addEventListener('change', () => this.move(Number(this.select.value)));
-      picker.append(this.select); root.querySelector('.view-controls').after(picker);
+      picker.append(this.select); root.querySelector('.gallery-tools').append(picker);
     }
     this.track=root.querySelector('.carousel-track'); this.nav=root.querySelector('.thumbnail-nav');
     this.viewport=root.querySelector('.carousel-viewport');
@@ -275,7 +287,7 @@ class Gallery {
     });
     const thumbs=new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.src=e.target.dataset.src; thumbs.unobserve(e.target); } });
-    },{root:this.nav,rootMargin:'0px 120px'});
+    },{root:null,rootMargin:'160px 0px'});
     this.nav.querySelectorAll('img').forEach(img => thumbs.observe(img));
     root.querySelectorAll('[data-mode]').forEach(b => {
       b.type='button'; b.disabled=!this.cards.some(c => c.entry.has_overlay);
@@ -307,6 +319,10 @@ class Gallery {
     galleries.push(this); this.update();
   }
   perView() { return this.hero ? 1 : (desktopQuery.matches ? 2 : 1); }
+  resizeViewport() {
+    const height = Math.max(...this.cards.slice(this.index,this.index+this.perView()).map(c => c.node.getBoundingClientRect().height));
+    if (height > 0) this.viewport.style.height = `${Math.ceil(height)+2}px`;
+  }
   visibleCards() { return this.cards.filter(c => c.active && !c.localPaused && !c.failed); }
   holdPlayback() {
     this.visibleCards().forEach(c => {
@@ -340,8 +356,7 @@ class Gallery {
     const fullscreen=document.fullscreenElement;
     const visible=fullscreen ? this.root.contains(fullscreen) : this.visible;
     this.track.style.transform=`translate3d(-${this.index*100/this.perView()}%,0,0)`;
-    const height=Math.max(...this.cards.slice(this.index,this.index+this.perView()).map(c => c.node.getBoundingClientRect().height));
-    if (height>0) this.viewport.style.height=`${Math.ceil(height)+2}px`;
+    this.resizeViewport();
     this.holdPlayback();
     this.cards.forEach((c,i) => {
       const selected=i>=this.index && i<this.index+this.perView();
@@ -369,6 +384,12 @@ class Gallery {
 document.addEventListener('DOMContentLoaded',() => {
   const page=window.HOLO4D_PAGE;
   if (!page) return;
+  if (holo4dUseLocalMedia && window.HOLO4D_POSTGEN_PREVIEW?.length) {
+    const replacements=new Map(window.HOLO4D_POSTGEN_PREVIEW.map(e=>[e.id,e]));
+    for (const key of ['robots','long']) page.sections[key]=page.sections[key]?.map(e=>replacements.get(e.id) || e);
+    const intro=document.querySelector('#robots .section-intro');
+    if (intro) intro.textContent='One source scene, two camera paths. Reveal post-generation CoW tracks without changing the original generated video.';
+  }
   const refreshNote=document.getElementById('media-refresh-note');
   if (refreshNote) refreshNote.hidden=!!page.sections.results?.every(e=>e.interleaved);
   const hero=Object.values(page.sections).flat().find(e => e.id===page.hero);
@@ -376,6 +397,7 @@ document.addEventListener('DOMContentLoaded',() => {
   if (heroRoot && hero) new Gallery(heroRoot,[hero],true);
   document.querySelectorAll('[data-gallery]').forEach(root => {
     let entries=root.dataset.gallery === 'reshooting' ? [...(page.sections.davis || []), ...(page.sections.results || [])] : page.sections[root.dataset.gallery];
+    if (entries && window.HOLO4D_SHOWCASE) entries = holo4dSelectShowcase(entries, root.dataset.gallery);
     if (root.dataset.orientation) entries=entries?.filter(entry => {
       const portrait=entry.portrait_horizontal || /^(Figure humanoid|Tesla humanoid)/.test(entry.scene);
       return root.dataset.orientation === (portrait ? 'portrait' : 'landscape');

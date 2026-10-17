@@ -1,5 +1,6 @@
 # Local media mount points/caches are not portable Git assets.
 static/videos/web
+static/videos/postgen_20261012
 static/videos/cowtracker/
 tools/__pycache__/
 *.pyc

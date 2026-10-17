@@ -1,5 +1,45 @@
 # Holo4D media storage and collaborator review
 
+## Current Git/release audit — 2026-10-17
+
+The Holo4D source folder occupies about **9MiB**, not hundreds of megabytes.
+The main regular assets are the5,261,903-byte paper PDF and115 first-frame JPEG
+covers (3,658,331bytes); the rest is HTML/CSS/JS, documentation and tooling.
+Covers are deliberately versioned for fast same-origin previews. MP4s and
+geometry/inference caches are **not committed**. Both local mount points
+`static/videos/web` and `static/videos/postgen_20261012`, along with the old
+`cowtracker/` cache, are ignored. Never add these absolute symlinks to Git.
+
+The default page, **including a fresh localhost clone**, loads videos from the
+already-public pinned HTTPS export and covers from `static/posters/web/`.
+No Civo filesystem is needed for that mode. Only Civo cache review uses
+`?local_media=1`, which enables the ignored local mounts and local-only
+post-generation overlay replacements. This opt-in is refused on public hosts.
+
+All406 required compact media files remain available (328,584,670bytes),
+with no missing files in the full local inventory. Historical/unreferenced
+exports remain in scratch and are excluded, not deleted. The offline portable
+release is separate from the small Git checkout:
+
+`/scratch/shared/engs2907/open-source/holo4d/project-page-release_20261017_editorial_v2/`
+
+It contains532 regular files, no symlinks, and passed the desktop/mobile player
+gate. It intentionally includes portable MP4 copies; GitHub uses external
+MP4 hosting instead. Audit/screenshots:
+`/scratch/shared/engs2907/open-source/holo4d/page_review_20261017/`.
+The final clean-checkout-equivalent check and staged-file audit for publication
+are recorded under `publication/` in that directory. Older release counts
+below are dated historical snapshots, not the current Git size.
+
+Publication gates passed: the full local desktop/mobile gallery test and a
+Git-index-exported **mount-free checkout**. The latter served regular local
+covers, decoded/played both actual HTTPS videos, and unloaded them offscreen.
+Evidence: `publication/local_gate/home_style_validation.json` and
+`publication/hosted_gate/clean_checkout_validation.json`. The exported Git-only
+page is `publication/checkout_QtZrGZ/holo4d/` under the audit root. No MP4 or
+symlink is present in the staged Holo4D tree. Only Holo4D changes are committed;
+the unrelated `track4d/` worktree is excluded.
+
 The website source is versioned in this repository. Original inference,
 geometry caches, metrics and compressed web media live outside Git. The local
 `static/videos/web` mount is intentionally ignored: committing an absolute
