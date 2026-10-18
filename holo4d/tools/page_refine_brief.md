@@ -28,8 +28,9 @@ https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -
   Centred section headings were rejected ("太蠢"). Only the title block (title, authors, links) is centred.
 - **Width**: one content column of **1040 px** (the homepage width). "Too wide" and "margins too large" were both
   raised; 1040 px with 14–72 px gutters is the agreed balance.
-- **Type**: one scale, no size soup. Title 64/30, section 30, subsection 19, reading 17, UI 14–16, small ≥ 12.5.
-  Details/explanations ≥ 15.5 px. Nothing tiny, nothing oversized. Labels inside videos must be readable.
+- **Type = PersistBench's scale, nothing else**: 60 title, 40 subtitle, 24 section headings, 20 body/intro/abstract,
+  16 UI/nav/authors/card titles/details, 14 captions/footnotes/code. One family (Lato; BibTeX monospace); form
+  controls inherit it. Labels inside videos must be readable. Text never touches lines (borders, arrows).
 - **Navigation**: clear and obvious. ≥ 1440 px: PersistBench-style fixed contents sidebar placed just left of the
   content column (not at the window edge); smaller screens: sticky top bar with bold 15–16 px links.
 
