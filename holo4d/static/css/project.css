@@ -2812,3 +2812,5 @@ button, select, input {
 .demo-play:hover { background: #1772d0; }
 .demo + .teaser .teaser-mosaic { margin-top: 20px; }
 @media (max-width: 760px) { .demo-play { padding: 9px 18px; font-size: 16px; } .demo-play small { font-size: 14px; } }
+/* Headings break into even lines ("A 4D scaffold to tame / video generation.") instead of leaving one word alone. */
+.section h2, .closing h2, .paper-header h1 .project-title, .gallery-subheading, .slide-heading h3 { text-wrap: balance; }
