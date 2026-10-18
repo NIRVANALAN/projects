@@ -121,13 +121,9 @@ body { padding-left: 0; }
   .view-controls [data-mode] { font-size: .8rem; padding: 6px 8px; }
 }
 /* Closing matter spans the gallery width: full-width citation, then two columns. */
-.closing { padding: 36px 0; }
-.closing > .page-width { border-top: 1px solid #e5e5e5; padding-top: 32px; }
+.closing { padding: 22px 0; }
+.closing > .page-width { border-top: 1px solid #e5e5e5; padding-top: 26px; }
 .closing h2 { font-size: 1.45rem; margin-bottom: 14px; }
-.closing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px 64px; }
-.closing-grid p, .closing-grid li { color: var(--muted); font-size: .92rem; line-height: 1.7; }
-.closing-grid ul { padding-left: 18px; }
-@media (max-width: 760px) { .closing-grid { grid-template-columns: 1fr; } }
 .site-footer .text-width > * { max-width: none; }
 /* Panel labels: large and plain like Vista4D's; ours stands out in the link blue. */
 .web-stage { container-type: inline-size; }
@@ -221,4 +217,67 @@ body { padding-left: 0; }
   .section-intro, #overview .text-width p { font-size: 1.04rem; }
   .teaser-chip { font-size: .68rem; padding: 0 5px; }
   .teaser-source { top: 5px; right: 5px; }
+}
+
+/* ---- Layout v2 (PersistBench-like): one 1040px column (homepage width), contents
+   sidebar in the left margin on wide screens, and a single type scale. ---- */
+:root { --col: 1040px; --key: #b03a2e; }
+.gallery-width, .page-width, .text-width, .nav-inner { width: min(var(--col), calc(100% - var(--page-gutter) * 2)); }
+.text-width > * { max-width: 780px; }
+.key { color: var(--key); font-weight: 700; }
+
+/* Type scale: 64/30 title, 30 section, 19 subsection, 17 reading, 15-16 UI, 13-14 small. */
+.paper-header h1 .project-name { font-size: 64px; }
+.paper-header h1 .project-title { font-size: 30px; line-height: 1.25; }
+.authors { font-size: 17px; }
+.affiliations { font-size: 15px; }
+.equal-contribution { font-size: 13px; }
+.paper-kicker { font-size: 15px; }
+.paper-links a, .paper-links > span { font-size: 14px; }
+.teaser-caption { font-size: 15px; }
+.section h2 { font-size: 30px; line-height: 1.2; letter-spacing: -.02em; }
+.section-eyebrow { font-size: 12.5px; }
+.section-intro, #overview .text-width p:not(.section-eyebrow) { font-size: 17px; line-height: 1.7; }
+.gallery-subheading { font-size: 19px; margin: 30px 0 14px; }
+.slide-heading h3 { font-size: 16px; }
+.slide-heading p { font-size: 14px; }
+.technical-details, .technical-details summary { font-size: 14px; }
+.view-controls [data-mode], .view-controls [data-playback], .view-controls [data-counter], .card-playback, .example-picker { font-size: 14px; }
+.timeline output, .sample-details, .asset-note, .metric-note, .blend-visual figcaption, .pipeline-figure figcaption { font-size: 13.5px; }
+.thumbnail-button span { font-size: 13px; }
+.web-state { font-size: 12.5px; }
+.nav-links a { font-size: 15px; }
+.site-footer { font-size: 13px; }
+.teaser-tile figcaption { font-size: 13px; }
+
+/* Closing matter: full-width prose like PersistBench. */
+.closing h2 { font-size: 22px; margin-bottom: 10px; }
+.closing-copy { max-width: 780px; margin: 0; color: #444; font-size: 15.5px; line-height: 1.7; }
+ul.closing-copy { padding-left: 20px; }
+ul.closing-copy li + li { margin-top: 8px; }
+
+/* BibTeX: a compact card sized to its content, not a full-width grey slab. */
+.bibtex { position: relative; width: fit-content; max-width: 100%; border: 1px solid #e2e8f0; border-radius: 12px; background: #fafafa; box-shadow: none; }
+.bibtex pre { margin: 0; padding: 18px 76px 18px 22px; overflow-x: auto; border: 0; background: none; color: #333; font: 13.5px/1.65 "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace; white-space: pre; }
+.bibtex button { position: absolute; top: 12px; right: 12px; padding: 4px 12px; border: 1px solid #d5d5d5; border-radius: 999px; background: #fff; color: #555; font: 700 12.5px/1.4 "Lato", sans-serif; cursor: pointer; }
+.bibtex button:hover { color: var(--link-hover); border-color: var(--link-hover); }
+
+/* Contents sidebar in the left margin once there is room (1040 + 2 x 200). */
+@media (min-width: 1440px) {
+  .topbar { display: none; }
+  .contents-sidebar { display: block; position: fixed; top: 50%; left: 24px; width: 160px; height: auto; max-height: none; padding: 0; overflow: visible; transform: translateY(-50%); border: 0; box-shadow: none; background: transparent; }
+  .contents-sidebar h2 { margin: 0 0 12px; padding: 0; color: #222; font-size: 15px; letter-spacing: 0; text-transform: none; }
+  .contents-sidebar li { margin: 0; }
+  .contents-sidebar a { display: block; padding: 6px 0 6px 14px; border-left: 2px solid #e5e5e5; border-radius: 0; color: #666; font-size: 15px; font-weight: 400; background: none; transform: none; }
+  .contents-sidebar a:hover { color: var(--link-hover); background: none; transform: none; }
+  .contents-sidebar a.current { color: #222; font-weight: 700; border-left-color: var(--accent); background: none; }
+}
+@media (max-width: 760px) {
+  .paper-header h1 .project-name { font-size: 52px; }
+  .paper-header h1 .project-title { font-size: 22px; }
+  .authors { font-size: 15px; }
+  .section h2 { font-size: 25px; }
+  .section-intro, #overview .text-width p:not(.section-eyebrow) { font-size: 16px; }
+  .gallery-subheading { font-size: 17px; }
+  .bibtex pre { font-size: 12px; padding-right: 22px; padding-top: 44px; }
 }

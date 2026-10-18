@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="static/css/index.css?v=20261009-2">
   <link rel="stylesheet" href="static/css/polish.css?v=20261011-2">
   <link rel="stylesheet" href="static/css/yushi-theme.css?v=20261011-1">
-  <link rel="stylesheet" href="static/css/editorial.css?v=20261017-19">
+  <link rel="stylesheet" href="static/css/editorial.css?v=20261018-2">
 </head>
 
 <body id="top">
@@ -45,13 +45,13 @@
     <h2>Contents</h2>
     <nav>
       <ul>
-        <li><a href="#top">Top</a></li>
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#method">Framework</a></li>
         <li><a href="#robots">Robotics</a></li>
-        <li><a href="#results">Results</a></li>
+        <li><a href="#results">Video reshooting</a></li>
         <li><a href="#long-videos">Long videos</a></li>
         <li><a href="#comparisons">Baselines</a></li>
+        <li><a href="#overview">The idea</a></li>
+        <li><a href="#method">Method</a></li>
+        <li><a href="#acknowledgements">Acknowledgements</a></li>
         <li><a href="#citation">BibTeX</a></li>
       </ul>
     </nav>
@@ -173,12 +173,15 @@
     <section id="overview" class="section alt-section">
       <div class="text-width">
         <p class="section-eyebrow">The idea</p>
-        <h2>Geometry meets generation.</h2>
+        <h2>A 4D scaffold to tame video generation.</h2>
         <p>
-          Reconstructing a dynamic 4D scene along a novel camera trajectory requires both accurate geometry from the source video and generative completion of disoccluded target-view regions. Feed-forward 4D reconstructors recover increasingly comprehensive input-view geometry, but remain tied to the observed camera stream. Camera-controlled video diffusion models provide strong generative priors, yet their camera control is typically not precise enough for metric novel-view reconstruction.
+          Reshooting a video from a new camera path needs two things: the geometry and motion of what was filmed, and plausible content wherever the new camera sees what the source never did. Feed-forward 4D reconstructors recover the observed scene but cannot fill what was never seen; video diffusion models can, but a realistic video need not preserve the geometry and dynamics of <em>this</em> scene.
         </p>
         <p>
-          <strong>Holo4D</strong> connects these capabilities through dense, persistent 3D tracks reconstructed from the source video. Each identity carries geometry, visibility and observed appearance. Projected track features and target-camera rays guide a pretrained video diffusion model, without requiring a rendered RGB-D conditioning branch.
+          Holo4D uses the reconstruction as a <span class="key">holistic 4D scaffold</span>: <span class="key">persistent 3D trajectories</span> that carry the position, motion and source appearance of static and moving points alike. Projected into the requested cameras, the scaffold <span class="key">grounds generation in what was observed</span>, specifying where observed content appears and how it moves, while the <span class="key">generative prior completes</span> the regions the scaffold does not cover.
+        </p>
+        <p>
+          Because the scaffold is explicit geometry, Holo4D accepts different 4D reconstructors <span class="key">without retraining the video generator</span>, and benefits from future advances in reconstruction.
         </p>
       </div>
     </section>
@@ -198,6 +201,25 @@
       </div>
     </section>
 
+    <section id="acknowledgements" class="section closing">
+      <div class="page-width">
+        <h2>Acknowledgements</h2>
+        <p class="closing-copy">
+          We thank <a href="https://runjiali-rl.github.io/" target="_blank" rel="noopener">Runjia Li</a>, <a href="https://xizaoqu.github.io/" target="_blank" rel="noopener">Zeqi Xiao</a>, Yiming Chen, <a href="https://vicky0522.github.io/Wenqi-Ouyang/" target="_blank" rel="noopener">Wenqi Ouyang</a>, <a href="https://wzhouxiff.github.io/" target="_blank" rel="noopener">Zhouxia Wang</a> and <a href="https://silent-chen.github.io/" target="_blank" rel="noopener">Minghao Chen</a> for valuable feedback and discussions. This research was supported by the Sony Research Award Programme 2024, ERC CoG UNION (101001212) and EPSRC EP/Z001811/1 SYN3D. We thank the Isambard-AI and Dawn AIRR supercomputers for supporting this project.
+        </p>
+      </div>
+    </section>
+
+    <section id="concurrent-works" class="section closing">
+      <div class="page-width">
+        <h2>Concurrent works</h2>
+        <ul class="concurrent-list closing-copy">
+          <li><a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D</a> explores video reshooting from a monocular source video using rendered 4D point clouds as geometric guidance for video diffusion.</li>
+          <li>Lyra [<a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener">1</a>, <a href="https://nv-tlabs.github.io/Project-Lyra/" target="_blank" rel="noopener">2</a>] distills a video diffusion model into an explicit, feed-forward 3D Gaussian representation for dynamic video-to-4D reconstruction; Lyra-2 extends this to long-horizon, camera-controlled walkthrough generation with per-frame geometry routing to curb spatial forgetting and temporal drift.</li>
+        </ul>
+      </div>
+    </section>
+
     <section id="citation" class="section closing">
       <div class="page-width">
         <h2>BibTeX</h2>
@@ -211,40 +233,6 @@
   booktitle = {Advances in Neural Information Processing Systems},
   year   = {2026}
 }</code></pre>
-        </div>
-      </div>
-    </section>
-
-    <section class="section closing">
-      <div class="page-width closing-grid">
-        <div id="concurrent-works">
-          <h2>Concurrent Works</h2>
-          <ul class="concurrent-list">
-            <li>
-              <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener"><strong>Vista4D</strong></a>
-              explores video reshooting from a monocular source video using rendered 4D point clouds as geometric guidance for video diffusion.
-            </li>
-            <li>
-              <strong>Lyra-[<a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener">1</a>,<a href="https://nv-tlabs.github.io/Project-Lyra/" target="_blank" rel="noopener">2</a>]</strong>
-              distills a video diffusion model into an explicit, feed-forward 3D Gaussian representation for dynamic video-to-4D reconstruction; Lyra-2 extends this to long-horizon, camera-controlled walkthrough generation with per-frame geometry routing to curb spatial forgetting and temporal drift.
-            </li>
-          </ul>
-        </div>
-        <div id="acknowledgements">
-          <h2>Acknowledgments</h2>
-          <div class="acknowledgements-copy">
-            <p>
-              This research was supported by the Sony Research Award Programme 2024
-              and ERC CoG UNION (101001212). We thank Isambard-AI and Dawn AIRR supercomputers for
-              supporting this project.
-            </p>
-            <p>
-              We also acknowledge support from EPSRC EP/Z001811/1 SYN3D.
-            </p>
-            <p>
-              We are grateful to Runjia Li, Zeqi Xiao, Yiming Chen, Wenqi Ouyang, Zhouxia Wang, and Minghao Chen for valuable feedback and discussions.
-            </p>
-        </div>
         </div>
       </div>
     </section>
@@ -263,6 +251,6 @@
   <script defer src="static/js/showcase-selection.js?v=20261017-long"></script>
   <script defer src="static/js/postgen-preview.js?v=20261012-postgen"></script>
   <a href="#top" class="back-to-top" aria-label="Back to top" hidden>↑</a>
-  <script defer src="static/js/gallery.js?v=20261017-15"></script>
+  <script defer src="static/js/gallery.js?v=20261018-1"></script>
 </body>
 </html>

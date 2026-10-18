@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded',() => {
       v.addEventListener('play',() => { if (!src.src) src.src=src.dataset.src; src.play().catch(() => {}); });
       v.addEventListener('pause',() => src.pause());
       v.addEventListener('timeupdate',() => { if (src.readyState>=2 && Math.abs(src.currentTime-v.currentTime)>.1) src.currentTime=v.currentTime; });
-      const cap=el('figcaption'); cap.append(el('span','teaser-chip is-ours','Holo4D'),document.createTextNode(' '+entry.scene));
+      const cap=el('figcaption','',entry.scene);
       tile.append(v,inset,cap);
       teaserRoot.append(tile); onScreen.observe(v);
     });
