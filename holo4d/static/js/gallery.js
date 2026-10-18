@@ -541,15 +541,20 @@ document.addEventListener('DOMContentLoaded',() => {
       teaserRoot.append(tile); onScreen.observe(v);
     });
   }
-  // Demo film: nothing downloads until the visitor clicks (about 40 MB).
-  const demo=document.querySelector('[data-demo-video]'), demoPlay=document.querySelector('[data-demo-play]');
-  demoPlay?.addEventListener('click',() => {
+  // Demo film autoplays muted at the top (like Vista4D / PersistBench) and pauses off screen; it streams progressively.
+  // Reduced motion or data saver: no autoplay, the native controls start it.
+  const demo=document.querySelector('[data-demo-video]');
+  if (demo) {
     const file='holo4d_demo_2026-10-18.mp4';
-    // Local preview uses the git-ignored copy in static/videos/web/demo/; the public page uses the pinned HF media.
-    demo.src=holo4dLocalPreview ? 'static/videos/web/demo/'+file : holo4dMediaURL({path:'demo'},file);
-    demo.controls=true; demoPlay.hidden=true;
-    demo.play().catch(() => {});
-  });
+    demo.src=holo4dMediaURL({path:'demo'},file);
+    let userPaused=false;
+    demo.addEventListener('pause',() => { if (demo.dataset.auto!=='1') userPaused=true; demo.dataset.auto=''; });
+    demo.addEventListener('play',() => { userPaused=false; });
+    if (!(reducedMotion.matches || mediaPolicy==='click')) new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !userPaused) demo.play().catch(() => {});
+      else if (!e.isIntersecting && !demo.paused) { demo.dataset.auto='1'; demo.pause(); }
+    },{threshold:.3}).observe(demo);
+  }
   // Method animation: loops while on screen, pauses off screen.
   const methodVideo=document.querySelector('[data-method-video]');
   if (methodVideo) {

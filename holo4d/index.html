@@ -38,7 +38,7 @@
   <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="static/css/project.css?v=20261018-6">
+  <link rel="stylesheet" href="static/css/project.css?v=20261018-9">
 </head>
 
 <body id="top">
@@ -54,7 +54,9 @@
         <li><a href="#comparisons">Baselines</a></li>
         <li><a href="#overview">Abstract</a></li>
         <li><a href="#method">Method</a></li>
+        <li><a href="#takeaway">Takeaway</a></li>
         <li><a href="#acknowledgements">Acknowledgements</a></li>
+        <li><a href="#references">References</a></li>
         <li><a href="#citation">BibTeX</a></li>
       </ul>
     </nav>
@@ -108,8 +110,7 @@
 
     <section id="demo" class="demo page-width" aria-label="Holo4D demo video">
       <div class="demo-player">
-        <video data-demo-video preload="none" playsinline poster="static/images/demo-poster.jpg" aria-label="Holo4D demo video, 2 minutes 10 seconds, no audio"></video>
-        <button type="button" class="demo-play" data-demo-play><span aria-hidden="true">▶</span> Watch the demo <small>2:10</small></button>
+        <video data-demo-video muted playsinline controls preload="metadata" poster="static/images/demo-poster.jpg" aria-label="Holo4D demo video, 2 minutes 10 seconds, no audio"><track kind="captions" srclang="en" label="English" src="static/captions/holo4d_demo.vtt"></video>
       </div>
     </section>
 
@@ -208,6 +209,22 @@
       </div>
     </section>
 
+    <section id="takeaway" class="section">
+      <div class="page-width">
+        <p class="section-eyebrow">Takeaway</p>
+        <h2>Reconstruct what was seen; generate what was not.</h2>
+        <blockquote class="takeaway-quote">A 4D scaffold of persistent 3D trajectories grounds video generation in what the source video observed, and leaves only the unseen to the generative prior.</blockquote>
+        <div class="takeaway-points">
+          <p><strong>Source geometry keeps the camera on track.</strong> On DAVIS, Holo4D has the lowest trajectory and translation errors of all methods; with the same 4RC reconstruction it reduces ATE by 54% and RPE-T by 33% compared with <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D</a>. With the two-stage backend it obtains the best PSNR and LPIPS on iPhone.</p>
+          <p><strong>Generated views keep the scene's geometry.</strong> Holo4D has the lowest AbsRel and highest &delta;<sub>1</sub> under both <a href="https://vggt-omega.github.io/" target="_blank" rel="noopener">VGGT-&Omega;</a> and <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC</a> as output reconstructors; under VGGT-&Omega;, AbsRel falls from Vista4D's 0.628 to 0.423.</p>
+          <p><strong>Swap the reconstructor, keep the generator.</strong> The same generator accepts 4RC, <a href="https://www.robots.ox.ac.uk/~vgg/research/vdpm/" target="_blank" rel="noopener">V-DPM</a> and VGGT-&Omega; paired with Open-<a href="https://d4rt-paper.github.io/" target="_blank" rel="noopener">D4RT</a> or <a href="https://cowtracker.github.io/" target="_blank" rel="noopener">CoWTracker</a>, without retraining. The backends trade off (CoWTracker: best ATE, PSNR and SSIM; V-DPM: best rotation error; 4RC: best LPIPS), so Holo4D benefits directly from better reconstructors.</p>
+          <p><strong>Channel-wise conditioning is lighter.</strong> Track features join the hidden features along channels, so the attention sequence length is unchanged: denoising is 1.34&times; faster than Vista4D at similar peak memory (end-to-end time per video is similar).</p>
+          <p><strong>It transfers to robots.</strong> Trained without robot videos, Holo4D-14B reshoots <a href="https://droid-dataset.github.io/" target="_blank" rel="noopener">DROID</a> manipulation episodes and humanoid-robot clips without fine-tuning.</p>
+          <p><strong>Limits.</strong> Holo4D remains sensitive to geometric error, incomplete source coverage and difficult camera trajectories.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="acknowledgements" class="section closing">
       <div class="page-width">
         <h2>Acknowledgements</h2>
@@ -224,6 +241,27 @@
           <li><a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D</a> conditions on rendered point clouds with persistent static pixels; Holo4D makes moving points persistent too and injects them along channels, without an extra token stream.</li>
           <li>Lyra [<a href="https://research.nvidia.com/labs/toronto-ai/lyra/" target="_blank" rel="noopener">1</a>, <a href="https://nv-tlabs.github.io/Project-Lyra/" target="_blank" rel="noopener">2</a>] distills video diffusion into 3D Gaussians; Holo4D goes the other way, using 4D reconstruction to guide video generation.</li>
           <li><a href="https://www.worldlabs.ai/blog/atlas" target="_blank" rel="noopener">Atlas</a> is a multimodal world model for views, video and 3D; Holo4D focuses on reshooting one monocular video and swaps reconstructors without retraining.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="references" class="section closing">
+      <div class="page-width">
+        <h2>References</h2>
+        <ul class="reference-list">
+          <li>Bai et al. <a href="https://jianhongbai.github.io/ReCamMaster/" target="_blank" rel="noopener">ReCamMaster: Camera-Controlled Generative Rendering from a Single Video.</a> ICCV, 2025.</li>
+          <li>Hu et al. <a href="https://arxiv.org/abs/2506.05554" target="_blank" rel="noopener">EX-4D: Extreme Viewpoint 4D Video Synthesis via Depth Watertight Mesh.</a> arXiv, 2025.</li>
+          <li>Khazatsky et al. <a href="https://droid-dataset.github.io/" target="_blank" rel="noopener">DROID: A Large-Scale In-the-Wild Robot Manipulation Dataset.</a> RSS, 2024.</li>
+          <li>Lai et al. <a href="https://cowtracker.github.io/" target="_blank" rel="noopener">CoWTracker: Tracking by Warping instead of Correlation.</a> CVPR, 2026.</li>
+          <li>Lin et al. <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D: Video Reshooting with 4D Point Clouds.</a> CVPR, 2026.</li>
+          <li>Luo et al. <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC: 4D Reconstruction via Conditional Querying Anytime and Anywhere.</a> ICML, 2026.</li>
+          <li>Pont-Tuset et al. <a href="https://davischallenge.org/" target="_blank" rel="noopener">The 2017 DAVIS Challenge on Video Object Segmentation.</a> arXiv, 2017.</li>
+          <li>Ren et al. <a href="https://research.nvidia.com/labs/toronto-ai/GEN3C/" target="_blank" rel="noopener">GEN3C: 3D-Informed World-Consistent Video Generation with Precise Camera Control.</a> CVPR, 2025.</li>
+          <li>Sucar et al. <a href="https://www.robots.ox.ac.uk/~vgg/research/vdpm/" target="_blank" rel="noopener">V-DPM: Video Reconstruction with Dynamic Point Maps.</a> CVPR, 2026.</li>
+          <li>Wan Team. <a href="https://github.com/Wan-Video/Wan2.1" target="_blank" rel="noopener">Wan: Open and Advanced Large-Scale Video Generative Models.</a> arXiv, 2025.</li>
+          <li>Wang et al. <a href="https://vggt-omega.github.io/" target="_blank" rel="noopener">VGGT-&Omega;.</a> CVPR, 2026.</li>
+          <li>Yu et al. <a href="https://trajectorycrafter.github.io/" target="_blank" rel="noopener">TrajectoryCrafter: Redirecting Camera Trajectory for Monocular Videos via Diffusion Models.</a> ICCV, 2025.</li>
+          <li>Zhang et al. <a href="https://d4rt-paper.github.io/" target="_blank" rel="noopener">Efficiently Reconstructing Dynamic Scenes One D4RT at a Time.</a> CVPR, 2026.</li>
         </ul>
       </div>
     </section>
@@ -254,11 +292,11 @@
     </div>
   </footer>
 
-  <script defer src="static/js/media-config.js?v=20261017-local-posters"></script>
+  <script defer src="static/js/media-config.js?v=20261018-bc9b6b6"></script>
   <script defer src="static/js/web-examples.js?v=20261011-scene-pairs"></script>
   <script defer src="static/js/showcase-selection.js?v=20261017-long"></script>
   <script defer src="static/js/postgen-preview.js?v=20261012-postgen"></script>
   <a href="#top" class="back-to-top" aria-label="Back to top" hidden>↑</a>
-  <script defer src="static/js/gallery.js?v=20261018-demo"></script>
+  <script defer src="static/js/gallery.js?v=20261018-hfdemo"></script>
 </body>
 </html>

@@ -2805,12 +2805,15 @@ button, select, input {
 .demo { margin-top: 26px; }
 .demo-player { position: relative; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
 .demo-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #fff; }
-.demo-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 10px;
-  padding: 12px 24px; border: 0; border-radius: 999px; background: #222222e6; color: #fff; font: 700 20px/1.3 "Lato", sans-serif;
-  box-shadow: 0 6px 24px #0000002e; cursor: pointer; }
-.demo-play small { font-size: 16px; font-weight: 400; opacity: .8; }
-.demo-play:hover { background: #1772d0; }
 .demo + .teaser .teaser-mosaic { margin-top: 20px; }
-@media (max-width: 760px) { .demo-play { padding: 9px 18px; font-size: 16px; } .demo-play small { font-size: 14px; } }
 /* Headings break into even lines ("A 4D scaffold to tame / video generation.") instead of leaving one word alone. */
 .section h2, .closing h2, .paper-header h1 .project-title, .gallery-subheading, .slide-heading h3 { text-wrap: balance; }
+
+/* Takeaway (PersistBench-style callout + bold lead-ins) and References. */
+.takeaway-quote { margin: 18px 0 22px; padding: 18px 24px; border-left: 4px solid #222; background: #f5f5f5; color: #222; font-size: 20px; line-height: 1.6; }
+.takeaway-points p { margin: 0 0 16px; color: #333; font-size: 20px; line-height: 1.7; }
+.takeaway-points strong { color: #222; }
+.reference-list { margin: 0; padding: 0; list-style: none; }
+.reference-list li { margin: 0 0 10px; color: #444; font-size: 16px; line-height: 1.6; }
+.reference-list a, .takeaway-points a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+@media (max-width: 760px) { .takeaway-quote, .takeaway-points p { font-size: 16px; } .takeaway-quote { padding: 14px 16px; } }
