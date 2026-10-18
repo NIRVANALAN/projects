@@ -19,8 +19,8 @@ def main():
     raw = (source/'static/js/web-examples.js').read_text()
     manifest = json.loads(raw.split('window.HOLO4D_PAGE = ', 1)[1].rstrip(';\n'))
     files = ['index.html', 'static/css/index.css', 'static/css/polish.css', 'static/css/yushi-theme.css', 'static/css/editorial.css', 'static/js/media-config.js', 'static/js/gallery.js',
-             'static/js/web-examples.js', 'static/js/showcase-selection.js', 'static/images/favicon.png', 'static/images/apple-touch-icon.png',
-             'static/images/logo.webp', 'static/images/logo.png', 'static/images/pipeline.webp', 'static/images/method-overview.jpg',
+             'static/js/web-examples.js', 'static/js/showcase-selection.js', 'static/images/favicon.svg', 'static/images/favicon-32.png', 'static/images/apple-touch-icon.png',
+             'static/images/logo-400.webp', 'static/images/logo-800.webp', 'static/images/logo.png', 'static/images/pipeline.webp', 'static/images/method-overview.jpg',
              'static/videos/method-overview.mp4', 'static/pdfs/holo4d-paper.pdf']
     for entry in [e for entries in manifest['sections'].values() for e in entries]:
         base = f'static/videos/web/{entry["path"]}/'
