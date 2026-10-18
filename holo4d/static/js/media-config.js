@@ -5,7 +5,7 @@ const holo4dLocalPreview = ['localhost', '127.0.0.1', '[::1]'].includes(location
 // A clean clone has no Civo mounts. Use hosted media unless explicitly reviewing
 // local caches; the opt-in is never honored on the public website.
 const holo4dUseLocalMedia = holo4dLocalPreview && new URLSearchParams(location.search).get('local_media') === '1';
-const holo4dPublicMedia = 'https://huggingface.co/yslan/Holo4D-2026/resolve/6dfd6d0c58c55055937c6bbb8f6fe1c199b3fcd0/project_page/media_20261012/';
+const holo4dPublicMedia = 'https://huggingface.co/yslan/Holo4D-2026/resolve/623296ecbcdc9eaec847cc4db8ca5f81ae324491/project_page/media_20261012/';
 window.HOLO4D_MEDIA_CONFIG = Object.freeze(window.HOLO4D_MEDIA_CONFIG || {
   videoBase: holo4dUseLocalMedia ? 'static/videos/web/' : holo4dPublicMedia,
   // Tiny first-frame covers ship with the page: no HF redirect before a preview.

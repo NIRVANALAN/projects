@@ -34,8 +34,10 @@ window.HOLO4D_SHOWCASE = Object.freeze({
     ['native110/drive-desert', 'back-follow', 'vggt_omega_cowtracker'],
     ['native110/friends-restaurant', 'side-dolly', 'vggt_omega_cowtracker'],
     ['native110/friends-restaurant', 'crane-below', 'vggt_omega_cowtracker'],
-    ['davis/bear', 'pan_right', '4rc'],
-    ['davis/bear', 'pan_left', '4rc']
+    ['davis/camel', 'orbit_left', '4rc'],
+    ['davis/camel', 'zoom_in', '4rc'],
+    ['davis/kite-surf', 'pan_left', '4rc'],
+    ['davis/kite-surf', 'translate_right', '4rc']
   ],
   // Long videos: humanoid pairs first, then manipulation; ids are exact export paths.
   long: [
