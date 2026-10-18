@@ -38,7 +38,7 @@
   <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="static/css/project.css?v=20261018-9">
+  <link rel="stylesheet" href="static/css/project.css?v=20261018-11">
 </head>
 
 <body id="top">
@@ -48,11 +48,11 @@
     <nav>
       <ul>
         <li><a href="#demo">Demo</a></li>
+        <li><a href="#overview">Abstract</a></li>
         <li><a href="#robots">Robotics</a></li>
         <li><a href="#results">Video reshooting</a></li>
         <li><a href="#long-videos">Long videos</a></li>
         <li><a href="#comparisons">Baselines</a></li>
-        <li><a href="#overview">Abstract</a></li>
         <li><a href="#method">Method</a></li>
         <li><a href="#takeaway">Takeaway</a></li>
         <li><a href="#acknowledgements">Acknowledgements</a></li>
@@ -111,6 +111,16 @@
     <section id="demo" class="demo page-width" aria-label="Holo4D demo video">
       <div class="demo-player">
         <video data-demo-video muted playsinline controls preload="metadata" poster="static/images/demo-poster.jpg" aria-label="Holo4D demo video, 2 minutes 10 seconds, no audio"><track kind="captions" srclang="en" label="English" src="static/captions/holo4d_demo.vtt"></video>
+      </div>
+    </section>
+
+    <section id="overview" class="section alt-section">
+      <div class="page-width">
+        <p class="section-eyebrow">Abstract</p>
+        <h2>A 4D scaffold to tame video generation.</h2>
+        <p class="abstract-text">
+          Synthesizing a monocular video from a new camera trajectory requires preserving the observed scene geometry and motion while completing regions that become newly visible. Feed-forward 4D reconstructors recover the structure of the observed scene, whereas video diffusion models provide a generative prior for completing unseen content. We introduce Holo4D, a video reshooting framework that uses reconstructed 3D trajectories as a <span class="key">holistic source-view 4D scaffold</span>. We project these trajectories into the requested views and encode their geometry and source appearance to guide a pretrained video diffusion model. Together with the source video and target cameras, the scaffold <span class="key">grounds generation</span> in reconstructed observations while leaving unsupported regions to the <span class="key">generative prior</span>. Experiments demonstrate the value of trajectory-based conditioning for camera control and novel-view synthesis. The framework accommodates different 4D reconstructors <span class="key">without retraining</span> the video generator, allowing it to benefit from future advances in source reconstruction.
+        </p>
       </div>
     </section>
 
@@ -181,16 +191,6 @@
       </div>
     </section>
 
-
-    <section id="overview" class="section alt-section">
-      <div class="page-width">
-        <p class="section-eyebrow">Abstract</p>
-        <h2>A 4D scaffold to tame video generation.</h2>
-        <p class="abstract-text">
-          Synthesizing a monocular video from a new camera trajectory requires preserving the observed scene geometry and motion while completing regions that become newly visible. Feed-forward 4D reconstructors recover the structure of the observed scene, whereas video diffusion models provide a generative prior for completing unseen content. We introduce Holo4D, a video reshooting framework that uses reconstructed 3D trajectories as a <span class="key">holistic source-view 4D scaffold</span>. We project these trajectories into the requested views and encode their geometry and source appearance to guide a pretrained video diffusion model. Together with the source video and target cameras, the scaffold <span class="key">grounds generation</span> in reconstructed observations while leaving unsupported regions to the <span class="key">generative prior</span>. Experiments demonstrate the value of trajectory-based conditioning for camera control and novel-view synthesis. The framework accommodates different 4D reconstructors <span class="key">without retraining</span> the video generator, allowing it to benefit from future advances in source reconstruction.
-        </p>
-      </div>
-    </section>
 
     <section id="method" class="section">
       <div class="page-width">

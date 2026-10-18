@@ -2817,3 +2817,5 @@ button, select, input {
 .reference-list li { margin: 0 0 10px; color: #444; font-size: 16px; line-height: 1.6; }
 .reference-list a, .takeaway-points a { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 @media (max-width: 760px) { .takeaway-quote, .takeaway-points p { font-size: 16px; } .takeaway-quote { padding: 14px 16px; } }
+/* Order: demo -> abstract -> results mosaic. */
+#overview + .teaser .teaser-mosaic { margin-top: 0; }
