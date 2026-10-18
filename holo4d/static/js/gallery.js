@@ -541,6 +541,15 @@ document.addEventListener('DOMContentLoaded',() => {
       teaserRoot.append(tile); onScreen.observe(v);
     });
   }
+  // Demo film: nothing downloads until the visitor clicks (about 40 MB).
+  const demo=document.querySelector('[data-demo-video]'), demoPlay=document.querySelector('[data-demo-play]');
+  demoPlay?.addEventListener('click',() => {
+    const file='holo4d_demo_2026-10-18.mp4';
+    // Local preview uses the git-ignored copy in static/videos/web/demo/; the public page uses the pinned HF media.
+    demo.src=holo4dLocalPreview ? 'static/videos/web/demo/'+file : holo4dMediaURL({path:'demo'},file);
+    demo.controls=true; demoPlay.hidden=true;
+    demo.play().catch(() => {});
+  });
   // Method animation: loops while on screen, pauses off screen.
   const methodVideo=document.querySelector('[data-method-video]');
   if (methodVideo) {

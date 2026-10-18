@@ -2797,3 +2797,18 @@ button, select, input {
   .web-stage[data-layout="landscape"]:not(.full-view) .blend-layer { inset: auto; left: -2.402%; top: -65.988%; width: 104.803%; height: auto; object-fit: fill; }
   .gallery-tools .example-picker { display: none; }          /* thumbnails already choose the scene */
 }
+/* Abstract: one column like every other section; highlights wrap normally. */
+.key { white-space: normal; }
+#overview .abstract-text { max-width: none; margin-top: 4px; }
+
+/* Demo film at the top (click to load). */
+.demo { margin-top: 26px; }
+.demo-player { position: relative; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
+.demo-player video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #fff; }
+.demo-play { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 24px; border: 0; border-radius: 999px; background: #222222e6; color: #fff; font: 700 20px/1.3 "Lato", sans-serif;
+  box-shadow: 0 6px 24px #0000002e; cursor: pointer; }
+.demo-play small { font-size: 16px; font-weight: 400; opacity: .8; }
+.demo-play:hover { background: #1772d0; }
+.demo + .teaser .teaser-mosaic { margin-top: 20px; }
+@media (max-width: 760px) { .demo-play { padding: 9px 18px; font-size: 16px; } .demo-play small { font-size: 14px; } }
