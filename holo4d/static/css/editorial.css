@@ -289,3 +289,16 @@ ul.closing-copy li + li { margin-top: 8px; }
   .pipeline-figure .method-video video { width: 100%; max-width: none; }
 }
 #overview .text-width .section-eyebrow { font-size: 12.5px; line-height: 1.4; }
+/* Abstract: heading column + text column, filling the content width. */
+.abstract-grid { display: grid; grid-template-columns: minmax(220px, 300px) 1fr; column-gap: 56px; align-items: start; }
+.abstract-grid h2 { margin-bottom: 0; }
+#overview .abstract-text { margin: 0; color: #333; font-size: 17px; line-height: 1.75; }
+/* Contents sidebar hugs the content column instead of the window edge. */
+@media (min-width: 1440px) { .contents-sidebar { left: max(24px, calc(50vw - var(--col) / 2 - 200px)); } }
+@media (max-width: 760px) { .abstract-grid { grid-template-columns: 1fr; } .abstract-grid h2 { margin-bottom: 12px; } #overview .abstract-text { font-size: 16px; } }
+#overview .abstract-text { text-wrap: pretty; }
+.key { white-space: nowrap; }
+.method-video video { aspect-ratio: auto; }
+/* Details text readable, not footnote-sized. */
+.technical-details, .technical-details summary, .technical-details p { font-size: 15.5px; line-height: 1.7; }
+.media-toolbar, .media-toolbar select { font-size: 15px; }
