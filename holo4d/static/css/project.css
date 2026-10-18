@@ -2779,3 +2779,21 @@ button, select, input {
     width: 86%;
   }
 }
+
+/* ---- Phones: show the Holo4D panel large; "Show source & condition" reveals the full composite. ---- */
+.panel-toggle { display: none; }
+.view-controls [data-playback] { display: none; }          /* each card has its own Play/Pause */
+@media (max-width: 760px) {
+  .panel-toggle { display: inline-block; margin-top: 8px; padding: 4px 12px; border: 1px solid #d5d5d5; border-radius: 999px; background: #fff; color: #333; font: 700 14px/1.4 "Lato", sans-serif; cursor: pointer; }
+  .web-stage[data-layout]:not(.full-view) .panel-label:not(.is-ours) { display: none; }
+  .web-stage[data-layout]:not(.full-view) .panel-label.is-ours { left: 8px !important; top: 8px !important; font-size: 14px; }
+  .web-stage[data-layout]:not(.full-view) .blend-layer { object-fit: cover; }
+  /* portrait composite = three equal columns; Holo4D is the right third */
+  .web-stage[data-layout="portrait"]:not(.full-view) { aspect-ratio: .5714; width: min(100%, calc(70vh * .5714)); margin-inline: auto; }
+  .web-stage[data-layout="portrait"]:not(.full-view) .blend-layer { object-position: 100% 50%; }
+  /* landscape composite (960×846): Holo4D panel spans the full width from y = 324 */
+  /* landscape composite (960×846): Holo4D panel = x 22–938, y 324–815; scale and offset the video to exactly that */
+  .web-stage[data-layout="landscape"]:not(.full-view) { aspect-ratio: 916 / 491; }
+  .web-stage[data-layout="landscape"]:not(.full-view) .blend-layer { inset: auto; left: -2.402%; top: -65.988%; width: 104.803%; height: auto; object-fit: fill; }
+  .gallery-tools .example-picker { display: none; }          /* thumbnails already choose the scene */
+}

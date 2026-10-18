@@ -42,7 +42,7 @@ function displayScene(entry) {
   return entry.scene;
 }
 function displayTrackLabel(entry) {
-  return entry.overlay_basis === 'post_generation_cow_2d' ? 'Post-generation tracks' : '3D tracks';
+  return entry.overlay_basis === 'post_generation_cow_2d' ? 'Post-generation tracks' : 'Tracks (visualization)';
 }
 function video(entry, key) {
   const v = el('video', 'blend-layer blend-' + key);
@@ -90,6 +90,14 @@ class Card {
         tag.style.left = spots[i][0]; tag.style.top = spots[i][1];
         this.stage.append(tag);
       });
+      // Phones show only the Holo4D panel (CSS crop); this toggle reveals the full source | condition | result composite.
+      this.panelToggle = el('button', 'panel-toggle', 'Show source & condition');
+      this.panelToggle.type = 'button';
+      this.panelToggle.addEventListener('click', () => {
+        const full = this.stage.classList.toggle('full-view');
+        this.panelToggle.textContent = full ? 'Show result only' : 'Show source & condition';
+        this.onLayout?.();
+      });
     }
     if (entry.kind === 'long' && entry.aspect > 2) this.stackOnPhones();
     this.state = el('span', 'web-state', entry.kind === 'long' ? 'Source / generated' : 'Clean');
@@ -113,6 +121,7 @@ class Card {
     // Blend cards are labelled on the panels themselves.
     if (entry.kind !== 'blend') figure.append(el('figcaption', '', entry.kind === 'comparison' ? 'Same native target trajectory · different source geometry backends' : 'Source · Generated continuation · labelled chunk boundaries'));
     this.box.append(header, figure);
+    if (this.panelToggle) figure.append(this.panelToggle);
     const details = el('details', 'sample-details');
     details.append(el('summary', '', 'Sample details'), el('p', 'asset-note', entry.note));
     const timeline = el('div', 'timeline');
@@ -303,7 +312,7 @@ class Gallery {
       c.onLayout = () => this.resizeViewport();
     });
     this.cards.forEach(c => { c.onPlayRequest = () => { this.requested = true; this.paused = false; this.update(); }; });
-    root.innerHTML='<div class="carousel" tabindex="0"><button class="carousel-button previous" aria-label="Previous examples">‹</button><div class="carousel-viewport"><div class="carousel-track"></div></div><button class="carousel-button next" aria-label="Next examples">›</button></div><div class="gallery-tools"><div class="view-controls" role="group" aria-label="Display mode"><button data-mode="auto">Auto: clean ↔ tracks</button><button data-mode="clean">Clean</button><button data-mode="tracks">3D tracks</button><button data-playback>Pause</button><span data-counter></span></div></div><div class="thumbnail-nav" aria-label="Choose an example"></div>';
+    root.innerHTML='<div class="carousel" tabindex="0"><button class="carousel-button previous" aria-label="Previous examples">‹</button><div class="carousel-viewport"><div class="carousel-track"></div></div><button class="carousel-button next" aria-label="Next examples">›</button></div><div class="gallery-tools"><div class="view-controls" role="group" aria-label="Display mode"><button data-mode="auto">Auto</button><button data-mode="clean">Clean</button><button data-mode="tracks">Tracks (visualization)</button><button data-playback>Pause</button><span data-counter></span></div></div><div class="thumbnail-nav" aria-label="Choose an example"></div>';
     if (entries.every(e => e.overlay_basis === 'post_generation_cow_2d')) root.querySelector('[data-mode="tracks"]').textContent='Post-generation tracks';
     if (hero) root.classList.add('hero-gallery');
     if (this.wide) root.classList.add('wide-gallery');
