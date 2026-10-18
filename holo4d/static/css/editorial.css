@@ -326,3 +326,6 @@ body { font-family: "Lato", Verdana, Helvetica, sans-serif; }
 }
 button, select, input { font-family: inherit; }                      /* form controls default to Arial */
 @media (max-width: 760px) { .affiliations span { font-size: 14px; } .bibtex pre { font-size: 14px; } }
+/* Closing blocks share one right edge: the content column (same as the divider lines). */
+.closing .closing-copy, .closing ul.closing-copy { max-width: none; }
+.closing .bibtex { width: 100%; }

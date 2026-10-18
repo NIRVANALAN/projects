@@ -1,7 +1,7 @@
 # Holo4D project page — author requirements and refinement brief
 
 Everything the author (Yushi) asked for while the page was redesigned on 2026-10-17/18, in one place. The live page at
-`main` (05bcce2 or later) implements all of it; refine it further without breaking any item below. Live:
+`main` (the commit that added this sentence or later) implements all of it; refine it further without breaking any item below. Live:
 https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -m http.server 8765` → `/holo4d/`.
 
 ## 0. How to work
@@ -27,7 +27,9 @@ https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -
 - **Alignment**: everything starts at one left edge (eyebrow, heading, intro, subheading, card title, thumbnails).
   Centred section headings were rejected ("太蠢"). Only the title block (title, authors, links) is centred.
 - **Width**: one content column of **1040 px** (the homepage width). "Too wide" and "margins too large" were both
-  raised; 1040 px with 14–72 px gutters is the agreed balance.
+  raised; 1040 px with 14–72 px gutters is the agreed balance. **Every block shares the column's left and right
+  edge** (text blocks, galleries, method video, acknowledgements, concurrent works, BibTeX card, dividers); reading
+  measure is controlled by font size, not by narrower boxes that end at different right edges.
 - **Type = PersistBench's scale, nothing else**: 60 title, 40 subtitle, 24 section headings, 20 body/intro/abstract,
   16 UI/nav/authors/card titles/details, 14 captions/footnotes/code. One family (Lato; BibTeX monospace); form
   controls inherit it. Labels inside videos must be readable. Text never touches lines (borders, arrows).
@@ -75,6 +77,15 @@ right above the figure; **no panning/zooming** (rejected as dizzying). Loops whi
 **in PowerPoint** so it stays editable: deck `OneDrive …/submission-folder/holo4d-fig2-animated.pptx`, builder
 `~/.claude/skills/paper-figure-style/scripts/pptx/fig2v.py`, full record `overleaf/Holo4D-overleaf/doc/demo-figure-visualization.md`.
 The track condition must look like the scene seen from the new camera (surfaces + grey unseen), not abstract dots.
+Further author decisions, all already in the current video:
+- The **4D reconstructor** and **track encoder** glyphs show data flowing through them, **one pass each** when their
+  stage appears, then rest static (reconstructor: source-red packet in → track colours out into the 3D panel;
+  encoder: track colours in → grey feature tokens out into T).
+- The DiT stack is labelled **"DiT block ×N"** (the block count differs between models); the paper figure keeps ×40.
+- Labels never touch lines ("4D reconstructor", "Track encoder" lifted clear of the lane border and arrows).
+- The slide is fitted to the figure (1920×718) so the caption sits right above it.
+**Ownership**: the method video is rebuilt by local Opus with `fig2v.py` (the scripts live in the local figure skill,
+not on Civo). Do not re-encode, crop or overlay `static/videos/method-overview.mp4`; send change requests instead.
 
 ## 7. Closing sections
 
