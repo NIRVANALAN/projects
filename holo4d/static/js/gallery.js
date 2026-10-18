@@ -532,6 +532,15 @@ document.addEventListener('DOMContentLoaded',() => {
       teaserRoot.append(tile); onScreen.observe(v);
     });
   }
+  // Method animation: loops while on screen, pauses off screen.
+  const methodVideo=document.querySelector('[data-method-video]');
+  if (methodVideo) {
+    if (reducedMotion.matches) methodVideo.controls=true;
+    else new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) methodVideo.play().catch(() => { methodVideo.controls=true; });
+      else methodVideo.pause();
+    },{threshold:.4}).observe(methodVideo);
+  }
   const copy=document.querySelector('[data-copy-bibtex]');
   copy?.addEventListener('click',async () => {
     try { await navigator.clipboard.writeText(document.getElementById('bibtex').innerText); copy.textContent='Copied'; }

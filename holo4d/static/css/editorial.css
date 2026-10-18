@@ -281,3 +281,11 @@ ul.closing-copy li + li { margin-top: 8px; }
   .gallery-subheading { font-size: 17px; }
   .bibtex pre { font-size: 12px; padding-right: 22px; padding-top: 44px; }
 }
+/* Method animation (16:9 crop of the pipeline figure). */
+.method-video { position: relative; overflow: hidden; border: 1px solid #e2e8f0; border-radius: 12px; background: #fff; }
+.method-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; background: #fff; }
+@media (max-width: 760px) {
+  .pipeline-figure > div { overflow-x: visible; }
+  .pipeline-figure .method-video video { width: 100%; max-width: none; }
+}
+#overview .text-width .section-eyebrow { font-size: 12.5px; line-height: 1.4; }
