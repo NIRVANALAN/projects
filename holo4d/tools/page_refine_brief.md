@@ -33,8 +33,12 @@ https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -
 - **Type = PersistBench's scale, nothing else**: 60 title, 40 subtitle, 24 section headings, 20 body/intro/abstract,
   16 UI/nav/authors/card titles/details, 14 captions/footnotes/code. One family (Lato; BibTeX monospace); form
   controls inherit it. Labels inside videos must be readable. Text never touches lines (borders, arrows).
-- **Logo**: `static/images/logo.webp` (transparent; from the submission demo deck) is the page title; the favicon /
-  touch icon / top-bar mark is the cube crop (`favicon.png`, `apple-touch-icon.png`); `logo.png` is the og:image.
+- **Logo** (from the submission demo deck `holo4d-nips26-demo.pptx`, made transparent): page title like 4RC, served as
+  `logo-400.webp` / `logo-800.webp` via srcset (28 / 78 KB), preloaded with `fetchpriority="high"` so it appears with the
+  page; `logo.png` (1200 px) is only the og:image / twitter:image. Never ship the 1200 px or 187 KB versions in the page.
+- **Favicon**: a simple flat vector mark like PointZero's, not a downscaled photo (rejected as a blurry smudge):
+  `favicon.svg` (cube in a camera orbit, logo blues, 711 B) + `favicon-32.png` and `apple-touch-icon.png` rasterised
+  from it; the top-bar mark uses the same SVG.
 - **Navigation**: clear and obvious. ≥ 1440 px: PersistBench-style fixed contents sidebar placed just left of the
   content column (not at the window edge); smaller screens: sticky top bar with bold 15–16 px links.
 
@@ -96,6 +100,13 @@ not on Civo). Do not re-encode, crop or overlay `static/videos/method-overview.m
   verified homepage, funding (Sony 2024, ERC CoG UNION 101001212, EPSRC EP/Z001811/1 SYN3D), Isambard-AI and Dawn AIRR.
 - **Concurrent works**: Vista4D, Lyra [1, 2], Atlas — **one concise line each, including how Holo4D differs**.
 - **BibTeX**: compact card sized to its content, Copy button.
+
+## 7b. GitHub repository
+
+https://github.com/NIRVANALAN/Holo4D (currently **private**, so the page's Code button 404s for visitors until it is
+made public). It holds a PointZero-style placeholder (https://github.com/Duisterhof/pointzero): logo, bold title,
+Website · Paper links, teaser GIF (`tools/make_readme_teaser.py`), "Release coming soon", BibTeX. Local clone
+`~/Repo/open-source/Holo4D-public` on the Mac. The full code stays in `NIRVANALAN/Holo4D_dev` until release.
 
 ## 8. Known debt / good next refinements
 
