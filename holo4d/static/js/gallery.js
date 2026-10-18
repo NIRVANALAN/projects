@@ -545,11 +545,8 @@ document.addEventListener('DOMContentLoaded',() => {
   // Reduced motion or data saver: no autoplay, the native controls start it.
   const demo=document.querySelector('[data-demo-video]');
   if (demo) {
-    const file='holo4d_demo_2026-10-18.mp4';
+    const file='holo4d_demo_2026-10-18-r7.mp4';
     demo.src=holo4dMediaURL({path:'demo'},file);
-    // The film opens with a 3 s title card that repeats the page header above it; autoplay starts after it.
-    const SKIP=3;
-    demo.addEventListener('loadedmetadata',() => { if (demo.currentTime<SKIP) demo.currentTime=SKIP; },{once:true});
     let userPaused=false;
     demo.addEventListener('pause',() => { if (demo.dataset.auto!=='1') userPaused=true; demo.dataset.auto=''; });
     demo.addEventListener('play',() => { userPaused=false; });

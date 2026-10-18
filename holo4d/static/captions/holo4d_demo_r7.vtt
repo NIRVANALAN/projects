@@ -1,0 +1,89 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:02.500
+Holo4D: Holistic 4D Reconstruction as Geometric Control for Video Diffusion.
+
+2
+00:00:02.500 --> 00:00:05.500
+Source video · as input
+
+3
+00:00:05.500 --> 00:00:11.000
+4D reconstruction · persistent 3D trajectories
+
+4
+00:00:11.000 --> 00:00:14.000
+Track condition · at the target camera
+
+5
+00:00:14.000 --> 00:00:18.500
+Holo4D · output
+
+6
+00:00:18.500 --> 00:00:19.500
+Holo4D · from one example to eight scenes
+
+7
+00:00:19.500 --> 00:00:22.000
+Source video · as input
+
+8
+00:00:22.000 --> 00:00:25.500
+4D reconstruction · persistent 3D trajectories
+
+9
+00:00:25.500 --> 00:00:28.000
+Track condition · at the target camera
+
+10
+00:00:28.000 --> 00:00:30.500
+Holo4D · output
+
+11
+00:00:30.500 --> 00:00:55.667
+How it works · animated overview from the project page, shown at its original frame rate and aspect ratio.
+
+12
+00:00:55.667 --> 00:01:07.933
+Figure humanoid · same source, two virtual camera paths · clean loop then matched track-overlay loop
+
+13
+00:01:07.933 --> 00:01:20.200
+Tesla humanoid · same source, two virtual camera paths · clean loop then matched track-overlay loop
+
+14
+00:01:20.200 --> 00:01:32.467
+DROID · GuptaLab · same source, two virtual camera paths · clean loop then matched track-overlay loop
+
+15
+00:01:32.467 --> 00:01:38.600
+Camera lens · one source, two generated camera paths.
+
+16
+00:01:38.600 --> 00:01:44.733
+Golf · one source, two generated camera paths.
+
+17
+00:01:44.733 --> 00:01:50.867
+Breakdance flare · one source, two generated camera paths.
+
+18
+00:01:50.867 --> 00:02:03.133
+Two camera paths · 94 generated frames · second chunk continues from frame 49.
+
+19
+00:02:03.133 --> 00:02:09.267
+Golf · dolly-out · same target-camera path.
+
+20
+00:02:09.267 --> 00:02:15.400
+Drive desert · side-fly · same target-camera path.
+
+21
+00:02:15.400 --> 00:02:21.533
+Snow dog · crane-above · same target-camera path.
+
+22
+00:02:21.533 --> 00:02:27.533
+Holo4D · NeurIPS 2026 · project page and acknowledgments.
