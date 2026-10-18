@@ -329,3 +329,8 @@ button, select, input { font-family: inherit; }                      /* form con
 /* Closing blocks share one right edge: the content column (same as the divider lines). */
 .closing .closing-copy, .closing ul.closing-copy { max-width: none; }
 .closing .bibtex { width: 100%; }
+/* Logo as the title, like 4RC (height-capped; subtitle below). */
+.paper-header h1 .project-logo { display: block; width: auto; height: 120px; max-width: 100%; margin: 0 auto 14px; object-fit: contain; }
+.wordmark { display: inline-flex; align-items: center; gap: 8px; }
+.wordmark img { width: 28px; height: 28px; border-radius: 6px; }
+@media (max-width: 760px) { .paper-header h1 .project-logo { height: auto; width: 86%; } }

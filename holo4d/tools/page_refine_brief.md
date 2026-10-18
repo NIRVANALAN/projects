@@ -33,12 +33,15 @@ https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -
 - **Type = PersistBench's scale, nothing else**: 60 title, 40 subtitle, 24 section headings, 20 body/intro/abstract,
   16 UI/nav/authors/card titles/details, 14 captions/footnotes/code. One family (Lato; BibTeX monospace); form
   controls inherit it. Labels inside videos must be readable. Text never touches lines (borders, arrows).
+- **Logo**: `static/images/logo.webp` (transparent; from the submission demo deck) is the page title; the favicon /
+  touch icon / top-bar mark is the cube crop (`favicon.png`, `apple-touch-icon.png`); `logo.png` is the og:image.
 - **Navigation**: clear and obvious. ≥ 1440 px: PersistBench-style fixed contents sidebar placed just left of the
   content column (not at the window edge); smaller screens: sticky top bar with bold 15–16 px links.
 
 ## 2. Page order
 
-Title, authors (linked), affiliations, NeurIPS 2026, buttons → **teaser mosaic** → 01 Robotics → 02 Video reshooting
+Logo (as the title, like 4RC) + subtitle, authors (linked), affiliations, NeurIPS 2026, buttons (Paper, Code →
+https://github.com/NIRVANALAN/Holo4D, …) → **teaser mosaic** → 01 Robotics → 02 Video reshooting
 → 03 Long videos → 04 Baselines → **Abstract** → **Method** (animated) → Acknowledgements → Concurrent works → BibTeX.
 
 ## 3. Teaser

@@ -132,3 +132,24 @@ trajectory id, model checkpoint/step, geometry backend (VGGT-Omega+CoWTracker /
 4. Which baselines had matched outputs, and their paths.
 5. Any `TODO(claim)` cards and open questions.
 6. Contact sheet path.
+
+## Lessons from the submission demo (`holo4d-nips26-demo.pptx`, Aug 2026)
+
+Its 20 slides: logo title → "More results / in the wild" (6 × Source | Predicted, 512×288) → "Geometric camera
+condition" (2 debug grids) → "Novel-view RGB and depth, iPhone" (3 × 3-row grids) → "Novel-view RGB, DAVIS"
+(3 × Source + GT over a 6-method grid) → "Thanks for watching!". Clips are 4.1 s. Results there are from old
+checkpoints (e.g. `14b_softsplat_step-3000`) — do not reuse them as results.
+
+Keep:
+- **Logo title card** (now `holo4d/static/images/logo.png`, transparent, 1200×360) — open and close the film with it.
+- **Multi-baseline grid** on the same source and trajectory: Holo4D | ReCamMaster | GEN3C / TrajectoryCrafter | EX-4D
+  | Vista4D, with the source (and, where it exists, reprojected GT) above. Matched outputs exist for the three
+  comparison cases (see the handoff's baseline table) — this is stronger evidence than Holo4D vs Vista4D alone.
+- **Depth alongside RGB** (iPhone rows): shows geometric consistency, which is the paper's point. Use only where
+  matched depth for every method exists.
+- Simple **section cards** between parts.
+
+Avoid (the old deck did these):
+- Debug grids with monospace labels, |pred − gt| heat maps, valid masks and full prompts burned into the frame.
+- Calling the reprojected source "GT" (label it "Reprojected source"), white frames around letterboxed clips, and
+  tiny method labels under 2×3 grids — use the page's chip labels, Holo4D (ours) in blue.
