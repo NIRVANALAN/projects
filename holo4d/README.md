@@ -6,7 +6,7 @@ Current local revision moves the existing robot gallery directly below the
 paper masthead, puts gallery controls below videos, and folds repeated
 provenance into `Sample details`. All curated source/camera pairings and nine
 approved long videos are retained. White/Lato/blue homepage identity is
-unchanged; no duplicate hero. `static/css/editorial.css` owns this layout.
+unchanged; no duplicate hero. `static/css/project.css` is the single page stylesheet.
 
 Public first-frame covers are regular same-origin files under
 `static/posters/web/` (115 JPEGs, about3.66MB total); MP4s remain pinned HTTPS,
@@ -57,7 +57,7 @@ identified; the rejected 4RC example is not displayed. Details and CPU launcher:
 
 The visual authority is [Yushi's homepage](https://nirvanalan.github.io/), not
 the earlier green/teal experimental theme. Reusable identity tokens live in
-`static/css/yushi-theme.css`: Lato with local sans-serif fallback, white,
+`../template/static/project.css`: Lato with local sans-serif fallback, white,
 `#222` text, `#1772d0` links and `#f09228` hover. Buttons/cards are neutral gray.
 Google Fonts is optional; no media or player depends on its availability.
 Copy this theme to subsequent project pages; retain each project's own layout.
@@ -103,7 +103,7 @@ The refresh adds a compact NeurIPS masthead, restrained section typography,
 wide-screen-only contents sidebar, tablet/mobile section navigation, collapsible
 protocol notes, per-gallery scene selection, synchronized comparison scrubbing,
 keyboard focus styles and a back-to-top link. No remote fonts or framework
-dependencies were added. `static/css/polish.css` contains presentation overrides.
+dependencies were added. `static/css/project.css` contains the consolidated page styles.
 
 The browser gate validates all nine robot long videos, scene jumps, paired
 seeking, byte-range 206, mobile explicit-load behavior and tablet overflow.

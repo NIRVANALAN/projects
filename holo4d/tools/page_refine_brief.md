@@ -6,7 +6,7 @@ https://nirvanalan.github.io/projects/holo4d/ · local: `cd projects && python -
 
 ## 0. How to work
 
-- `git pull` first; the page is `holo4d/index.html`, `static/css/editorial.css` (last layer, wins), `static/js/gallery.js`,
+- `git pull` first; the page is `holo4d/index.html`, `static/css/project.css`, `static/js/gallery.js`,
   `static/js/showcase-selection.js`. Media are pinned on HF (`static/js/media-config.js`); never overwrite media.
 - Check every change in a real browser at **1920, 1440 and 390 px**, by screenshot, not only assertions: no console
   errors, no horizontal scroll, nothing overlapping or clipped.
@@ -110,9 +110,10 @@ Website · Paper links, teaser GIF (`tools/make_readme_teaser.py`), "Release com
 
 ## 8. Known debt / good next refinements
 
-1. CSS is four overlapping layers (`index.css`, `polish.css`, `yushi-theme.css`, `editorial.css`) with `!important`
-   fights. Consolidate into one stylesheet (start from `projects/template/static/project.css`, the homepage-style
-   template) without changing the look; then delete the dead rules.
+1. Resolved 2026-10-18: the four overlapping CSS layers were consolidated into
+   `static/css/project.css`; 317 exact-selector duplicate declarations were
+   removed without changing rendered pixels at 1920, 1440 or 390 px. The
+   reusable homepage-style template remains `projects/template/static/project.css`.
 2. A full typography/spacing pass at 1440 and 390 px: equal vertical rhythm between sections; intro → media gap
    ≈ 20–24 px; no large empty bands.
 3. Long videos: Figure #0, DROID RAD and DROID TRI need a second trajectory (Task C) before they can be shown.

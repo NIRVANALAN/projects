@@ -4,7 +4,7 @@ For new pages and requested restyling, follow [DESIGN_LANGUAGE.md](DESIGN_LANGUA
 The user's personal homepage (https://nirvanalan.github.io/) is the palette and
 typography authority: Lato, white/neutral-gray surfaces, dark text, blue links,
 orange link hover. Do not introduce green/teal themes. The reusable stylesheet
-is `holo4d/static/css/yushi-theme.css`; keep each project's own content/layout.
+is `template/static/project.css`; keep each project's own content/layout.
 
 Preserve poster-first lazy media loading, explicit Play/Pause and seeking.
 Group portrait and landscape examples, with two cards on desktop and one on

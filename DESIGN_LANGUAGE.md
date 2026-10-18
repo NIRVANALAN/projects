@@ -14,8 +14,9 @@ without forcing identical content layouts.
 | Buttons / selected controls | Charcoal and neutral grays |
 
 New pages: start from [`template/`](template/README.md) (`cp -R template my-project`).
-Older pages: `holo4d/static/css/yushi-theme.css` remains the drop-in theme layer;
-load it after project-specific layout CSS.
+Reusable drop-in styles live at `template/static/project.css`; copy that file
+when starting a new page, then add that project's layout separately. Holo4D
+consolidates its page-specific rules in `holo4d/static/css/project.css`.
 It is intentionally small and buildless. Lato's remote font is optional; the
 fallback must remain readable offline. Do not introduce green/teal branded
 badges, tinted cards or broad colored backgrounds. Keep research track identity

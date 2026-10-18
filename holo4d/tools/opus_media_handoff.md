@@ -10,7 +10,7 @@ Added exactly30 files (15 MP4 +15 JPEG), 9,222,071bytes. The previous406 assets 
 
 `web-examples.js`: each existing comparison has `has_source: true`; its other values are unchanged. The new `sections.teaser` array has six entries. `media-config.js` pins the revision above. All15 first-frame JPEGs are ordinary files under `static/posters/web/`, not symlinks.
 
-**No layout edits:** `index.html`, `gallery.js`, `editorial.css`, `showcase-selection.js` are unchanged from3558358. Opus can now implement Source | Holo4D | Vista4D and a teaser mosaic. Neither new media group is wired into the current page layout by this commit.
+**Historical note (2026-10-17):** At that handoff, `index.html`, `gallery.js`, the page stylesheet and `showcase-selection.js` were unchanged from3558358. The later page revision wires the source and teaser media into the current layout; page styles now live in `static/css/project.css`.
 
 ## Exact video inventory
 
