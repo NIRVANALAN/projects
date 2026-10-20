@@ -223,9 +223,9 @@ deployable asset strategy. Replace them with hosted media URLs or publishable
 assets before deploying the page anywhere that cannot access
 `/scratch/shared/engs2907/logs/`.
 
-The paper button serves `static/pdfs/holo4d-paper.pdf`, a real copy of the
-submission PDF, not a machine-local symbolic link. Code, public paper/arXiv, canonical
-URL, social preview, and final benchmark media should be updated before
+The paper button, `citation_pdf_url` and the BibTeX point to arXiv
+(2610.25276); the Code button points to https://github.com/NIRVANALAN/Holo4D.
+Canonical URL, social preview, and final benchmark media should be updated before
 publication.
 
 ## TODO
@@ -245,9 +245,9 @@ neighbor prefetch, this page does not speculatively fetch adjacent MP4s.
 - [x] Implement portable staging with `tools/package_page.py`; only referenced
       media is copied and all symlinks are resolved. External publication and
       media-rights review still need approval.
-- [ ] Swap in the public paper/arXiv link once available; update
-      `citation_pdf_url`, `og:url`, and the paper button target together.
-- [ ] Turn on the "Code (soon)" link once the repo is public.
+- [x] Swap in the public paper/arXiv link (2610.25276): paper button,
+      `citation_pdf_url` and BibTeX. `og:url` still to set.
+- [x] Turn on the Code link (public repo NIRVANALAN/Holo4D).
 - [x] Organize selected current examples,comparison metrics and the historical
       archive separately; exclude known content failures. Final public selection
       can still be narrowed after review.
