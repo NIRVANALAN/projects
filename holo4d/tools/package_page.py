@@ -21,7 +21,7 @@ def main():
     files = ['index.html', 'static/css/project.css', 'static/js/media-config.js', 'static/js/gallery.js',
              'static/js/web-examples.js', 'static/js/showcase-selection.js', 'static/images/favicon.svg', 'static/images/favicon-32.png', 'static/images/apple-touch-icon.png',
              'static/images/logo-400.webp', 'static/images/logo-800.webp', 'static/images/logo.png', 'static/images/pipeline.webp', 'static/images/method-overview.jpg',
-             'static/videos/method-overview.mp4', 'static/pdfs/holo4d-paper.pdf']
+             'static/videos/method-overview.mp4']
     for entry in [e for entries in manifest['sections'].values() for e in entries]:
         base = f'static/videos/web/{entry["path"]}/'
         files.extend([base+'clean.mp4', base+'poster.jpg'])
