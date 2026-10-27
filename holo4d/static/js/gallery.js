@@ -267,7 +267,12 @@ class Card {
     const a = this.videos[0];
     if (this.entry.interleaved) {
       const frame = a.currentTime*this.entry.fps;
-      this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : this.mode === 'clean' ? 'Clean' : this.mode === 'tracks' ? displayTrackLabel(this.entry) : frame < this.entry.frames/2 || frame > this.entry.frames*1.5 ? 'Clean ↔ tracks' : displayTrackLabel(this.entry)+' ↔ clean';
+      // Two-cycle interleave (4n frames): clean there and back, then tracks there and back, so every frame is seen
+      // both ways. The older one-cycle file (2n frames) switches halfway through each pass.
+      const twoCycle = a.duration*this.entry.fps > this.entry.frames*3;
+      const auto = twoCycle ? (frame < this.entry.frames*2 ? 'Clean' : displayTrackLabel(this.entry))
+        : frame < this.entry.frames/2 || frame > this.entry.frames*1.5 ? 'Clean ↔ tracks' : displayTrackLabel(this.entry)+' ↔ clean';
+      this.state.textContent = !a.hasAttribute('src') ? 'First-frame poster' : this.mode === 'clean' ? 'Clean' : this.mode === 'tracks' ? displayTrackLabel(this.entry) : auto;
       return;
     }
     if (a.currentTime + 0.5 < this.last) this.loop++;
@@ -341,7 +346,10 @@ class Gallery {
       b.setAttribute('aria-label',`Show ${label}`);
       const img=el('img'); img.alt=''; img.loading='lazy'; img.decoding='async';
       img.dataset.src=holo4dMediaURL(c.entry,'poster.jpg',true);
-      b.append(img,el('span','',label));
+      // Landscape blend posters are whole composites: frame the Holo4D output panel at the bottom, not the panel headers.
+      const frame=el('span','thumbnail-frame'+(c.entry.kind==='blend' && !c.entry.portrait_horizontal ? ' is-landscape-blend' : ''));
+      frame.append(img);
+      b.append(frame,el('span','',label));
       b.addEventListener('click',() => this.move(i)); this.nav.append(b);
     });
     const thumbs=new IntersectionObserver(entries => {
@@ -512,9 +520,10 @@ document.addEventListener('DOMContentLoaded',() => {
   if (backTop && header) new IntersectionObserver(([entry]) => {
     backTop.hidden = entry.isIntersecting || entry.boundingClientRect.top >= 0;
   }).observe(header);
-  // Teaser mosaic: clean Holo4D outputs that play only while on screen.
+  // Teaser mosaic: Holo4D outputs (clean/tracks interleave when exported) that play only while on screen.
   const teaserRoot=document.querySelector('[data-teaser]');
   if (teaserRoot && page.sections.teaser?.length) {
+    teaserRoot.dataset.count=page.sections.teaser.length;
     const onScreen=new IntersectionObserver(entries => entries.forEach(({target:v,isIntersecting}) => {
       if (!isIntersecting || mediaPolicy!=='viewport' || reducedMotion.matches) return v.pause();
       if (!v.src) v.src=v.dataset.src;
@@ -524,7 +533,7 @@ document.addEventListener('DOMContentLoaded',() => {
       const tile=el('figure','teaser-tile'+(entry.aspect<1 ? ' is-portrait' : ''));
       tile.style.gridArea='t'+(i+1);
       const v=el('video'); v.muted=true; v.loop=true; v.playsInline=true; v.preload='none';
-      v.dataset.src=holo4dMediaURL(entry,'clean.mp4'); v.poster=holo4dMediaURL(entry,'poster.jpg',true);
+      v.dataset.src=holo4dMediaURL(entry,entry.interleaved ? 'interleaved.mp4' : 'clean.mp4'); v.poster=holo4dMediaURL(entry,'poster.jpg',true);
       v.setAttribute('aria-label',`Holo4D output: ${entry.scene}, ${entry.camera}`);
       v.addEventListener('click',() => { if (!v.src) v.src=v.dataset.src; v.paused ? v.play().catch(() => {}) : v.pause(); });
       // Picture-in-picture source clip (same ping-pong timing) so the input is always visible.
@@ -533,20 +542,41 @@ document.addEventListener('DOMContentLoaded',() => {
       src.dataset.src=`static/videos/teaser-source/${name}.mp4`; src.poster=`static/videos/teaser-source/${name}.jpg`;
       src.setAttribute('aria-label',`Source video: ${entry.scene}`);
       const inset=el('div','teaser-source'); inset.append(src,el('span','teaser-chip','Source'));
-      v.addEventListener('play',() => { if (!src.src) src.src=src.dataset.src; src.play().catch(() => {}); });
+      // The local inset loads faster than the hosted result: preload it on play(), but start it only once the
+      // result is actually playing, and hold it while the result buffers, so the source never runs ahead.
+      v.addEventListener('play',() => { if (!src.src) { src.src=src.dataset.src; src.load(); } });
+      v.addEventListener('playing',() => { src.currentTime=v.currentTime; src.play().catch(() => {}); });
+      v.addEventListener('waiting',() => src.pause());
       v.addEventListener('pause',() => src.pause());
-      v.addEventListener('timeupdate',() => { if (src.readyState>=2 && Math.abs(src.currentTime-v.currentTime)>.1) src.currentTime=v.currentTime; });
+      // Fallback for browsers that skip 'playing' after a loop or a stall: re-sync and resume on the next tick.
+      v.addEventListener('timeupdate',() => {
+        if (src.readyState<2) return;
+        if (Math.abs(src.currentTime-v.currentTime)>.1) src.currentTime=v.currentTime;
+        if (src.paused && !v.paused && v.readyState>=3) src.play().catch(() => {});
+      });
       const cap=el('figcaption','',entry.scene);
       tile.append(v,inset,cap);
       teaserRoot.append(tile); onScreen.observe(v);
     });
+    // Tiles of the same length follow the first playing one, so their tracks fade in and out together.
+    const tileVideos=[...teaserRoot.querySelectorAll('.teaser-tile > video')];
+    setInterval(() => {
+      const lead=tileVideos.find(v => !v.paused && v.readyState>=3);
+      if (!lead || document.hidden) return;
+      const d=lead.duration;
+      tileVideos.forEach(v => {
+        if (v===lead || v.paused || v.readyState<3 || !(Math.abs(v.duration-d)<.05)) return;
+        const off=Math.abs(v.currentTime-lead.currentTime);
+        if (Math.min(off,d-off)>.15) v.currentTime=lead.currentTime;
+      });
+    },500);
   }
   // Demo film autoplays muted at the top (like Vista4D / PersistBench) and pauses off screen; it streams progressively.
   // Reduced motion or data saver: no autoplay, the native controls start it.
   const demo=document.querySelector('[data-demo-video]');
   if (demo) {
-    const file='holo4d_demo_2026-10-18-r7.mp4';
-    demo.src=holo4dMediaURL({path:'demo'},file);
+    // r12 = the 16:9 social film v18, hosted with the rest of the native media.
+    demo.src=holo4dMediaURL({path:'demo'},'holo4d_demo_2026-10-27-r12.mp4');
     let userPaused=false;
     demo.addEventListener('pause',() => { if (demo.dataset.auto!=='1') userPaused=true; demo.dataset.auto=''; });
     demo.addEventListener('play',() => { userPaused=false; });
@@ -564,6 +594,21 @@ document.addEventListener('DOMContentLoaded',() => {
       else methodVideo.pause();
     },{threshold:.4}).observe(methodVideo);
   }
+  // "Full-resolution figure": enlarge it in place; a modified click still opens the image in a new tab.
+  const zoom=document.querySelector('[data-zoom]');
+  zoom?.addEventListener('click',e => {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    let dlg=document.querySelector('.zoom-dialog');
+    if (!dlg) {
+      dlg=document.createElement('dialog'); dlg.className='zoom-dialog';
+      const img=document.createElement('img'); img.alt=zoom.dataset.zoomAlt||''; dlg.append(img);
+      dlg.addEventListener('click',() => dlg.close());
+      document.body.append(dlg);
+    }
+    dlg.querySelector('img').src=zoom.href;
+    dlg.showModal();
+  });
   const copy=document.querySelector('[data-copy-bibtex]');
   copy?.addEventListener('click',async () => {
     try { await navigator.clipboard.writeText(document.getElementById('bibtex').innerText); copy.textContent='Copied'; }
@@ -571,3 +616,86 @@ document.addEventListener('DOMContentLoaded',() => {
     setTimeout(() => { copy.textContent='Copy'; },1500);
   });
 });
+
+/* Behind the scenes: five pipeline stages cropped from the method figure still (1920x718); select one to read it
+   and to outline that stage on the method video above (click it again to clear the outline). */
+function initBehindTheScenes() {
+  const root = document.querySelector('[data-bts]');
+  if (!root) return;
+  const buttons = [...root.querySelectorAll('[data-bts-step]')];
+  const texts = [...root.querySelectorAll('[data-bts-text]')];
+  const strip = root.querySelector('.bts-strip'), live = root.querySelector('[aria-live]');
+  const W = 1920, H = 718;
+  const fig = document.querySelector('.method-video'), focus = fig?.querySelector('[data-method-focus]'), video = fig?.querySelector('video');
+  // The video builds the figure up stage by stage: stage k appears at BUILD[k] s (its caption changes). From HOLD (s)
+  // to the end it is complete, and HOLD is one ping-pong period of its clips before the end, so looping that span
+  // keeps every clip continuous.
+  const BUILD = [0, 1.0, 5.0, 9.7, 14.7], HOLD = 19.167;
+  // The strip always shows what the figure shows. While the figure builds, the stage being built is selected; once it
+  // is complete, each stage is outlined in turn (the next follows when its underline has filled, the bts-dwell
+  // animation), and after the last one the figure builds again. Selecting a stage outlines it at once and continues the
+  // tour from there. With reduced motion nothing advances on its own: the poster is the complete figure.
+  let focused = -1;
+  const pick = (i, user = false) => {
+    live?.setAttribute('aria-live', user ? 'polite' : 'off');
+    buttons.forEach((b, j) => { b.setAttribute('aria-selected', String(i === j)); b.classList.toggle('is-on', i === j); });
+    texts.forEach((t, j) => { t.hidden = i !== j; });
+    const b = buttons[i];
+    if (!user && b && strip.scrollWidth > strip.clientWidth)
+      strip.scrollTo({ left: strip.scrollLeft + b.getBoundingClientRect().left - strip.getBoundingClientRect().left, behavior: 'smooth' });
+  };
+  const outline = (i, scroll = false) => {
+    if (!focus || !video) return;
+    focused = i;
+    fig.classList.toggle('is-focus', i >= 0);
+    root.classList.toggle('is-touring', i >= 0 && !reducedMotion.matches);
+    video.loop = i < 0;
+    if (i < 0) { focus.hidden = true; return; }
+    const [x, y, w, h] = buttons[i].dataset.focus.split(',').map(Number);
+    if (focus.hidden) { focus.style.transition = 'none'; focus.hidden = false; }
+    Object.assign(focus.style, { left: `${x / W * 100}%`, top: `${y / H * 100}%`, width: `${w / W * 100}%`, height: `${h / H * 100}%` });
+    focus.offsetWidth; focus.style.transition = '';
+    if (video.currentTime < HOLD) video.currentTime = reducedMotion.matches ? (video.duration || 25.1) - .05 : HOLD;
+    const r = fig.getBoundingClientRect();
+    if (scroll && (r.top < 0 || r.bottom > innerHeight)) fig.scrollIntoView({ block: 'nearest', behavior: reducedMotion.matches ? 'auto' : 'smooth' });
+  };
+  const step = i => { pick(i); outline(i); };
+  video?.addEventListener('ended', () => { if (focused >= 0) { video.currentTime = HOLD; video.play().catch(() => {}); } });
+  video?.addEventListener('timeupdate', () => {
+    if (focused >= 0 || reducedMotion.matches) return;
+    const t = video.currentTime;
+    if (t >= HOLD) return step(0);
+    let k = 0;
+    while (k + 1 < BUILD.length && t >= BUILD[k + 1]) k++;
+    if (!buttons[k].classList.contains('is-on')) pick(k);
+  });
+  buttons.forEach(b => {
+    const [x, y, w, h] = b.dataset.crop.split(',').map(Number), img = b.querySelector('.bts-img');
+    img.style.aspectRatio = `${w} / ${h}`;
+    b.style.setProperty('--grow', (w / h).toFixed(3));
+    img.style.backgroundImage = 'url("static/images/method-overview.jpg?v=8")';
+    img.style.backgroundSize = `${W / w * 100}% ${H / h * 100}%`;
+    img.style.backgroundPosition = `${x / (W - w) * 100}% ${y / (H - h) * 100}%`;
+    b.addEventListener('click', () => {
+      const i = Number(b.dataset.btsStep);
+      pick(i, true);
+      if (focused === i) { root.classList.remove('is-touring'); void root.offsetWidth; }  // restart its underline
+      outline(i, true);
+    });
+  });
+  // The tour waits while the figure is mostly off screen or the tab is hidden.
+  let onScreen = true;
+  const wait = () => root.classList.toggle('is-paused', !onScreen || document.hidden);
+  if (fig) new IntersectionObserver(([e]) => { onScreen = e.intersectionRatio >= .4; wait(); }, { threshold: [0, .4] }).observe(fig);
+  document.addEventListener('visibilitychange', wait);
+  root.addEventListener('animationend', e => {
+    if (e.animationName !== 'bts-dwell' || focused < 0) return;
+    if (focused + 1 < buttons.length) return step(focused + 1);
+    outline(-1);  // after the last stage the figure builds again
+    video.currentTime = 0;
+    video.play().catch(() => {});
+    pick(0);
+  });
+  pick(reducedMotion.matches ? -1 : 0);
+}
+document.addEventListener('DOMContentLoaded', initBehindTheScenes);

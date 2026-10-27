@@ -38,7 +38,7 @@
   <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="static/css/project.css?v=20261018-11">
+  <link rel="stylesheet" href="static/css/project.css?v=20261027-c">
 </head>
 
 <body id="top">
@@ -48,7 +48,7 @@
     <nav>
       <ul>
         <li><a href="#demo">Demo</a></li>
-        <li><a href="#overview">Abstract</a></li>
+        <li><a href="#overview">Overview</a></li>
         <li><a href="#robots">Robotics</a></li>
         <li><a href="#results">Video reshooting</a></li>
         <li><a href="#long-videos">Long videos</a></li>
@@ -70,7 +70,7 @@
         <a href="#results">Results</a>
         <a href="#long-videos">Long videos</a>
         <a href="#comparisons">Baselines</a>
-        <a href="#overview">Abstract</a>
+        <a href="#overview">Overview</a>
         <a href="#method">Method</a>
         <a href="#citation">BibTeX</a>
       </div>
@@ -110,16 +110,16 @@
 
     <section id="demo" class="demo page-width" aria-label="Holo4D demo video">
       <div class="demo-player">
-        <video data-demo-video muted playsinline controls preload="metadata" poster="static/images/demo-poster.jpg?v=r7" aria-label="Holo4D demo video, 2 minutes 28 seconds, no audio"><track kind="captions" srclang="en" label="English" src="static/captions/holo4d_demo_r7.vtt"></video>
+        <video data-demo-video muted playsinline controls preload="metadata" poster="static/images/demo-poster.jpg?v=r12" aria-label="Holo4D demo video, 2 minutes 5 seconds, no audio"></video>
       </div>
     </section>
 
     <section id="overview" class="section alt-section">
       <div class="page-width">
-        <p class="section-eyebrow">Abstract</p>
+        <p class="section-eyebrow">Overview</p>
         <h2>A 4D scaffold to tame video generation.</h2>
         <p class="abstract-text">
-          Synthesizing a monocular video from a new camera trajectory requires preserving the observed scene geometry and motion while completing regions that become newly visible. Feed-forward 4D reconstructors recover the structure of the observed scene, whereas video diffusion models provide a generative prior for completing unseen content. We introduce Holo4D, a video reshooting framework that uses reconstructed 3D trajectories as a <span class="key">holistic source-view 4D scaffold</span>. We project these trajectories into the requested views and encode their geometry and source appearance to guide a pretrained video diffusion model. Together with the source video and target cameras, the scaffold <span class="key">grounds generation</span> in reconstructed observations while leaving unsupported regions to the <span class="key">generative prior</span>. Experiments demonstrate the value of trajectory-based conditioning for camera control and novel-view synthesis. The framework accommodates different 4D reconstructors <span class="key">without retraining</span> the video generator, allowing it to benefit from future advances in source reconstruction.
+          Holo4D re-films a video from a new camera path. A feed-forward 4D reconstructor turns the source video into <span class="key">persistent 3D tracks</span>: points that keep their identity as they move. We project these tracks into the requested camera and give them to a video diffusion model, together with the source video and the target camera. Where the source saw the scene, the tracks hold the result to the reconstructed geometry and motion; where the new camera sees what the source never showed, the <span class="key">diffusion prior fills it in</span>. The same trained model works with different 4D reconstructors <span class="key">without retraining</span>, so it improves as reconstruction improves. On DAVIS, with the same 4D reconstruction, Holo4D reduces camera trajectory error (ATE) by 54% compared with Vista4D. Below: humanoid and arm robots, dynamic everyday scenes, long videos generated window by window, and side-by-side comparisons.
         </p>
       </div>
     </section>
@@ -127,7 +127,7 @@
     <section class="teaser page-width" aria-labelledby="teaser-title">
       <h2 id="teaser-title" class="visually-hidden">Holo4D teaser</h2>
       <div class="teaser-mosaic" data-teaser></div>
-      <p class="teaser-caption">Each tile: the <strong>source</strong> video (inset) and the <strong>Holo4D</strong> result from a new camera path, guided by persistent 3D tracks.</p>
+      <p class="teaser-caption">Each tile: the <strong>source</strong> video (inset) and the <strong>Holo4D</strong> result from a new camera path; the persistent 3D tracks that guide it fade in and out (visualization only).</p>
     </section>
 
     <section id="robots" class="section">
@@ -203,9 +203,29 @@
         <figure class="pipeline-figure">
           <div class="method-video">
             <video data-method-video muted loop playsinline preload="metadata" poster="static/images/method-overview.jpg?v=8" aria-label="Animated Holo4D overview: the 4D scaffold, then video diffusion, build up stage by stage with the source video, persistent 3D tracks, track condition and output playing" src="static/videos/method-overview.mp4?v=8"></video>
+            <span class="method-focus" data-method-focus hidden></span>
           </div>
-          <figcaption><strong>Top (4D scaffold):</strong> a 4D reconstructor recovers persistent 3D trajectories with sampled source colors, which are projected into the target cameras and encoded into track features <b>T</b>. <strong>Bottom (video diffusion):</strong> source and noisy target latents are concatenated along width; each DiT block concatenates <b>T</b> with its hidden features along channels and adds camera features <b>C</b> from Plücker rays. Flames and snowflakes mark trained and frozen modules; the top-right track overlay is for visualization only. <a href="static/images/pipeline.webp?v=2" target="_blank" rel="noopener">Full-resolution figure</a></figcaption>
+          <figcaption><strong>Top (4D scaffold):</strong> a 4D reconstructor recovers persistent 3D trajectories with sampled source colors, which are projected into the target cameras and encoded into track features <b>T</b>. <strong>Bottom (video diffusion):</strong> source and noisy target latents are concatenated along width; each DiT block concatenates <b>T</b> with its hidden features along channels and adds camera features <b>C</b> from Plücker rays. Flames and snowflakes mark trained and frozen modules; the top-right track overlay is for visualization only. <a href="static/images/pipeline.webp?v=3" target="_blank" rel="noopener" data-zoom data-zoom-alt="Holo4D pipeline figure at full resolution">Full-resolution figure</a></figcaption>
         </figure>
+
+        <h3 class="gallery-subheading">Behind the scenes</h3>
+        <p class="section-intro">Five stages, from the input video to the output. Select a stage to read what happens there and to outline it on the figure above.</p>
+        <div class="bts" data-bts>
+          <div class="bts-strip" role="tablist" aria-label="Pipeline stages">
+            <button type="button" role="tab" data-bts-step="0" data-crop="80,315,255,160" data-focus="42,296,300,190"><span class="bts-img"></span><span class="bts-name"><span class="bts-no">01</span> Input video</span></button>
+            <button type="button" role="tab" data-bts-step="1" data-crop="352,170,488,222" data-focus="350,108,570,290"><span class="bts-img"></span><span class="bts-name"><span class="bts-no">02</span> 4D reconstruction</span></button>
+            <button type="button" role="tab" data-bts-step="2" data-crop="930,165,290,205" data-focus="925,112,515,285"><span class="bts-img"></span><span class="bts-name"><span class="bts-no">03</span> Track condition</span></button>
+            <button type="button" role="tab" data-bts-step="3" data-crop="500,445,930,215" data-focus="350,410,1205,268"><span class="bts-img"></span><span class="bts-name"><span class="bts-no">04</span> Video diffusion</span></button>
+            <button type="button" role="tab" data-bts-step="4" data-crop="1555,455,275,170" data-focus="1552,118,330,512"><span class="bts-img"></span><span class="bts-name"><span class="bts-no">05</span> Output</span></button>
+          </div>
+          <div class="bts-detail" role="tabpanel" aria-live="polite">
+            <p data-bts-text="0" hidden><b>Input video.</b> One monocular source video and the requested target camera path. Nothing else about the scene is given.</p>
+            <p data-bts-text="1" hidden><b>4D reconstruction (4RC, or VGGT-Ω + CoWTracker).</b> A feed-forward 4D reconstructor recovers persistent 3D trajectories, for static and moving points alike, with colors sampled from the source. Other backends (V-DPM, Open-D4RT) plug in without retraining the generator.</p>
+            <p data-bts-text="2" hidden><b>Track condition.</b> The trajectories are projected into the target cameras and encoded as track features <b>T</b>: position, visibility, source-query RGB and target-camera depth—not a rendered target RGB-D image.</p>
+            <p data-bts-text="3" hidden><b>Video diffusion (Wan, 14B).</b> Source and noisy target latents are concatenated along width. Each DiT block concatenates <b>T</b> with its hidden features along channels and adds camera features <b>C</b> from Plücker rays, so the attention sequence length is unchanged.</p>
+            <p data-bts-text="4" hidden><b>Output.</b> The video from the new camera path: observed content follows the 4D scaffold, newly visible regions come from the generative prior. Track overlays on outputs are for visualization only.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -215,11 +235,10 @@
         <h2>Reconstruct what was seen; generate what was not.</h2>
         <blockquote class="takeaway-quote">A 4D scaffold of persistent 3D trajectories grounds video generation in what the source video observed, and leaves only the unseen to the generative prior.</blockquote>
         <div class="takeaway-points">
-          <p><strong>Source geometry keeps the camera on track.</strong> On DAVIS, Holo4D has the lowest trajectory and translation errors of all methods; with the same 4RC reconstruction it reduces ATE by 54% and RPE-T by 33% compared with <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D</a>. With the two-stage backend it obtains the best PSNR and LPIPS on iPhone.</p>
-          <p><strong>Generated views keep the scene's geometry.</strong> Holo4D has the lowest AbsRel and highest &delta;<sub>1</sub> under both <a href="https://vggt-omega.github.io/" target="_blank" rel="noopener">VGGT-&Omega;</a> and <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC</a> as output reconstructors; under VGGT-&Omega;, AbsRel falls from Vista4D's 0.628 to 0.423.</p>
-          <p><strong>Swap the reconstructor, keep the generator.</strong> The same generator accepts 4RC, <a href="https://www.robots.ox.ac.uk/~vgg/research/vdpm/" target="_blank" rel="noopener">V-DPM</a> and VGGT-&Omega; paired with Open-<a href="https://d4rt-paper.github.io/" target="_blank" rel="noopener">D4RT</a> or <a href="https://cowtracker.github.io/" target="_blank" rel="noopener">CoWTracker</a>, without retraining. The backends trade off (CoWTracker: best ATE, PSNR and SSIM; V-DPM: best rotation error; 4RC: best LPIPS), so Holo4D benefits directly from better reconstructors.</p>
-          <p><strong>Channel-wise conditioning is lighter.</strong> Track features join the hidden features along channels, so the attention sequence length is unchanged: denoising is 1.34&times; faster than Vista4D at similar peak memory (end-to-end time per video is similar).</p>
-          <p><strong>It transfers to robots.</strong> Trained without robot videos, Holo4D-14B reshoots <a href="https://droid-dataset.github.io/" target="_blank" rel="noopener">DROID</a> manipulation episodes and humanoid-robot clips without fine-tuning.</p>
+          <p><span class="takeaway-no">1</span><strong>Source geometry keeps the camera on track.</strong> On DAVIS, Holo4D has the lowest trajectory and translation errors of all methods; with the same 4D reconstructor it reduces ATE by 54% and RPE-T by 33% compared with <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D</a>. With the two-stage backend it obtains the best PSNR and LPIPS on iPhone.</p>
+          <p><span class="takeaway-no">2</span><strong>Generated views keep the scene's geometry.</strong> Holo4D has the lowest AbsRel and highest &delta;<sub>1</sub> under both <a href="https://vggt-omega.github.io/" target="_blank" rel="noopener">VGGT-&Omega;</a> and <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC</a> as output reconstructors; under VGGT-&Omega;, AbsRel falls from Vista4D's 0.628 to 0.423.</p>
+          <p><span class="takeaway-no">3</span><strong>Swap the reconstructor, keep the generator.</strong> The same generator accepts 4RC, <a href="https://www.robots.ox.ac.uk/~vgg/research/vdpm/" target="_blank" rel="noopener">V-DPM</a> and VGGT-&Omega; paired with Open-<a href="https://d4rt-paper.github.io/" target="_blank" rel="noopener">D4RT</a> or <a href="https://cowtracker.github.io/" target="_blank" rel="noopener">CoWTracker</a>, without retraining. The backends trade off (CoWTracker: best ATE, PSNR and SSIM; V-DPM: best rotation error; 4RC: best LPIPS), so Holo4D benefits directly from better reconstructors.</p>
+          <p><span class="takeaway-no">4</span><strong>Channel-wise conditioning is lighter.</strong> Track features join the hidden features along channels, so the attention sequence length is unchanged: denoising is 1.34&times; faster than Vista4D at similar peak memory (end-to-end time per video is similar).</p>
           <p><strong>Limits.</strong> Holo4D remains sensitive to geometric error, incomplete source coverage and difficult camera trajectories.</p>
         </div>
       </div>
@@ -255,6 +274,7 @@
           <li>Lai et al. <a href="https://cowtracker.github.io/" target="_blank" rel="noopener">CoWTracker: Tracking by Warping instead of Correlation.</a> CVPR, 2026.</li>
           <li>Lin et al. <a href="https://eyeline-labs.github.io/Vista4D/" target="_blank" rel="noopener">Vista4D: Video Reshooting with 4D Point Clouds.</a> CVPR, 2026.</li>
           <li>Luo et al. <a href="https://yihangluo.com/projects/4RC/" target="_blank" rel="noopener">4RC: 4D Reconstruction via Conditional Querying Anytime and Anywhere.</a> ICML, 2026.</li>
+          <li>Namekata et al. <a href="https://arxiv.org/abs/2606.20891" target="_blank" rel="noopener">Go-with-the-Track: Video Compositing and Motion Control with Point Tracking.</a> SIGGRAPH, 2026.</li>
           <li>Pont-Tuset et al. <a href="https://davischallenge.org/" target="_blank" rel="noopener">The 2017 DAVIS Challenge on Video Object Segmentation.</a> arXiv, 2017.</li>
           <li>Ren et al. <a href="https://research.nvidia.com/labs/toronto-ai/GEN3C/" target="_blank" rel="noopener">GEN3C: 3D-Informed World-Consistent Video Generation with Precise Camera Control.</a> CVPR, 2025.</li>
           <li>Sucar et al. <a href="https://www.robots.ox.ac.uk/~vgg/research/vdpm/" target="_blank" rel="noopener">V-DPM: Video Reconstruction with Dynamic Point Maps.</a> CVPR, 2026.</li>
@@ -271,13 +291,13 @@
         <h2>BibTeX</h2>
         <div class="bibtex">
           <button type="button" data-copy-bibtex>Copy</button>
-          <pre id="bibtex"><code>@article{lan2026holo4d,
-  title   = {{Holo4D}: Holistic 4D Reconstruction as Geometric
-             Control for Video Diffusion},
-  author  = {Lan, Yushi and Jiang, Zeren and Namekata, Koichi and
-             Pan, Xingang and Zheng, Chuanxia and Vedaldi, Andrea},
-  journal = {arXiv preprint arXiv:2610.25276},
-  year    = {2026}
+          <pre id="bibtex"><code>@inproceedings{lan2026holo4d,
+  title     = {{Holo4D}: Holistic 4D Reconstruction as Geometric
+               Control for Video Diffusion},
+  author    = {Lan, Yushi and Jiang, Zeren and Namekata, Koichi and
+               Pan, Xingang and Zheng, Chuanxia and Vedaldi, Andrea},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  year      = {2026}
 }</code></pre>
         </div>
       </div>
@@ -292,11 +312,11 @@
     </div>
   </footer>
 
-  <script defer src="static/js/media-config.js?v=20261018-623296e"></script>
-  <script defer src="static/js/web-examples.js?v=20261018-camel"></script>
-  <script defer src="static/js/showcase-selection.js?v=20261018-camel"></script>
+  <script defer src="static/js/media-config.js?v=20261027-f3c23e9"></script>
+  <script defer src="static/js/web-examples.js?v=20261027-molmo49"></script>
+  <script defer src="static/js/showcase-selection.js?v=20261026-order"></script>
   <script defer src="static/js/postgen-preview.js?v=20261012-postgen"></script>
   <a href="#top" class="back-to-top" aria-label="Back to top" hidden>↑</a>
-  <script defer src="static/js/gallery.js?v=20261018-r7"></script>
+  <script defer src="static/js/gallery.js?v=20261027-e"></script>
 </body>
 </html>

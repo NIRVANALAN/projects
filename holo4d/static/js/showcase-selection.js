@@ -8,20 +8,21 @@ const holo4dTriOct = 'robot/TRI__failure__2023-10-23__Mon_Oct_23_14-34-51_2023__
 
 window.HOLO4D_SHOWCASE = Object.freeze({
   robots: [
+    // Scenes that also appear in the teaser (Tesla, RAD, GuptaLab) go last, so each gallery opens on something new.
     ['robot/figure_0__window00__start00000', 'subject_orbit_zoom', 'vggt_omega_cowtracker'],
     ['robot/figure_0__window00__start00000', 'slow_crane_dolly_in', 'vggt_omega_cowtracker'],
-    ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
-    ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__left_front_zoom', 'vggt_omega_cowtracker'],
     ['robot/figure_1__window00__start00000', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
     ['robot/figure_1__window00__start00000', 'subject_orbit_zoom', 'vggt_omega_cowtracker'],
-    [holo4dGupta, 'static_left_front', '4rc'],
-    [holo4dGupta, 'static_right_front', '4rc'],
+    ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__close_crane_above', 'vggt_omega_cowtracker'],
+    ['robot/tesla_0__window02__start00048', 'vista4d_avocado_slice__left_front_zoom', 'vggt_omega_cowtracker'],
     [holo4dTriSep, 'vista4d_avocado_slice__close_crane_above', '4rc'],
     [holo4dTriSep, 'vista4d_avocado_slice__left_front_zoom', '4rc'],
+    [holo4dTriOct, 'safe_other_side_left_60_r80_fixedheight', '4rc'],
+    [holo4dTriOct, 'safe_high_center_65_r80_fixedheight', '4rc'],
     [holo4dRad, 'static_right', '4rc'],
     [holo4dRad, 'vista4d_avocado_slice__close_crane_above', '4rc'],
-    [holo4dTriOct, 'safe_other_side_left_60_r80_fixedheight', '4rc'],
-    [holo4dTriOct, 'safe_high_center_65_r80_fixedheight', '4rc']
+    [holo4dGupta, 'static_left_front', '4rc'],
+    [holo4dGupta, 'static_right_front', '4rc']
   ],
   reshooting: [
     ['native110/camera-lens', 'crane-zoom', 'vggt_omega_cowtracker'],
@@ -34,8 +35,6 @@ window.HOLO4D_SHOWCASE = Object.freeze({
     ['native110/drive-desert', 'back-follow', 'vggt_omega_cowtracker'],
     ['native110/friends-restaurant', 'side-dolly', 'vggt_omega_cowtracker'],
     ['native110/friends-restaurant', 'crane-below', 'vggt_omega_cowtracker'],
-    ['davis/camel', 'orbit_left', '4rc'],
-    ['davis/camel', 'zoom_in', '4rc'],
     ['davis/kite-surf', 'pan_left', '4rc'],
     ['davis/kite-surf', 'translate_right', '4rc']
   ],
@@ -45,8 +44,9 @@ window.HOLO4D_SHOWCASE = Object.freeze({
     'long_robot/figure_1__window00__start00000/subject_orbit_zoom',
     'long_robot/tesla_0__window02__start00048/bed_zoom_inout',
     'long_robot/tesla_0__window02__start00048/subject_orbit_zoom',
-    'long_robot/GuptaLab__failure__2023-04-20__Thu_Apr_20_14-22-26_2023__static_1__22246076/static_left_front',
-    'long_robot/GuptaLab__failure__2023-04-20__Thu_Apr_20_14-22-26_2023__static_1__22246076/static_right_front'
+    // MolmoAct2 sofa (replaces the GuptaLab pair, which repeated the Robotics gallery's GuptaLab paths)
+    'long_robot/molmo_m01_sofa/orbit_long_90',
+    'long_robot/molmo_m01_sofa/crane_up_30'
   ],
   comparisons: [
     'comparison/golf/dolly-out',

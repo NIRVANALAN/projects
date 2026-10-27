@@ -26,7 +26,8 @@ class MediaHandler(http.server.SimpleHTTPRequestHandler):
     def send_head(self):
         self.remaining = None
         path = Path(self.translate_path(self.path))
-        if not path.is_file() or path.suffix.lower() not in {'.mp4', '.jpg', '.png', '.svg'}:
+        self.revalidate = not path.is_file() or path.suffix.lower() not in {'.mp4', '.jpg', '.png', '.svg'}
+        if self.revalidate:
             return super().send_head()
         stat = path.stat()
         size = stat.st_size
@@ -66,6 +67,11 @@ class MediaHandler(http.server.SimpleHTTPRequestHandler):
             self.send_header('Content-Range', f'bytes {start}-{end}/{size}')
         self.end_headers()
         return handle
+
+    def end_headers(self):
+        if getattr(self, 'revalidate', False):
+            self.send_header('Cache-Control', 'no-cache')  # Page edits show on a plain reload.
+        super().end_headers()
 
     def copyfile(self, source, outputfile):
         if self.remaining is None:
