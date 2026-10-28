@@ -575,8 +575,8 @@ document.addEventListener('DOMContentLoaded',() => {
   // Reduced motion or data saver: no autoplay, the native controls start it.
   const demo=document.querySelector('[data-demo-video]');
   if (demo) {
-    // r12 = the 16:9 social film v18, hosted with the rest of the native media.
-    demo.src=holo4dMediaURL({path:'demo'},'holo4d_demo_2026-10-27-r12.mp4');
+    // r13 = the 16:9 social film v20, hosted with the rest of the native media.
+    demo.src=holo4dMediaURL({path:'demo'},'holo4d_demo_2026-10-27-r13.mp4');
     let userPaused=false;
     demo.addEventListener('pause',() => { if (demo.dataset.auto!=='1') userPaused=true; demo.dataset.auto=''; });
     demo.addEventListener('play',() => { userPaused=false; });

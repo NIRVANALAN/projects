@@ -25,6 +25,8 @@ window.HOLO4D_SHOWCASE = Object.freeze({
     [holo4dGupta, 'static_right_front', '4rc']
   ],
   reshooting: [
+    ['native110/rabbit-basket', 'crane-below-left', 'vggt_omega_cowtracker'],
+    ['native110/rabbit-basket', 'crane-below-right', 'vggt_omega_cowtracker'],
     ['native110/camera-lens', 'crane-zoom', 'vggt_omega_cowtracker'],
     ['native110/camera-lens', 'side-full', 'vggt_omega_cowtracker'],
     ['native110/fashion-walk', 'arc-left-right', 'vggt_omega_cowtracker'],
